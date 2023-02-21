@@ -1,0 +1,81 @@
+baseURL: https://pps43.github.io
+languageCode: en-us
+title: 🏠
+theme: "PaperMod"
+copyright: "© 2016-2023 By 波波沙."
+
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+minify:
+    disableXML: true
+
+# for search
+# https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search-page
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
+# https://github.com/adityatelange/hugo-PaperMod/wiki/Variables
+params:
+    env: production
+    defaultTheme: auto
+    ShowShareButtons: false
+    ShareButtons: ["twitter", "zhihu"] # see themes\PaperMod\layouts\partials\share_icons.html
+
+    ShowReadingTime: true
+    displayFullLangName: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: false # folder path above title
+    ShowCodeCopyButtons: true
+    ShowToc: true #show collaspable toc under title
+    tocopen: true
+    hideSummary: true # summary in card view
+    comments: true
+
+
+    homeInfoParams:
+      Title: "Safe Room for PPS (波波沙)"
+      Content: >
+       这里有一些零碎的想法、笔记，和一点点生活。[]~(￣▽￣)~*
+    
+    socialIcons:
+        - name: Zhihu
+          url: "https://www.zhihu.com/people/jiaobai"
+        - name: github
+          url: "https://github.com/pps43"
+        - name: Rss
+          url: "index.xml"
+    
+    assets:
+        disableHLJS: false # code highliting
+
+languages:
+    en:
+      languangeName: "English"
+      weight: 1
+      taxonomies:
+          category: categories
+          tag: tags
+          series: series
+      menu:
+          main:
+              - name: Archive
+                url: archives
+                weight: 5
+              - name: Search
+                url: search/
+                weight: 10
+              - name: Tags
+                url: tags/
+                weight: 10
+              - name: BookOfGameDev
+                url: https://book.enginew.cn/
