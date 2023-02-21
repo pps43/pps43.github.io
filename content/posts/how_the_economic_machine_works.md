@@ -1,8 +1,8 @@
 ---
 title: "经济机器如何运行（达利欧）"
-date: 2023-02-16T22:52:05+08:00
+date: 2023-02-16
 draft: false
-tags: ["经济","Youtube"]
+tags: ['经济', 'Youtube']
 cover:
     image: "/how_the_economic_machine_works/economy.png"
     alt: "" # alt text
