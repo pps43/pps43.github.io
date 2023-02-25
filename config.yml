@@ -1,10 +1,10 @@
 baseURL: https://pps43.github.io
 languageCode: en-us
-title: 🏠
+title: 波波沙🏠
 theme: "PaperMod"
 copyright: "© 2016-2023 By 波波沙."
 
-
+googleAnalytics: G-7GDH7EZ6GL
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -43,7 +43,7 @@ params:
 
 
     homeInfoParams:
-      Title: "Safe Room for PPS (波波沙)"
+      Title: "Safe Room for PPS"
       Content: >
        这里有一些零碎的想法、笔记，和一点点生活。[]~(￣▽￣)~*
     
