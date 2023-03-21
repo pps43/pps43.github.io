@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DevOps on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/devops/</link>
+    <description>Recent content in DevOps on 波波沙🏠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Tue, 21 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>凤凰项目</title>
+      <link>https://pps43.github.io/posts/notes_on_phoenix_project/</link>
+      <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/notes_on_phoenix_project/</guid>
+      <description>市面上以DevOps为主题的书，以及和项目攻关的影视作品有不少了，但这本小说读起来依然紧张刺激。除了揭示管理现代IT组织与管理传统工厂的共通</description>
+    </item>
+    
+  </channel>
+</rss>
