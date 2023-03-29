@@ -1,9 +1,9 @@
 ---
-title: "Generative AI Toolkit (2023.3)"
+title: "Generative AI Toolkit (3.29)"
 date: 2023-03-26
 hideSummary: false
 #draft: true
-tags: ["AI","AIGC"]
+tags: ["AI"]
 # cover:
 #     image: "<image path/url>" # image path/url
 #     alt: "<alt text>" # alt text
@@ -16,7 +16,7 @@ tags: ["AI","AIGC"]
 > "There are decades where nothing happens; and there are weeks where decades happen."
 > ― Vladimir Lenin
 
-用列宁的这句话形容AI在这个月带给人们的感受，是再贴切不过了。拥抱这些AI工具，就像会使用智能手机和搜索引擎；对人类来说，就像学会用电，学会用火。
+基于大语言模型的AI在这个月带给人们的感受，用列宁的这句话概括再贴切不过了。作为普通人，去拥抱这些AI工具，就像会使用智能手机和搜索引擎；对人类来说，就像学会用电，学会用火。
 
 
 ```mermaid
@@ -35,7 +35,7 @@ timeline
 ------
 
 
-# For General Purpose
+# For General Task
 
 - Open AI's [ChatGPT](https://chat.openai.com/auth/login)
 - New Bing (Powered by GPT4)
@@ -51,6 +51,7 @@ timeline
 
 - Github's [Copilot X](https://github.com/features/preview/copilot-x), exsiting Copilot costs $10/mo after 60d trial.
   - Using [Copilot for Docs](https://githubnext.com/projects/copilot-for-docs) to learn a SDK/framework/API.
+  > The gist is, to describe a single-responsibility function to let AI generate, rather than a function with long description of chained operations.
 - [Cursor](https://www.cursor.so/), or CodeCursor(vscode plugin), analyze opened document/code, currently FREE.
 - Open AI's CodeX
 
@@ -66,3 +67,16 @@ timeline
 # For Music
 - [Mubert](https://mubert.com/)
 - [Soundraw.io](https://soundraw.io/create_music)
+
+------
+# Want more power?
+
+If you want to:
+- train your own AI based on these models
+- know the strength and weakness of current AI models
+- know why & how Generative AI works, mathematically
+
+Here are my personal ideas:
+- For text, play with [LLaMA](https://github.com/facebookresearch/llama)/[llama.cpp]((https://github.com/ggerganov/llama.cpp) ), or its fined tuned version [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)/[Alpaca-LoRA](https://github.com/tloen/alpaca-lora). For image, play with [Stable-Diffusion](https://github.com/Stability-AI/stablediffusion). They can run on PC/Mac.
+- Weakness of current LLM models: math; chain of decision;
+- ["Dive into Deep Learning"](https://d2l.ai/) by 李沐。中文版《[动手学深度学习](http://zh-v2.d2l.ai/index.html)》
