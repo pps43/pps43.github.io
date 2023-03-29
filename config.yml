@@ -13,6 +13,8 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 hasCJKLanguage: true
+ShowPostNavLinks: true
+ShowCodeCopyButtons: true
 
 minify:
     disableXML: true
