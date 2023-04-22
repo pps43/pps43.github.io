@@ -1,5 +1,5 @@
 ---
-title: "Generative AI Toolkit (3.29)"
+title: "Generative AI Toolkit (4.21)"
 date: 2023-03-26
 hideSummary: false
 #draft: true
@@ -34,35 +34,42 @@ timeline
 
 ------
 
+> 更新：4月以来，AI应用的新概念、新架构、新产品如寒武纪大爆炸一般涌现（[AutoGPT](https://github.com/Significant-Gravitas/Auto-GPT) 首当其冲），非人力所能穷举。
+> [这个网站](https://supertools.therundown.ai/)收录了大量AI工具，本文也会持续更新笔者常用、觉得好用的工具。
 
 # For General Task
 
-- Open AI's [ChatGPT](https://chat.openai.com/auth/login)
-- New Bing (Powered by GPT4)
-- Open AI's ChatGPT Plugins
-- [Hugging face](https://huggingface.co/)'s models/dataset/research
+- 🔥Open AI's [ChatGPT](https://chat.openai.com/auth/login), and Plugins. GPT3.5 is free to use.
+- 🔥Microsoft's [NewBing](https://www.bing.com/new). It's said to be powered by GPT4 (internal version).
+- Google's [Bard](https://bard.google.com/).
+
+ > After trying so many LLM, ChatGPT is still the best one to be professional and smart. But I still prefer asking different models to get different point of view.
 
 # For Document
-- Microsoft's Copilot
-- Notion AI
+- Edge + NewBing. Explain any webpage (including PDF) side by side.
 - [ChatDoc](https://chatdoc.com/)/[ChatPDF](https://www.chatpdf.com/), upload PDF and analyze.
+- Microsoft's Copilot.
 
 # For Code
 
 - Github's [Copilot X](https://github.com/features/preview/copilot-x), exsiting Copilot costs $10/mo after 60d trial.
   - Using [Copilot for Docs](https://githubnext.com/projects/copilot-for-docs) to learn a SDK/framework/API.
   > The gist is, to describe a single-responsibility function to let AI generate, rather than a function with long description of chained operations.
+
 - [Cursor](https://www.cursor.so/), or CodeCursor(vscode plugin), analyze opened document/code, currently FREE.
-- Open AI's CodeX
 
 # For 3D/2D Art
-- [Stable-Diffusion](https://stablediffusionweb.com/#demo)([Github](https://github.com/Stability-AI/stablediffusion)), an open-sourced model can run on PC.
-  - Using [ControlNet](https://stablediffusionweb.com/ControlNet) ([Github](https://github.com/lllyasviel/ControlNet) )to add more control to this model.
-  - Find/Share self-tuned models on [civitai](https://civitai.com/content/guides/what-is-civitai)
-- [Midjourney](https://www.midjourney.com/home/),  tuned from stable diffusion, famous for its artistic style, 25 times FREE try.
-- Open AI's [DALL-E-2](https://labs.openai.com/)
+- 🔥[Stable-Diffusion (SD) web-ui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), totally free and opensource, run model locally on PC.
+  - Download/Share models on [civitai](https://civitai.com/content/guides/what-is-civitai)/[Hugging face](https://huggingface.co/)
+  - Use [ControlNet](https://stablediffusionweb.com/ControlNet) ([Github](https://github.com/lllyasviel/ControlNet) )to add more controll on specific SD model.
+  - Use [LoRA (Low-rank adaption)](https://huggingface.co/docs/diffusers/training/lora) to train faster with less memory.
+  - Use [Text Inversion](https://huggingface.co/docs/diffusers/training/text_inversion) to train with amazingly small output.
+  - Use [DreamBooth] to train if you need to be really expressive.
+
+- 🔥[Midjourney](https://www.midjourney.com/home/),  famous for its artistic style, ~~25 times FREE try~~.
 - Adobe's [Firefly](https://firefly.adobe.com/)
-- Bing's [Image Creator](https://www.bing.com/images/create)
+- Open AI's [DALL-E-2](https://labs.openai.com/), generates image with natural language and long prompts, but limited-access and less control.
+- Bing's [Image Creator](https://www.bing.com/images/create), generate image with natural language, and free to try.
 
 # For Music
 - [Mubert](https://mubert.com/)
@@ -78,5 +85,5 @@ If you want to:
 
 Here are my personal ideas:
 - For text, play with [LLaMA](https://github.com/facebookresearch/llama)/[llama.cpp]((https://github.com/ggerganov/llama.cpp) ), or its fined tuned version [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)/[Alpaca-LoRA](https://github.com/tloen/alpaca-lora). For image, play with [Stable-Diffusion](https://github.com/Stability-AI/stablediffusion). They can run on PC/Mac.
-- Weakness of current LLM models: math; chain of decision;
+- Weakness of current LLM models: math; chain of decision. But they are improving.
 - ["Dive into Deep Learning"](https://d2l.ai/) by 李沐。中文版《[动手学深度学习](http://zh-v2.d2l.ai/index.html)》

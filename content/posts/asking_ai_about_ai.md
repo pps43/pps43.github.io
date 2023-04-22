@@ -1,8 +1,8 @@
 ---
-title: "跟AI老师学AI"
+title: "跟AI老师学AI（一）"
 date: 2023-04-16
 #draft: true
-tags: ["AI","ChatGPT"]
+tags: ["AI","DeepLearning"]
 hideSummary: false
 # cover:
 #     image: "<image path/url>" # image path/url
@@ -12,11 +12,11 @@ hideSummary: false
 #     hidden: true # only hide on current single page
 ---
 
-上一篇列举了大语言模型在3月份的重要时刻。此后如星火燎原，各路英雄基于OpenAI的API或类似开源库搭建出各种神奇工具。新概念、新架构、新产品如寒武纪大爆炸一般涌现（[AutoGPT](https://github.com/Significant-Gravitas/Auto-GPT) 首当其冲）。同学们纷纷叫苦：真的学不动啦！等下，我们不是已经有了全知全能的ChatGPT吗，这就去聊10块钱的！
+按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，以门外汉的视角去追问AI并了解一些基本概念。听完AI老师高屋建瓴的讲解，再有针对性的去学习感兴趣的部分，效率倍增！
 
-本篇集合了一些向AI老师的提问，主要是宏观上的概念梳理。拨云见雾后，看到新工具就更容易上手啦！
+# 课堂问答
 
-# 问答
+## Generative Models, Transformers, Large Language Models (LLM) ?
 
 Me:
 > **explain** generative models and list some types of it. And explain the **relationship** and differences with LLM.
@@ -56,6 +56,8 @@ ChatGPT:
 > 
 > In summary, the Transformer architecture is a powerful tool for building deep learning models for NLP tasks, including generative models such as language models. By leveraging self-attention mechanisms, Transformers are able to capture long-range dependencies and context more effectively, resulting in better performance on many NLP tasks.
 
+## Models, Architectures?
+
 Me:
 > **Do you mean** one model can be implemented in different architectures, and transformers are just one of the architectures to build models? If this is true, **list some** other architectures popular.
 
@@ -71,6 +73,8 @@ ChatGPT:
 > 6. Variational Autoencoders (VAEs): These are also used for generative modeling tasks, such as **image synthesis** and data generation, but they incorporate **probabilistic** models and encode **latent** variables.
 > 
 > These are just a few examples of the many deep learning architectures that are available for building models. **The choice of architecture will depend on the specific task and the characteristics of the data being used**.
+
+## Diffusion, Stable Diffusion, latent space?
 
 Me:
 > **Explain** stable diffusion to me. Is it a model, architecture, or others?
@@ -103,12 +107,14 @@ ChatGPT:
 Me:
 > explain latent space **like I'm 5**
 
-ChatGPT:  👍👍👍
+ChatGPT:  👍
 > Imagine you have a big box full of toys. Each toy has different colors, shapes, and sizes. Now, imagine you have a **secret map** that tells you how to mix and match the toys to create new toys that no one has ever seen before. This secret map is like a code, and **it's hidden inside the box**.
 > 
 > The box of toys is like the data, and the secret map is like the latent space. The latent space is a hidden space that tells you how to mix and match the different parts of the data to create something new. It's like a secret code that only the computer knows.
 >
 > When you train a model to learn the latent space, it's like **teaching the computer to find the secret map inside the box of toys**. Once the computer knows the secret map, it can create new toys that no one has ever seen before by mixing and matching the parts of the toys in new and interesting ways.
+
+## Summarize the talk
 
 Me:
 > **Summarize our conversation above** to give a thorough and concise relationship among all the models, architectures, and other important concepts we talked about.
@@ -124,30 +130,45 @@ ChatGPT:
 > 
 > Finally, we discussed Stable Diffusion and Stable Diffusion 2, which are probabilistic generative models that use a diffusion process to model the data distribution. Stable Diffusion 2 is a latent diffusion model that learns a diffusion process in the latent space to generate complex and structured data distributions. The latent space is a hidden space that tells the model how to mix and match the different parts of the data to create something new.
 
-# 梳理
+# 课后笔记
+
+- We train a `model` by choosing an `architecture`.
+- Some models are named after the architecture they use, e.g., `GAN, VAE`.
+- We `fine-tune` existing model as a foundation to generate a new model, with less training effort.
+- `LLM` and `Diffusion` are both generative, probabilistic models.
+- `ChatGPT` is a product powered by `GPT` model (belongs to `LLM` family).
+- `Stable Diffusion` is a `Diffusion` model, and its sevond version learns pattern in a hidden box called `latent space`.
+- Above models all use `Transformers` as the architecture.
+- `Transformers` are a type of attention-based neural network.
 
 ```mermaid
 mindmap
     root((Deep Learning))
         models
             discriminative model
+                K nearest
+                Logistic regression
+                SVM
+                Random Forest
+                ...
             generative model
-                structure based
+                deterministic
+                    CNN
+                    ...
+                probabilistic
                     VAE
                     GAN
-                probabilistic
                     LLM
-                    Stable Diffusion
+                    Diffusion
         architectures
             CNN
-            RNN
             LSTM
             GAN
             VAE
+            ...
             Transformer
                 BERT
                 GPT
-                LLaMA
                 ...
 ```
 
