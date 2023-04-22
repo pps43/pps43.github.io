@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DeepLearning on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/deeplearning/</link>
+    <description>Recent content in DeepLearning on 波波沙🏠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跟AI老师学AI（一）</title>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>
+      <description>按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，</description>
+    </item>
+    
+  </channel>
+</rss>

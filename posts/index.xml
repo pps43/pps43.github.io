@@ -9,16 +9,16 @@
     <copyright>© 2016-2023 By 波波沙.</copyright>
     <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>跟AI老师学AI</title>
+      <title>跟AI老师学AI（一）</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>
-      <description>上一篇列举了大语言模型在3月份的重要时刻。此后如星火燎原，各路英雄基于OpenAI的API或类似开源库搭建出各种神奇工具。新概念、新架构、新</description>
+      <description>按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，</description>
     </item>
     
     <item>
-      <title>Generative AI Toolkit (3.29)</title>
+      <title>Generative AI Toolkit (4.21)</title>
       <link>https://pps43.github.io/posts/ai_toolkit_for_dev/</link>
       <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
       
