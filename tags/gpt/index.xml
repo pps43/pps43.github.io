@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GPT on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/gpt/</link>
+    <description>Recent content in GPT on 波波沙🏠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/gpt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跟AI老师学AI（二）</title>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
+      <description>上一篇我们聊了AI模型的分类和大致架构，目前最火的两类模型LLM和Diffusion都基于Transformer架构训练而成，ChatGPT</description>
+    </item>
+    
+  </channel>
+</rss>
