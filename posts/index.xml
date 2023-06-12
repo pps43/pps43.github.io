@@ -5,16 +5,25 @@
     <link>https://pps43.github.io/posts/</link>
     <description>Recent content in Posts on 波波沙🏠</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PhysX Engine Series: Scene Query</title>
+      <title>洞见·为什么佛学是真的</title>
+      <link>https://pps43.github.io/posts/notes_on_why_buddhism_is_true/</link>
+      <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/notes_on_why_buddhism_is_true/</guid>
+      <description>当看到书名时，我承认内心有一丝挑战欲。受过系统的科研训练的人，往往对“真的”有“洁癖”。作者Robert Wright也认识到这一点，所以在开</description>
+    </item>
+    
+    <item>
+      <title>PhysX物理引擎: Scene Query</title>
       <link>https://pps43.github.io/posts/using_physx_scenequery/</link>
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/posts/using_physx_scenequery/</guid>
-      <description>PhysX Engine Series 这个系列主要记录一些最近在游戏中使用Nvdia PhysX 3.4物理引擎的一些经验。 本文主要介绍场景查询的一些内部机制和使用方法。 Prerequisites 官方资料： PhysX</description>
+      <description>PhysX物理引擎 这个系列主要记录一些最近在游戏开发中学习和使用Nvdia PhysX 3.4物理引擎的一些经验。 本文主要介绍场景查询的一些内部机制和使</description>
     </item>
     
     <item>
