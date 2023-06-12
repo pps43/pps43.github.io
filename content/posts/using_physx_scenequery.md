@@ -1,5 +1,5 @@
 ---
-title: "PhysX Engine Series: Scene Query"
+title: "PhysX物理引擎: Scene Query"
 date: 2023-05-26
 hideSummary: false
 #draft: true
@@ -12,7 +12,7 @@ tags: ["Game Dev", "Game Engine", "PhysX"]
 #     hidden: true # only hide on current single page
 ---
 
-> `PhysX Engine Series` 这个系列主要记录一些最近在游戏中使用Nvdia PhysX 3.4物理引擎的一些经验。
+> `PhysX物理引擎` 这个系列主要记录一些最近在游戏开发中学习和使用Nvdia PhysX 3.4物理引擎的一些经验。
 > 本文主要介绍场景查询的一些内部机制和使用方法。
 
 # Prerequisites
