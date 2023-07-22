@@ -73,6 +73,7 @@ timeline
   - Use [DreamBooth] to train if you need to be really expressive.
 
 - [Midjourney](https://www.midjourney.com/home/),  famous for its artistic style, ~~25 times FREE try~~.
+    - Built on Discord Bot, thus you can use [Official API](https://discord.com/developers/docs/resources/channel#create-message) or [thirdparty lib](https://deno.land/x/midjourney_discord_api@1.0.5) to automate the flow.
 - Adobe's [Firefly](https://firefly.adobe.com/)
 - Open AI's [DALL-E-2](https://labs.openai.com/), generates image with natural language and long prompts, but limited-access and less control.
 - Bing's [Image Creator](https://www.bing.com/images/create), generate image with natural language, and free to try.
