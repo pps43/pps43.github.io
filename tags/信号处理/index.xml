@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>信号处理 on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 信号处理 on 波波沙🏠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Tue, 07 Oct 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>谈谈滤波</title>
+      <link>https://pps43.github.io/posts/thinking_of_filter/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_filter/</guid>
+      <description>摸清背景，理清思路，探讨意义。 首先谈谈我关于滤波的理解： 在频域内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不</description>
+    </item>
+    
+  </channel>
+</rss>

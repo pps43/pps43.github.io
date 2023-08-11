@@ -98,5 +98,14 @@
       <description>本文总结自Ray Dalio: How the Economic Machine Works，原视频地址 核心概念简述 什么是交易 买方使用货币、信用（也叫信贷）向卖方交换商品、服务、金融资产。 交易首先</description>
     </item>
     
+    <item>
+      <title>谈谈滤波</title>
+      <link>https://pps43.github.io/posts/thinking_of_filter/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_filter/</guid>
+      <description>摸清背景，理清思路，探讨意义。 首先谈谈我关于滤波的理解： 在频域内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不</description>
+    </item>
+    
   </channel>
 </rss>

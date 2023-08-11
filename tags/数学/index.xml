@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>数学 on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
+    <description>Recent content in 数学 on 波波沙🏠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入 LossyScale</title>
+      <link>https://pps43.github.io/posts/thinking_of_lossyscale/</link>
+      <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
+      <description>本文是PhysX物理引擎 这个系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源</description>
+    </item>
+    
+    <item>
+      <title>谈谈滤波</title>
+      <link>https://pps43.github.io/posts/thinking_of_filter/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_filter/</guid>
+      <description>摸清背景，理清思路，探讨意义。 首先谈谈我关于滤波的理解： 在频域内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不</description>
+    </item>
+    
+  </channel>
+</rss>
