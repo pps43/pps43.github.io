@@ -2,7 +2,7 @@
 title: "深入 LossyScale"
 date: 2023-07-19
 draft: false
-tags: ["Game Dev", "PhysX"]
+tags: ["Game Dev", "PhysX", "数学"]
 # cover:
 #     image: "<image path/url>" # image path/url
 #     alt: "<alt text>" # alt text
