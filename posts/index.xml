@@ -99,6 +99,24 @@
     </item>
     
     <item>
+      <title>GP-GPU编程：CUDA介绍</title>
+      <link>https://pps43.github.io/posts/cuda_programming_gpgpu/</link>
+      <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/cuda_programming_gpgpu/</guid>
+      <description>本文简要介绍了利用GPU进行通用计算的历史和方法，以NVDIA家的CUDA架构为例，介绍GPGPU编程的重要概念和简单实践。希望能够在浩如烟</description>
+    </item>
+    
+    <item>
+      <title>我是查理</title>
+      <link>https://pps43.github.io/posts/je_suis_charlie/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/je_suis_charlie/</guid>
+      <description>更新了下Notepad++后，自动打开了一个文档，一个个单词自动蹦出来……差点吓尿——这是什么鬼？屏幕上的光标终于不动了……是一段话。我这里</description>
+    </item>
+    
+    <item>
       <title>谈谈滤波</title>
       <link>https://pps43.github.io/posts/thinking_of_filter/</link>
       <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
