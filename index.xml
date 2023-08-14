@@ -36,16 +36,16 @@
     </item>
     
     <item>
-      <title>PhysX物理引擎: Scene Query</title>
+      <title>PhysX物理引擎（1）Scene Query</title>
       <link>https://pps43.github.io/posts/using_physx_scenequery/</link>
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/posts/using_physx_scenequery/</guid>
-      <description>PhysX物理引擎 这个系列主要记录一些最近在游戏开发中学习和使用Nvdia PhysX 3.4物理引擎的一些经验。 本文主要介绍场景查询的一些内部机制和使</description>
+      <description>本文主要介绍PhysX场景查询的一些内部机制和使用方法。 PhysX物理引擎 系列记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（Code, D</description>
     </item>
     
     <item>
-      <title>跟AI老师学AI（二）</title>
+      <title>跟AI老师学AI（2）</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
       
@@ -54,7 +54,7 @@
     </item>
     
     <item>
-      <title>跟AI老师学AI（一）</title>
+      <title>跟AI老师学AI（1）</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
