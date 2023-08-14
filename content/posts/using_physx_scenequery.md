@@ -1,5 +1,5 @@
 ---
-title: "PhysX物理引擎: Scene Query"
+title: "PhysX物理引擎（1）Scene Query"
 date: 2023-05-26
 hideSummary: false
 #draft: true
@@ -12,15 +12,11 @@ tags: ["Game Dev", "PhysX"]
 #     hidden: true # only hide on current single page
 ---
 
-> `PhysX物理引擎` 这个系列主要记录一些最近在游戏开发中学习和使用Nvdia PhysX 3.4物理引擎的一些经验。
-> 本文主要介绍场景查询的一些内部机制和使用方法。
+> 本文主要介绍PhysX场景查询的一些内部机制和使用方法。
+> 
+> `PhysX物理引擎` 系列记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（[Code](https://github.com/pps43/PhysX-3.4), [Doc](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)）的一些经验，是官方资料的补充。
 
 # Warm up
-
-官方资料：
-> - PhysX 3.4 [source code](https://github.com/pps43/PhysX-3.4)
-> - Download [PhysXGuide.chm](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)
-
 
 A `Scene` in PhysX engine is a container of objects in a hierachical manner.
 
@@ -47,10 +43,11 @@ class shape {
     Flags
     GeometryType
     LocalPose
+    QueryFilterData
+    SimulationFilterData
     ...
 }
 class geometry {
-    halfExtents for box
     ...
 }
 class material {
@@ -107,9 +104,12 @@ A scene uses two query structures, one for "static" objects (`PxRigidStatic`), o
 # More on Filtering
 
 To make custom filtering logic works, there are 3 steps.
+1. Attach data for filtering on the shape (a.k.a. `QueryFilterData`)
+2. Define custom filtering logic
+3. Attach filter in your scene query
 
-## Attach data for filtering on the shape
-Attach `PxFilterData` to each shape.  It has four 32bit words to hold custom data, e.g., we use `word0` as layer of this shape. Here is an example:
+## Step 1. Attach data for filtering on the shape
+Attach `PxFilterData` to each shape's QueryFilterData.  It has four 32bit words to hold custom data, e.g., we use `word0` as layer of this shape. Here is an example:
 
 ```cpp
 PxShape* shape = PxRigidActorExt::createExclusiveShape(*pxActor, PxBoxGeometry(extV), *pxMaterial);
@@ -118,7 +118,7 @@ queryFilter.word0 = layer;
 shape->setQueryFilterData(queryFilter);
 ```
 
-## Define custom filtering logic
+## Step 2. Define custom filtering logic
 
 Define callback function for `prefilter` and `postfilter`. See `PxQueryFilterCallback`. The logic is totally depend on yourself, just return `PxQueryHitType` to tell if this shape can pass.
 
@@ -130,8 +130,8 @@ Define callback function for `prefilter` and `postfilter`. See `PxQueryFilterCal
 
 Here is an example:
 ```cpp
-    class PhysxQueryFilterCallback : public PxQueryFilterCallback
-    {
+class PhysxQueryFilterCallback : public PxQueryFilterCallback
+{
     public:
         PhysxQueryFilterCallback();
         PhysxQueryFilterCallback(bool isBlocking, bool includeTrigger);
@@ -141,35 +141,35 @@ Here is an example:
     private:
         PxQueryHitType::Enum m_HitType;
         bool m_IncludeTrigger;
-    };
+};
 
-    PxQueryHitType::Enum PhysxQueryFilterCallback::preFilter(const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags& queryFlags)
-    {
-        bool isTrigger = shape->getFlags() & physx::PxShapeFlag::eTRIGGER_SHAPE;
-        if (isTrigger && !m_IncludeTrigger) {
-            return PxQueryHitType::eNONE;
-        }
-
-        PxFilterData shapefilterData = shape->getQueryFilterData();
-
-        if (shapefilterData.word0 & filterData.word0 || shapefilterData.word1 & filterData.word1)
-        {
-            return m_HitType;
-        }
+PxQueryHitType::Enum PhysxQueryFilterCallback::preFilter(const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags& queryFlags)
+{
+    bool isTrigger = shape->getFlags() & physx::PxShapeFlag::eTRIGGER_SHAPE;
+    if (isTrigger && !m_IncludeTrigger) {
         return PxQueryHitType::eNONE;
     }
 
-    PxQueryHitType::Enum PhysxQueryFilterCallback::postFilter(const PxFilterData& filterData, const PxQueryHit& hit) 
-    {
-        const PxLocationHit& impactHit = static_cast<const PxLocationHit&>(hit);
-        if (impactHit.distance > 0.0f)
-            return m_HitType;
+    PxFilterData shapefilterData = shape->getQueryFilterData();
 
-        return PxQueryHitType::eNONE;
+    if (shapefilterData.word0 & filterData.word0 || shapefilterData.word1 & filterData.word1)
+    {
+        return m_HitType;
     }
+    return PxQueryHitType::eNONE;
+}
+
+PxQueryHitType::Enum PhysxQueryFilterCallback::postFilter(const PxFilterData& filterData, const PxQueryHit& hit) 
+{
+    const PxLocationHit& impactHit = static_cast<const PxLocationHit&>(hit);
+    if (impactHit.distance > 0.0f)
+        return m_HitType;
+
+    return PxQueryHitType::eNONE;
+}
 ```
 
-## Attach filter in your scene query
+## Step 3. Attach filter in your scene query
 `PxQueryFilterData` has two fields:
 
 |field|Explaination|
@@ -180,57 +180,54 @@ Here is an example:
 ### Raycast example
 Here is an example of raycast (return multiple objects).
 ```cpp
-
 // save result and use it later
 struct MyRaycastHitResult
 {
-	PhysXVec3 Position;
-	PhysXVec3 Normal;
-	float Distance;
-	PhysXActor* Collider;
+    PhysXVec3 Position;
+    PhysXVec3 Normal;
+    float Distance;
+    PhysXActor* Collider;
 };
 typedef PhysXArray<MyRaycastHitResult> MyRaycastHitResults;
 
 // make sure "direction" is non-zero and normalized!
 bool MyRaycast(MyRaycastHitResults& hitResults, const PhysXVec3& startPos, const PhysXVec3& direction, float distance, unsigned int layerMask, bool includeTrigger)
 {
+    const PxU32 bufferSize = 256;
+    PxRaycastHit hitBuffer[bufferSize];
+    PxRaycastBuffer buf(hitBuffer, bufferSize);
 
-	const PxU32 bufferSize = 256;
-	PxRaycastHit hitBuffer[bufferSize];
-	PxRaycastBuffer buf(hitBuffer, bufferSize);
+    PxQueryFilterData filterData = PxQueryFilterData();
+    filterData.flags |= PxQueryFlag::ePREFILTER | PxQueryFlag::ePOSTFILTER; // will call both prefilter and post filter
+    filterData.data.word0 = 0;
+    filterData.data.word1 = layerMask;
+    PhysxQueryFilterCallback filterCallback(false, includeTrigger);
 
-	PxQueryFilterData filterData = PxQueryFilterData();
-	filterData.flags |= PxQueryFlag::ePREFILTER | PxQueryFlag::ePOSTFILTER; // will call both prefilter and post filter
-	filterData.data.word0 = 0;
-	filterData.data.word1 = layerMask;
-	PhysxQueryFilterCallback filterCallback(false, includeTrigger);
+    bool status = m_pxScene->raycast(startPos, direction, distance, buf, PxHitFlag::eDEFAULT, filterData, &filterCallback, NULL);
 
-	bool status = m_pxScene->raycast(startPos, direction, distance, buf, PxHitFlag::eDEFAULT, filterData, &filterCallback, NULL);
-
-	if (status)
-	{
-		hitResults.clear();
-		
-		for (PxU32 i = 0; i < buf.nbTouches; i++)
-		{
-			PxRaycastHit touch = buf.touches[i];
-			MyRaycastHitResult hitResult;
-			hitResult.Position = touch.position;
-			hitResult.Normal = touch.normal;
-			hitResult.Distance = touch.distance;
-			hitResult.Collider = (PhysXActor*)touch.actor->userData;
-			hitResults.push_back(hitResult);
-		}
-		if (buf.hasBlock) {
-			MyRaycastHitResult hitResult;
-			hitResult.Position = buf.block.position;
-			hitResult.Normal = buf.block.normal;
-			hitResult.Distance = buf.block.distance;
-			hitResult.Collider = (PhysXActor*)buf.block.actor->userData;
-			hitResults.push_back(hitResult);
-		}
-	}
-	return status;
+    if (status)
+    {
+        hitResults.clear();
+        for (PxU32 i = 0; i < buf.nbTouches; i++)
+        {
+            PxRaycastHit touch = buf.touches[i];
+            MyRaycastHitResult hitResult;
+            hitResult.Position = touch.position;
+            hitResult.Normal = touch.normal;
+            hitResult.Distance = touch.distance;
+            hitResult.Collider = (PhysXActor*)touch.actor->userData;
+            hitResults.push_back(hitResult);
+        }
+        if (buf.hasBlock) {
+            MyRaycastHitResult hitResult;  
+            hitResult.Position = buf.block.position;
+            hitResult.Normal = buf.block.normal;
+            hitResult.Distance = buf.block.distance;
+            hitResult.Collider = (PhysXActor*)buf.block.actor->userData;
+            hitResults.push_back(hitResult);
+        }
+    }
+    return status;
 }
 ```
 
@@ -238,34 +235,33 @@ bool MyRaycast(MyRaycastHitResults& hitResults, const PhysXVec3& startPos, const
 Here is an example of sphere overlap. Other geometries are similar.
 
 ```cpp
-
 // make sure radius is above zero!
 bool PhysXManager::MySphereOverlap(PhysXRaycastHits& hitResults, float radius, const PhysXVec3& position, const PhysXQuat& rotation, unsigned int layerMask, bool includeTrigger) {
     const PxU32 bufferSize = 256;
-	PxOverlapHit hitBuffer[bufferSize];
-	PxOverlapBuffer buf(hitBuffer, bufferSize);
+    PxOverlapHit hitBuffer[bufferSize];
+    PxOverlapBuffer buf(hitBuffer, bufferSize);
 
-	PxQueryFilterData filterData = PxQueryFilterData();
-	filterData.flags |= PxQueryFlag::ePREFILTER;// no postfilter logic since we SHOULD NOT EXAMINE DISTANCE in overlap query
-	filterData.data.word0 = 0;
-	filterData.data.word1 = layerMask;
-	PhysxQueryFilterCallback filterCallback(false, includeTrigger);
+    PxQueryFilterData filterData = PxQueryFilterData(); 
+    filterData.flags |= PxQueryFlag::ePREFILTER;// no postfilter logic since we SHOULD NOT EXAMINE DISTANCE in overlap query
+    filterData.data.word0 = 0;
+    filterData.data.word1 = layerMask;
+    PhysxQueryFilterCallback filterCallback(false, includeTrigger);
 
     bool status = false;
-	PxTransform trans(position, rotation);
+    PxTransform trans(position, rotation);
     status = m_pxScene->overlap(PxSphereGeometry(radius), trans, buf, filterData, &filterCallback);
     if (status && buf.nbTouches > 0)
-	{
-		hitResults.clear();
-		for (PxU32 i = 0; i < buf.nbTouches; i++)
-		{
-			PxOverlapHit hit = buf.touches[i];
-			PhysXRaycastHit hitResult;
-			hitResult.Collider = (PhysXActor*)hit.actor->userData;
-			hitResults.push_back(hitResult);
-		}
-	}
-	return status;
+    {
+        hitResults.clear();
+        for (PxU32 i = 0; i < buf.nbTouches; i++)
+        {
+            PxOverlapHit hit = buf.touches[i];
+            PhysXRaycastHit hitResult;
+            hitResult.Collider = (PhysXActor*)hit.actor->userData;
+            hitResults.push_back(hitResult);
+        }
+    }
+    return status;
 }
 ```
 

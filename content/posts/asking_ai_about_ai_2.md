@@ -1,5 +1,5 @@
 ---
-title: "跟AI老师学AI（二）"
+title: "跟AI老师学AI（2）"
 date: 2023-05-14
 tags: ["AI","GPT"]
 hideSummary: false
