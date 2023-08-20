@@ -117,6 +117,24 @@
     </item>
     
     <item>
+      <title>衰落信道建模小议</title>
+      <link>https://pps43.github.io/posts/thinking_of_fading_channel_models/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_fading_channel_models/</guid>
+      <description>无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可</description>
+    </item>
+    
+    <item>
+      <title>Cybernetics二三事</title>
+      <link>https://pps43.github.io/posts/notes_on_cybernetics/</link>
+      <pubDate>Sun, 09 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/notes_on_cybernetics/</guid>
+      <description>今天老师上课提到“Cybernetics”这个词，中文翻译为：控制论。控制论的开山鼻祖是Wiener（上篇文章 提到过他）。 我就好奇，Cybe</description>
+    </item>
+    
+    <item>
       <title>谈谈滤波</title>
       <link>https://pps43.github.io/posts/thinking_of_filter/</link>
       <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
