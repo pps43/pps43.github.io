@@ -43,6 +43,14 @@ timeline
 - Microsoft's [NewBing](https://www.bing.com/new). It's said to be powered by GPT4 (internal version).
 - Google's [Bard](https://bard.google.com/).
 
+Tips on chatting effectively:
+- Use Englisih.
+- Use precise verb.
+- Only one topic at a time.
+- No "thanks" and interrupt in time.
+- Use role-play. `Act as a travel guide. ...`
+- Chat to multiple GPT instances with slightly different views, as if they are expert team.
+
 > After trying many LLM, ChatGPT is still the best one to be professional and smart. But I still prefer asking different models to get different points of view. Some common tips when asking:
 > - Role play. `act as ...`. [Here](https://github.com/f/awesome-chatgpt-prompts#prompts) is a collection of role-related prompts.
 > - Give template input-output.
@@ -77,6 +85,8 @@ timeline
 - Adobe's [Firefly](https://firefly.adobe.com/)
 - Open AI's [DALL-E-2](https://labs.openai.com/), generates image with natural language and long prompts, but limited-access and less control.
 - Bing's [Image Creator](https://www.bing.com/images/create), generate image with natural language, and free to try.
+- [Only preview] [styledrop](https://styledrop.github.io/)
+- [Only preview] [muse](https://muse-model.github.io/)
 
 # For Music
 - [Mubert](https://mubert.com/)
