@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Mon, 10 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>信道仿真模型 WINNER II</title>
+      <link>https://pps43.github.io/posts/using_winner2_channel_model/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/using_winner2_channel_model/</guid>
+      <description>在&amp;quot;信道仿真模型 3GPP-SCM&amp;ldquo;一文中提到了WINNER模型是诺西牵头搞的原3GPP SCM的增强版，关于WINNER</description>
+    </item>
+    
+    <item>
+      <title>信道仿真模型 3GPP-SCM</title>
+      <link>https://pps43.github.io/posts/using_scm_channel_model/</link>
+      <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/using_scm_channel_model/</guid>
+      <description>在&amp;quot;衰落信道小议&amp;ldquo;一文中提到了MIMO信道的建模。好的信道模型是以下三个标准的折中： 准确性。 计算可行。 一般性（或者说灵</description>
+    </item>
+    
     <item>
       <title>衰落信道建模小议</title>
       <link>https://pps43.github.io/posts/thinking_of_fading_channel_models/</link>
