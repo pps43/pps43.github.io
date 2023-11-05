@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Fri, 11 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Facts and wisdom on software engineering</title>
+      <link>https://pps43.github.io/posts/thinking_of_software_engineering/</link>
+      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_software_engineering/</guid>
+      <description>本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内有名的前辈，例如Joel Spolsky, John Carmack等等，也有个人的思考。当我这些年经历过不</description>
+    </item>
+    
     <item>
       <title>PhysX物理引擎（2）Collision</title>
       <link>https://pps43.github.io/posts/using_physx_collision/</link>
