@@ -2,7 +2,7 @@
 title: "Cybernetics二三事"
 date: 2014-11-09
 hideSummary: false
-#tags: ["a","b"]
+tags: ["杂谈"]
 # cover:
 #     image: "<image path/url>" # image path/url
 #     alt: "<alt text>" # alt text
