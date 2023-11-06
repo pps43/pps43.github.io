@@ -35,5 +35,14 @@
       <description>无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可</description>
     </item>
     
+    <item>
+      <title>5G时代：OFDM没有遗言</title>
+      <link>https://pps43.github.io/posts/thinking_of_5g_ofdm/</link>
+      <pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_5g_ofdm/</guid>
+      <description>本篇的话题是——5G：OFDM没有遗言。OFDM作为4G多载波技术最大的功臣，在10多年来得到了疯狂的应用和追捧，在很多领域展现了其优越的性</description>
+    </item>
+    
   </channel>
 </rss>

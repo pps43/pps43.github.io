@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>二范数下几个问题的统一解释</title>
+      <link>https://pps43.github.io/posts/thinking_of_norm2/</link>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_norm2/</guid>
+      <description>范数、内积空间的概念这里不做赘述，只点几个要点。 粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应</description>
+    </item>
+    
+    <item>
       <title>衰落信道建模小议</title>
       <link>https://pps43.github.io/posts/thinking_of_fading_channel_models/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>

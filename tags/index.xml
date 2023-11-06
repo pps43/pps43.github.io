@@ -63,15 +63,6 @@
     </item>
     
     <item>
-      <title>心理学</title>
-      <link>https://pps43.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
-      <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://pps43.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>AI</title>
       <link>https://pps43.github.io/tags/ai/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
@@ -108,20 +99,29 @@
     </item>
     
     <item>
-      <title>无线通信</title>
-      <link>https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</link>
-      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      <title>杂谈</title>
+      <link>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</link>
+      <pubDate>Sun, 15 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</guid>
+      <guid>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</guid>
       <description></description>
     </item>
     
     <item>
       <title>信号处理</title>
       <link>https://pps43.github.io/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</link>
-      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>无线通信</title>
+      <link>https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</guid>
       <description></description>
     </item>
     

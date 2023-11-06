@@ -144,6 +144,24 @@
     </item>
     
     <item>
+      <title>Scientific Thinking? No, 杂谈です</title>
+      <link>https://pps43.github.io/posts/thinking_of_scientific_thinking/</link>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_scientific_thinking/</guid>
+      <description>新学期，和诸位打个照面~既然没有什么干货，不妨先散扯一通，聊聊学习，聊聊 Scientific Thinking，聊聊经济学和通信，等等。 一个学习能力强、效率高的</description>
+    </item>
+    
+    <item>
+      <title>二范数下几个问题的统一解释</title>
+      <link>https://pps43.github.io/posts/thinking_of_norm2/</link>
+      <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_norm2/</guid>
+      <description>范数、内积空间的概念这里不做赘述，只点几个要点。 粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应</description>
+    </item>
+    
+    <item>
       <title>信道仿真模型 WINNER II</title>
       <link>https://pps43.github.io/posts/using_winner2_channel_model/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
@@ -186,6 +204,15 @@
       
       <guid>https://pps43.github.io/posts/thinking_of_filter/</guid>
       <description>摸清背景，理清思路，探讨意义。 首先谈谈我关于滤波的理解： 在频域内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不</description>
+    </item>
+    
+    <item>
+      <title>5G时代：OFDM没有遗言</title>
+      <link>https://pps43.github.io/posts/thinking_of_5g_ofdm/</link>
+      <pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/thinking_of_5g_ofdm/</guid>
+      <description>本篇的话题是——5G：OFDM没有遗言。OFDM作为4G多载波技术最大的功臣，在10多年来得到了疯狂的应用和追捧，在很多领域展现了其优越的性</description>
     </item>
     
     
