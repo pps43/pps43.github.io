@@ -4,19 +4,13 @@ date: 2023-05-26
 hideSummary: false
 #draft: true
 tags: ["Game Dev", "PhysX"]
-# cover:
-#     image: "<image path/url>" # image path/url
-#     alt: "<alt text>" # alt text
-#     caption: "<text>" # display caption under cover
-#     relative: false # when using page bundles set this to true
-#     hidden: true # only hide on current single page
 ---
 
 > 本文主要介绍PhysX场景查询的一些内部机制和使用方法。
 > 
-> `PhysX物理引擎` 系列记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（[Code](https://github.com/pps43/PhysX-3.4), [Doc](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)）的一些经验，是官方资料的补充。
+> [PhysX物理引擎系列](({{< ref "/tags/physx/">}}))记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（[Code](https://github.com/pps43/PhysX-3.4), [Doc](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)）的一些经验，有不少对官方资料的补充。
 
-# Warm up
+# Warm-up
 
 A `Scene` in PhysX engine is a container of objects in a hierachical manner.
 

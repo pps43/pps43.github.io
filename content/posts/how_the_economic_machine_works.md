@@ -1,6 +1,7 @@
 ---
 title: "经济机器如何运行（达利欧）"
 date: 2023-02-16
+hideSummary: false
 draft: false
 tags: ['经济']
 cover:
