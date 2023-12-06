@@ -8,7 +8,7 @@ tags: ["Game Dev", "PhysX"]
 
 > 本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。
 > 
-> [PhysX物理引擎系列](({{< ref "/tags/physx/">}}))记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（[Code](https://github.com/pps43/PhysX-3.4), [Doc](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)）的一些经验，有不少对官方资料的补充。
+> [PhysX物理引擎系列](({{% tagref "PhysX" %}}))记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（[Code](https://github.com/pps43/PhysX-3.4), [Doc](https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm)）的一些经验，有不少对官方资料的补充。
 
 # Warm-up
 
