@@ -2,7 +2,7 @@
 title: "我是查理"
 date: 2015-02-15
 #draft: true
-#tags: ["a","b"]
+tags: ["杂谈"]
 # cover:
 #     image: "<image path/url>" # image path/url
 #     alt: "<alt text>" # alt text
