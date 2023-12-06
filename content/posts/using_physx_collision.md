@@ -115,7 +115,7 @@ if (isKinematic) {
 }
 ```
 
-To set collision data to filter later, on each shape:
+To set collision data on each shape for filtering later:
 
 ```cpp
 PxFilterData collisionFilter;
@@ -129,11 +129,8 @@ if (isTrigger) {
 }
 ```
 
+To register collision filtering and collision callback to all rigidbodies (when creating a `PxScene`):
 
-
-# Collision Filter Implementaion
-
-When creating a `PxScene`, we pass a `PxSceneDesc`, where we inject our collision filter functions (shader + cpu callback).
 
 ```cpp
 m_MySimCallback = new MySimulationEventCallback();
@@ -145,7 +142,7 @@ sceneDesc.simulationEventCallback = m_MySimCallback;
 m_pxScene = sPxPhysics->createScene(sceneDesc);
 ```
 
-## Shader
+# Collision Filtering
 
 Just define a function that meets type `PxSimulationFilterShader` (function pointer).
 
@@ -226,11 +223,11 @@ PxFilterFlags MyFilterShader(
 |`eTRIGGER_DEFAULT`|...|`eNOTIFY_TOUCH_FOUND` \| `eNOTIFY_TOUCH_LOST` \| `eDETECT_DISCRETE_CONTACT`|
 
 
-## Callback
+# Collision Callback
 
-Similar to `PxQueryFilterCallback` in scene query, for collision, we inherit `PxSimulationEventCallback`, and override its functions.
+> This is also how Unity `OnTriggerEnter/Exit` and `OnCollisionEnter/Stay/Exit` are based on.
 
-As an example, here we only override `onTrigger` and `onContact`.
+Creat a new class inheriting `PxSimulationEventCallback` and override its functions. In below example, we only implement `onTrigger` and `onContact`.
 
 ```cpp
 class MySimulationEventCallback : public PxSimulationEventCallback
