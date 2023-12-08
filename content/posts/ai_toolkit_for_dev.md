@@ -4,12 +4,6 @@ date: 2023-03-26
 hideSummary: false
 #draft: true
 tags: ["AI"]
-# cover:
-#     image: "<image path/url>" # image path/url
-#     alt: "<alt text>" # alt text
-#     caption: "<text>" # display caption under cover
-#     relative: false # when using page bundles set this to true
-#     hidden: true # only hide on current single page
 ---
 
 
@@ -65,7 +59,7 @@ Tips on chatting effectively:
 
 - [Github Copilot](https://github.com/features/copilot) (based on OpenAI's `CODEX`), costs $10/mo after 60d trial.
     - Github Copilot Chat, previous named [Github Copilot X](https://github.com/features/preview/copilot-x), based on GPT4. Integrated to many IDE as plugins.
-    > 2023.12.4, use `@workspace` to query knowledge about your vscode workspace! Use `#file:xxx` to query specific file! Analyze terminal errors by clicking "sparkling" icon! Summary PR requests for you! Ask questions by talking, via `VS Code Speech` plugin.
+    > Updated on December 4, 2023. Use `@workspace` to query information about your VS Code workspace! Use `#file:xxx` to inquire about a specific file! Analyze terminal errors by clicking the "sparkling" icon! Summarize PR (Pull Request) for you! Ask questions by speaking, via the `VS Code Speech` plugin.
 - [phind](https://www.phind.com/), the AI search engine for developers.
 - [Cursor](https://www.cursor.so/) editor, or vscode plugin `CodeCursor`, read/write current document/code, FREE to try.
 - ⏳[Copilot for Docs](https://githubnext.com/projects/copilot-for-docs), used to learn a SDK/framework/API, can based on private content.
