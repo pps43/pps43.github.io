@@ -11,7 +11,7 @@ tags: ["Game Dev", "PhysX", "数学"]
 #     hidden: true # only hide on current single page
 ---
 
-> 本文是`PhysX物理引擎` 这个系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。
+> 本文是[PhysX物理引擎系列]({{< tagref "PhysX" >}})的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。
 > 问题源自笔者在修改物理引擎为其添加`scale`属性时遇到的一个bug。解决后对`WorldScale`为什么叫做`LossyScale`、空间变换和基变换有了更深的理解。
 
 # 背景

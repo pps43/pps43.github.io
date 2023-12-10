@@ -36,7 +36,7 @@ Here are necessary physical concepts with math formulas.
 # Setup Rigidbody
 Dynamic actor has 3 mass related properties: **mass**, **center of mass**, **inertia tensor**.
 
-> Let **mass** be 0 means it cannot move.
+> ~~Let **mass** be 0 means it cannot move.~~ Although the doc says 0 is ok for mass, but actually it will cause random crash. See [Golden Tips](#golden-tips).
 > 
 > **Center of mass** is the position where force applys upon to generate a translation without rotating. It's defined in local space as Vector3, default value is (0,0,0).
 > 
@@ -209,6 +209,6 @@ Overall, these actions wake an actor up:
 
 
 # Golden Tips
-
+- When calling `PxRigidBodyExt::setMassAndUpdateInertia(actor, mass)`, make sure `mass` is **above zero** for dynamic rigidbody, otherwise it crashes randomly when collision happens.
 - When calling `PxRigidDynamic::setAngularDamping(value)`, make sure `value` is **above zero** otherwise it goes unstable for rotating.
 - Changing scene-wide gravity value will **NOT** auto-wake sleeping rigidbody. Call `PxRigidDynamic::wakeUp()` manually if required.
