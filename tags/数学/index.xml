@@ -14,7 +14,7 @@
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
-      <description>本文是PhysX物理引擎 这个系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源</description>
+      <description>本文是PhysX物理引擎系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源自笔</description>
     </item>
     
     <item>

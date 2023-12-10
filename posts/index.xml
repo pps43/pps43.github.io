@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>你想活出怎样的人生（吉野源三郎）</title>
+      <link>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</link>
+      <pubDate>Fri, 14 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</guid>
+      <description>之前曾提到过，这本写于1937年的书曾经入选日本教材，并影响了宫崎骏一生的轨迹。他曾写文解释这本书如何触发他思考当时的社会以及未来的世界：（</description>
+    </item>
+    
+    <item>
       <title>PhysX物理引擎（3）Rigidbody Dynamics</title>
       <link>https://pps43.github.io/posts/using_physx_rigidbody/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
@@ -41,16 +50,7 @@
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
-      <description>本文是PhysX物理引擎 这个系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源</description>
-    </item>
-    
-    <item>
-      <title>你想活出怎样的人生（吉野源三郎）</title>
-      <link>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</link>
-      <pubDate>Fri, 14 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</guid>
-      <description>之前曾提到过，这本写于1937年的书曾经入选日本教材，并影响了宫崎骏一生的轨迹。他曾写文解释这本书如何触发他思考当时的社会以及未来的世界：（</description>
+      <description>本文是PhysX物理引擎系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源自笔</description>
     </item>
     
     <item>
@@ -60,6 +60,15 @@
       
       <guid>https://pps43.github.io/posts/notes_on_genius_in_ghibli/</guid>
       <description>这本书带给我的，除了诸多耳熟能详的作品背后的逸闻趣事、诸位大师的才华风貌，还有不少对创作思路、团队协作、宣传发行的启发，相信能常看常新。同时</description>
+    </item>
+    
+    <item>
+      <title>PhysX零值Crash</title>
+      <link>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</link>
+      <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</guid>
+      <description>本文是PhysX物理引擎系列的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有很高的实践参考价值。“有多高？</description>
     </item>
     
     <item>
