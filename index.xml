@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
       <link>https://pps43.github.io/posts/thinking_of_software_engineering/</link>
@@ -24,6 +24,15 @@
       
       <guid>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</guid>
       <description>之前曾提到过，这本写于1937年的书曾经入选日本教材，并影响了宫崎骏一生的轨迹。他曾写文解释这本书如何触发他思考当时的社会以及未来的世界：（</description>
+    </item>
+    
+    <item>
+      <title>PhysX物理引擎（4）Character Controller</title>
+      <link>https://pps43.github.io/posts/using_physx_cct/</link>
+      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/using_physx_cct/</guid>
+      <description>本文主要介绍PhysX角色控制器相关的内部机制和使用方法。 PhysX物理引擎系列记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（Code,</description>
     </item>
     
     <item>
