@@ -1,13 +1,13 @@
 ---
-title: "Facts and wisdom on software engineering"
+title: "Wisdom of Software Engineering"
 date: 2023-10-22
 draft: false
 hideSummary: false
-tags: ["DevOps"]
+tags: ["Software Engineering"]
 weight: 1
 ---
 
-> 本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内有名的前辈，例如`Joel Spolsky`, `John Carmack`等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。
+> 本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如`Joel Spolsky`, `John Carmack`等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。
 
 ---
 

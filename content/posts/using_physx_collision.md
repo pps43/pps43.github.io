@@ -314,7 +314,7 @@ void MySimulationEventCallback::onContact(const PxContactPairHeader& pairHeader,
 
 # Golden Tips
 
-- PhysX can only handle maximum `65536` total interaction on ONE actor in broadphase. Since it's in broadphase, "total interaction" is regardless of actor type or filter flags.
+- PhysX can only handle maximum `65535` total interactions on ONE actor in broadphase. Since it's in broadphase, "total interactions" is regardless of actor type or filter flags.
 
 - When implementing `onContact` method, 
     - Must check actors' state via `PxContactPairHeaderFlag::eREMOVED_ACTOR_0` and `eREMOVED_ACTOR_1`

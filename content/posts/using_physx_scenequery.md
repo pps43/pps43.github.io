@@ -185,7 +185,7 @@ struct MyRaycastHitResult
 typedef PhysXArray<MyRaycastHitResult> MyRaycastHitResults;
 
 // make sure "direction" is non-zero and normalized!
-bool MyRaycast(MyRaycastHitResults& hitResults, const PhysXVec3& startPos, const PhysXVec3& direction, float distance, unsigned int layerMask, bool includeTrigger)
+bool PhysXManager::MyRaycast(MyRaycastHitResults& hitResults, const PhysXVec3& startPos, const PhysXVec3& direction, float distance, unsigned int layerMask, bool includeTrigger)
 {
     const PxU32 bufferSize = 256;
     PxRaycastHit hitBuffer[bufferSize];
@@ -263,4 +263,4 @@ bool PhysXManager::MySphereOverlap(PhysXRaycastHits& hitResults, float radius, c
 
 - Make sure shape dimension and queryshape dimension have positive values, recommended  minimum value is `1.192092896e-07F`. Or random crash may happen.
 - In `Raycast` or `Sweep`, make sure `direction` is normalized and not zero. Or random crash may happen.
-- In `Overlap`, do not check `hit.distance`` (it's always zero) in post-filtering logic.
+- In `Overlap`, do not check `hit.distance` (it's always zero) in post-filtering logic.

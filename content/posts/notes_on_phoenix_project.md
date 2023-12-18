@@ -2,7 +2,7 @@
 title: "凤凰项目"
 date: 2023-03-21
 draft: false
-tags: ["DevOps","书摘"]
+tags: ["Software Engineering","书摘"]
 hideSummary: false
 # cover:
 #     image: "<image path/url>" # image path/url
