@@ -70,12 +70,12 @@ bool PhysXManager::AddCCT(ActorWrapper &actor, float radius, float height, float
 	PxCapsuleControllerDesc desc;
 	desc.scaleCoeff = 1;
 	desc.position = actor.GetPosition();
-	desc.contactOffset = skinWidth;
+	desc.contactOffset = skinWidth; // (0, radius]
 	desc.stepOffset = stepOffset > height ? height : stepOffset; // [0, height]
 	desc.slopeLimit = slopeLimit > 0? slopeLimit : 0; // cos(theta), [0, 1]
 	desc.radius = radius; // [0, ]
 	float h = height - 2 * radius;
-	desc.height = h < 0 ? 0 : h; // [0,]
+	desc.height = h < 0 ? 0.001 : h; // (0, ]
 	desc.upDirection = PxVec3(0, 1, 0);
 	desc.material = m_pxMaterial;
 	desc.climbingMode = PxCapsuleClimbingMode::eCONSTRAINED;
@@ -246,9 +246,11 @@ public:
 
 - CCT's `slopeLimit` must be `[0, 1]` (`[0, 90]` in degree). Otherwise PhysX crashes.
 - CCT's `stepOffset` must be `[0, height]`. Otherwise PhysX crashes.
+- CCT's `height` must be positive number `(0, )`. Otherwise Physx crashes.
+- CCT's `skinWidth` must be positive number `(0, radius)`. Otherwise Physx crashes.
 - Unity does not draw `skinWidth` in scene view, but it exists as part of volumn.
 - Unity locks upvector to `(0,1,0)` so you can't rotate controller.
-- Unity's `IsGrounded` is NOT reliable. It's just implemented as `collisionFlags & eCOLLISION_DOWN::eCOLLISION_DOWN`, but very often when running uphill, the flag is `eCOLLISION_SIDES` so you get wrong result that `IsGrounded == false`. You should use `capsule raycast` or anything else to implement your own Ground-Detection algorithm instead.
+- Unity's `IsGrounded` is NOT reliable at all. It's just implemented as `collisionFlags & eCOLLISION_DOWN::eCOLLISION_DOWN`, but very often when running uphill, the flag is `eCOLLISION_SIDES` so you get wrong result that `IsGrounded == false`. You should use `capsule raycast` or anything else to implement your own Ground-Detection algorithm.
 ![](/using_physx_cct/Unity_IsGround.png)
 
 - When CCT is not moving, it loses the ability to collide with non-dynamic physical objects. That is, it will penetrate into a kinematic moving platform. **There is NO official way to solve it** since it's as designed by PhysX. To solve this, add a minor movement every frame on your CCT, e.g., `0.001 * Forward * deltaTime`. [See more discussion](https://forum.unity.com/threads/proper-collision-detection-with-charactercontroller.292598/).
