@@ -78,15 +78,15 @@ BP(Broad Phase) --> prefilter --> MP(Mid phase) --> NP(Narrow Phase) --> postfil
 
 ```
 
-- Broad phase traverses the global scene spatial partitioning structure to find the candidates for mid and narrow phases.
-- midphase traverses the triangle mesh and heightfield internal culling structures, to find a smaller subset of the triangles in a mesh reported by the broad phase. 
-- Narrow phase performs exact intersection tests
-- Pre-filtering happens before midphase and narrow phase and allows shapes to be efficiently discarded before the potentially expensive exact collision test.
-- Post-filtering happens after the narrow phase test and can therefore use the results of the test (such as PxRaycastHit.position) to determine whether a hit should be discarded or not.
+- `Broad phase` traverses the global scene spatial partitioning structure to find candidates for the mid and narrow phases.
+- `Mid phase` traverses the internal culling structures of triangle meshes and heightfields to find a smaller subset of triangles reported by the broad phase.
+- `Narrow phase` performs exact intersection tests.
+- `Pre-filtering` occurs before the mid and narrow phases, allowing shapes to be efficiently discarded before the potentially expensive exact collision test.
+- `Post-filtering` occurs after the narrow phase test and can use the results of the test (such as `PxRaycastHit.position`) to determine whether a hit should be discarded.
 
 # More on Traversal
 
-A scene uses two query structures, one for "static" objects (`PxRigidStatic`), one for "dynamic" objects (`PxRigidBody`). Each structure can use different culling algorithms, see `PxPruningStructureType`.
+One scene uses two query structures, one for "static" objects (`PxRigidStatic`), one for "dynamic" objects (`PxRigidBody`). Each structure can use different culling algorithms, see `PxPruningStructureType`.
 
 |PxPruningStructureType|Explaination|
 |--|--|
@@ -95,14 +95,14 @@ A scene uses two query structures, one for "static" objects (`PxRigidStatic`), o
 |eSTATIC_AABB_TREE|Based on grid and tree. Incremental rebuild when changed, unless by force. Choose this if frequently add/remove geometry, at the cost of higher memory|
 
 
-# More on Filtering
+# More on Filtering Objects
 
 To make custom filtering logic works, there are 3 steps.
 1. Attach data for filtering on the shape (a.k.a. `QueryFilterData`)
 2. Define custom filtering logic
 3. Attach filter in your scene query
 
-## Step 1. Attach data for filtering on the shape
+## Step 1. Attach data to the shape for futher filtering
 Attach `PxFilterData` to each shape's QueryFilterData.  It has four 32bit words to hold custom data, e.g., we use `word0` as layer of this shape. Here is an example:
 
 ```cpp
@@ -163,7 +163,7 @@ PxQueryHitType::Enum PhysxQueryFilterCallback::postFilter(const PxFilterData& fi
 }
 ```
 
-## Step 3. Attach filter in your scene query
+## Step 3. Attach filter to your scene query
 `PxQueryFilterData` has two fields:
 
 |field|Explaination|
@@ -262,5 +262,9 @@ bool PhysXManager::MySphereOverlap(PhysXRaycastHits& hitResults, float radius, c
 # Golden Tips
 
 - Make sure shape dimension and queryshape dimension have positive values, recommended  minimum value is `1.192092896e-07F`. Or random crash may happen.
+  > If using the DEBUG version, it may raise an assertion failure if a capsule shape degrades to a sphere shape (height is zero).
+  >
+  >![](/using_physx_scenequery/capsuleshape_assert_fail.png)
+
 - In `Raycast` or `Sweep`, make sure `direction` is normalized and not zero. Or random crash may happen.
 - In `Overlap`, do not check `hit.distance` (it's always zero) in post-filtering logic.
