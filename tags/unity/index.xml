@@ -17,5 +17,14 @@
       <description>前几日参加了Unite上海2024，受益颇多。本篇先就相对感兴趣的小游戏平台WebGL技术方案为引子，引出一些关于WebAssembly, IL2CPP,</description>
     </item>
     
+    <item>
+      <title>带物理交互的CharacterController设计与实现</title>
+      <link>https://pps43.github.io/posts/notes_on_physics_based_cct/</link>
+      <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://pps43.github.io/posts/notes_on_physics_based_cct/</guid>
+      <description>本文也是PhysX物理引擎系列的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Uni</description>
+    </item>
+    
   </channel>
 </rss>
