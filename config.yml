@@ -15,7 +15,7 @@ pygmentsUseClasses: true
 hasCJKLanguage: true
 ShowPostNavLinks: true
 ShowCodeCopyButtons: true
-paginate: 20
+pagination.pagerSize: 20
 
 minify:
     disableXML: true

@@ -96,7 +96,7 @@ If you want to:
 - know why & how Generative AI works, mathematically
 
 Here are my personal ideas:
-- For text, play with [LLaMA](https://github.com/facebookresearch/llama)/[llama.cpp]((https://github.com/ggerganov/llama.cpp) ), or its fined tuned version [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)/[Alpaca-LoRA](https://github.com/tloen/alpaca-lora). 
+- For text, play with [LLaMA](https://github.com/facebookresearch/llama)/[llama.cpp](https://github.com/ggerganov/llama.cpp), or its fined tuned version [Alpaca](https://github.com/tatsu-lab/stanford_alpaca)/[Alpaca-LoRA](https://github.com/tloen/alpaca-lora). 
 - For image, play with [Stable-Diffusion](https://github.com/Stability-AI/stablediffusion) and its plugins. They can run on PC/Mac.
 - Weakness of current LLM models: math; chain of decision. But they are improving.
 - ["Dive into Deep Learning"](https://d2l.ai/) by 李沐。中文版《[动手学深度学习](http://zh-v2.d2l.ai/index.html)》
