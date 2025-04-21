@@ -4,45 +4,45 @@
     <title>无线通信 on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/</link>
     <description>Recent content in 无线通信 on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Wed, 12 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>信道仿真模型 WINNER II</title>
       <link>https://pps43.github.io/posts/using_winner2_channel_model/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/using_winner2_channel_model/</guid>
-      <description>在&amp;quot;信道仿真模型 3GPP-SCM&amp;ldquo;一文中提到了WINNER模型是诺西牵头搞的原3GPP SCM的增强版，关于WINNER</description>
+      <description>&lt;p&gt;在&amp;quot;&lt;a href=&#34;https://pps43.github.io/posts/using_scm_channel_model/&#34;&gt;信道仿真模型 3GPP-SCM&lt;/a&gt;&amp;ldquo;一文中提到了WINNER模型是诺西牵头搞的原3GPP SCM的增强版，关于WINNER模型的官方介绍参见：&lt;a href=&#34;http://www.ist-winner.org/&#34;&gt;http://www.ist-winner.org/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>信道仿真模型 3GPP-SCM</title>
       <link>https://pps43.github.io/posts/using_scm_channel_model/</link>
       <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/using_scm_channel_model/</guid>
-      <description>在&amp;quot;衰落信道小议&amp;ldquo;一文中提到了MIMO信道的建模。好的信道模型是以下三个标准的折中： 准确性。 计算可行。 一般性（或者说灵</description>
+      <description>&lt;p&gt;在&amp;quot;&lt;a href=&#34;https://pps43.github.io/posts/thinking_of_fading_channel_models/&#34;&gt;衰落信道小议&lt;/a&gt;&amp;ldquo;一文中提到了MIMO信道的建模。好的信道模型是以下三个标准的折中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;准确性。&lt;/li&gt;
+&lt;li&gt;计算可行。&lt;/li&gt;
+&lt;li&gt;一般性（或者说灵活性）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3GPP提出的&lt;code&gt;SCM&lt;/code&gt;（Spatial Channel Model）是符合以上标准的、基于地理的概率模型（Geometry Based Stochastic Model），即使用若干传播路径进行叠加，每条路径的强度和延迟符合一定的随机分布。SCM被WP5小组采用研究室外的MIMO信道，后经其手拓展成SCM-E（E for Extension）模型，再后来WP5还是不满意，便另起炉灶开始了&lt;code&gt;WINNER&lt;/code&gt;系列信道模型的制定及其实现，这是后话，放在&lt;a href=&#34;https://pps43.github.io/posts/using_winner2_channel_model/&#34;&gt;下一篇&lt;/a&gt;里说。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>衰落信道建模小议</title>
       <link>https://pps43.github.io/posts/thinking_of_fading_channel_models/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_fading_channel_models/</guid>
-      <description>无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可见对信道建模，不存在一劳永逸的方法。这里只谈像我这样的初学者入门时，学习衰落信道过程中的困惑和思考。虽然叫“小议”，就是想写尽量通俗，但估计条理还是会有点乱~&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>5G时代：OFDM没有遗言</title>
       <link>https://pps43.github.io/posts/thinking_of_5g_ofdm/</link>
       <pubDate>Wed, 01 Oct 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_5g_ofdm/</guid>
-      <description>本篇的话题是——5G：OFDM没有遗言。OFDM作为4G多载波技术最大的功臣，在10多年来得到了疯狂的应用和追捧，在很多领域展现了其优越的性</description>
+      <description>&lt;p&gt;本篇的话题是——5G：OFDM没有遗言。OFDM作为4G多载波技术最大的功臣，在10多年来得到了疯狂的应用和追捧，在很多领域展现了其优越的性能和简约之美，可谓风光无限。研究者们痴迷它、学生们膜拜它、工程师们只要它。如今，我的主要工作却是质疑OFDM在5G场景中是否合适，并尝试寻找继承者，探索更适合5G场景的多载波传输解决方案。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

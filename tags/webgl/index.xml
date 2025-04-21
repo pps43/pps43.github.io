@@ -4,18 +4,18 @@
     <title>WebGL on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/webgl/</link>
     <description>Recent content in WebGL on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/webgl/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/webgl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WebGL平台的性能限制和解决方案（以微信小游戏为例）</title>
       <link>https://pps43.github.io/posts/unite2024_wechatminigame/</link>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/unite2024_wechatminigame/</guid>
-      <description>前几日参加了Unite上海2024，受益颇多。本篇先就相对感兴趣的小游戏平台WebGL技术方案为引子，引出一些关于WebAssembly, IL2CPP,</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;前几日参加了Unite上海2024，受益颇多。本篇先就相对感兴趣的小游戏平台WebGL技术方案为引子，引出一些关于WebAssembly, IL2CPP, 以及.NET 8对Web平台支持等话题。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

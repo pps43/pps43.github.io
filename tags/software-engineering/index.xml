@@ -4,27 +4,25 @@
     <title>Software Engineering on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/software-engineering/</link>
     <description>Recent content in Software Engineering on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
       <link>https://pps43.github.io/posts/thinking_of_software_engineering/</link>
       <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_software_engineering/</guid>
-      <description>本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如Joel Spolsky, John Carmack等等，也有个人的思考。当我这些年经历过不</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>凤凰项目</title>
       <link>https://pps43.github.io/posts/notes_on_phoenix_project/</link>
       <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/notes_on_phoenix_project/</guid>
-      <description>市面上以DevOps为主题的书，以及和项目攻关的影视作品有不少了，但这本小说读起来依然紧张刺激。除了揭示管理现代IT组织与管理传统工厂的共通</description>
+      <description>&lt;p&gt;市面上以DevOps为主题的书，以及和项目攻关的影视作品有不少了，但这本小说读起来依然紧张刺激。除了揭示管理现代IT组织与管理传统工厂的共通之处，书里更强调了&lt;code&gt;以一种全局的视角来重新看待自己的工作环境，和自己在工作中扮演的角色&lt;/code&gt;，并且，其包含的问题分析方法、实践方法也或多或少可用于&lt;code&gt;个人效能的优化&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

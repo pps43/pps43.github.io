@@ -4,45 +4,51 @@
     <title>数学 on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
     <description>Recent content in 数学 on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入 LossyScale</title>
       <link>https://pps43.github.io/posts/thinking_of_lossyscale/</link>
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
-      <description>本文是PhysX物理引擎系列的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。 问题源自笔</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。
+问题源自笔者在修改物理引擎为其添加&lt;code&gt;scale&lt;/code&gt;属性时遇到的一个bug。解决后对&lt;code&gt;WorldScale&lt;/code&gt;为什么叫做&lt;code&gt;LossyScale&lt;/code&gt;、空间变换和基变换有了更深的理解。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>二范数下几个问题的统一解释</title>
       <link>https://pps43.github.io/posts/thinking_of_norm2/</link>
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_norm2/</guid>
-      <description>范数、内积空间的概念这里不做赘述，只点几个要点。 粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应</description>
+      <description>&lt;p&gt;范数、内积空间的概念这里不做赘述，只点几个要点。&lt;/p&gt;
+&lt;p&gt;粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应起来，并且满足一些抽象但自然的性质（不举）。为了方便将两个元素的内积记为：\(&amp;lt; \bf{a,b} &amp;gt; ，\bf{a,b}\) 属于V。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>衰落信道建模小议</title>
       <link>https://pps43.github.io/posts/thinking_of_fading_channel_models/</link>
       <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_fading_channel_models/</guid>
-      <description>无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;无线通信中对信道建模一直是一件比较头疼的事。就现在无线通信物理层最活跃的Massive MIMO方向来说，有效的统计信道模型尚未有组织提出，可见对信道建模，不存在一劳永逸的方法。这里只谈像我这样的初学者入门时，学习衰落信道过程中的困惑和思考。虽然叫“小议”，就是想写尽量通俗，但估计条理还是会有点乱~&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>谈谈滤波</title>
       <link>https://pps43.github.io/posts/thinking_of_filter/</link>
       <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/thinking_of_filter/</guid>
-      <description>摸清背景，理清思路，探讨意义。 首先谈谈我关于滤波的理解： 在频域内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;摸清背景，理清思路，探讨意义。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首先谈谈我关于滤波的理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在&lt;strong&gt;频域&lt;/strong&gt;内对信号中某些频率分量进行衰减。关键词：低通、高通。典型的场景是将一段音乐中不同频段的声音分别抽取出来。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空间域&lt;/strong&gt;内对不同尺度的细节进行处理。关键词：图像处理，滤镜。典型的场景是将一张被关在笼子里的老虎的照片“还原”出被笼子挡住的部分，有点透视的意味。&lt;/li&gt;
+&lt;li&gt;已经超出了两个字的字面意思，甚至也超出了频域、空域的范畴，进入了&lt;strong&gt;统计的领域&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;扑面而来的是维纳滤波。先说说维纳其人。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

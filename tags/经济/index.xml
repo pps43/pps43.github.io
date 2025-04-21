@@ -4,27 +4,53 @@
     <title>经济 on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/%E7%BB%8F%E6%B5%8E/</link>
     <description>Recent content in 经济 on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/%E7%BB%8F%E6%B5%8E/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/%E7%BB%8F%E6%B5%8E/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>贫穷的质感（王梆）</title>
       <link>https://pps43.github.io/posts/notes_on_texture_of_hard_times/</link>
       <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/notes_on_texture_of_hard_times/</guid>
-      <description>近日读完《贫穷的质感·王梆的英国观察》（豆瓣读书，Goodreads）一书后，将只言片语组合起来作一点记录。此书说了很多英国普通人的事情、社</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;近日读完《贫穷的质感·王梆的英国观察》（&lt;a href=&#34;https://book.douban.com/subject/35720365/&#34;&gt;豆瓣读书&lt;/a&gt;，&lt;a href=&#34;https://www.goodreads.com/book/show/61069255&#34;&gt;Goodreads&lt;/a&gt;）一书后，将只言片语组合起来作一点记录。此书说了很多英国普通人的事情、社会传统，但相信我们读起来应该不会太陌生。透过诸多生活中的观察，自然引申出养老、医疗、社会制度、逆全球化等话题。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;只言片语&#34;&gt;只言片语&lt;/h2&gt;
+&lt;p&gt;英国政府曾推出大量廉租房，老旧了便拿来卖钱。由于是市面价格的一半，非常受炒房客的欢迎。有钱人买来继续出租，租金比原来还要高。但由于政府不再负责修缮，这些房子逐渐变得又贵又脏。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>经济机器如何运行（达利欧）</title>
       <link>https://pps43.github.io/posts/how_the_economic_machine_works/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/how_the_economic_machine_works/</guid>
-      <description>本文总结自Ray Dalio: How the Economic Machine Works，原视频地址 核心概念简述 什么是交易 买方使用货币、信用（也叫信贷）向卖方交换商品、服务、金融资产。 交易首先</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文总结自&lt;code&gt;Ray Dalio: How the Economic Machine Works&lt;/code&gt;，&lt;a href=&#34;https://www.youtube.com/watch?v=rFV7wdEX-Mo&#34;&gt;原视频地址&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;核心概念简述&#34;&gt;核心概念简述&lt;/h1&gt;
+&lt;h2 id=&#34;什么是交易&#34;&gt;什么是交易&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;买方使用&lt;code&gt;货币、信用（也叫信贷）&lt;/code&gt;向卖方交换&lt;code&gt;商品、服务、金融资产&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;交易首先是由人的天性驱动的。&lt;/li&gt;
+&lt;li&gt;买方的支出总额（而不是其他）是&lt;code&gt;经济的驱动力&lt;/code&gt;，所有的经济周期和动力都是交易造成的。&lt;/li&gt;
+&lt;li&gt;交易的主体通常有：个人、企业、银行、政府。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;政府如何参与交易&#34;&gt;政府如何参与交易&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;政府其实同时是最大的买方和卖方。&lt;/li&gt;
+&lt;li&gt;政府主要由两部分：中央政府，负责收税；中央银行，负责花钱。&lt;/li&gt;
+&lt;li&gt;中央银行通过&lt;code&gt;利率&lt;/code&gt;和&lt;code&gt;印钱&lt;/code&gt;控制经济中的货币和信用（信贷数量）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;什么是信贷&#34;&gt;什么是信贷&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;信贷也是一种交易。比如你找银行借钱，你是借款人，银行是贷款人。你是交易的卖方，&lt;code&gt;银行是买方&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;这种交易的特殊之处在于：&lt;code&gt;交易是延迟完成的&lt;/code&gt;，即借款人保证将来偿还&lt;code&gt;贷款和利息&lt;/code&gt;，直到那个时候，交易才算完成。&lt;/li&gt;
+&lt;li&gt;交易未完成前的状态，即债务。&lt;code&gt;债务是贷款人的资产&lt;/code&gt;，借款人的负债。&lt;/li&gt;
+&lt;li&gt;只有交易完成时，这些资产和负债才会消失。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;什么是价格&#34;&gt;什么是价格&lt;/h2&gt;
+&lt;p&gt;$$
+价格 = \frac{买方支出总额}{产销总量} =\frac{(货币 + 信贷)} {产销总量}
+$$&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

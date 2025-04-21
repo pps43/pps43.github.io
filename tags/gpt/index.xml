@@ -4,18 +4,32 @@
     <title>GPT on 波波沙🏠</title>
     <link>https://pps43.github.io/tags/gpt/</link>
     <description>Recent content in GPT on 波波沙🏠</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pps43.github.io/tags/gpt/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/gpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跟AI老师学AI（2）</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
-      <description>上一篇我们聊了AI模型的分类和大致架构，目前最火的两类模型LLM和Diffusion都基于Transformer架构训练而成，ChatGPT</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;系列文章&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;跟AI老师学AI（一）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;跟AI老师学AI（二）&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;课堂问答&#34;&gt;课堂问答&lt;/h1&gt;
+&lt;h2 id=&#34;auto-gpt&#34;&gt;Auto-GPT&lt;/h2&gt;
+&lt;p&gt;Me:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;what is autogpt and how does it work&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Dr. Phind:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;Auto-GPT&lt;/a&gt; is an experimental open-source project built on the latest ChatGPT model i.e GPT-4. It is a variant of ChatGPT developed by Significant Gravitas and it uses the ChatGPT API to work. Specifically, Auto-GPT utilizes the GPT-4 API, though it seems like it should work with the GPT-3.5 API as well. &lt;strong&gt;Auto-GPT is an AI that does the work for you by setting a goal and then generating and completing tasks&lt;/strong&gt;. It does all the follow-up work for you, asking and answering its own prompts. It automates multi-step projects that would have required back-and-forth prompting if you worked directly with GPT-4. In other words, it &lt;strong&gt;&amp;ldquo;chains together LLM &amp;rsquo;thoughts&amp;rsquo;, to autonomously achieve whatever goal you set.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
