@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Design on 波波沙🏠</title>
+    <link>https://pps43.github.io/tags/design/</link>
+    <description>Recent content in Design on 波波沙🏠</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Mon, 05 May 2025 20:41:35 +0800</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thinking of Quality Design</title>
+      <link>https://pps43.github.io/posts/thinking_of_quality_design/</link>
+      <pubDate>Mon, 05 May 2025 20:41:35 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_quality_design/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;🍎本文源自对Apple WWDC 2018 的一次公开分享的记录提炼。什么是优秀的设计，它为什么重要，如何追求品质感……这些话题不仅是设计师需要考虑的专业问题，也是每个人打造自己的生活需要知道的内在规律。&lt;a href=&#34;https://developer.apple.com/cn/videos/play/wwdc2018/801/&#34;&gt;Video&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
