@@ -2,7 +2,7 @@
 title: "跟AI老师学AI（1）"
 date: 2023-04-16
 #draft: true
-tags: ["AI","DeepLearning"]
+tags: ["AI"]
 hideSummary: false
 # cover:
 #     image: "<image path/url>" # image path/url
