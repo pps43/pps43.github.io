@@ -2,7 +2,7 @@
 title: "软件的未来"
 date: 2025-06-30
 hideSummary: false
-draft: true
+draft: false
 tags: ["AI"]
 ---
 
