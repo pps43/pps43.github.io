@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Mon, 05 May 2025 20:41:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://pps43.github.io/tags/ai/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Design</title>
       <link>https://pps43.github.io/tags/design/</link>
@@ -87,24 +94,10 @@
       <description></description>
     </item>
     <item>
-      <title>AI</title>
-      <link>https://pps43.github.io/tags/ai/</link>
-      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>GPT</title>
       <link>https://pps43.github.io/tags/gpt/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/gpt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DeepLearning</title>
-      <link>https://pps43.github.io/tags/deeplearning/</link>
-      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/deeplearning/</guid>
       <description></description>
     </item>
     <item>
