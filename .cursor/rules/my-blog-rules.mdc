@@ -1,0 +1,19 @@
+---
+alwaysApply: true
+---
+
+# About new post
+- use hugo
+- all the posts should be writen in markdown file under path: content/posts
+- preferred file name: notes_on_xxx (for reading books), thinking_of_xxx (for topic discussion), using_xxx (for tech notes)
+- prefer starting with a brief intro about why write this post
+- try using existing tags for the new post
+- try using "ref" or "tagref" if the post is related to another post or series
+- new images should be under path: static/{post_name}, and be referred as ![xx](/{postname}/{imagename})
+
+# About theme
+- i use a forked papermod theme as a submodule under path: themes/Papermod
+- do not make changes to this theme unless be told.
+
+# About hugo version
+- do not upgrade hugo version unless be told.
