@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -29,6 +29,13 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;舅舅的笔记片段1&#34;&gt;舅舅的笔记片段1&lt;/h2&gt;
 &lt;p&gt;所有小孩子的想法都不像地动说，而像天动说。请你观察小孩的知识，他们一切都以自己为中心。电车轨道在我们家左边，邮筒在我们家右边，菜贩在弯进转角的地方。静子家在我们家对面，阿三家在我们家隔壁。小孩子的想法就像这样，一切都以自己家为中心。人是其他人的过程也一样，例如那是我爸爸的同事、这是我妈妈的亲戚……长大之后，想法或多或少的会慢慢接近地动说……人习惯以自己为中心思考、判断事物；即使长大了，这种特性同样根深柢固。等你长大了就会明白，&lt;strong&gt;在广大的世界上，能完全改掉以自己为中心思考的习惯的人，其实非常稀少。尤其碰到事关利害得失的时候，要跳脱自己的立场作出正确的判断，实在很难&lt;/strong&gt;。面对利害得失如果还能抱持像哥白尼那样的想法，可说是非常了不起。……如果人一直坚信地球是宇宙的中心，恐怕就无法了解宇宙真正的样貌，同样地，总是以自我为中心判断事物，也会让人不了解周遭事物的真相。这种人一定看不清重大的真理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>关于使用AI的小思考</title>
+      <link>https://pps43.github.io/posts/thinking_of_ai/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
+      <description>&lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而稳、而且更快。这件小事让我意识到：&lt;strong&gt;我们真正迫切需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>软件的未来</title>
