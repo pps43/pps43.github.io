@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -29,6 +29,14 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;舅舅的笔记片段1&#34;&gt;舅舅的笔记片段1&lt;/h2&gt;
 &lt;p&gt;所有小孩子的想法都不像地动说，而像天动说。请你观察小孩的知识，他们一切都以自己为中心。电车轨道在我们家左边，邮筒在我们家右边，菜贩在弯进转角的地方。静子家在我们家对面，阿三家在我们家隔壁。小孩子的想法就像这样，一切都以自己家为中心。人是其他人的过程也一样，例如那是我爸爸的同事、这是我妈妈的亲戚……长大之后，想法或多或少的会慢慢接近地动说……人习惯以自己为中心思考、判断事物；即使长大了，这种特性同样根深柢固。等你长大了就会明白，&lt;strong&gt;在广大的世界上，能完全改掉以自己为中心思考的习惯的人，其实非常稀少。尤其碰到事关利害得失的时候，要跳脱自己的立场作出正确的判断，实在很难&lt;/strong&gt;。面对利害得失如果还能抱持像哥白尼那样的想法，可说是非常了不起。……如果人一直坚信地球是宇宙的中心，恐怕就无法了解宇宙真正的样貌，同样地，总是以自我为中心判断事物，也会让人不了解周遭事物的真相。这种人一定看不清重大的真理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>奇妙的Pairing Function及实际用途</title>
+      <link>https://pps43.github.io/posts/using_pairing_functions/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_pairing_functions/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;在实际项目里，我们经常需要把二维坐标 &lt;code&gt;(x, y)&lt;/code&gt;、或两个整型键合成一个“唯一”的整型键，方便做哈希表/数组索引；又希望能在需要时还原回原来的两个键。这样一个反直觉的需求真的有解决方案吗？“配对函数”（Pairing Function）隆重登场。&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于使用AI的小思考</title>
