@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -29,6 +29,33 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;舅舅的笔记片段1&#34;&gt;舅舅的笔记片段1&lt;/h2&gt;
 &lt;p&gt;所有小孩子的想法都不像地动说，而像天动说。请你观察小孩的知识，他们一切都以自己为中心。电车轨道在我们家左边，邮筒在我们家右边，菜贩在弯进转角的地方。静子家在我们家对面，阿三家在我们家隔壁。小孩子的想法就像这样，一切都以自己家为中心。人是其他人的过程也一样，例如那是我爸爸的同事、这是我妈妈的亲戚……长大之后，想法或多或少的会慢慢接近地动说……人习惯以自己为中心思考、判断事物；即使长大了，这种特性同样根深柢固。等你长大了就会明白，&lt;strong&gt;在广大的世界上，能完全改掉以自己为中心思考的习惯的人，其实非常稀少。尤其碰到事关利害得失的时候，要跳脱自己的立场作出正确的判断，实在很难&lt;/strong&gt;。面对利害得失如果还能抱持像哥白尼那样的想法，可说是非常了不起。……如果人一直坚信地球是宇宙的中心，恐怕就无法了解宇宙真正的样貌，同样地，总是以自我为中心判断事物，也会让人不了解周遭事物的真相。这种人一定看不清重大的真理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>用AI学AI.3</title>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
+      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上下文长度从万级到百万级；&lt;/li&gt;
+&lt;li&gt;多模态模型（文本、图像、音频、视频）；&lt;/li&gt;
+&lt;li&gt;数学与编程能力大幅提升；&lt;/li&gt;
+&lt;li&gt;联网搜索与检索增强（RAG）；&lt;/li&gt;
+&lt;li&gt;深度思考和推理；&lt;/li&gt;
+&lt;li&gt;指令遵循能力大幅提升；&lt;/li&gt;
+&lt;li&gt;Agent与MCP；&lt;/li&gt;
+&lt;li&gt;除语言模型外，图像、视频、3D模型、动画等生成全面应用；&lt;/li&gt;
+&lt;li&gt;世界模型可生成数分钟的可交互视频；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;国内大模型方面，24年底横空出世的DeepSeek V3/R1用极低的训练成本跻身最强模型之列，并通过开源在极短时间内集成进各类App。8月20日V3.1发布，更是拉开了国产GPU芯片替代Nvdia GPU训练的大幕。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>实现Quaternion.FromToRotation的细节</title>
+      <link>https://pps43.github.io/posts/using_quaternion_fromtorotation/</link>
+      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_quaternion_fromtorotation/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;这篇记录实际项目中对&lt;code&gt;Quaternion.FromToRotation(fromVector, toVector)&lt;/code&gt; 的实现思路，重点讨论当 &lt;code&gt;fromVector&lt;/code&gt; 与 &lt;code&gt;toVector&lt;/code&gt; 夹角为 180°（反向）时的稳健处理。主要参考 Stan Melax 的“最短弧四元数”（Shortest Arc Quaternion）思路。&lt;/p&gt;</description>
     </item>
     <item>
       <title>奇妙的Pairing Function及实际用途</title>
@@ -237,7 +264,7 @@ shape o--material
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There are only position and rotation in &lt;code&gt;GlobalPose&lt;/code&gt; and &lt;code&gt;LocalPose&lt;/code&gt;, no &amp;ldquo;scale&amp;rdquo;. Scale only reflects on geometry&amp;rsquo;s actual size.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>跟AI老师学AI（2）</title>
+      <title>用AI学AI.2</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
@@ -245,21 +272,21 @@ shape o--material
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;跟AI老师学AI（一）&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;跟AI老师学AI（二）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;课堂问答&#34;&gt;课堂问答&lt;/h1&gt;
-&lt;h2 id=&#34;auto-gpt&#34;&gt;Auto-GPT&lt;/h2&gt;
-&lt;p&gt;Me:&lt;/p&gt;
+&lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
+&lt;p&gt;Agent如何工作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Autonomous agents (e.g., &lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;AutoGPT&lt;/a&gt;, &lt;a href=&#34;https://github.com/yoheinakajima/babyagi/tree/main&#34;&gt;BabyAGI&lt;/a&gt;) can &lt;strong&gt;auto-create&lt;/strong&gt; tasks towards the GOAL you give them, and &lt;strong&gt;auto-find&lt;/strong&gt; the way to complete task based on GPT models and other data sources (websites, your documents, etc), and even &lt;strong&gt;auto-improve&lt;/strong&gt; themselves from previous mistakes.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;what is autogpt and how does it work&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Dr. Phind:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;Auto-GPT&lt;/a&gt; is an experimental open-source project built on the latest ChatGPT model i.e GPT-4. It is a variant of ChatGPT developed by Significant Gravitas and it uses the ChatGPT API to work. Specifically, Auto-GPT utilizes the GPT-4 API, though it seems like it should work with the GPT-3.5 API as well. &lt;strong&gt;Auto-GPT is an AI that does the work for you by setting a goal and then generating and completing tasks&lt;/strong&gt;. It does all the follow-up work for you, asking and answering its own prompts. It automates multi-step projects that would have required back-and-forth prompting if you worked directly with GPT-4. In other words, it &lt;strong&gt;&amp;ldquo;chains together LLM &amp;rsquo;thoughts&amp;rsquo;, to autonomously achieve whatever goal you set.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;</description>
+&lt;p&gt;The basic structure is somehow similar to &lt;code&gt;GOAP&lt;/code&gt; in video game&amp;rsquo;s AI design.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>跟AI老师学AI（1）</title>
+      <title>用AI学AI.1</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>

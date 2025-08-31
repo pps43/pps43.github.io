@@ -7,27 +7,34 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://pps43.github.io/tags/ai/</link>
+      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPT</title>
+      <link>https://pps43.github.io/tags/gpt/</link>
+      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/gpt/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Game Dev</title>
       <link>https://pps43.github.io/tags/game-dev/</link>
-      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/game-dev/</guid>
       <description></description>
     </item>
     <item>
       <title>数学</title>
       <link>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
-      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>https://pps43.github.io/tags/ai/</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
@@ -98,13 +105,6 @@
       <link>https://pps43.github.io/tags/%E5%93%B2%E5%AD%A6/</link>
       <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/%E5%93%B2%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GPT</title>
-      <link>https://pps43.github.io/tags/gpt/</link>
-      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/gpt/</guid>
       <description></description>
     </item>
     <item>

@@ -7,8 +7,16 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/game-dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实现Quaternion.FromToRotation的细节</title>
+      <link>https://pps43.github.io/posts/using_quaternion_fromtorotation/</link>
+      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_quaternion_fromtorotation/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;这篇记录实际项目中对&lt;code&gt;Quaternion.FromToRotation(fromVector, toVector)&lt;/code&gt; 的实现思路，重点讨论当 &lt;code&gt;fromVector&lt;/code&gt; 与 &lt;code&gt;toVector&lt;/code&gt; 夹角为 180°（反向）时的稳健处理。主要参考 Stan Melax 的“最短弧四元数”（Shortest Arc Quaternion）思路。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>奇妙的Pairing Function及实际用途</title>
       <link>https://pps43.github.io/posts/using_pairing_functions/</link>

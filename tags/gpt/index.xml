@@ -7,10 +7,29 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/gpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>跟AI老师学AI（2）</title>
+      <title>用AI学AI.3</title>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
+      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上下文长度从万级到百万级；&lt;/li&gt;
+&lt;li&gt;多模态模型（文本、图像、音频、视频）；&lt;/li&gt;
+&lt;li&gt;数学与编程能力大幅提升；&lt;/li&gt;
+&lt;li&gt;联网搜索与检索增强（RAG）；&lt;/li&gt;
+&lt;li&gt;深度思考和推理；&lt;/li&gt;
+&lt;li&gt;指令遵循能力大幅提升；&lt;/li&gt;
+&lt;li&gt;Agent与MCP；&lt;/li&gt;
+&lt;li&gt;除语言模型外，图像、视频、3D模型、动画等生成全面应用；&lt;/li&gt;
+&lt;li&gt;世界模型可生成数分钟的可交互视频；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;国内大模型方面，24年底横空出世的DeepSeek V3/R1用极低的训练成本跻身最强模型之列，并通过开源在极短时间内集成进各类App。8月20日V3.1发布，更是拉开了国产GPU芯片替代Nvdia GPU训练的大幕。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>用AI学AI.2</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
@@ -18,18 +37,18 @@
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;跟AI老师学AI（一）&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;跟AI老师学AI（二）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;课堂问答&#34;&gt;课堂问答&lt;/h1&gt;
-&lt;h2 id=&#34;auto-gpt&#34;&gt;Auto-GPT&lt;/h2&gt;
-&lt;p&gt;Me:&lt;/p&gt;
+&lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
+&lt;p&gt;Agent如何工作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Autonomous agents (e.g., &lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;AutoGPT&lt;/a&gt;, &lt;a href=&#34;https://github.com/yoheinakajima/babyagi/tree/main&#34;&gt;BabyAGI&lt;/a&gt;) can &lt;strong&gt;auto-create&lt;/strong&gt; tasks towards the GOAL you give them, and &lt;strong&gt;auto-find&lt;/strong&gt; the way to complete task based on GPT models and other data sources (websites, your documents, etc), and even &lt;strong&gt;auto-improve&lt;/strong&gt; themselves from previous mistakes.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;what is autogpt and how does it work&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;Dr. Phind:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;Auto-GPT&lt;/a&gt; is an experimental open-source project built on the latest ChatGPT model i.e GPT-4. It is a variant of ChatGPT developed by Significant Gravitas and it uses the ChatGPT API to work. Specifically, Auto-GPT utilizes the GPT-4 API, though it seems like it should work with the GPT-3.5 API as well. &lt;strong&gt;Auto-GPT is an AI that does the work for you by setting a goal and then generating and completing tasks&lt;/strong&gt;. It does all the follow-up work for you, asking and answering its own prompts. It automates multi-step projects that would have required back-and-forth prompting if you worked directly with GPT-4. In other words, it &lt;strong&gt;&amp;ldquo;chains together LLM &amp;rsquo;thoughts&amp;rsquo;, to autonomously achieve whatever goal you set.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;</description>
+&lt;p&gt;The basic structure is somehow similar to &lt;code&gt;GOAP&lt;/code&gt; in video game&amp;rsquo;s AI design.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
