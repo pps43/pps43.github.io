@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 30 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -31,7 +31,26 @@
 &lt;p&gt;所有小孩子的想法都不像地动说，而像天动说。请你观察小孩的知识，他们一切都以自己为中心。电车轨道在我们家左边，邮筒在我们家右边，菜贩在弯进转角的地方。静子家在我们家对面，阿三家在我们家隔壁。小孩子的想法就像这样，一切都以自己家为中心。人是其他人的过程也一样，例如那是我爸爸的同事、这是我妈妈的亲戚……长大之后，想法或多或少的会慢慢接近地动说……人习惯以自己为中心思考、判断事物；即使长大了，这种特性同样根深柢固。等你长大了就会明白，&lt;strong&gt;在广大的世界上，能完全改掉以自己为中心思考的习惯的人，其实非常稀少。尤其碰到事关利害得失的时候，要跳脱自己的立场作出正确的判断，实在很难&lt;/strong&gt;。面对利害得失如果还能抱持像哥白尼那样的想法，可说是非常了不起。……如果人一直坚信地球是宇宙的中心，恐怕就无法了解宇宙真正的样貌，同样地，总是以自我为中心判断事物，也会让人不了解周遭事物的真相。这种人一定看不清重大的真理。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>用AI学AI.3</title>
+      <title>用AI学AI.4 [注意力]</title>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai_4/</link>
+      <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai_4/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
+&lt;p&gt;本篇由AI起稿，人工精修。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;系列文章&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;什么是注意力机制&#34;&gt;什么是注意力机制&lt;/h2&gt;
+&lt;p&gt;想象一下你在阅读一段文字：“在巴黎的那个雨天，我把那把红色的雨伞落在了卢浮宫的入口处。” 当被问到“丢失了什么颜色的东西？”时，你的大脑会瞬间聚焦到“红色”和“雨伞”这两个词上，而暂时忽略“巴黎”、“雨天”等其他信息。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>用AI学AI.3 [多模态]</title>
       <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
       <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
@@ -275,6 +294,7 @@ shape o--material
 &lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
