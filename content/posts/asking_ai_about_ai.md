@@ -1,5 +1,5 @@
 ---
-title: "跟AI老师学AI（1）"
+title: "用AI学AI.1"
 date: 2023-04-16
 #draft: true
 tags: ["AI"]
@@ -16,11 +16,63 @@ hideSummary: false
 
 ---
 系列文章
-1. [跟AI老师学AI（一）]({{< ref "/posts/asking_ai_about_ai.md">}})
-2. [跟AI老师学AI（二）]({{< ref "/posts/asking_ai_about_ai_2.md">}})
+1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
+2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
+3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
 ---
 
-# 课堂问答
+# 笔记
+
+模型与架构
+- We train a `model` by choosing an `architecture`.
+- Some models are named after the architecture they use, e.g., `GAN, VAE`.
+
+
+```mermaid
+mindmap
+    root((Deep Learning))
+        models
+            discriminative model
+                K nearest
+                Logistic regression
+                SVM
+                Random Forest
+                ...
+            generative model
+                deterministic
+                    CNN
+                    ...
+                probabilistic
+                    VAE
+                    GAN
+                    LLM
+                    Diffusion
+        architectures
+            CNN
+            LSTM
+            GAN
+            VAE
+            ...
+            Transformer
+                BERT
+                GPT
+                ...
+```
+
+微调
+- We `fine-tune` existing model as a foundation to generate a new model, with less training effort.
+
+两类生成式模型
+- `LLM` and `Diffusion` are both generative, probabilistic models.
+- `ChatGPT` is a product powered by `GPT` model (belongs to `LLM` family).
+- `Stable Diffusion` is a `Diffusion` model, it learns pattern in a hidden box called `latent space`.
+
+Transformer架构
+- Above models all use `Transformers` as the architecture.
+- `Transformers` are a type of attention-based neural network.
+
+
+# 问答
 
 ## Generative Models, Transformers, Large Language Models (LLM) ?
 
@@ -136,46 +188,6 @@ ChatGPT:
 > 
 > Finally, we discussed Stable Diffusion and Stable Diffusion 2, which are probabilistic generative models that use a diffusion process to model the data distribution. Stable Diffusion 2 is a latent diffusion model that learns a diffusion process in the latent space to generate complex and structured data distributions. The latent space is a hidden space that tells the model how to mix and match the different parts of the data to create something new.
 
-# 课后笔记
 
-- We train a `model` by choosing an `architecture`.
-- Some models are named after the architecture they use, e.g., `GAN, VAE`.
-- We `fine-tune` existing model as a foundation to generate a new model, with less training effort.
-- `LLM` and `Diffusion` are both generative, probabilistic models.
-- `ChatGPT` is a product powered by `GPT` model (belongs to `LLM` family).
-- `Stable Diffusion` is a `Diffusion` model, and its sevond version learns pattern in a hidden box called `latent space`.
-- Above models all use `Transformers` as the architecture.
-- `Transformers` are a type of attention-based neural network.
 
-```mermaid
-mindmap
-    root((Deep Learning))
-        models
-            discriminative model
-                K nearest
-                Logistic regression
-                SVM
-                Random Forest
-                ...
-            generative model
-                deterministic
-                    CNN
-                    ...
-                probabilistic
-                    VAE
-                    GAN
-                    LLM
-                    Diffusion
-        architectures
-            CNN
-            LSTM
-            GAN
-            VAE
-            ...
-            Transformer
-                BERT
-                GPT
-                ...
-```
-
-![Finally I understand everything (bushi)](/asking_ai_about_ai/understand_everything.jpg)
+![Great! I understand everything (bushi)](/asking_ai_about_ai/understand_everything.jpg)

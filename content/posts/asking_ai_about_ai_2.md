@@ -1,5 +1,5 @@
 ---
-title: "跟AI老师学AI（2）"
+title: "用AI学AI.2"
 date: 2023-05-14
 tags: ["AI","GPT"]
 hideSummary: false
@@ -16,12 +16,32 @@ hideSummary: false
 
 ---
 系列文章
-1. [跟AI老师学AI（一）]({{< ref "/posts/asking_ai_about_ai.md">}})
-2. [跟AI老师学AI（二）]({{< ref "/posts/asking_ai_about_ai_2.md">}})
-
+1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
+2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
+3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
 ---
 
-# 课堂问答
+
+# 笔记
+
+Agent如何工作
+- Autonomous agents (e.g., [AutoGPT](https://github.com/Significant-Gravitas/Auto-GPT), [BabyAGI](https://github.com/yoheinakajima/babyagi/tree/main)) can **auto-create** tasks towards the GOAL you give them, and **auto-find** the way to complete task based on GPT models and other data sources (websites, your documents, etc), and even **auto-improve** themselves from previous mistakes. 
+> The basic structure is somehow similar to `GOAP` in video game's AI design.
+
+长短期记忆
+- They can achieve these because they can have **long-term and short-term memory** powered by Vector Database. ( memory size is much more than single GPT4's context which is 32K tokens, ~24K words.)
+
+向量数据库
+- Vector Database is a specialized db to handle vectors (read, write, calculate similarities, etc). they are useful for text because text can be transformed into numberic vectors by **embedding** technique. **Similarity between embeddings (vectors) reflect relevance between text**. Hence above agents can retrieve relevant data from large datasource and sending to GPT as context.
+
+LangChain
+- Frameworks like [LangChain](https://github.com/hwchase17/langchain) makes it easier to implement autonomous agents because it provides a standard interface to handle different tools and data sources.
+
+拓展阅读
+- [Tutorial: ChatGPT Over Your Data (using LangChain)](https://blog.langchain.dev/tutorial-chatgpt-over-your-data/)
+- [Create your own chat bot with GPT-Index & LangChain](https://www.fabrikod.com/create-your-own-chat-bot-with-gpt-index-and-lang-chain)
+
+# 问答
 
 ## Auto-GPT
 Me:
@@ -116,14 +136,3 @@ Me:
 
 Dr. Phind:
 > There is no mention of AutoGPT using LangChain in the provided context. While LangChain is a framework that makes it easier to build scalable AI/LLM apps and chatbots, there is no clear indication that AutoGPT specifically uses LangChain.
-
-# 课后笔记
-
-- Autonomous agents (e.g., [AutoGPT](https://github.com/Significant-Gravitas/Auto-GPT), [BabyAGI](https://github.com/yoheinakajima/babyagi/tree/main)) can **auto-create** tasks towards the GOAL you give them, and **auto-find** the way to complete task based on GPT models and other data sources (websites, your documents, etc), and even **auto-improve** themselves from previous mistakes. The basic structure is somehow similar to `GOAP` in video game's AI design.
-- They can achieve these because they can have **long-term and short-term memory** powered by Vector Database. ( memory size is much more than single GPT4's context which is 32K tokens, ~24K words.)
-- Vector Database is a specialized db to handle vectors (read, write, calculate similarities, etc). they are useful for text because text can be transformed into numberic vectors by **embedding** technique. **Similarity between embeddings (vectors) reflect relevance between text**. Hence above agents can retrieve relevant data from large datasource and sending to GPT as context.
-- Frameworks like [LangChain](https://github.com/hwchase17/langchain) makes it easier to implement autonomous agents because it provides a standard interface to handle different tools and data sources.
-
-拓展阅读
-- [Tutorial: ChatGPT Over Your Data (using LangChain)](https://blog.langchain.dev/tutorial-chatgpt-over-your-data/)
-- [Create your own chat bot with GPT-Index & LangChain](https://www.fabrikod.com/create-your-own-chat-bot-with-gpt-index-and-lang-chain)
