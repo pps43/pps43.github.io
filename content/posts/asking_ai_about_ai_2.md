@@ -1,15 +1,8 @@
 ---
 title: "用AI学AI.2"
 date: 2023-05-14
-tags: ["AI","GPT"]
+tags: ["AI"]
 hideSummary: false
-
-# cover:
-#     image: "<image path/url>" # image path/url
-#     alt: "<alt text>" # alt text
-#     caption: "<text>" # display caption under cover
-#     relative: false # when using page bundles set this to true
-#     hidden: true # only hide on current single page
 ---
 
 [上一篇]({{< ref "/posts/asking_ai_about_ai.md">}})我们聊了AI模型的分类和大致架构，目前最火的两类模型`LLM`和`Diffusion`都基于`Transformer`架构训练而成，`ChatGPT`则是`LLM`家族中最出色的产品。本文就来聊聊最近出现的基于`ChatGPT`的创新架构和应用。由于`ChatGPT`的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的`ChatGPT Plugin`，所以这次请到的是[Dr. Phind](https://www.phind.com/)（The AI search engine for developers），大家欢迎。
@@ -19,6 +12,8 @@ hideSummary: false
 1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
 2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
 3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
+4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai_4.md">}})
+
 ---
 
 

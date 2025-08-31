@@ -1,14 +1,8 @@
 ---
-title: "用AI学AI.3"
+title: "用AI学AI.3 [多模态]"
 date: 2025-08-30
-tags: ["AI","GPT"]
+tags: ["AI"]
 hideSummary: false
-# cover:
-#     image: "<image path/url>"
-#     alt: "<alt text>"
-#     caption: "<text>"
-#     relative: false
-#     hidden: true
 ---
 
 [上一篇]({{< ref "/posts/asking_ai_about_ai_2.md">}})发布已过去一年半，这段时间生成式AI进化肉眼可见：
@@ -36,6 +30,7 @@ hideSummary: false
 1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
 2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
 3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
+4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai_4.md">}})
 
 ---
 
