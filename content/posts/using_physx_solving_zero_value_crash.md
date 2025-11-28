@@ -147,6 +147,8 @@ void ForceNonZero()
 
 部署该修复后，Crash归零。
 
+> 注意Unity并没有对此进行防护，scale=0会影响相关的collider尺寸为0，最终造成crash（表现为黑屏、花屏等），meshcollider尤其容易发生。
+
 ![](/using_physx_solving_zero_value_crash/crash_over.png)
 
 并且通过Debug版给出的警告，我们还对数值类参数做了NaN或Inf校验`physx::PxIsFinite`，并且对方向类参数做了强制归一化，进一步提高了物理系统稳定性。值此，修复完成。
