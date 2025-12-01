@@ -7,8 +7,16 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>强化学习可能不是AI的未来</title>
+      <link>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</link>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近，&lt;a href=&#34;https://www.youtube.com/watch?v=lXUZvyajciY&#34;&gt;Andrej Karpathy&lt;/a&gt; 和 &lt;a href=&#34;https://www.youtube.com/watch?v=aR20FWCCjAs&#34;&gt;Ilya Sutskever&lt;/a&gt; 几乎在同一时间，把目光从“堆算力、堆数据”的规模化竞赛，转向了更根本的问题：我们真的找到了让机器像人一样学习、反思和泛化的道路吗？在他们的讨论里，当前围绕强化学习（RL）打造的 LLM 智能，远没有表面上的那样风光，反而暴露出一系列深层缺陷——尤其是在泛化能力和学习机制上。如果说过去十年是“参数上亿、卡片上万”的工程时代，那么他们描述的，是一个重新回到“研究时代”的拐点。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>关于使用AI的小思考</title>
       <link>https://pps43.github.io/posts/thinking_of_ai/</link>
