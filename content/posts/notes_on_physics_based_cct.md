@@ -142,7 +142,7 @@ public void UpdatePhase2(float gameTime, float deltaTime)
     // apply gravity
     if (UseGravity && !IsGrounded)
     {
-        VelocityNew += GravityDirection * GravityScale * deltaTime * tuningRatio;
+        VelocityNew += GravityDirection * GravityScale * deltaTime;
     }
     // apply other external force
     if (AdditionalForceToApply.sqrMagnitude > 0)
@@ -151,11 +151,15 @@ public void UpdatePhase2(float gameTime, float deltaTime)
         AdditionalForceToApply = Vector3.zero;
     }
     VelocityNew = ClampVelocity(VelocityNew);
-    CurrentCollisionFlags = DoCCTMove(ref PositionNew, VelocityNew, deltaTime);
+    CurrentCollisionFlags = DoCCTMove(ref PositionNew, VelocityNew, deltaTime, true); // true means snap to ground
     ProcessControllerHits(); // may modify VelocityNew
     //...
     Velocity = VelocityNew; // for outside logic
     m_Character.AfterCCTUpdate();
+
+#if UNITY_EDITOR
+    RecordPreviousPositions(PositionNew); // for debug gizmos
+#endif
 }
 
 ```
@@ -177,14 +181,23 @@ public class PhysicalCCT : MonoBehaviour
     {
         public bool IsGrounded; // todo: we can decide if on a stable ground, or on an edge.
         public Vector3 GroundNormal;
+        public Vector3 SnapToGroundDisplacement;// assigned when IsGrounded is true, and apply once in current frame's cctmove
+
         public IPhysicalMover Mover; // can be null
         public Vector3 MoverVelocityAtPosition;
         public Vector3 MoverAngularVelocityAtPosition;
     }
     public GroundingState CurrentGroundState;
     public GroundingState LastGroundState;
+
     public const float GroundDetectionBackDistance = 0.002f; // avoid raycast exactly from ground. must smaller than MinGroundDetectionDistance
-    public float MinGroundDetectionDistance = 0.005f;
+    public float GroundDetectionDistance {
+        get {
+            var distance = 0.1f + GroundDetectionBackDistance + (LastGroundState.IsGrounded ? StepOffset : 0f);
+            return distance;
+        }
+    }
+
     private RaycastHit[] m_GroundDetectionBuffer = new RaycastHit[8];
     private bool m_ForceUnground = false;
     private int m_ForceUngroundReMainFrameCount = 0;
@@ -254,20 +267,19 @@ private void GroundDetection()
         RaycastHit closestSweepHit;
         var startPos = PositionNew + CharacterUp * GroundDetectionBackDistance; //add a little offset to avoid raycast exactly from ground
 
-        float distance = MinGroundDetectionDistance;
-
         var DetectionDirection = -CharacterUp; // not GravityDirection, because "OnGround" means stand on feet
 
-        var isHit = CCTSweep(startPos, DetectionDirection, distance, groundLayerMask, out closestSweepHit);
+        var isHit = CCTSweep(startPos, DetectionDirection, GroundDetectionDistance, groundLayerMask, out closestSweepHit);
 
-        if (isHit && closestSweepHit.collider != null && !closestSweepHit.collider.isTrigger)
+        if (isHit && closestSweepHit.collider != null && !closestSweepHit.collider.isTrigger) // do not include trigger
         {
             newState.IsGrounded = true;
+            newState.SnapToGroundDisplacement = (closestSweepHit.distance - GroundDetectionBackDistance) * DetectionDirection;
 
             Vector3 hitPos;
             RaycastHit closestRaycastHit;
             var extraDistance = Mathf.Max(Radius, StepOffset);
-            if (CCTRaycast(startPos, DetectionDirection, distance + extraDistance, groundLayerMask, out closestRaycastHit)) // more precise
+            if (CCTRaycast(startPos, DetectionDirection, GroundDetectionDistance + extraDistance, groundLayerMask, out closestRaycastHit)) // more precise
             {
                 newState.GroundNormal = closestRaycastHit.normal;
                 newState.Mover = closestSweepHit.collider.gameObject.GetComponentInParent<IPhysicalMover>();
@@ -447,19 +459,25 @@ private Vector3 ProjectVectorToPlane(Vector3 v, Vector3 planeNormal)
     // translate with mover
     if (CurrentGroundState.MoverVelocityAtPosition.sqrMagnitude > 0)
     {
-        DoCCTMove(ref PositionNew, CurrentGroundState.MoverVelocityAtPosition, deltaTime);
+        DoCCTMove(ref PositionNew, CurrentGroundState.MoverVelocityAtPosition, deltaTime, false);
     }
 }
 
 // Turn on SlightMove when user is not moving, this is to detect collision
-private CollisionFlags DoCCTMove(ref Vector3 position, Vector3 velocity, float deltaTime)
+private CollisionFlags DoCCTMove(ref Vector3 position, Vector3 velocity, float deltaTime, bool extraSnapToGround)
 {
-    float noiseMovemet = MinMoveDistance > 0 ? MinMoveDistance : 0.001f * deltaTime;
+    float noiseMovemet = 0.001f * deltaTime;
     Vector3 movement = SlightMove ? noiseMovemet * CharacterForward : Vector3.zero;
 
     if (velocity.sqrMagnitude > 0)
     {
         movement = velocity * deltaTime;
+    }
+
+    // Snap to ground: add displacement to keep character attached when going downhill
+    if (extraSnapToGround && CurrentGroundState.IsGrounded && CurrentGroundState.SnapToGroundDisplacement.sqrMagnitude > 0)
+    {
+        movement += CurrentGroundState.SnapToGroundDisplacement;
     }
 
     var flags = m_CCT.Move(movement);
