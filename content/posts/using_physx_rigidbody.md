@@ -12,15 +12,15 @@ tags: ["Game Dev", "PhysX"]
 
 # Warm-up
 
-We already know that
-- `Kinematic` and `Dynamic` rigidbody are both `PxRigidDynamic` in PhysX. Use `PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)` to turn a dynamic actor into kinematic at runtime, and vice versa. 
-- `Kinematic` and `Static` actors always stay in the same location unless you move them in your code.
-- When moving `Static` actors, their collisions with dynamic actors can be wrong.
-- When moving `Kinematic` actors, you should always use `PxRigidDynamic::setKinematicTarget` in each frame rather than `PxRigidActor::setGlobalPose` to achieve correct collisions with other dynamic actors.
+Let's start with some key concepts:
+- Both `Kinematic` and `Dynamic` rigidbodies are represented as `PxRigidDynamic` in PhysX. You can switch between them at runtime using `PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)`.
+- `Kinematic` and `Static` actors remain stationary unless explicitly moved in code.
+- Moving `Static` actors can result in incorrect collision behavior with dynamic actors.
+- When moving `Kinematic` actors, always use `PxRigidDynamic::setKinematicTarget` each frame instead of `PxRigidActor::setGlobalPose` to ensure correct collision detection with dynamic actors.
 
-In this post we focus on dynamic rigidbody movement, e.g., **force and torque, gravity, sleeping** and so on.
+This post focuses on dynamic rigidbody movement, covering topics such as **force and torque, gravity, sleeping**, and more.
 
-Here are necessary physical concepts with math formulas.
+Below are the essential physical concepts with their mathematical formulas:
 
 |Translation|formular|Rotation|formular|
 |-|-|-|-|
@@ -34,19 +34,19 @@ Here are necessary physical concepts with math formulas.
 
 
 # Setup Rigidbody
-Dynamic actor has 3 mass related properties: **mass**, **center of mass**, **inertia tensor**.
+A dynamic actor has 3 mass-related properties: **mass**, **center of mass**, and **inertia tensor**.
 
-> ~~Let **mass** be 0 means it cannot move.~~ Although the doc says 0 is ok for mass, but actually it will cause random crash. See [Golden Tips](#golden-tips).
+> ~~Setting **mass** to 0 means it cannot move.~~ Although the documentation suggests 0 is acceptable for mass, it actually causes random crashes. See [Golden Tips](#golden-tips) for details.
 > 
-> **Center of mass** is the position where force applys upon to generate a translation without rotating. It's defined in local space as Vector3, default value is (0,0,0).
+> **Center of mass** is the point where applied forces generate translation without rotation. It's defined in local space as a Vector3, with a default value of (0,0,0).
 > 
-> **Moment of inertia** is a single number that describes how hard it is to rotate an object about a particular axis, while the **inertia tensor** is a 3x3 matrix that describes how hard it is to rotate an object about any axis. Let **inertia tensor** be (0,0,0) means it cannot rotate by any axis.
+> **Moment of inertia** is a scalar value describing the resistance to rotation about a specific axis, while the **inertia tensor** is a 3x3 matrix describing resistance to rotation about any axis. Setting the **inertia tensor** to (0,0,0) prevents rotation around any axis.
 
-The easiest way to calculate mass properties is to always use the `PxRigidBodyExt::updateMassAndInertia`. You don't need  `setMassAndUpdateInertia`.
+The simplest way to calculate mass properties is to use `PxRigidBodyExt::updateMassAndInertia`. You don't need `setMassAndUpdateInertia`.
 
-In Official demo `North Pole` (`PhysX_3.4\Samples\SampleNorthPole\SampleNorthPoleDynamics.cpp`), all of them are low center of mass, but with different config to achieve different feeling.
+In the official `North Pole` demo (`PhysX_3.4\Samples\SampleNorthPole\SampleNorthPoleDynamics.cpp`), all objects have a low center of mass but use different configurations to achieve varied physical behaviors.
 
-Here are my code snippet to initialize a dynamic rigidbody.
+Here's my code snippet for initializing a dynamic rigidbody:
 ```cpp
 void ActorWrapper::InitRigidbody(bool useGravity, float mass, const PxVec3& centerOfMass, const PxVec3& interiaTensor, const PxVec3& velocity, float drag, const PxVec3& angularVelocity, float maxAngularVelocity, float angularDrag, int constrainFlags)
 {
@@ -91,19 +91,40 @@ void ActorWrapper::SetDensity(float density)
 }
 ```
 
+# Fix Large Mass
+When a rigidbody with large mass (> 100kg) collides with other objects (e.g., static ground), the simulation can quickly become unrealistic or even collapse.
+
+> The image below shows 5 rigidbodies falling to the ground with masses of 1kg, 10kg, 100kg, 1000kg, and 10,000kg (from left to right). 
+> ![](/using_physx_rigidbody/large_mass_simulation_pvd.png)
+
+There are several parameters you can tune to stabilize the simulation. The configuration below can boost the maximum supported mass from ~400kg to ~3800kg:
+
+- **Scene-level**
+  - `sceneDesc.flags |= PxSceneFlag::eENABLE_PCM` - PCM (Persistent Contact Manifold) makes objects more stable when at rest.
+  - `sceneDesc.flags |= PxSceneFlag::eADAPTIVE_FORCE` - Adaptive force makes stacked objects more stable.
+
+- **Actor-level**
+  - `PxRigidDynamic::setSolverIterationCounts(32,8)` - This is the most significant change for stability, though it comes at a performance cost.
+  - `PxRigidbody::setMaxDepenetrationVelocity(10)` - This prevents excessive velocity during collision resolution.
+
+- **Shape-level**
+  - `PxShape::setContactOffset(0.02)` - PhysX will resolve collisions earlier, improving stability.
+
 # Add Force & Torque
 
-`addForce` causes a translation, `addTorque` causes rotation, and `addForceAtPos` causes linear and rotation if pos is not the center of mass.
+- `addForce` causes translation
+- `addTorque` causes rotation
+- `addForceAtPos` causes both translation and rotation if the position is not at the center of mass
 
 Both force and torque support 4 modes:
-|PxForceMode|physics equivalent|
+|PxForceMode|Physics Equivalent|
 |-|-|
 |eFORCE|\\(ma\\)|
 |eIMPULSE|\\(mat\\)|
 |eVELOCITY_CHANGE|\\(at\\)|
 |eACCELERATION|\\(a\\)|
 
-Here are my code snippet to implement addForce and addTorque:
+Here's my code snippet for implementing addForce and addTorque:
 ```cpp
 
 void ActorWrapper::AddForce(const PxVec3& force, int forceMode)
@@ -164,51 +185,51 @@ void ActorWrapper::UGCAddForceAtPosition(const PxVec3& force, int forceMode, con
 
 # Change Gravity
 
-Gravity is scene-wide for dynamic rigidbodies in the scene, by `PxScene::setGravity()`. 
+Gravity is scene-wide for all dynamic rigidbodies and is set using `PxScene::setGravity()`. 
 
-We can let some dynamic actors are not influenced by scene-wide gravity by `PxActor::setActorFlag(PxActorFlag::eDISABLE_GRAVITY,true)`. Then `addForce` each frame manually to make your customized gravity on this actor.
+You can exclude specific dynamic actors from scene-wide gravity by calling `PxActor::setActorFlag(PxActorFlag::eDISABLE_GRAVITY, true)`. Then manually apply forces each frame using `addForce` to implement custom gravity for that actor.
 
 # Sleep & Awake
 
 ## Why Sleep Matters
 
-Sleeping rigidbodies almost cost nothing. You can put less important rigidbodies to sleep, which can significantly lower CPU cost when you have thousands of them.
+Sleeping rigidbodies have virtually no performance cost. Putting less important rigidbodies to sleep can significantly reduce CPU usage, especially when dealing with thousands of objects.
 
 ## Sleep Mechanism
 
-An actor goes to sleep when: its mass-normalized kinetic energy (a.k.a. \\(\frac{1}{2}v^2\\)) is **below a given threshold for a certain time** (Internally they use a wake-counter, when counter reaches 0, actor is a candidate to sleep).
+An actor goes to sleep when its mass-normalized kinetic energy (i.e., \\(\frac{1}{2}v^2\\)) remains **below a threshold for a certain duration**. Internally, PhysX uses a wake-counter; when it reaches 0, the actor becomes a candidate for sleeping.
 
-Default threshold is \\(5∗10^{−5}∗v^2\\), where \\(v\\) is `PxTolerancesScale.velocity`. Thus the logic of the formular is  that when actor's velocity is below 1% of `PxTolerancesScale.velocity`, they are allowed to go to sleep. Set threshold by `PxRigidDynamic::setSleepThreshold`
+The default threshold is \\(5∗10^{−5}∗v^2\\), where \\(v\\) is `PxTolerancesScale.velocity`. This means actors are allowed to sleep when their velocity drops below 1% of `PxTolerancesScale.velocity`. You can customize this threshold using `PxRigidDynamic::setSleepThreshold`.
 
-You can also set wake-counter value to control sleeping, by `PxRigidDynamic::setWakeCounter`.
+You can also directly control the wake-counter using `PxRigidDynamic::setWakeCounter`.
 
-Common APIs about sleeping (only for dynamic actors!):
+Common APIs for sleeping (only for dynamic actors):
 |Name|Notes|
 |-|-|
-|PxRigidDynamic::setSleepThreshold||
-|PxRigidDynamic::setWakeCounter|Calling on a sleeping rigidbody will auto-wakeup|
-|PxRigidDynamic::isSleeping()||
-|PxRigidDynamic::wakeUp()|Force wakeup.|
-|PxRigidDynamic::putToSleep()|Force sleep.|
-|PxSimulationEventCallback::onWake/onSleep|To receive these events, set flag on actor: `PxActorFlag::eSEND_SLEEP_NOTIFIES`|
+|PxRigidDynamic::setSleepThreshold|Set the energy threshold for sleeping|
+|PxRigidDynamic::setWakeCounter|Calling on a sleeping rigidbody will automatically wake it up|
+|PxRigidDynamic::isSleeping()|Check if the actor is currently sleeping|
+|PxRigidDynamic::wakeUp()|Force the actor to wake up|
+|PxRigidDynamic::putToSleep()|Force the actor to sleep|
+|PxSimulationEventCallback::onWake/onSleep|To receive these events, set the flag: `PxActorFlag::eSEND_SLEEP_NOTIFIES`|
 
 
 ## Awake Mechanism
 
-Overall, these actions wake an actor up:
-- `PxRigidDynamic::setKinematicTarget()` for kinematic actor. 
-- `PxRigidActor::setGlobalPose()`, if the autowake parameter is set to true (default). 
-- Raising `PxActorFlag::eDISABLE_SIMULATION`
-- Calling `PxScene::resetFiltering()`. 
-- Calling `PxShape::setSimulationFilterData()` and cause a different filtering result.
-- Touch with an actor that is awake.
-- A touching rigid actor gets removed from the scene.
-- Contact with a static rigid actor is lost.
-- Contact with a dynamic rigid actor is lost (awake in the next simulation step).
-- Actor gets hit by a two-way interaction particle
+The following actions will wake an actor up:
+- Calling `PxRigidDynamic::setKinematicTarget()` on a kinematic actor
+- Calling `PxRigidActor::setGlobalPose()` with the autowake parameter set to true (default)
+- Raising the `PxActorFlag::eDISABLE_SIMULATION` flag
+- Calling `PxScene::resetFiltering()`
+- Calling `PxShape::setSimulationFilterData()` that results in a different filtering outcome
+- Contact with an actor that is awake
+- A touching rigid actor is removed from the scene
+- Loss of contact with a static rigid actor
+- Loss of contact with a dynamic rigid actor (wakes up in the next simulation step)
+- Being hit by a two-way interaction particle
 
 
 # Golden Tips
-- When calling `PxRigidBodyExt::setMassAndUpdateInertia(actor, mass)`, make sure `mass` is **above zero** for dynamic rigidbody, otherwise it crashes randomly when collision happens.
-- When calling `PxRigidDynamic::setAngularDamping(value)`, make sure `value` is **above zero** otherwise it goes unstable for rotating.
-- Changing scene-wide gravity value will **NOT** auto-wake sleeping rigidbody. Call `PxRigidDynamic::wakeUp()` manually if required.
+- When calling `PxRigidBodyExt::setMassAndUpdateInertia(actor, mass)`, ensure `mass` is **above zero** for dynamic rigidbodies, otherwise random crashes will occur during collisions.
+- When calling `PxRigidDynamic::setAngularDamping(value)`, ensure `value` is **above zero**, otherwise rotation becomes unstable.
+- Changing the scene-wide gravity value will **NOT** automatically wake sleeping rigidbodies. Call `PxRigidDynamic::wakeUp()` manually if needed.
