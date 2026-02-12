@@ -45,14 +45,14 @@
 &lt;p&gt;本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
-&lt;p&gt;We already know that&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s start with some key concepts:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Dynamic&lt;/code&gt; rigidbody are both &lt;code&gt;PxRigidDynamic&lt;/code&gt; in PhysX. Use &lt;code&gt;PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)&lt;/code&gt; to turn a dynamic actor into kinematic at runtime, and vice versa.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Static&lt;/code&gt; actors always stay in the same location unless you move them in your code.&lt;/li&gt;
-&lt;li&gt;When moving &lt;code&gt;Static&lt;/code&gt; actors, their collisions with dynamic actors can be wrong.&lt;/li&gt;
-&lt;li&gt;When moving &lt;code&gt;Kinematic&lt;/code&gt; actors, you should always use &lt;code&gt;PxRigidDynamic::setKinematicTarget&lt;/code&gt; in each frame rather than &lt;code&gt;PxRigidActor::setGlobalPose&lt;/code&gt; to achieve correct collisions with other dynamic actors.&lt;/li&gt;
+&lt;li&gt;Both &lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Dynamic&lt;/code&gt; rigidbodies are represented as &lt;code&gt;PxRigidDynamic&lt;/code&gt; in PhysX. You can switch between them at runtime using &lt;code&gt;PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Static&lt;/code&gt; actors remain stationary unless explicitly moved in code.&lt;/li&gt;
+&lt;li&gt;Moving &lt;code&gt;Static&lt;/code&gt; actors can result in incorrect collision behavior with dynamic actors.&lt;/li&gt;
+&lt;li&gt;When moving &lt;code&gt;Kinematic&lt;/code&gt; actors, always use &lt;code&gt;PxRigidDynamic::setKinematicTarget&lt;/code&gt; each frame instead of &lt;code&gt;PxRigidActor::setGlobalPose&lt;/code&gt; to ensure correct collision detection with dynamic actors.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In this post we focus on dynamic rigidbody movement, e.g., &lt;strong&gt;force and torque, gravity, sleeping&lt;/strong&gt; and so on.&lt;/p&gt;</description>
+&lt;p&gt;This post focuses on dynamic rigidbody movement, covering topics such as &lt;strong&gt;force and torque, gravity, sleeping&lt;/strong&gt;, and more.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PhysX物理引擎（2）Collision</title>
@@ -90,7 +90,7 @@ class PxShape {
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。
+&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放、子节点带有旋转时，子节点的最终大小和形态。
 问题源自笔者在修改物理引擎为其添加&lt;code&gt;scale&lt;/code&gt;属性时遇到的一个bug。解决后对&lt;code&gt;WorldScale&lt;/code&gt;为什么叫做&lt;code&gt;LossyScale&lt;/code&gt;、空间变换和基变换有了更深的理解。&lt;/p&gt;</description>
     </item>
     <item>

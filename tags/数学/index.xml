@@ -31,7 +31,7 @@
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_lossyscale/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放和旋转时，子节点的最终大小和形态。
+&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放、子节点带有旋转时，子节点的最终大小和形态。
 问题源自笔者在修改物理引擎为其添加&lt;code&gt;scale&lt;/code&gt;属性时遇到的一个bug。解决后对&lt;code&gt;WorldScale&lt;/code&gt;为什么叫做&lt;code&gt;LossyScale&lt;/code&gt;、空间变换和基变换有了更深的理解。&lt;/p&gt;</description>
     </item>
     <item>
