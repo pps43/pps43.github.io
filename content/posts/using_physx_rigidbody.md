@@ -24,12 +24,12 @@ Here are necessary physical concepts with math formulas.
 
 |Translation|formular|Rotation|formular|
 |-|-|-|-|
-|Position|\\(\vec{x}\\)|Orientation (3x3 matrix)|\\(\mathbf{R}\\)|
-|Linear Velocity|\\(\vec{v}=\frac{d\vec{x}}{dt}\\)|Angular Velocity|\\(\vec{\omega}=\frac{\vec{v}\times\vec{r}}{\lVert{\vec{r}}\rVert^2}\\)|
-|Linear Acceleration|\\(\vec{a}=\frac{d\vec{v}}{dt}\\)|Angular Acceleration|\\(\vec{\alpha}=\frac{d\vec{\omega}}{dt}\\)|
-|Mass|\\(M=\sum{m_i}\\)|Intertia tensor|\\(\mathbf{I}=\mathbf{R}\mathbf{I}_0\mathbf{R}^T\\)|
-|Linear momententum|\\(\vec{p}=M\vec{v}\\)|Angular momententum|\\(\vec{L}=\mathbf{I}\vec{\omega}\\)|
-|Force|\\(\vec{F}=\frac{d\vec{p}}{dt}=m\vec{a}\\)|Torque|\\(\vec{\tau}=\frac{d\vec{L}}{dt}\\)|
+|Position|$\vec{x}$|Orientation (3x3 matrix)|$\mathbf{R}$|
+|Linear Velocity|$\vec{v}=\frac{d\vec{x}}{dt}$|Angular Velocity|$\vec{\omega}=\frac{\vec{v}\times\vec{r}}{\lVert{\vec{r}}\rVert^2}$|
+|Linear Acceleration|$\vec{a}=\frac{d\vec{v}}{dt}$|Angular Acceleration|$\vec{\alpha}=\frac{d\vec{\omega}}{dt}$|
+|Mass|$M=\sum{m_i}$|Intertia tensor|$\mathbf{I}=\mathbf{R}\mathbf{I}_0\mathbf{R}^T$|
+|Linear momententum|$\vec{p}=M\vec{v}$|Angular momententum|$\vec{L}=\mathbf{I}\vec{\omega}$|
+|Force|$\vec{F}=\frac{d\vec{p}}{dt}=m\vec{a}$|Torque|$\vec{\tau}=\frac{d\vec{L}}{dt}$|
 
 
 
@@ -98,10 +98,10 @@ void ActorWrapper::SetDensity(float density)
 Both force and torque support 4 modes:
 |PxForceMode|physics equivalent|
 |-|-|
-|eFORCE|\\(ma\\)|
-|eIMPULSE|\\(mat\\)|
-|eVELOCITY_CHANGE|\\(at\\)|
-|eACCELERATION|\\(a\\)|
+|eFORCE|$ma$|
+|eIMPULSE|$mat$|
+|eVELOCITY_CHANGE|$at$|
+|eACCELERATION|$a$|
 
 Here are my code snippet to implement addForce and addTorque:
 ```cpp
@@ -176,9 +176,9 @@ Sleeping rigidbodies almost cost nothing. You can put less important rigidbodies
 
 ## Sleep Mechanism
 
-An actor goes to sleep when: its mass-normalized kinetic energy (a.k.a. \\(\frac{1}{2}v^2\\)) is **below a given threshold for a certain time** (Internally they use a wake-counter, when counter reaches 0, actor is a candidate to sleep).
+An actor goes to sleep when: its mass-normalized kinetic energy (a.k.a. $\frac{1}{2}v^2$) is **below a given threshold for a certain time** (Internally they use a wake-counter, when counter reaches 0, actor is a candidate to sleep).
 
-Default threshold is \\(5∗10^{−5}∗v^2\\), where \\(v\\) is `PxTolerancesScale.velocity`. Thus the logic of the formular is  that when actor's velocity is below 1% of `PxTolerancesScale.velocity`, they are allowed to go to sleep. Set threshold by `PxRigidDynamic::setSleepThreshold`
+Default threshold is $5∗10^{−5}∗v^2$, where $v$ is `PxTolerancesScale.velocity`. Thus the logic of the formular is  that when actor's velocity is below 1% of `PxTolerancesScale.velocity`, they are allowed to go to sleep. Set threshold by `PxRigidDynamic::setSleepThreshold`
 
 You can also set wake-counter value to control sleeping, by `PxRigidDynamic::setWakeCounter`.
 

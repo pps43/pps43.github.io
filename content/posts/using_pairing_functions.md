@@ -1,5 +1,5 @@
 ---
-title: "奇妙的Pairing Function及实际用途"
+title: "奇妙的Pairing Function"
 date: 2025-08-20
 hideSummary: false
 draft: false

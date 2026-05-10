@@ -1,5 +1,5 @@
 ---
-title: "实现Quaternion.FromToRotation的细节"
+title: "Quaternion.FromToRotation的细节"
 date: 2025-08-26
 hideSummary: false
 draft: false
@@ -14,22 +14,22 @@ tags: ["Game Dev", "数学"]
 
 ### 数学基础（最短弧）
 
-- 设单位向量 \\(u = \\frac{from}{\\|from\\|}\\), \\(v = \\frac{to}{\\|to\\|}\\)；点积 \\(d = u\\cdot v\\in[-1,1]\\)。
-- 若 \\(d\\) 接近 1（方向相同），返回单位四元数即可（无需旋转）。
-- 若 \\(d\\) 接近 -1（方向相反，180°），最短弧旋转角为 \\(\\pi\\)，但轴任意，只需选一条与 \\(u\\) 不共线的轴。
+- 设单位向量 $u = \frac{from}{\|from\|}$, $v = \frac{to}{\|to\|}$；点积 $d = u\cdot v\in[-1,1]$。
+- 若 $d$ 接近 1（方向相同），返回单位四元数即可（无需旋转）。
+- 若 $d$ 接近 -1（方向相反，180°），最短弧旋转角为 $\pi$，但轴任意，只需选一条与 $u$ 不共线的轴。
 - 否则，可用“最短弧四元数”构造式：
-  - 轴方向近似为 \\(u\\times v\\)
+  - 轴方向近似为 $u\times v$
   - 或直接使用稳健公式构造四元数：
-    - \\(s = \\sqrt{2(1+d)}\\)
-    - 四元数 \\(q = [\\frac{u\\times v}{s},\\ \\frac{s}{2}]\\)（向量在前，标量在后，或按你引擎的约定）。
+    - $s = \sqrt{2(1+d)}$
+    - 四元数 $q = [\frac{u\times v}{s},\ \frac{s}{2}]$（向量在前，标量在后，或按你引擎的约定）。
 
 上述构造规避了直接求角度带来的精度与分支问题，是工业界常用写法。
 
 ### 特例：两向量夹角180°，如何选轴
 
-- 当 \\(d \\approx -1\\) 时，\\(u\\times v\\) 退化为零向量，轴不再可用。此时选一个与 \\(u\\) 不近似平行的参考向量 \\(a\\)（如 `right(1,0,0)` 或 `up(0,1,0)`），令 \\(axis = \\mathrm{normalize}(u\\times a)\\)。
-- 若恰好 \\(u\\) 与 `right` 共线，再换 `up`（或 `forward`）。
-- 最终四元数可由 \\(\\theta=\\pi\\) 与该 `axis` 用 `AngleAxis(180°, axis)` 构造。
+- 当 $d \approx -1$ 时，$u\times v$ 退化为零向量，轴不再可用。此时选一个与 $u$ 不近似平行的参考向量 $a$（如 `right(1,0,0)` 或 `up(0,1,0)`），令 $axis = \mathrm{normalize}(u\times a)$。
+- 若恰好 $u$ 与 `right` 共线，再换 `up`（或 `forward`）。
+- 最终四元数可由 $\theta=\pi$ 与该 `axis` 用 `AngleAxis(180°, axis)` 构造。
 
 
 ### 参考实现（C#，Unity 风格）

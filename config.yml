@@ -21,6 +21,19 @@ pagination.pagerSize: 20
 minify:
     disableXML: true
 
+markup:
+    goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - ['\[', '\]']
+                        - ['$$', '$$']
+                    inline:
+                        - ['\(', '\)']
+                        - ['$', '$']
+
 # for search
 # https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search-page
 outputs:
@@ -52,7 +65,7 @@ params:
     homeInfoParams:
       Title: "PPS's Garden"
       Content: >
-       播撒几粒想法 | 浇灌几株启发 | 除掉几只BUG | 角落开满鲜花
+       播撒几粒想法💭、浇灌几株启发💡、除掉几只BUG🐛、角落开满鲜花🪻
     
     socialIcons:
         - name: Zhihu
