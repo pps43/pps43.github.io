@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 May 2026 17:32:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 23:31:29 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -376,9 +376,10 @@ shape o--material
 &lt;li&gt;只有交易完成时，这些资产和负债才会消失。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;什么是价格&#34;&gt;什么是价格&lt;/h2&gt;
-&lt;p&gt;$$
+$$
 价格 = \frac{买方支出总额}{产销总量} =\frac{(货币 + 信贷)} {产销总量}
-$$&lt;/p&gt;</description>
+$$&lt;h2 id=&#34;什么是市场&#34;&gt;什么是市场&lt;/h2&gt;
+&lt;p&gt;一种市场，包含同一种商品的所有买方和所有卖方。有千千万万种商品或服务对应千千万万种市场。&lt;/p&gt;</description>
     </item>
     <item>
       <title>GP-GPU编程：CUDA介绍</title>
@@ -410,7 +411,7 @@ $$&lt;/p&gt;</description>
       <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_norm2/</guid>
       <description>&lt;p&gt;范数、内积空间的概念这里不做赘述，只点几个要点。&lt;/p&gt;
-&lt;p&gt;粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应起来，并且满足一些抽象但自然的性质（不举）。为了方便将两个元素的内积记为：\(&amp;lt; \bf{a,b} &amp;gt; ，\bf{a,b}\) 属于V。&lt;/p&gt;</description>
+&lt;p&gt;粗糙的说，对于V(F)空间，定义内积为一种将两个属于此集合V的元素与一个来自数域F的元素对应起来，并且满足一些抽象但自然的性质（不举）。为了方便将两个元素的内积记为：$\langle \mathbf{a}, \mathbf{b} \rangle$，其中$\mathbf{a}, \mathbf{b}$属于V。&lt;/p&gt;</description>
     </item>
     <item>
       <title>信道仿真模型 WINNER II</title>

@@ -48,9 +48,10 @@
 &lt;li&gt;只有交易完成时，这些资产和负债才会消失。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;什么是价格&#34;&gt;什么是价格&lt;/h2&gt;
-&lt;p&gt;$$
+$$
 价格 = \frac{买方支出总额}{产销总量} =\frac{(货币 + 信贷)} {产销总量}
-$$&lt;/p&gt;</description>
+$$&lt;h2 id=&#34;什么是市场&#34;&gt;什么是市场&lt;/h2&gt;
+&lt;p&gt;一种市场，包含同一种商品的所有买方和所有卖方。有千千万万种商品或服务对应千千万万种市场。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
