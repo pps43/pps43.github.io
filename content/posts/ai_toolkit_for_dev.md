@@ -57,7 +57,7 @@ Tips on chatting effectively:
 
 # For Software Development
 
-- [Github Copilot](https://github.com/features/copilot) (based on OpenAI's `CODEX`), costs $10/mo after 60d trial.
+- [Github Copilot](https://github.com/features/copilot) (based on OpenAI's `CODEX`), costs \$10/mo after 60d trial.
     - Github Copilot Chat, previous named [Github Copilot X](https://github.com/features/preview/copilot-x), based on GPT4. Integrated to many IDE as plugins.
     > Updated on December 4, 2023. Use `@workspace` to query information about your VS Code workspace! Use `#file:xxx` to inquire about a specific file! Analyze terminal errors by clicking the "sparkling" icon! Summarize PR (Pull Request) for you! Ask questions by speaking, via the `VS Code Speech` plugin.
 - [phind](https://www.phind.com/), the AI search engine for developers.

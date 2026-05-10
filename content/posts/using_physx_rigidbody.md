@@ -24,12 +24,12 @@ Below are the essential physical concepts with their mathematical formulas:
 
 |Translation|formular|Rotation|formular|
 |-|-|-|-|
-|Position|\\(\vec{x}\\)|Orientation (3x3 matrix)|\\(\mathbf{R}\\)|
-|Linear Velocity|\\(\vec{v}=\frac{d\vec{x}}{dt}\\)|Angular Velocity|\\(\vec{\omega}=\frac{\vec{v}\times\vec{r}}{\lVert{\vec{r}}\rVert^2}\\)|
-|Linear Acceleration|\\(\vec{a}=\frac{d\vec{v}}{dt}\\)|Angular Acceleration|\\(\vec{\alpha}=\frac{d\vec{\omega}}{dt}\\)|
-|Mass|\\(M=\sum{m_i}\\)|Intertia tensor|\\(\mathbf{I}=\mathbf{R}\mathbf{I}_0\mathbf{R}^T\\)|
-|Linear momententum|\\(\vec{p}=M\vec{v}\\)|Angular momententum|\\(\vec{L}=\mathbf{I}\vec{\omega}\\)|
-|Force|\\(\vec{F}=\frac{d\vec{p}}{dt}=m\vec{a}\\)|Torque|\\(\vec{\tau}=\frac{d\vec{L}}{dt}\\)|
+|Position|$\vec{x}$|Orientation (3x3 matrix)|$\mathbf{R}$|
+|Linear Velocity|$\vec{v}=\frac{d\vec{x}}{dt}$|Angular Velocity|$\vec{\omega}=\frac{\vec{v}\times\vec{r}}{\lVert{\vec{r}}\rVert^2}$|
+|Linear Acceleration|$\vec{a}=\frac{d\vec{v}}{dt}$|Angular Acceleration|$\vec{\alpha}=\frac{d\vec{\omega}}{dt}$|
+|Mass|$M=\sum{m_i}$|Intertia tensor|$\mathbf{I}=\mathbf{R}\mathbf{I}_0\mathbf{R}^T$|
+|Linear momententum|$\vec{p}=M\vec{v}$|Angular momententum|$\vec{L}=\mathbf{I}\vec{\omega}$|
+|Force|$\vec{F}=\frac{d\vec{p}}{dt}=m\vec{a}$|Torque|$\vec{\tau}=\frac{d\vec{L}}{dt}$|
 
 
 
@@ -119,10 +119,10 @@ There are several parameters you can tune to stabilize the simulation. The confi
 Both force and torque support 4 modes:
 |PxForceMode|Physics Equivalent|
 |-|-|
-|eFORCE|\\(ma\\)|
-|eIMPULSE|\\(mat\\)|
-|eVELOCITY_CHANGE|\\(at\\)|
-|eACCELERATION|\\(a\\)|
+|eFORCE|$ma$|
+|eIMPULSE|$mat$|
+|eVELOCITY_CHANGE|$at$|
+|eACCELERATION|$a$|
 
 Here's my code snippet for implementing addForce and addTorque:
 ```cpp
@@ -197,9 +197,9 @@ Sleeping rigidbodies have virtually no performance cost. Putting less important 
 
 ## Sleep Mechanism
 
-An actor goes to sleep when its mass-normalized kinetic energy (i.e., \\(\frac{1}{2}v^2\\)) remains **below a threshold for a certain duration**. Internally, PhysX uses a wake-counter; when it reaches 0, the actor becomes a candidate for sleeping.
+An actor goes to sleep when its mass-normalized kinetic energy (i.e., $\frac{1}{2}v^2$) remains **below a threshold for a certain duration**. Internally, PhysX uses a wake-counter; when it reaches 0, the actor becomes a candidate for sleeping.
 
-The default threshold is \\(5∗10^{−5}∗v^2\\), where \\(v\\) is `PxTolerancesScale.velocity`. This means actors are allowed to sleep when their velocity drops below 1% of `PxTolerancesScale.velocity`. You can customize this threshold using `PxRigidDynamic::setSleepThreshold`.
+The default threshold is $5 \times 10^{-5} \times v^2$, where $v$ is `PxTolerancesScale.velocity`. This means actors are allowed to sleep when their velocity drops below 1% of `PxTolerancesScale.velocity`. You can customize this threshold using `PxRigidDynamic::setSleepThreshold`.
 
 You can also directly control the wake-counter using `PxRigidDynamic::setWakeCounter`.
 

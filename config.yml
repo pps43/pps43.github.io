@@ -21,6 +21,19 @@ pagination.pagerSize: 20
 minify:
     disableXML: true
 
+markup:
+    goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - ['$$', '$$']
+                        - ['\[', '\]']
+                    inline:
+                        - ['$', '$']
+                        - ['\(', '\)']
+
 # for search
 # https://github.com/adityatelange/hugo-PaperMod/wiki/Features#search-page
 outputs:
