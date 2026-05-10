@@ -5,7 +5,7 @@ hideSummary: false
 draft: false
 tags: ['经济']
 cover:
-    image: "/how_the_economic_machine_works/economy.png"
+    image: "/how_the_economic_machine_works/economy.webp"
     alt: "" # alt text
     caption: "" # display caption under cover
     relative: false # when using page bundles set this to true
@@ -51,7 +51,7 @@ $$
 全部市场的全部交易统称为经济。
 
 
-![什么是经济](/how_the_economic_machine_works/economy.png)
+![什么是经济](/how_the_economic_machine_works/economy.webp)
 
 
 ### 经济形势变化的三条脉络
@@ -61,7 +61,7 @@ $$
 - 债务小周期（5~8年）
 - 债务大周期（75~100年）
 
-![三条脉络](/how_the_economic_machine_works/three_forces.png)
+![三条脉络](/how_the_economic_machine_works/three_forces.webp)
 
 # 深入经济周期
 
@@ -124,7 +124,7 @@ $$
 
 结合具体情势，通过巧妙地组合使用上述四种手段，才可以做到和谐的去杠杆。也不要太悲观，因为和谐的去杠杆化过程比信用扩张时期更好，因为此时经济是在自然缓慢增长的，夯实根基。
 
-![长周期](/how_the_economic_machine_works/period.png)
+![长周期](/how_the_economic_machine_works/period.webp)
 
 # 反思
 

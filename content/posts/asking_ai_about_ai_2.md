@@ -68,12 +68,12 @@ Dr. Phind:
 > - ~~**Westworld simulation** is an autonomous AI agent that simulates the Westworld environment. It uses reinforcement learning to improve its decision-making ability and can learn from its mistakes. Westworld simulation can interact with other agents in the environment and can perform tasks like navigating through the environment, recognizing objects, and even interacting with human~~. 
 >   
 >   ⚡Me: In fact it's an interactive sandbox environment created by researchers from Stanford and Google, the paper is [here (PDF)](https://arxiv.org/pdf/2304.03442.pdf) and this is the basic architecture. 
->   ![The Generative Agent Architecture](/asking_ai_about_ai_2/GenerativeAgentArchitecture.png)
+>   ![The Generative Agent Architecture](/asking_ai_about_ai_2/GenerativeAgentArchitecture.webp)
 >
 > - **BabyAGI** is another autonomous AI agent that uses GPT-4, Pinecone, LangChain, and Chrome to generate and execute tasks. It can make human-like cognitive decisions and can write and run codes to meet certain objectives. BabyAGI can retain long-term memory of tasks and events with the help of Pinecone and LangChain, making fetching information faster. Its decisiveness makes it an effective tool for cryptocurrency trading, robotics, and autonomous driving.
 >
 >   ⚡Me: add info from [Github](https://github.com/yoheinakajima/babyagi/tree/main): the script works by running an infinite loop that does the following steps:
->   ![BabyAGI_Architecture](/asking_ai_about_ai_2/BabyAGI_Architecture.png)
+>   ![BabyAGI_Architecture](/asking_ai_about_ai_2/BabyAGI_Architecture.webp)
 > 
 > These autonomous AI agents have different capabilities and approaches to accomplishing tasks. Camel is useful for generating content for social media and performing simple tasks, ~~Westworld simulation is useful for simulating environments and interacting with other agents~~ and BabyAGI is useful for decision-making sectors like autonomous driving and robotics.
 

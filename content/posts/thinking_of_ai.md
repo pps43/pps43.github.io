@@ -5,7 +5,8 @@ draft: false
 hideSummary: false
 tags: ["AI", "杂谈"]
 cover: 
-    image: "/thinking_of_ai/human_ai_hands.jpg"
+    image: "/thinking_of_ai/human_ai_hands.webp"
+    hidden: true
 
 ---
 

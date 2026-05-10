@@ -264,7 +264,7 @@ bool PhysXManager::MySphereOverlap(PhysXRaycastHits& hitResults, float radius, c
 - Make sure shape dimension and queryshape dimension have positive values, recommended  minimum value is `1.192092896e-07F`. Or random crash may happen.
   > If using the DEBUG version, it may raise an assertion failure if a capsule shape degrades to a sphere shape (height is zero).
   >
-  >![](/using_physx_scenequery/capsuleshape_assert_fail.png)
+  >![](/using_physx_scenequery/capsuleshape_assert_fail.webp)
 
 - In `Raycast` or `Sweep`, make sure `direction` is normalized and not zero. Or random crash may happen.
 - In `Overlap`, do not check `hit.distance` (it's always zero) in post-filtering logic.

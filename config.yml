@@ -1,12 +1,13 @@
 baseURL: https://pps43.github.io
 languageCode: en-us
-title: 波波沙🏠
+title: 👨🏼‍🌾
 theme: "PaperMod"
 copyright: "© 2016-2023 By 波波沙."
 
 googleAnalytics: G-7GDH7EZ6GL
 enableInlineShortcodes: true
 enableRobotsTXT: true
+enableGitInfo: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
@@ -46,11 +47,12 @@ params:
     comments: true
 
 
+    mainSections: ["posts"]
+
     homeInfoParams:
-      Title: "Safe Room for PPS"
+      Title: "PPS's Garden"
       Content: >
-       这里有一些零碎的想法、笔记，和一点点生活。[]~(￣▽￣)~*
-       早期的文章有空慢慢搬运。*~(￣▽￣)~[]
+       播撒几粒想法 | 浇灌几株启发 | 除掉几只BUG | 角落开满鲜花
     
     socialIcons:
         - name: Zhihu

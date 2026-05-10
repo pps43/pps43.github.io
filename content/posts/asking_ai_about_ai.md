@@ -192,4 +192,4 @@ ChatGPT:
 
 
 
-![Great! I understand everything (bushi)](/asking_ai_about_ai/understand_everything.jpg)
+![Great! I understand everything (bushi)](/asking_ai_about_ai/understand_everything.webp)

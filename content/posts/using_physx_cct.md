@@ -29,18 +29,18 @@ Generally, CCT can be kinematic or dynamic, but according to PhysX document, kin
 
 There are two shapes of CCT, AABB and Capsule. Take Capsule as example.
 
-![](/using_physx_cct/capsule_shape.png)
+![](/using_physx_cct/capsule_shape.webp)
 
 > ⚠ In Unity, the height in inspector equals to `CCT.height + 2 * CCT.radius`.
 
 To change height, use `setHeight` or `resize`.
-![](/using_physx_cct/resize.png)
+![](/using_physx_cct/resize.webp)
 
 ## Skin Width
 To avoid numerical issue, there is a skin around character, defined by `PxControllerDesc::contactOffset`. E.g. 0.08, or 10% of the radius. Also called "Contact Offset".
 
 ## Foot Position
-![](/using_physx_cct/footposition.png)
+![](/using_physx_cct/footposition.webp)
 
 Foot position is helpful in some cases, access via `PxController::getFootPosition/setFootPosition`
 
@@ -48,7 +48,7 @@ If need to keep foot position when change height, use `PxController::resize`.
 
 ## Up Direction
 
-![](/using_physx_cct/upvector.png)
+![](/using_physx_cct/upvector.webp)
 
 Up direction can be arbitrary, defined by `PxController::setUpDirection()`.
 
@@ -251,6 +251,6 @@ public:
 - Unity does not draw `skinWidth` in scene view, but it exists as part of volumn.
 - Unity locks upvector to `(0,1,0)` so you can't rotate controller.
 - Unity's `IsGrounded` is NOT reliable at all. It's just implemented as `collisionFlags & eCOLLISION_DOWN::eCOLLISION_DOWN`, but very often when running uphill, the flag is `eCOLLISION_SIDES` so you get wrong result that `IsGrounded == false`. You should use `capsule raycast` or anything else to implement your own Ground-Detection algorithm.
-![](/using_physx_cct/Unity_IsGround.png)
+![](/using_physx_cct/Unity_IsGround.webp)
 
 - When CCT is not moving, it loses the ability to collide with non-dynamic physical objects. That is, it will penetrate into a kinematic moving platform. **There is NO official way to solve it** since it's as designed by PhysX. To solve this, add a minor movement every frame on your CCT, e.g., `0.001 * Forward * deltaTime`. [See more discussion](https://forum.unity.com/threads/proper-collision-detection-with-charactercontroller.292598/).
