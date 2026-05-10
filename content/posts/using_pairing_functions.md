@@ -33,7 +33,7 @@ z = (x + y) * (x + y + 1) / 2 + y
 
 这四步就是把 `z` 定位到它所在的那条斜对角，再求出在该斜对角上的具体位置。
 
-![Cantor 配对函数示意图](/using_pairing_functions/cantor_function.png)
+![Cantor 配对函数示意图](/using_pairing_functions/cantor_function.webp)
 
 
 ### 代码实现

@@ -5,7 +5,7 @@ draft: false
 hideSummary: false
 tags: ["书摘"]
 cover:
-    image: "/notes_on_genius_in_ghibli/cover.png"
+    image: "/notes_on_genius_in_ghibli/cover.webp"
     alt: "" # alt text
     caption: "" # display caption under cover
     relative: false # when using page bundles set this to true

@@ -13,7 +13,7 @@ tags: ["Game Dev", "PhysX"]
 运维同事发现体验服和某区在新版本上线一小段时间后，会出现概率不高但持续出现的进程Crash。这里先简单说明一下：我们会在一台机器上部署多个GameServer实例，每个GameServer实例进程同时进行着多场不同的Match，如果某一场Match出现了业务层Crash，并不会影响其他Match。但如果是C++物理库内出现Crash，则会同时中止其他正常运行的Match，对玩家的影响较大。
 
 虽然看不到完整的堆栈，但从中还是发现和物理引擎的`SceneQuery`有关。
-![](/using_physx_solving_zero_value_crash/crash_log.png)
+![](/using_physx_solving_zero_value_crash/crash_log.webp)
 
 其实还有另一个很相似的堆栈（忘记保存截图了）在`prefilter`上方还有一行`NpShape vtable...`。由于`prefilter`实现逻辑中确实调用了`shape.getFlags()`，所以怀疑是跟`shape`相关逻辑中出现空指针引用。但由于shape是引擎内部维护的，所以上述怀疑并不能提供明确的修复方法。
 ```cpp
@@ -131,7 +131,7 @@ import "C"
 
 成功部署Debug包到一台服务器上后，过15min就Crash了，在最后一刻传递出了新的信息：
 
-![](/using_physx_solving_zero_value_crash/crash_log_2.png)
+![](/using_physx_solving_zero_value_crash/crash_log_2.webp)
 
 创建shape时参数不合法，首先怀疑传入了0或NaN。进一步的排查发现，这个版本使用了新版的创建函数，确实相比老的创建流程少了一个参数合法性校验。当发现某个维度出现0值时，虽然不会立即Crash，但在后续被Raycast等操作访问到时，会概率性Crash。解决方法很简单，在业务层已有代码中，发现传入0时给出警告并return；在底层代码中创建shape时，强制将值为0的维度改为一个微小的值，如下`ForceNonZero`。
 
@@ -149,7 +149,7 @@ void ForceNonZero()
 
 > 注意Unity并没有对此进行防护，scale=0会影响相关的collider尺寸为0，最终造成crash（表现为黑屏、花屏等），meshcollider尤其容易发生。
 
-![](/using_physx_solving_zero_value_crash/crash_over.png)
+![](/using_physx_solving_zero_value_crash/crash_over.webp)
 
 并且通过Debug版给出的警告，我们还对数值类参数做了NaN或Inf校验`physx::PxIsFinite`，并且对方向类参数做了强制归一化，进一步提高了物理系统稳定性。值此，修复完成。
 

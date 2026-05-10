@@ -22,7 +22,7 @@ hideSummary: false
 
 本篇由AI起稿，人工精修。
 
-![the_prompt](/asking_ai_about_ai_3/the_prompt.png)
+![the_prompt](/asking_ai_about_ai_3/the_prompt.webp)
 
 
 ---
