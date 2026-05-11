@@ -6,7 +6,7 @@
 - prefer reuseing existing tags
 - use `[link to another post]({{< ref "posts/post_name.md>}})` to link to related posts, or `[tag link]({{< tagref "tag_name"}})` for tags.
 - use `![caption](/{post_name}/{image_name})` to reference images, image file should be under path: `static/{post_name}`. 
-- use MathJax grammar for math formular
+- use MathJax grammar for math formular, `$...$` for inline, `$$` for multiline
 
 # About theme customization
 - i use a modified papermod theme as a submodule under path: `themes/Papermod`

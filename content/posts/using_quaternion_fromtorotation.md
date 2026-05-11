@@ -1,5 +1,5 @@
 ---
-title: "实现Quaternion.FromToRotation的细节"
+title: "Quaternion.FromToRotation的细节"
 date: 2025-08-26
 hideSummary: false
 draft: false
