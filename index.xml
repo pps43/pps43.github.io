@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 May 2026 23:31:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 22:03:54 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -18,17 +18,33 @@
 &lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>你想活出怎样的人生（吉野源三郎）</title>
+      <title>你想活出怎样的人生</title>
       <link>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</link>
       <pubDate>Fri, 14 Jul 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_how_you_live_your_life/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/notes_on_genius_in_ghibli/&#34;&gt;之前&lt;/a&gt;曾提到过，这本写于1937年的书曾经入选日本教材，并影响了宫崎骏一生的轨迹。他曾写文解释这本书如何触发他思考当时的社会以及未来的世界：（这本书）传达出一个讯息，那就是&lt;strong&gt;无论处在多么艰困的时代或是残酷的时代，都要活的像一个人&lt;/strong&gt;。我读后深感这虽是一本写给少年的读物，读起来很轻快，却非常深刻隽永，令人动容。合上书页，我仿佛也看到那远方的天空、无尽的人们。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/notes_on_genius_in_ghibli/&#34;&gt;之前&lt;/a&gt;曾提到过，吉野源三郎这本写于1937年的书曾经入选日本教材，并影响了宫崎骏一生的轨迹。他曾写文解释这本书如何触发他思考当时的社会以及未来的世界：（这本书）传达出一个讯息，那就是&lt;strong&gt;无论处在多么艰困的时代或是残酷的时代，都要活的像一个人&lt;/strong&gt;。我读后深感这虽是一本写给少年的读物，读起来很轻快，却非常深刻隽永，令人动容。合上书页，我仿佛也看到那远方的天空、无尽的人们。&lt;/p&gt;
 &lt;p&gt;“&lt;strong&gt;要成为能帮助世界进步的人&lt;/strong&gt;（Make the world a better place）”——我再次坚定了内心的信念。&lt;/p&gt;
 &lt;p&gt;相信这本书会一直流传下去。&lt;a href=&#34;https://book.douban.com/subject/34659228/&#34;&gt;豆瓣读书&lt;/a&gt;, &lt;a href=&#34;https://www.goodreads.com/book/show/34762989&#34;&gt;GoodReads&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;舅舅的笔记片段1&#34;&gt;舅舅的笔记片段1&lt;/h2&gt;
 &lt;p&gt;所有小孩子的想法都不像地动说，而像天动说。请你观察小孩的知识，他们一切都以自己为中心。电车轨道在我们家左边，邮筒在我们家右边，菜贩在弯进转角的地方。静子家在我们家对面，阿三家在我们家隔壁。小孩子的想法就像这样，一切都以自己家为中心。人是其他人的过程也一样，例如那是我爸爸的同事、这是我妈妈的亲戚……长大之后，想法或多或少的会慢慢接近地动说……人习惯以自己为中心思考、判断事物；即使长大了，这种特性同样根深柢固。等你长大了就会明白，&lt;strong&gt;在广大的世界上，能完全改掉以自己为中心思考的习惯的人，其实非常稀少。尤其碰到事关利害得失的时候，要跳脱自己的立场作出正确的判断，实在很难&lt;/strong&gt;。面对利害得失如果还能抱持像哥白尼那样的想法，可说是非常了不起。……如果人一直坚信地球是宇宙的中心，恐怕就无法了解宇宙真正的样貌，同样地，总是以自我为中心判断事物，也会让人不了解周遭事物的真相。这种人一定看不清重大的真理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using Claude Design</title>
+      <link>https://pps43.github.io/posts/using_claude_design/</link>
+      <pubDate>Sun, 17 May 2026 21:43:35 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/using_claude_design/</guid>
+      <description>&lt;p&gt;前一段时间A社推出了Claude Design，标志着 AI 编程工具进一步参与设计。虽然目前专业的工作流还是先在Figma中设计然后导出，或通过mcp导入到Coding Agent中进行编码还原，但Claude Design有这独特的价值。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTML在AI时代的复兴</title>
+      <link>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</link>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;软件不只是最终产品，也可以是过程产物。AI 让我们重新拥有了为一次性问题制作一次性软件工具的自由。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://simonwillison.net/&#34;&gt;Simon Willison&lt;/a&gt; 最近转发并评论了 Thariq Shihipar 的一篇文章：&lt;a href=&#34;https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/&#34;&gt;Using Claude Code: The Unreasonable Effectiveness of HTML&lt;/a&gt;。Thariq 的核心判断可以概括成几句话：HTML 的信息密度更高，可读性更好，还能把文档变成交互界面，并且支持多媒体数据嵌入到一个文件中，因此更容易用一个链接分享。&lt;/p&gt;</description>
     </item>
     <item>
       <title>强化学习可能还不是AI的未来</title>
@@ -114,12 +130,12 @@
 &lt;p&gt;过去几十年的发展，“机器”的形态发生了巨大变化，现在，LLM本身也变成了“机器”。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Thinking of Quality Design</title>
+      <title>Quality Design 🍎</title>
       <link>https://pps43.github.io/posts/thinking_of_quality_design/</link>
       <pubDate>Mon, 05 May 2025 20:41:35 +0800</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_quality_design/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;🍎本文源自对Apple WWDC 2018 的一次公开分享的记录提炼。什么是优秀的设计，它为什么重要，如何追求品质感……这些话题不仅是设计师需要考虑的专业问题，也是每个人打造自己的生活需要知道的内在规律。&lt;a href=&#34;https://developer.apple.com/cn/videos/play/wwdc2018/801/&#34;&gt;Video&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;本文源自对Apple WWDC 2018 的一次公开分享的记录提炼。什么是优秀的设计，它为什么重要，如何追求品质感……这些话题不仅是设计师需要考虑的专业问题，也是每个人打造自己的生活需要知道的内在规律。&lt;a href=&#34;https://developer.apple.com/cn/videos/play/wwdc2018/801/&#34;&gt;Video&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>WebGL平台的性能限制和解决方案（以微信小游戏为例）</title>

@@ -7,8 +7,24 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 May 2026 23:31:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 22:03:54 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using Claude Design</title>
+      <link>https://pps43.github.io/posts/using_claude_design/</link>
+      <pubDate>Sun, 17 May 2026 21:43:35 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/using_claude_design/</guid>
+      <description>&lt;p&gt;前一段时间A社推出了Claude Design，标志着 AI 编程工具进一步参与设计。虽然目前专业的工作流还是先在Figma中设计然后导出，或通过mcp导入到Coding Agent中进行编码还原，但Claude Design有这独特的价值。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTML在AI时代的复兴</title>
+      <link>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</link>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;软件不只是最终产品，也可以是过程产物。AI 让我们重新拥有了为一次性问题制作一次性软件工具的自由。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://simonwillison.net/&#34;&gt;Simon Willison&lt;/a&gt; 最近转发并评论了 Thariq Shihipar 的一篇文章：&lt;a href=&#34;https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/&#34;&gt;Using Claude Code: The Unreasonable Effectiveness of HTML&lt;/a&gt;。Thariq 的核心判断可以概括成几句话：HTML 的信息密度更高，可读性更好，还能把文档变成交互界面，并且支持多媒体数据嵌入到一个文件中，因此更容易用一个链接分享。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>强化学习可能还不是AI的未来</title>
       <link>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</link>
