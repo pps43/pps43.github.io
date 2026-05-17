@@ -55,7 +55,7 @@ params:
     ShowBreadCrumbs: false # folder path above title
     ShowCodeCopyButtons: true
     ShowToc: true #show collaspable toc under title
-    tocopen: true
+    tocopen: false
     hideSummary: true # summary in card view
     comments: true
 

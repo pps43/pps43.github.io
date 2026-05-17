@@ -14,6 +14,14 @@
       </span>
       {{- end }}
     </h1>
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    {{- with (.GetTerms $tags) }}
+    <div class="post-title-tags" aria-label="Tags">
+      {{- range . }}
+      <span class="post-title-tag">{{ .LinkTitle }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
     {{- if .Description }}
     <div class="post-description">
       {{ .Description }}
