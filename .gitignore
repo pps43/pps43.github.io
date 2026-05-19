@@ -3,3 +3,5 @@
 /public/
 .DS_Store
 pps43.github.io.code-workspace
+
+*.excalidraw.png
