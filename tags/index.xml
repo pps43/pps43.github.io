@@ -7,13 +7,20 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 17 May 2026 22:03:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 23:14:55 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://pps43.github.io/tags/ai/</link>
-      <pubDate>Sun, 17 May 2026 21:43:35 +0800</pubDate>
+      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
       <guid>https://pps43.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Engineering</title>
+      <link>https://pps43.github.io/tags/software-engineering/</link>
+      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
+      <guid>https://pps43.github.io/tags/software-engineering/</guid>
       <description></description>
     </item>
     <item>
@@ -77,13 +84,6 @@
       <link>https://pps43.github.io/tags/physx/</link>
       <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/physx/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software Engineering</title>
-      <link>https://pps43.github.io/tags/software-engineering/</link>
-      <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/software-engineering/</guid>
       <description></description>
     </item>
     <item>

@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Mon, 07 Oct 2024 20:40:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 23:14:55 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -16,6 +16,13 @@
       <guid>https://pps43.github.io/posts/thinking_of_software_engineering/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic Engineering (1)</title>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</link>
+      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</guid>
+      <description>&lt;p&gt;最近读 Simon Willison 的 &lt;a href=&#34;https://simonwillison.net/guides/agentic-engineering-patterns/&#34;&gt;Agentic Engineering Patterns&lt;/a&gt;，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。&lt;/p&gt;</description>
     </item>
     <item>
       <title>凤凰项目</title>
