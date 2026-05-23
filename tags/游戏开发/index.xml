@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Game Dev on 👨🏼‍🌾</title>
-    <link>https://pps43.github.io/tags/game-dev/</link>
-    <description>Recent content in Game Dev on 👨🏼‍🌾</description>
+    <title>游戏开发 on 👨🏼‍🌾</title>
+    <link>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 游戏开发 on 👨🏼‍🌾</description>
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 10 May 2026 23:31:29 +0800</lastBuildDate>
-    <atom:link href="https://pps43.github.io/tags/game-dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 May 2026 21:00:20 +0800</lastBuildDate>
+    <atom:link href="https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quaternion.FromToRotation的细节</title>
       <link>https://pps43.github.io/posts/using_quaternion_fromtorotation/</link>

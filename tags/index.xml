@@ -7,27 +7,27 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Tue, 19 May 2026 23:14:55 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 21:00:20 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://pps43.github.io/tags/ai/</link>
-      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
+      <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
       <guid>https://pps43.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
-      <title>Software Engineering</title>
-      <link>https://pps43.github.io/tags/software-engineering/</link>
-      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
-      <guid>https://pps43.github.io/tags/software-engineering/</guid>
+      <title>软件工程</title>
+      <link>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
+      <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
+      <guid>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</guid>
       <description></description>
     </item>
     <item>
-      <title>Design</title>
-      <link>https://pps43.github.io/tags/design/</link>
+      <title>设计</title>
+      <link>https://pps43.github.io/tags/%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 17 May 2026 21:43:35 +0800</pubDate>
-      <guid>https://pps43.github.io/tags/design/</guid>
+      <guid>https://pps43.github.io/tags/%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
     </item>
     <item>
@@ -38,17 +38,17 @@
       <description></description>
     </item>
     <item>
-      <title>Game Dev</title>
-      <link>https://pps43.github.io/tags/game-dev/</link>
-      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/game-dev/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>数学</title>
       <link>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</link>
       <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/%E6%95%B0%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>游戏开发</title>
+      <link>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     <item>
