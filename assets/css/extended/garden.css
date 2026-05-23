@@ -73,6 +73,14 @@ pre {
     background: transparent;
 }
 
+.post-content code.language-text {
+    display: block;
+    overflow-x: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
 .post-content {
     color: var(--content);
 }
@@ -211,7 +219,7 @@ pre {
 
 .home-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 208px;
+    grid-template-columns: minmax(0, 1fr) 268px;
     gap: 28px;
     align-items: start;
 }

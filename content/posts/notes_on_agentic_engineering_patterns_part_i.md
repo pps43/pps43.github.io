@@ -2,7 +2,7 @@
 title: "Agentic Engineering (1)"
 date: 2026-05-18T22:26:33+08:00
 hideSummary: false
-tags: ["AI", "Software Engineering"]
+tags: ["AI", "软件工程"]
 ---
 
 最近读 Simon Willison 的 [Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/)，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。

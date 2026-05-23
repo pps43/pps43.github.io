@@ -3,7 +3,7 @@ title: "带物理交互的CharacterController设计与实现"
 date: 2024-03-18
 hideSummary: false
 draft: false
-tags: ["Game Dev", "PhysX", "Unity"]
+tags: ["游戏开发", "PhysX", "Unity"]
 ---
 
 > 本文也是[PhysX物理引擎系列]({{< tagref "PhysX" >}})的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。

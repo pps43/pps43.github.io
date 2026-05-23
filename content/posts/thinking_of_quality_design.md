@@ -3,7 +3,7 @@ title: "Quality Design 🍎"
 date: 2025-05-05T20:41:35+08:00
 hideSummary: false
 draft: false
-tags: ["Design"]
+tags: ["设计"]
 ---
 
 > 本文源自对Apple WWDC 2018 的一次公开分享的记录提炼。什么是优秀的设计，它为什么重要，如何追求品质感……这些话题不仅是设计师需要考虑的专业问题，也是每个人打造自己的生活需要知道的内在规律。[Video](https://developer.apple.com/cn/videos/play/wwdc2018/801/)

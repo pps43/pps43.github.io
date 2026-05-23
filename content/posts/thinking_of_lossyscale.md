@@ -3,7 +3,7 @@ title: "深入 LossyScale"
 date: 2023-07-19
 hideSummary: false
 draft: false
-tags: ["Game Dev", "PhysX", "数学"]
+tags: ["游戏开发", "PhysX", "数学"]
 ---
 
 > 本文是[PhysX物理引擎系列]({{< tagref "PhysX" >}})的番外篇，其实要弄明白一个3D数学问题：如何处理父节点带有非均匀缩放、子节点带有旋转时，子节点的最终大小和形态。

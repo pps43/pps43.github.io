@@ -3,7 +3,7 @@ title: "PhysX物理引擎（2）Collision"
 date: 2023-08-11
 hideSummary: false
 # draft: true
-tags: ["Game Dev", "PhysX"]
+tags: ["游戏开发", "PhysX"]
 ---
 
 > 本文主要介绍PhysX碰撞检测的一些内部机制和使用方法。

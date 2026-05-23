@@ -3,7 +3,7 @@ title: "奇妙的Pairing Function"
 date: 2025-08-20
 hideSummary: false
 draft: false
-tags: ["Game Dev", "数学"]
+tags: ["游戏开发", "数学"]
 ---
 
 > 在实际项目里，我们经常需要把二维坐标 `(x, y)`、或两个整型键合成一个“唯一”的整型键，方便做哈希表/数组索引；又希望能在需要时还原回原来的两个键。这样一个反直觉的需求真的有解决方案吗？“配对函数”（Pairing Function）隆重登场。
@@ -80,5 +80,4 @@ N2I(n) = n % 2 == 0 ? n/2 : -(n/2) - 1
 ### 进一步阅读
 
 - 更“优雅”的另一种形式（Szudzik）：[Elegant Pairing](https://szudzik.com/ElegantPairing.pdf)
-
 

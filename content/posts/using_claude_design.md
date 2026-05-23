@@ -3,7 +3,7 @@ title: "Claude Design"
 date: 2026-05-17T21:43:35+08:00
 draft: false
 hideSummary: false
-tags: ["AI", "Design"]
+tags: ["AI", "设计"]
 ---
 
 前一段时间A社推出了Claude Design，标志着 AI 编程工具进一步参与设计。虽然目前专业的工作流还是先在Figma中设计然后导出，或通过mcp导入到Coding Agent中进行编码还原，但Claude Design有这独特的价值。

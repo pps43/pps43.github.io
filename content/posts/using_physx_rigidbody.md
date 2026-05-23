@@ -3,7 +3,7 @@ title: "PhysX物理引擎（3）Rigidbody Dynamics"
 date: 2023-09-04
 hideSummary: false
 draft: false
-tags: ["Game Dev", "PhysX"]
+tags: ["游戏开发", "PhysX"]
 ---
 
 > 本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。

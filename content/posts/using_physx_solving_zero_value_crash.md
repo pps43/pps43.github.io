@@ -3,7 +3,7 @@ title: "PhysX零值Crash"
 date: 2023-06-13
 hideSummary: false
 draft: false
-tags: ["Game Dev", "PhysX"]
+tags: ["游戏开发", "PhysX"]
 ---
 
 > 本文是[PhysX物理引擎系列]({{< tagref "PhysX" >}})的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有**很高**的实践参考价值。*“有多高？”“三四层楼那么高啦！”*

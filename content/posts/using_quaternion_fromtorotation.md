@@ -3,7 +3,7 @@ title: "Quaternion.FromToRotation的细节"
 date: 2025-08-26
 hideSummary: false
 draft: false
-tags: ["Game Dev", "数学"]
+tags: ["游戏开发", "数学"]
 ---
 
 > 这篇记录实际项目中对`Quaternion.FromToRotation(fromVector, toVector)` 的实现思路，重点讨论当 `fromVector` 与 `toVector` 夹角为 180°（反向）时的稳健处理。主要参考 Stan Melax 的“最短弧四元数”（Shortest Arc Quaternion）思路。

@@ -1,8 +1,9 @@
 ---
-title: "吉卜力的天才们（铃木敏夫）"
+title: "吉卜力的天才们"
 date: 2023-06-30
 draft: false
 hideSummary: false
+weight: 3
 tags: ["书摘"]
 cover:
     image: "/notes_on_genius_in_ghibli/cover.webp"

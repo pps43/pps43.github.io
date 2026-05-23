@@ -3,7 +3,7 @@ title: "Wisdom of Software Engineering"
 date: 2023-10-22
 draft: false
 hideSummary: false
-tags: ["Software Engineering"]
+tags: ["软件工程"]
 weight: 1
 ---
 

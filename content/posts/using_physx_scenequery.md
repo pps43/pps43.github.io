@@ -3,7 +3,7 @@ title: "PhysX物理引擎（1）Scene Query"
 date: 2023-05-26
 hideSummary: false
 #draft: true
-tags: ["Game Dev", "PhysX"]
+tags: ["游戏开发", "PhysX"]
 ---
 
 > 本文主要介绍PhysX场景查询的一些内部机制和使用方法。
