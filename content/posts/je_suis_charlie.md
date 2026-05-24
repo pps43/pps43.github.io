@@ -1,6 +1,7 @@
 ---
 title: "我是查理"
 date: 2015-02-15
+update:
 #draft: true
 tags: ["杂谈"]
 # cover:

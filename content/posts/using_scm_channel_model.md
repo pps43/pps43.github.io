@@ -1,6 +1,7 @@
 ---
 title: "信道仿真模型 3GPP-SCM"
 date: 2014-11-11
+update:
 # draft: true
 hideSummary: false
 

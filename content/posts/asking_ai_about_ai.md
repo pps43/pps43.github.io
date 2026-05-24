@@ -1,6 +1,7 @@
 ---
 title: "用AI学AI.1"
 date: 2023-04-16
+update:
 #draft: true
 tags: ["AI"]
 hideSummary: false

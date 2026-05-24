@@ -1,6 +1,7 @@
 ---
 title: "Generative AI Toolkit (5.12)"
 date: 2023-03-26
+update: 2023-05-12
 hideSummary: false
 #draft: true
 tags: ["AI"]

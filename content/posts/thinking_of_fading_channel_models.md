@@ -1,6 +1,7 @@
 ---
 title: "衰落信道建模小议"
 date: 2014-11-10
+update:
 hideSummary: false
 draft: false
 tags: ["无线通信","数学"]

@@ -1,6 +1,7 @@
 ---
 title: "用AI学AI.2"
 date: 2023-05-14
+update:
 tags: ["AI"]
 hideSummary: false
 ---

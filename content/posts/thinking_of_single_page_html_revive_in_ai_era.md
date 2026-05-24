@@ -1,6 +1,7 @@
 ---
 title: "HTML在AI时代的复兴"
 date: 2026-05-14
+update:
 draft: false
 hideSummary: false
 tags: ["AI", "杂谈"]

@@ -1,6 +1,7 @@
 ---
 title: "用AI学AI.4 [注意力]"
 date: 2025-08-31
+update:
 tags: ["AI"]
 hideSummary: false
 ---

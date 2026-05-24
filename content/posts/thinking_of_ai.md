@@ -1,6 +1,7 @@
 ---
 title: "关于AI产品和个人能力的小思考"
 date: 2025-08-10
+update:
 draft: false
 hideSummary: false
 tags: ["AI", "杂谈"]

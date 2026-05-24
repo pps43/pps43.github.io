@@ -2,16 +2,18 @@
 {{- $dateFormat := default "2006年1月2日" site.Params.DateFormat }}
 {{- $createdDay := "" }}
 {{- $updatedDay := "" }}
+{{- $update := .Param "update" }}
 
 {{- if not .Date.IsZero -}}
 {{- $createdDay = .Date.Format "2006-01-02" -}}
-{{- $scratch.Add "meta" (slice (printf "<span title='%s'>创建于 %s</span>" (.Date) (.Date | time.Format $dateFormat))) }}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>发布于 %s</span>" (.Date) (.Date | time.Format $dateFormat))) }}
 {{- end }}
 
-{{- if not .Lastmod.IsZero -}}
-{{- $updatedDay = .Lastmod.Format "2006-01-02" -}}
+{{- if $update -}}
+{{- $updatedAt := time.AsTime $update -}}
+{{- $updatedDay = $updatedAt.Format "2006-01-02" -}}
 {{- if and $updatedDay (ne $updatedDay $createdDay) -}}
-{{- $scratch.Add "meta" (slice (printf "<span title='%s'>更新于 %s</span>" (.Lastmod) (.Lastmod | time.Format $dateFormat))) }}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>更新于 %s</span>" ($updatedAt) ($updatedAt | time.Format $dateFormat))) }}
 {{- end }}
 {{- end }}
 

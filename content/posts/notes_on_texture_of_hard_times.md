@@ -1,6 +1,7 @@
 ---
 title: "贫穷的质感（王梆）"
 date: 2023-03-03
+update:
 draft: false
 tags: ["经济","书摘"]
 hideSummary: false

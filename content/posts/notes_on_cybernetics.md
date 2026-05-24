@@ -1,6 +1,7 @@
 ---
 title: "Cybernetics二三事"
 date: 2014-11-09
+update:
 hideSummary: false
 tags: ["杂谈"]
 # cover:

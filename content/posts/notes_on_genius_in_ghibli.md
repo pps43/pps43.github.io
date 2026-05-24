@@ -1,6 +1,7 @@
 ---
 title: "吉卜力的天才们"
 date: 2023-06-30
+update:
 draft: false
 hideSummary: false
 weight: 3

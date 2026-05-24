@@ -1,6 +1,7 @@
 ---
 title: "Agentic Engineering (2)"
 date: 2026-05-23T18:18:13+08:00
+update:
 hideSummary: false
 tags: ["AI", "软件工程"]
 ---

@@ -1,6 +1,7 @@
 ---
 title: "软件的未来"
 date: 2025-06-30
+update:
 hideSummary: false
 draft: false
 tags: ["AI", "杂谈"]

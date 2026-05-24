@@ -1,6 +1,7 @@
 ---
 title: "二范数下几个问题的统一解释"
 date: 2014-11-20
+update:
 draft: false
 tags: ["数学","信号处理"]
 # cover:

@@ -1,6 +1,7 @@
 ---
 title: "用AI学AI.3 [多模态]"
 date: 2025-08-30
+update:
 tags: ["AI"]
 hideSummary: false
 ---

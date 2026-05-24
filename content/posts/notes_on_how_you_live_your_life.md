@@ -1,6 +1,7 @@
 ---
 title: "你想活出怎样的人生"
 date: 2023-07-14
+update:
 # draft: true
 tags: ["书摘"]
 hideSummary: false

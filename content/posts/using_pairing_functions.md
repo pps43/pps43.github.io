@@ -1,6 +1,7 @@
 ---
 title: "奇妙的Pairing Function"
 date: 2025-08-20
+update:
 hideSummary: false
 draft: false
 tags: ["游戏开发", "数学"]

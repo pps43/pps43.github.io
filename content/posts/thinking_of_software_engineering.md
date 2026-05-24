@@ -1,6 +1,7 @@
 ---
 title: "Wisdom of Software Engineering"
 date: 2023-10-22
+update:
 draft: false
 hideSummary: false
 tags: ["软件工程"]

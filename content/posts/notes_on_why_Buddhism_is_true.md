@@ -1,6 +1,7 @@
 ---
 title: "洞见·为什么佛学是真的"
 date: 2023-06-06
+update:
 draft: false
 tags: ["书摘","哲学"]
 hideSummary: false

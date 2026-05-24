@@ -1,6 +1,7 @@
 ---
 title: "WebGL平台的性能限制和解决方案（以微信小游戏为例）"
 date: 2024-07-28
+update:
 draft: false
 tags: ["WebGL", "IL2CPP", "游戏开发", "Unity", ".NET"]
 hideSummary: false

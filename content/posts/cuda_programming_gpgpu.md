@@ -1,6 +1,7 @@
 ---
 title: "GP-GPU编程：CUDA介绍"
 date: 2015-02-28
+update:
 #draft: true
 #tags: ["a","b"]
 # cover:

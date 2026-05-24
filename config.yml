@@ -8,6 +8,10 @@ googleAnalytics: G-7GDH7EZ6GL
 enableInlineShortcodes: true
 enableRobotsTXT: true
 enableGitInfo: true
+frontmatter:
+    lastmod:
+        - update
+        - date
 buildDrafts: false
 buildFuture: false
 buildExpired: false

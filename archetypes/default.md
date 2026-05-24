@@ -1,6 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+update:
 draft: true
 #tags: ["a","b"]
 # cover:
@@ -10,4 +11,3 @@ draft: true
 #     relative: false # when using page bundles set this to true
 #     hidden: true # only hide on current single page
 ---
-

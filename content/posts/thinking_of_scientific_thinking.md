@@ -1,6 +1,7 @@
 ---
 title: "Scientific Thinking? No, 杂谈です"
 date: 2014-11-20
+update:
 draft: false
 tags: ["杂谈"]
 # cover:

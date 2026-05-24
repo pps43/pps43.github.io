@@ -1,0 +1,45 @@
+.archive-year {
+    margin-top: 24px;
+}
+
+.archive-year:not(:last-of-type) {
+    border-bottom-width: 1px;
+}
+
+.archive-year-header {
+    margin: 16px 0 10px;
+}
+
+.archive-month {
+    gap: 18px;
+    padding: 4px 0;
+}
+
+.archive-month-header {
+    width: 150px;
+    margin: 6px 0;
+}
+
+.archive-entry {
+    padding: 2px 4px;
+    margin: 2px 0 7px;
+}
+
+.archive-entry-title {
+    margin: 0;
+    line-height: 1.35;
+}
+
+.archive-posts {
+    font-size: 15px;
+}
+
+@media (max-width: 640px) {
+    .archive-month {
+        gap: 10px;
+    }
+
+    .archive-month-header {
+        width: 110px;
+    }
+}
