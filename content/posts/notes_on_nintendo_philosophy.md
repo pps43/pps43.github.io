@@ -2,6 +2,7 @@
 title: "任天堂哲学"
 date: 2026-05-24T16:27:51+08:00
 update:
+hideSummary: false
 draft: false
 tags: ["书摘", "游戏开发"]
 ---
