@@ -7,17 +7,8 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 17 May 2026 22:03:54 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>HTML在AI时代的复兴</title>
-      <link>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</link>
-      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/thinking_of_single_page_html_revive_in_ai_era/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;软件不只是最终产品，也可以是过程产物。AI 让我们重新拥有了为一次性问题制作一次性软件工具的自由。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://simonwillison.net/&#34;&gt;Simon Willison&lt;/a&gt; 最近转发并评论了 Thariq Shihipar 的一篇文章：&lt;a href=&#34;https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/&#34;&gt;Using Claude Code: The Unreasonable Effectiveness of HTML&lt;/a&gt;。Thariq 的核心判断可以概括成几句话：HTML 的信息密度更高，可读性更好，还能把文档变成交互界面，并且支持多媒体数据嵌入到一个文件中，因此更容易用一个链接分享。&lt;/p&gt;</description>
-    </item>
     <item>
       <title>强化学习可能还不是AI的未来</title>
       <link>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</link>
@@ -25,27 +16,6 @@
       <guid>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=lXUZvyajciY&#34;&gt;Andrej Karpathy&lt;/a&gt; 和 &lt;a href=&#34;https://www.youtube.com/watch?v=aR20FWCCjAs&#34;&gt;Ilya Sutskever&lt;/a&gt; 几乎在同一时间，把目光从“堆算力、堆数据”的规模化竞赛，转向了更根本的问题：我们真的找到了让机器像人一样学习、反思和泛化的道路吗？当前围绕强化学习打造的 LLM，已经暴露出一系列深层缺陷：泛化能力和学习机制。如果说过去十年是“参数上亿”的工程时代，那么他们描述的，是一个重新回到研究时代的契机。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>关于AI产品和个人能力的小思考</title>
-      <link>https://pps43.github.io/posts/thinking_of_ai/</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
-      <description>&lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而稳、而且更快。这件小事让我意识到：&lt;strong&gt;我们真正迫切需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>软件的未来</title>
-      <link>https://pps43.github.io/posts/thinking_of_software/</link>
-      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/thinking_of_software/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;近期看了一些大佬对AI时代软件形态的探讨，记录一些感悟。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;编写软件不再只是程序员可以做的酷酷的事。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;过去几十年的发展，“机器”的形态发生了巨大变化，现在，LLM本身也变成了“机器”。&lt;/p&gt;</description>
     </item>
     <item>
       <title>我是查理</title>

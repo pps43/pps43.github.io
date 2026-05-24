@@ -7,8 +7,18 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 23 May 2026 21:00:20 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2026 16:27:51 +0800</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>任天堂哲学</title>
+      <link>https://pps43.github.io/posts/notes_on_nintendo_philosophy/</link>
+      <pubDate>Sun, 24 May 2026 16:27:51 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_nintendo_philosophy/</guid>
+      <description>&lt;p&gt;下面是重读《任天堂哲学》时一些书摘，按话题相似度做了分组。&lt;/p&gt;
+&lt;h1 id=&#34;反对性能竞赛&#34;&gt;反对性能竞赛&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N64的处理能力是PS的4倍以上。面对这种全新的硬件，以往的游戏软件开发方法完全不适用了，&lt;strong&gt;致使游戏软件开发的作业量、周期、投资和风险都成倍增长&lt;/strong&gt;。……这款优秀的游戏机硬件为众多游戏软件开发上设了一个很高的门槛，甚至可以说是壁垒。……就连任天堂自己的开发人员也无法承受。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Quaternion.FromToRotation的细节</title>
       <link>https://pps43.github.io/posts/using_quaternion_fromtorotation/</link>
