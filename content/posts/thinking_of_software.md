@@ -4,7 +4,7 @@ date: 2025-06-30
 update:
 hideSummary: false
 draft: false
-tags: ["AI", "杂谈"]
+tags: ["AI", "软件"]
 ---
 
 > 近期看了一些大佬对AI时代软件形态的探讨，记录一些感悟。

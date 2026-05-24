@@ -3,7 +3,7 @@ title: "Agentic Engineering (2)"
 date: 2026-05-23T18:18:13+08:00
 update:
 hideSummary: false
-tags: ["AI", "软件工程"]
+tags: ["AI", "软件"]
 ---
 
 上一篇 [Agentic Engineering (1)]({{< ref "posts/notes_on_agentic_engineering_patterns_part_i.md" >}}) 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。

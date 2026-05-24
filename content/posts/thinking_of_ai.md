@@ -4,7 +4,7 @@ date: 2025-08-10
 update:
 draft: false
 hideSummary: false
-tags: ["AI", "杂谈"]
+tags: ["AI"]
 cover: 
     image: "/thinking_of_ai/human_ai_hands.webp"
     hidden: true

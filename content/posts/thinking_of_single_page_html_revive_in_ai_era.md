@@ -4,7 +4,7 @@ date: 2026-05-14
 update:
 draft: false
 hideSummary: false
-tags: ["AI", "杂谈"]
+tags: ["AI", "软件"]
 ---
 
 > 软件不只是最终产品，也可以是过程产物。AI 让我们重新拥有了为一次性问题制作一次性软件工具的自由。
