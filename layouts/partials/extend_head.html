@@ -28,3 +28,46 @@ window.MathJax = {
 };
 </script>
 <script id="MathJax-script" async src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Google Analytics Local Dev Detection & Debug Mode Integration -->
+<script>
+(function() {
+    var hostname = window.location.hostname;
+    var isLocal = hostname === 'localhost' || 
+                  hostname === '127.0.0.1' || 
+                  hostname === '[::1]' ||
+                  hostname.startsWith('192.168.') ||
+                  hostname.startsWith('10.') ||
+                  /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname) ||
+                  hostname.endsWith('.local');
+
+    if (isLocal) {
+        window.dataLayer = window.dataLayer || [];
+        var originalPush = window.dataLayer.push;
+        window.dataLayer.push = function() {
+            var newArgs = [];
+            for (var i = 0; i < arguments.length; i++) {
+                var item = arguments[i];
+                if (item && item[0] === 'config' && typeof item[1] === 'string') {
+                    var options = item[2] || {};
+                    options['debug_mode'] = true;
+                    var newItem = [item[0], item[1], options];
+                    for (var j = 3; j < item.length; j++) {
+                        newItem.push(item[j]);
+                    }
+                    newArgs.push(newItem);
+                    console.log('[GA4-Debug] Local environment detected. Automatically enabled debug_mode for:', item[1]);
+                } else {
+                    newArgs.push(item);
+                }
+            }
+            // If dataLayer.push hasn't been initialized with the original Array.prototype.push yet
+            if (typeof originalPush === 'function') {
+                return originalPush.apply(window.dataLayer, newArgs);
+            } else {
+                return Array.prototype.push.apply(window.dataLayer, newArgs);
+            }
+        };
+    }
+})();
+</script>
