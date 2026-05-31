@@ -67,3 +67,17 @@ HTML 的代价也很明显：生成更慢，token 更多，Git diff 的结果有
 1. 动画效果演示
 {{< html-revival >}}
 
+# 本地预览 html 文件或文件夹
+除了用浏览器直接打开html，还可以通过在文件所在目录启动http服务器实现预览：
+
+```bash
+python -m http.server -p <port> # 默认 8000 端口，可以指定其他端口
+```
+
+如果你的 Local Preview 提示 Address already in use 并且 8000 端口已被占用，你可以通过以下步骤和具体命令进行排查并释放端口：
+
+```bash
+lsof -i :8000 # 查看占用8000端口的进程
+ps -p <pid> -o pid,ppid,command # 查看进程详细信息
+kill -9 <pid> # 杀死占用8000端口的进程
+```
