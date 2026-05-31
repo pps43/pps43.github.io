@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 23 May 2026 18:18:13 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -16,6 +16,13 @@
       <guid>https://pps43.github.io/posts/thinking_of_software_engineering/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>鸡与蛋的问题</title>
+      <link>https://pps43.github.io/posts/notes_on_chickegg_problem/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_chickegg_problem/</guid>
+      <description>&lt;p&gt;重读《Joel on Software》，看到一篇关于鸡与蛋的问题的讨论和他的解法，虽然已经过了快30年，但读完后感叹太阳底下无新事，IT行业也不例外。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering (2)</title>
