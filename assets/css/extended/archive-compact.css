@@ -18,6 +18,13 @@
 .archive-month-header {
     width: 150px;
     margin: 6px 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.archive-month-header .archive-header-link {
+    font-weight: inherit;
 }
 
 .archive-entry {

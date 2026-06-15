@@ -31,6 +31,9 @@
     --quote-bg: #fff6ef;
     --quote-text: var(--gray-700);
     --surface-muted: var(--gray-100);
+    --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    --font-reading: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+    --font-code: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 .dark {
@@ -53,6 +56,7 @@
 
 body {
     background: var(--theme);
+    font-family: var(--font-ui);
     letter-spacing: 0;
 }
 
@@ -83,6 +87,47 @@ pre {
 
 .post-content {
     color: var(--content);
+    font-family: var(--font-reading);
+    font-size: 16.5px;
+    line-height: 1.78;
+    text-rendering: optimizeLegibility;
+}
+
+.post-content code,
+.post-content kbd,
+.post-content pre,
+.post-content samp {
+    font-family: var(--font-code);
+}
+
+.post-title {
+    font-family: var(--font-ui);
+    font-size: 34px;
+    line-height: 1.25;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    font-family: var(--font-ui);
+}
+
+.post-content h1 {
+    font-size: 32px;
+    line-height: 1.3;
+}
+
+.post-content h2 {
+    font-size: 26px;
+    line-height: 1.35;
+}
+
+.post-content h3 {
+    font-size: 21px;
+    line-height: 1.4;
 }
 
 .post-title-tags {
@@ -131,6 +176,7 @@ pre {
 }
 
 .toc {
+    margin: 0 2px 18px;
     background: var(--surface-muted);
     border-color: var(--border);
 }
@@ -167,7 +213,7 @@ pre {
     box-sizing: border-box;
     width: calc(100% - 40px);
     max-width: 1120px;
-    padding: 18px 0 var(--gap);
+    padding: 10px 0 var(--gap);
 }
 
 .nav {
@@ -189,8 +235,8 @@ pre {
 
 .home-info {
     min-height: auto;
-    margin: 10px 0 22px;
-    padding: 0 0 18px;
+    margin: 0 0 18px;
+    padding: 0 0 14px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -201,20 +247,29 @@ pre {
 }
 
 .home-info .entry-header h1 {
-    font-size: 34px;
-    line-height: 1.18;
+    font-size: 28px;
+    line-height: 1.2;
 }
 
 .home-info .entry-content {
     max-width: 680px;
-    margin: 10px 0 12px;
+    margin: 7px 0 10px;
     color: var(--secondary);
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .home-info .entry-footer {
-    margin-top: 4px;
+    margin-top: 2px;
+}
+
+.home-info .social-icons a {
+    padding: 5px;
+}
+
+.home-info .social-icons a svg {
+    width: 13px;
+    height: 13px;
 }
 
 .home-layout {
@@ -350,7 +405,7 @@ pre {
 
 .home-pinned h2 {
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     padding: 4px 8px;
     color: var(--ivory);
     background: var(--garden-ink);
@@ -367,7 +422,7 @@ pre {
 
 .home-pinned ul {
     display: grid;
-    gap: 10px;
+    gap: 7px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -376,6 +431,7 @@ pre {
 .home-pinned li {
     position: relative;
     padding-left: 14px;
+    line-height: 1.45;
 }
 
 .home-pinned li::before {
@@ -487,19 +543,120 @@ pre {
     .home-pinned {
         position: static;
         order: -1;
-        padding: 0 0 16px;
+        padding: 0 0 10px;
         border-left: 0;
         border-bottom: 1px solid var(--border);
     }
 
     .home-pinned ul {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px 14px;
     }
 }
 
 @media (max-width: 560px) {
-    .home-info .entry-header h1 {
+    .main {
+        padding-top: 12px;
+    }
+
+    .nav {
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0;
+        line-height: 32px;
+    }
+
+    .logo,
+    #menu,
+    .logo-switches {
+        line-height: 32px;
+    }
+
+    .logo a,
+    #menu a {
+        line-height: 32px;
+    }
+
+    .logo {
+        flex: 0 0 auto;
+    }
+
+    #menu {
+        flex: 0 1 auto;
+        margin-left: auto;
+    }
+
+    #menu li + li {
+        margin-inline-start: 16px;
+    }
+
+    button#theme-toggle {
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 22px;
+    }
+
+    .post-title {
         font-size: 30px;
+    }
+
+    .post-content h1 {
+        font-size: 28px;
+    }
+
+    .post-content h2 {
+        font-size: 23px;
+    }
+
+    .post-content h3 {
+        font-size: 19px;
+    }
+
+    .post-content {
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    .home-info .entry-header h1 {
+        font-size: 24px;
+    }
+
+    .home-info .entry-content {
+        margin: 6px 0 8px;
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .home-layout {
+        gap: 12px;
+    }
+
+    .home-pinned h2 {
+        margin-bottom: 6px;
+        padding: 3px 7px;
+        font-size: 11px;
+    }
+
+    .home-pinned ul {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .home-pinned li {
+        padding-left: 11px;
+        line-height: 1.35;
+    }
+
+    .home-pinned li::before {
+        top: 0.7em;
+        width: 4px;
+        height: 4px;
+    }
+
+    .home-pinned a {
+        font-size: 13px;
+        line-height: 1.35;
     }
 
     .home-feed .post-entry {

@@ -101,5 +101,3 @@ languages:
               - name: Tags
                 url: tags/
                 weight: 10
-              - name: BookOfGameDev
-                url: https://book.enginew.cn/
