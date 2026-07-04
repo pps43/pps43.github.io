@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -38,6 +38,14 @@
       <description>&lt;p&gt;这本书带给我的，除了诸多耳熟能详的作品背后的逸闻趣事、诸位大师的才华风貌，还有不少对创作思路、团队协作、宣传发行的启发，相信能常看常新。同时这本书里记录的东西，让人有一种难以名状的触动。一定要形容的话，可以说&lt;strong&gt;是一种谁也抑制不了的、忍不住要生长的气魄&lt;/strong&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Local AI</title>
+      <link>https://pps43.github.io/posts/ai_local_setup/</link>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/ai_local_setup/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>鸡与蛋的问题</title>
       <link>https://pps43.github.io/posts/notes_on_chickegg_problem/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
@@ -56,18 +64,18 @@
     </item>
     <item>
       <title>Agentic Engineering (2)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</link>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</link>
       <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</guid>
-      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</guid>
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
 &lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
 &lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering (1)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</link>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</link>
       <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</guid>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</guid>
       <description>&lt;p&gt;最近读 Simon Willison 的 &lt;a href=&#34;https://simonwillison.net/guides/agentic-engineering-patterns/&#34;&gt;Agentic Engineering Patterns&lt;/a&gt;，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。&lt;/p&gt;</description>
     </item>
     <item>
@@ -96,18 +104,18 @@
     </item>
     <item>
       <title>用AI学AI.4 [注意力]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_4/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/4/</link>
       <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_4/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/4/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
 &lt;p&gt;本篇由AI起稿，人工精修。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;什么是注意力机制&#34;&gt;什么是注意力机制&lt;/h2&gt;
@@ -115,10 +123,10 @@
     </item>
     <item>
       <title>用AI学AI.3 [多模态]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/3/</link>
       <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下文长度从万级到百万级；&lt;/li&gt;
 &lt;li&gt;多模态模型（文本、图像、音频、视频）；&lt;/li&gt;
@@ -193,7 +201,7 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文也是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;背景和需求&#34;&gt;背景和需求&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx_cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx/cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CCT不参与碰撞系统的检测&lt;/strong&gt;。仅当CCT自身移动时会判断是否被其他刚体或CCT阻挡。这就造成一个BUG：CCT自身静止时，其他运动物体会穿过CCT且没有事件触发。&lt;a href=&#34;https://discussions.unity.com/t/proper-collision-detection-with-charactercontroller/564371&#34;&gt;官方论坛上有苦主&lt;/a&gt;持续8年向Unity反馈这个问题但无法解决，目前已知的唯一绕过方式是每帧给CCT附加一个微小的位移（下文中的&lt;code&gt;SlightMove&lt;/code&gt;）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Unity提供的接口&lt;code&gt;CharacterController.isGrounded&lt;/code&gt;效果很不稳定&lt;/strong&gt;。其内部只是判断CCT上次运动后底部是否触碰物体。即&lt;code&gt;collisionFlags &amp;amp; eCOLLISION_DOWN::eCOLLISION_DOWN&lt;/code&gt;。但在上下坡或崎岖地形时，很容易出现侧面触碰或短暂浮空。如果用该接口驱动动画表现甚至跑跳逻辑，效果很差。需要自行基于SceneQuery封装出更加稳定的判定着地的函数。&lt;/li&gt;
@@ -203,9 +211,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（4）Character Controller</title>
-      <link>https://pps43.github.io/posts/using_physx_cct/</link>
+      <link>https://pps43.github.io/posts/using_physx/cct/</link>
       <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_cct/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/cct/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX角色控制器相关的内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -214,9 +222,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（3）Rigidbody Dynamics</title>
-      <link>https://pps43.github.io/posts/using_physx_rigidbody/</link>
+      <link>https://pps43.github.io/posts/using_physx/rigidbody/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_rigidbody/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/rigidbody/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -232,9 +240,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（2）Collision</title>
-      <link>https://pps43.github.io/posts/using_physx_collision/</link>
+      <link>https://pps43.github.io/posts/using_physx/collision/</link>
       <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_collision/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/collision/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX碰撞检测的一些内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -271,9 +279,9 @@ class PxShape {
     </item>
     <item>
       <title>PhysX零值Crash</title>
-      <link>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</link>
+      <link>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</link>
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有&lt;strong&gt;很高&lt;/strong&gt;的实践参考价值。&lt;em&gt;“有多高？”“三四层楼那么高啦！”&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;发现问题&#34;&gt;发现问题&lt;/h1&gt;
@@ -289,9 +297,9 @@ class PxShape {
     </item>
     <item>
       <title>PhysX物理引擎（1）Scene Query</title>
-      <link>https://pps43.github.io/posts/using_physx_scenequery/</link>
+      <link>https://pps43.github.io/posts/using_physx/scenequery/</link>
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_scenequery/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/scenequery/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX场景查询的一些内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -341,17 +349,17 @@ shape o--material
     </item>
     <item>
       <title>用AI学AI.2</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
@@ -364,9 +372,9 @@ shape o--material
     </item>
     <item>
       <title>用AI学AI.1</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/1/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/1/</guid>
       <description>&lt;p&gt;按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，以门外汉的视角去追问AI并了解一些基本概念。既可以锻炼提问技巧，还可以在听完高屋建瓴的讲解后有针对性的去学习感兴趣的部分，效率倍增！&lt;/p&gt;</description>
     </item>
     <item>

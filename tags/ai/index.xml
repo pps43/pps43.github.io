@@ -7,22 +7,30 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 23 May 2026 18:18:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Local AI</title>
+      <link>https://pps43.github.io/posts/ai_local_setup/</link>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/ai_local_setup/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Agentic Engineering (2)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</link>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</link>
       <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</guid>
-      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</guid>
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
 &lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
 &lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering (1)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</link>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</link>
       <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</guid>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</guid>
       <description>&lt;p&gt;最近读 Simon Willison 的 &lt;a href=&#34;https://simonwillison.net/guides/agentic-engineering-patterns/&#34;&gt;Agentic Engineering Patterns&lt;/a&gt;，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。&lt;/p&gt;</description>
     </item>
     <item>
@@ -51,18 +59,18 @@
     </item>
     <item>
       <title>用AI学AI.4 [注意力]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_4/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/4/</link>
       <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_4/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/4/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
 &lt;p&gt;本篇由AI起稿，人工精修。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;什么是注意力机制&#34;&gt;什么是注意力机制&lt;/h2&gt;
@@ -70,10 +78,10 @@
     </item>
     <item>
       <title>用AI学AI.3 [多模态]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/3/</link>
       <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下文长度从万级到百万级；&lt;/li&gt;
 &lt;li&gt;多模态模型（文本、图像、音频、视频）；&lt;/li&gt;
@@ -110,17 +118,17 @@
     </item>
     <item>
       <title>用AI学AI.2</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/2/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;系列文章&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/1/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
@@ -133,9 +141,9 @@
     </item>
     <item>
       <title>用AI学AI.1</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
+      <link>https://pps43.github.io/posts/asking_ai_about_ai/1/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>
+      <guid>https://pps43.github.io/posts/asking_ai_about_ai/1/</guid>
       <description>&lt;p&gt;按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，以门外汉的视角去追问AI并了解一些基本概念。既可以锻炼提问技巧，还可以在听完高屋建瓴的讲解后有针对性的去学习感兴趣的部分，效率倍增！&lt;/p&gt;</description>
     </item>
     <item>

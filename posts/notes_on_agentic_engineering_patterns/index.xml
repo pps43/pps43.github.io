@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Agentic Engineering Patterns on 👨🏼‍🌾</title>
+    <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/</link>
+    <description>Recent content in Agentic Engineering Patterns on 👨🏼‍🌾</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Sat, 23 May 2026 18:18:13 +0800</lastBuildDate>
+    <atom:link href="https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic Engineering (2)</title>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</link>
+      <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</guid>
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
+&lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
+&lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic Engineering (1)</title>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</link>
+      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</guid>
+      <description>&lt;p&gt;最近读 Simon Willison 的 &lt;a href=&#34;https://simonwillison.net/guides/agentic-engineering-patterns/&#34;&gt;Agentic Engineering Patterns&lt;/a&gt;，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

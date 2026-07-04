@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -38,6 +38,14 @@
       <description>&lt;p&gt;这本书带给我的，除了诸多耳熟能详的作品背后的逸闻趣事、诸位大师的才华风貌，还有不少对创作思路、团队协作、宣传发行的启发，相信能常看常新。同时这本书里记录的东西，让人有一种难以名状的触动。一定要形容的话，可以说&lt;strong&gt;是一种谁也抑制不了的、忍不住要生长的气魄&lt;/strong&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Local AI</title>
+      <link>https://pps43.github.io/posts/ai_local_setup/</link>
+      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/ai_local_setup/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>鸡与蛋的问题</title>
       <link>https://pps43.github.io/posts/notes_on_chickegg_problem/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
@@ -53,22 +61,6 @@
 &lt;h1 id=&#34;反对性能竞赛&#34;&gt;反对性能竞赛&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N64的处理能力是PS的4倍以上。面对这种全新的硬件，以往的游戏软件开发方法完全不适用了，&lt;strong&gt;致使游戏软件开发的作业量、周期、投资和风险都成倍增长&lt;/strong&gt;。……这款优秀的游戏机硬件为众多游戏软件开发上设了一个很高的门槛，甚至可以说是壁垒。……就连任天堂自己的开发人员也无法承受。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Agentic Engineering (2)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</link>
-      <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</guid>
-      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
-&lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
-&lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Agentic Engineering (1)</title>
-      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</link>
-      <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
-      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</guid>
-      <description>&lt;p&gt;最近读 Simon Willison 的 &lt;a href=&#34;https://simonwillison.net/guides/agentic-engineering-patterns/&#34;&gt;Agentic Engineering Patterns&lt;/a&gt;，颇有收获。这里先写第一部分，主要有：agent 到底是什么，代码变便宜之后人的工作还剩什么，以及我们应该怎样调整自己的开发习惯。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Claude Design</title>
@@ -93,44 +85,6 @@
       <guid>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=lXUZvyajciY&#34;&gt;Andrej Karpathy&lt;/a&gt; 和 &lt;a href=&#34;https://www.youtube.com/watch?v=aR20FWCCjAs&#34;&gt;Ilya Sutskever&lt;/a&gt; 几乎在同一时间，把目光从“堆算力、堆数据”的规模化竞赛，转向了更根本的问题：我们真的找到了让机器像人一样学习、反思和泛化的道路吗？当前围绕强化学习打造的 LLM，已经暴露出一系列深层缺陷：泛化能力和学习机制。如果说过去十年是“参数上亿”的工程时代，那么他们描述的，是一个重新回到研究时代的契机。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>用AI学AI.4 [注意力]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_4/</link>
-      <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_4/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;上一篇&lt;/a&gt;我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。&lt;/p&gt;
-&lt;p&gt;本篇由AI起稿，人工精修。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;系列文章&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;什么是注意力机制&#34;&gt;什么是注意力机制&lt;/h2&gt;
-&lt;p&gt;想象一下你在阅读一段文字：“在巴黎的那个雨天，我把那把红色的雨伞落在了卢浮宫的入口处。” 当被问到“丢失了什么颜色的东西？”时，你的大脑会瞬间聚焦到“红色”和“雨伞”这两个词上，而暂时忽略“巴黎”、“雨天”等其他信息。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>用AI学AI.3 [多模态]</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_3/</link>
-      <pubDate>Sat, 30 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_3/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;上一篇&lt;/a&gt;发布已过去一年半，这段时间生成式AI进化肉眼可见：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;上下文长度从万级到百万级；&lt;/li&gt;
-&lt;li&gt;多模态模型（文本、图像、音频、视频）；&lt;/li&gt;
-&lt;li&gt;数学与编程能力大幅提升；&lt;/li&gt;
-&lt;li&gt;联网搜索与检索增强（RAG）；&lt;/li&gt;
-&lt;li&gt;深度思考和推理；&lt;/li&gt;
-&lt;li&gt;指令遵循能力大幅提升；&lt;/li&gt;
-&lt;li&gt;Agent与MCP；&lt;/li&gt;
-&lt;li&gt;除语言模型外，图像、视频、3D模型、动画等生成全面应用；&lt;/li&gt;
-&lt;li&gt;世界模型可生成数分钟的可交互视频；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;国内大模型方面，24年底横空出世的DeepSeek V3/R1用极低的训练成本跻身最强模型之列，并通过开源在极短时间内集成进各类App。8月20日V3.1发布，更是拉开了国产GPU芯片替代Nvdia GPU训练的大幕。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Quaternion.FromToRotation的细节</title>
@@ -193,72 +147,13 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文也是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;背景和需求&#34;&gt;背景和需求&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx_cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx/cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CCT不参与碰撞系统的检测&lt;/strong&gt;。仅当CCT自身移动时会判断是否被其他刚体或CCT阻挡。这就造成一个BUG：CCT自身静止时，其他运动物体会穿过CCT且没有事件触发。&lt;a href=&#34;https://discussions.unity.com/t/proper-collision-detection-with-charactercontroller/564371&#34;&gt;官方论坛上有苦主&lt;/a&gt;持续8年向Unity反馈这个问题但无法解决，目前已知的唯一绕过方式是每帧给CCT附加一个微小的位移（下文中的&lt;code&gt;SlightMove&lt;/code&gt;）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Unity提供的接口&lt;code&gt;CharacterController.isGrounded&lt;/code&gt;效果很不稳定&lt;/strong&gt;。其内部只是判断CCT上次运动后底部是否触碰物体。即&lt;code&gt;collisionFlags &amp;amp; eCOLLISION_DOWN::eCOLLISION_DOWN&lt;/code&gt;。但在上下坡或崎岖地形时，很容易出现侧面触碰或短暂浮空。如果用该接口驱动动画表现甚至跑跳逻辑，效果很差。需要自行基于SceneQuery封装出更加稳定的判定着地的函数。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Unity没有暴露&lt;code&gt;CCT.upVector&lt;/code&gt;，角色总是竖直向上的&lt;/strong&gt;。要实现反重力鞋在任意斜面上行走或像&lt;code&gt;马里奥银河&lt;/code&gt;那样在曲面上跑跳穿梭，只能放弃使用CCT但也放弃了其在操作手感上的改善。其实拿到Unity的源码后，只用了十分钟将底层字段暴露到C#层就解决了该问题。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;新的角色控制器需要增加的物理交互特性有：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PhysX物理引擎（4）Character Controller</title>
-      <link>https://pps43.github.io/posts/using_physx_cct/</link>
-      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_cct/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍PhysX角色控制器相关的内部机制和使用方法。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
-&lt;p&gt;Character Controller (a.k.a CCT) is a special physical object handling player movement. In PhysX, CCT is not a Rigidbody, which means it does not integrate seamlessly in collision system. However, there is a kinematic actor underlying in CCT, and you can attach custom data via &lt;code&gt;PxController::getActor()-&amp;gt;userData&lt;/code&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PhysX物理引擎（3）Rigidbody Dynamics</title>
-      <link>https://pps43.github.io/posts/using_physx_rigidbody/</link>
-      <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_rigidbody/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
-&lt;p&gt;Let&amp;rsquo;s start with some key concepts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Both &lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Dynamic&lt;/code&gt; rigidbodies are represented as &lt;code&gt;PxRigidDynamic&lt;/code&gt; in PhysX. You can switch between them at runtime using &lt;code&gt;PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Static&lt;/code&gt; actors remain stationary unless explicitly moved in code.&lt;/li&gt;
-&lt;li&gt;Moving &lt;code&gt;Static&lt;/code&gt; actors can result in incorrect collision behavior with dynamic actors.&lt;/li&gt;
-&lt;li&gt;When moving &lt;code&gt;Kinematic&lt;/code&gt; actors, always use &lt;code&gt;PxRigidDynamic::setKinematicTarget&lt;/code&gt; each frame instead of &lt;code&gt;PxRigidActor::setGlobalPose&lt;/code&gt; to ensure correct collision detection with dynamic actors.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This post focuses on dynamic rigidbody movement, covering topics such as &lt;strong&gt;force and torque, gravity, sleeping&lt;/strong&gt;, and more.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PhysX物理引擎（2）Collision</title>
-      <link>https://pps43.github.io/posts/using_physx_collision/</link>
-      <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_collision/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍PhysX碰撞检测的一些内部机制和使用方法。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
-&lt;h2 id=&#34;static-kinematic--dynamic&#34;&gt;Static, Kinematic &amp;amp; Dynamic&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Static colliders are non-movable. In fact, they are not rigidbody, just &lt;code&gt;PxRigidStatic&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Kinematic and  dynamic rigidbody are both &lt;code&gt;PxRigidDynamic&lt;/code&gt;, and can switch to each other at runtime by &lt;code&gt;setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true/false)&lt;/code&gt;. The biggest difference is that kinematic rigidbody behaves like infinite mass, and will not move by external force. Instead, you call &lt;code&gt;MovePosition&lt;/code&gt; on it.&lt;/li&gt;
-&lt;li&gt;Dynamic rigidbody is the only type we can &lt;code&gt;AddForce&lt;/code&gt; to, which has mass, center of mass, and inertia tensor to simulate a natural movement with Newton&amp;rsquo;s laws of motion.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;classDiagram
-
-PxRigidActor &amp;lt;-- PxRigidStatic
-PxRigidActor &amp;lt;-- PxRigidBody
-PxRigidBody &amp;lt;-- PxRigidDynamic
-PxRigidActor *.. PxShape
-
-class PxRigidBody {
-    PxRigidBodyFlag
-}
-class PxShape {
-    PxShapeFlag
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We cannot make a rigidbody without a shape. Shapes are tangible, with a real size.&lt;/p&gt;</description>
     </item>
     <item>
       <title>深入 LossyScale</title>
@@ -270,104 +165,12 @@ class PxShape {
 问题源自笔者在修改物理引擎为其添加&lt;code&gt;scale&lt;/code&gt;属性时遇到的一个bug。解决后对&lt;code&gt;WorldScale&lt;/code&gt;为什么叫做&lt;code&gt;LossyScale&lt;/code&gt;、空间变换和基变换有了更深的理解。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>PhysX零值Crash</title>
-      <link>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</link>
-      <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有&lt;strong&gt;很高&lt;/strong&gt;的实践参考价值。&lt;em&gt;“有多高？”“三四层楼那么高啦！”&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;发现问题&#34;&gt;发现问题&lt;/h1&gt;
-&lt;p&gt;运维同事发现体验服和某区在新版本上线一小段时间后，会出现概率不高但持续出现的进程Crash。这里先简单说明一下：我们会在一台机器上部署多个GameServer实例，每个GameServer实例进程同时进行着多场不同的Match，如果某一场Match出现了业务层Crash，并不会影响其他Match。但如果是C++物理库内出现Crash，则会同时中止其他正常运行的Match，对玩家的影响较大。&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>洞见·为什么佛学是真的</title>
       <link>https://pps43.github.io/posts/notes_on_why_buddhism_is_true/</link>
       <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_why_buddhism_is_true/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;当看到书名时，我承认内心有一丝挑战欲。受过系统的科研训练的人，往往对“真的”有“洁癖”。作者&lt;code&gt;Robert Wright&lt;/code&gt;也认识到这一点，所以在开头便说，本书可以看作佛学观点的&lt;strong&gt;进化心理学&lt;/strong&gt;解释。并不探讨轮回、神明这些超自然的部分，而探讨自然主义部分。并不探讨佛教各分支的细枝末节，而探讨核心思想。&lt;strong&gt;不要用佛教教义使自己成为更好的佛教徒，用它来做更好的自己&lt;/strong&gt;。正是这句话让我有了继续读下去的意愿。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PhysX物理引擎（1）Scene Query</title>
-      <link>https://pps43.github.io/posts/using_physx_scenequery/</link>
-      <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_scenequery/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍PhysX场景查询的一些内部机制和使用方法。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
-&lt;p&gt;A &lt;code&gt;Scene&lt;/code&gt; in PhysX engine is a container of objects in a hierachical manner.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;---
-title: Scene Hierachy
----
-classDiagram
-direction LR
-
-class world
-class scene {
-    Flags
-    Gravity
-    ...
-}
-class actor {
-    ActorFlags
-    Name
-    GlobalPose
-    ...
-}
-class shape {
-    Flags
-    GeometryType
-    LocalPose
-    QueryFilterData
-    SimulationFilterData
-    ...
-}
-class geometry {
-    ...
-}
-class material {
-    friction
-    restitution
-    damping
-}
-
-world &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;scene
-scene &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;actor
-actor &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;shape
-shape o--geometry
-shape o--material
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There are only position and rotation in &lt;code&gt;GlobalPose&lt;/code&gt; and &lt;code&gt;LocalPose&lt;/code&gt;, no &amp;ldquo;scale&amp;rdquo;. Scale only reflects on geometry&amp;rsquo;s actual size.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>用AI学AI.2</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai_2/</link>
-      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai_2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;上一篇&lt;/a&gt;我们聊了AI模型的分类和大致架构，目前最火的两类模型&lt;code&gt;LLM&lt;/code&gt;和&lt;code&gt;Diffusion&lt;/code&gt;都基于&lt;code&gt;Transformer&lt;/code&gt;架构训练而成，&lt;code&gt;ChatGPT&lt;/code&gt;则是&lt;code&gt;LLM&lt;/code&gt;家族中最出色的产品。本文就来聊聊最近出现的基于&lt;code&gt;ChatGPT&lt;/code&gt;的创新架构和应用。由于&lt;code&gt;ChatGPT&lt;/code&gt;的训练数据截止到2021年9月，且笔者并没有Plus会员才能使用的&lt;code&gt;ChatGPT Plugin&lt;/code&gt;，所以这次请到的是&lt;a href=&#34;https://www.phind.com/&#34;&gt;Dr. Phind&lt;/a&gt;（The AI search engine for developers），大家欢迎。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;系列文章&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai/&#34;&gt;用AI学AI.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_2/&#34;&gt;用AI学AI.2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_3/&#34;&gt;用AI学AI.3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pps43.github.io/posts/asking_ai_about_ai_4/&#34;&gt;用AI学AI.4&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;笔记&#34;&gt;笔记&lt;/h1&gt;
-&lt;p&gt;Agent如何工作&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Autonomous agents (e.g., &lt;a href=&#34;https://github.com/Significant-Gravitas/Auto-GPT&#34;&gt;AutoGPT&lt;/a&gt;, &lt;a href=&#34;https://github.com/yoheinakajima/babyagi/tree/main&#34;&gt;BabyAGI&lt;/a&gt;) can &lt;strong&gt;auto-create&lt;/strong&gt; tasks towards the GOAL you give them, and &lt;strong&gt;auto-find&lt;/strong&gt; the way to complete task based on GPT models and other data sources (websites, your documents, etc), and even &lt;strong&gt;auto-improve&lt;/strong&gt; themselves from previous mistakes.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The basic structure is somehow similar to &lt;code&gt;GOAP&lt;/code&gt; in video game&amp;rsquo;s AI design.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>用AI学AI.1</title>
-      <link>https://pps43.github.io/posts/asking_ai_about_ai/</link>
-      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/asking_ai_about_ai/</guid>
-      <description>&lt;p&gt;按照目前AI在学术界、工业界推陈出新的速度，感兴趣的同学们纷纷表示：真的学不动啦！不要慌，AI老师来了~ 在本系列中，我不会提前学习预备知识，以门外汉的视角去追问AI并了解一些基本概念。既可以锻炼提问技巧，还可以在听完高屋建瓴的讲解后有针对性的去学习感兴趣的部分，效率倍增！&lt;/p&gt;</description>
     </item>
     <item>
       <title>Generative AI Toolkit (5.12)</title>

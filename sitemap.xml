@@ -12,13 +12,19 @@
     <lastmod>2023-06-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pps43.github.io/tags/ai/</loc>
+    <lastmod>2026-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pps43.github.io/posts/ai_local_setup/</loc>
+    <lastmod>2026-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/posts/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/tags/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/tags/%E4%B9%A6%E6%91%98/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
@@ -35,13 +41,13 @@
     <loc>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2026-05-24T16:27:51+08:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_ii/</loc>
+    <loc>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</loc>
     <lastmod>2026-05-23T18:18:13+08:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/tags/ai/</loc>
+    <loc>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/</loc>
     <lastmod>2026-05-23T18:18:13+08:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns_part_i/</loc>
+    <loc>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</loc>
     <lastmod>2026-05-18T22:26:33+08:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/posts/using_claude_design/</loc>
@@ -59,10 +65,13 @@
     <loc>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/asking_ai_about_ai_4/</loc>
+    <loc>https://pps43.github.io/posts/asking_ai_about_ai/</loc>
     <lastmod>2025-08-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/asking_ai_about_ai_3/</loc>
+    <loc>https://pps43.github.io/posts/asking_ai_about_ai/4/</loc>
+    <lastmod>2025-08-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pps43.github.io/posts/asking_ai_about_ai/3/</loc>
     <lastmod>2025-08-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/posts/using_quaternion_fromtorotation/</loc>
@@ -104,19 +113,22 @@
     <loc>https://pps43.github.io/posts/notes_on_physics_based_cct/</loc>
     <lastmod>2024-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/using_physx_cct/</loc>
+    <loc>https://pps43.github.io/posts/using_physx/</loc>
     <lastmod>2023-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/using_physx_rigidbody/</loc>
+    <loc>https://pps43.github.io/posts/using_physx/cct/</loc>
+    <lastmod>2023-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://pps43.github.io/posts/using_physx/rigidbody/</loc>
     <lastmod>2023-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/using_physx_collision/</loc>
+    <loc>https://pps43.github.io/posts/using_physx/collision/</loc>
     <lastmod>2023-08-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/posts/thinking_of_lossyscale/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</loc>
+    <loc>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</loc>
     <lastmod>2023-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/tags/%E5%93%B2%E5%AD%A6/</loc>
@@ -125,13 +137,13 @@
     <loc>https://pps43.github.io/posts/notes_on_why_buddhism_is_true/</loc>
     <lastmod>2023-06-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/using_physx_scenequery/</loc>
+    <loc>https://pps43.github.io/posts/using_physx/scenequery/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/asking_ai_about_ai_2/</loc>
+    <loc>https://pps43.github.io/posts/asking_ai_about_ai/2/</loc>
     <lastmod>2023-05-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://pps43.github.io/posts/asking_ai_about_ai/</loc>
+    <loc>https://pps43.github.io/posts/asking_ai_about_ai/1/</loc>
     <lastmod>2023-04-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://pps43.github.io/posts/ai_toolkit_for_dev/</loc>

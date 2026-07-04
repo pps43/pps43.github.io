@@ -5,7 +5,7 @@
 PhysX物理引擎系列记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（Code, Doc）的一些经验，有不少对官方资料的补充。
 Warm-up A Scene in PhysX engine is a container of objects in a hierachical manner.
 --- title: Scene Hierachy --- classDiagram direction LR class world class scene { Flags Gravity ... } class actor { ActorFlags Name GlobalPose ... } class shape { Flags GeometryType LocalPose QueryFilterData SimulationFilterData ... } class geometry { ... } class material { friction restitution damping } world "1"*.. "N"scene scene "1"*.. "N"actor actor "1"*.. "N"shape shape o--geometry shape o--material There are only position and rotation in GlobalPose and LocalPose, no “scale”. Scale only reflects on geometry’s actual size.
-...</p></div></div><a class=entry-link aria-label="post link to PhysX物理引擎（1）Scene Query" href=https://pps43.github.io/posts/using_physx_scenequery/></a></article><footer class=page-footer><nav class="pagination pagination-numbered" aria-label=Pagination><a class=prev href=https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/ aria-label="Previous page">‹</a>
+...</p></div></div><a class=entry-link aria-label="post link to PhysX物理引擎（1）Scene Query" href=https://pps43.github.io/posts/using_physx/scenequery/></a></article><footer class=page-footer><nav class="pagination pagination-numbered" aria-label=Pagination><a class=prev href=https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/ aria-label="Previous page">‹</a>
 <a class=page-number href=https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/>1</a>
 <span class="page-number current" aria-current=page>2</span></nav></footer></section></main><footer class=footer><span>© 2016-2023 By 波波沙.</span> ·
 <span>Powered by

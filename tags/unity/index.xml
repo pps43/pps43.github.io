@@ -25,7 +25,7 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文也是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;背景和需求&#34;&gt;背景和需求&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx_cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx/cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CCT不参与碰撞系统的检测&lt;/strong&gt;。仅当CCT自身移动时会判断是否被其他刚体或CCT阻挡。这就造成一个BUG：CCT自身静止时，其他运动物体会穿过CCT且没有事件触发。&lt;a href=&#34;https://discussions.unity.com/t/proper-collision-detection-with-charactercontroller/564371&#34;&gt;官方论坛上有苦主&lt;/a&gt;持续8年向Unity反馈这个问题但无法解决，目前已知的唯一绕过方式是每帧给CCT附加一个微小的位移（下文中的&lt;code&gt;SlightMove&lt;/code&gt;）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Unity提供的接口&lt;code&gt;CharacterController.isGrounded&lt;/code&gt;效果很不稳定&lt;/strong&gt;。其内部只是判断CCT上次运动后底部是否触碰物体。即&lt;code&gt;collisionFlags &amp;amp; eCOLLISION_DOWN::eCOLLISION_DOWN&lt;/code&gt;。但在上下坡或崎岖地形时，很容易出现侧面触碰或短暂浮空。如果用该接口驱动动画表现甚至跑跳逻辑，效果很差。需要自行基于SceneQuery封装出更加稳定的判定着地的函数。&lt;/li&gt;

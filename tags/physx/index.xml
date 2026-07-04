@@ -17,7 +17,7 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文也是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;背景和需求&#34;&gt;背景和需求&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx_cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/posts/using_physx/cct/&#34;&gt;前文&lt;/a&gt;结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出&lt;code&gt;CharacterController&lt;/code&gt;组件）在实际游戏开发中的缺点，这里再次总结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;CCT不参与碰撞系统的检测&lt;/strong&gt;。仅当CCT自身移动时会判断是否被其他刚体或CCT阻挡。这就造成一个BUG：CCT自身静止时，其他运动物体会穿过CCT且没有事件触发。&lt;a href=&#34;https://discussions.unity.com/t/proper-collision-detection-with-charactercontroller/564371&#34;&gt;官方论坛上有苦主&lt;/a&gt;持续8年向Unity反馈这个问题但无法解决，目前已知的唯一绕过方式是每帧给CCT附加一个微小的位移（下文中的&lt;code&gt;SlightMove&lt;/code&gt;）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Unity提供的接口&lt;code&gt;CharacterController.isGrounded&lt;/code&gt;效果很不稳定&lt;/strong&gt;。其内部只是判断CCT上次运动后底部是否触碰物体。即&lt;code&gt;collisionFlags &amp;amp; eCOLLISION_DOWN::eCOLLISION_DOWN&lt;/code&gt;。但在上下坡或崎岖地形时，很容易出现侧面触碰或短暂浮空。如果用该接口驱动动画表现甚至跑跳逻辑，效果很差。需要自行基于SceneQuery封装出更加稳定的判定着地的函数。&lt;/li&gt;
@@ -27,9 +27,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（4）Character Controller</title>
-      <link>https://pps43.github.io/posts/using_physx_cct/</link>
+      <link>https://pps43.github.io/posts/using_physx/cct/</link>
       <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_cct/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/cct/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX角色控制器相关的内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -38,9 +38,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（3）Rigidbody Dynamics</title>
-      <link>https://pps43.github.io/posts/using_physx_rigidbody/</link>
+      <link>https://pps43.github.io/posts/using_physx/rigidbody/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_rigidbody/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/rigidbody/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -56,9 +56,9 @@
     </item>
     <item>
       <title>PhysX物理引擎（2）Collision</title>
-      <link>https://pps43.github.io/posts/using_physx_collision/</link>
+      <link>https://pps43.github.io/posts/using_physx/collision/</link>
       <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_collision/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/collision/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX碰撞检测的一些内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
@@ -95,9 +95,9 @@ class PxShape {
     </item>
     <item>
       <title>PhysX零值Crash</title>
-      <link>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</link>
+      <link>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</link>
       <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_solving_zero_value_crash/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有&lt;strong&gt;很高&lt;/strong&gt;的实践参考价值。&lt;em&gt;“有多高？”“三四层楼那么高啦！”&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;发现问题&#34;&gt;发现问题&lt;/h1&gt;
@@ -105,9 +105,9 @@ class PxShape {
     </item>
     <item>
       <title>PhysX物理引擎（1）Scene Query</title>
-      <link>https://pps43.github.io/posts/using_physx_scenequery/</link>
+      <link>https://pps43.github.io/posts/using_physx/scenequery/</link>
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/using_physx_scenequery/</guid>
+      <guid>https://pps43.github.io/posts/using_physx/scenequery/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍PhysX场景查询的一些内部机制和使用方法。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PhysX物理引擎 on 👨🏼‍🌾</title>
+    <link>https://pps43.github.io/posts/using_physx/</link>
+    <description>Recent content in PhysX物理引擎 on 👨🏼‍🌾</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en</language>
+    <copyright>2016-2023 By 波波沙.</copyright>
+    <lastBuildDate>Mon, 04 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://pps43.github.io/posts/using_physx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PhysX物理引擎（4）Character Controller</title>
+      <link>https://pps43.github.io/posts/using_physx/cct/</link>
+      <pubDate>Mon, 04 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_physx/cct/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍PhysX角色控制器相关的内部机制和使用方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
+&lt;p&gt;Character Controller (a.k.a CCT) is a special physical object handling player movement. In PhysX, CCT is not a Rigidbody, which means it does not integrate seamlessly in collision system. However, there is a kinematic actor underlying in CCT, and you can attach custom data via &lt;code&gt;PxController::getActor()-&amp;gt;userData&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PhysX物理引擎（3）Rigidbody Dynamics</title>
+      <link>https://pps43.github.io/posts/using_physx/rigidbody/</link>
+      <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_physx/rigidbody/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍PhysX刚体动力学相关的内部机制和使用方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
+&lt;p&gt;Let&amp;rsquo;s start with some key concepts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Both &lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Dynamic&lt;/code&gt; rigidbodies are represented as &lt;code&gt;PxRigidDynamic&lt;/code&gt; in PhysX. You can switch between them at runtime using &lt;code&gt;PxRigidBody::setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Kinematic&lt;/code&gt; and &lt;code&gt;Static&lt;/code&gt; actors remain stationary unless explicitly moved in code.&lt;/li&gt;
+&lt;li&gt;Moving &lt;code&gt;Static&lt;/code&gt; actors can result in incorrect collision behavior with dynamic actors.&lt;/li&gt;
+&lt;li&gt;When moving &lt;code&gt;Kinematic&lt;/code&gt; actors, always use &lt;code&gt;PxRigidDynamic::setKinematicTarget&lt;/code&gt; each frame instead of &lt;code&gt;PxRigidActor::setGlobalPose&lt;/code&gt; to ensure correct collision detection with dynamic actors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post focuses on dynamic rigidbody movement, covering topics such as &lt;strong&gt;force and torque, gravity, sleeping&lt;/strong&gt;, and more.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PhysX物理引擎（2）Collision</title>
+      <link>https://pps43.github.io/posts/using_physx/collision/</link>
+      <pubDate>Fri, 11 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_physx/collision/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍PhysX碰撞检测的一些内部机制和使用方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
+&lt;h2 id=&#34;static-kinematic--dynamic&#34;&gt;Static, Kinematic &amp;amp; Dynamic&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Static colliders are non-movable. In fact, they are not rigidbody, just &lt;code&gt;PxRigidStatic&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Kinematic and  dynamic rigidbody are both &lt;code&gt;PxRigidDynamic&lt;/code&gt;, and can switch to each other at runtime by &lt;code&gt;setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true/false)&lt;/code&gt;. The biggest difference is that kinematic rigidbody behaves like infinite mass, and will not move by external force. Instead, you call &lt;code&gt;MovePosition&lt;/code&gt; on it.&lt;/li&gt;
+&lt;li&gt;Dynamic rigidbody is the only type we can &lt;code&gt;AddForce&lt;/code&gt; to, which has mass, center of mass, and inertia tensor to simulate a natural movement with Newton&amp;rsquo;s laws of motion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;classDiagram
+
+PxRigidActor &amp;lt;-- PxRigidStatic
+PxRigidActor &amp;lt;-- PxRigidBody
+PxRigidBody &amp;lt;-- PxRigidDynamic
+PxRigidActor *.. PxShape
+
+class PxRigidBody {
+    PxRigidBodyFlag
+}
+class PxShape {
+    PxShapeFlag
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We cannot make a rigidbody without a shape. Shapes are tangible, with a real size.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PhysX零值Crash</title>
+      <link>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</link>
+      <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_physx/solving_zero_value_crash/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文是&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;的特别篇，记录了影响近一周的物理引擎底层概率性Crash的定位过程和修复方法，具有&lt;strong&gt;很高&lt;/strong&gt;的实践参考价值。&lt;em&gt;“有多高？”“三四层楼那么高啦！”&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;发现问题&#34;&gt;发现问题&lt;/h1&gt;
+&lt;p&gt;运维同事发现体验服和某区在新版本上线一小段时间后，会出现概率不高但持续出现的进程Crash。这里先简单说明一下：我们会在一台机器上部署多个GameServer实例，每个GameServer实例进程同时进行着多场不同的Match，如果某一场Match出现了业务层Crash，并不会影响其他Match。但如果是C++物理库内出现Crash，则会同时中止其他正常运行的Match，对玩家的影响较大。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PhysX物理引擎（1）Scene Query</title>
+      <link>https://pps43.github.io/posts/using_physx/scenequery/</link>
+      <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/using_physx/scenequery/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍PhysX场景查询的一些内部机制和使用方法。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pps43.github.io/tags/physx/&#34;&gt;PhysX物理引擎系列&lt;/a&gt;记录了在实际项目中使用Nvdia PhysX 3.4物理引擎（&lt;a href=&#34;https://github.com/pps43/PhysX-3.4&#34;&gt;Code&lt;/a&gt;, &lt;a href=&#34;https://github.com/pps43/PhysX-3.4/raw/master/PhysX_3.4/Documentation/PhysXGuide.chm&#34;&gt;Doc&lt;/a&gt;）的一些经验，有不少对官方资料的补充。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;warm-up&#34;&gt;Warm-up&lt;/h1&gt;
+&lt;p&gt;A &lt;code&gt;Scene&lt;/code&gt; in PhysX engine is a container of objects in a hierachical manner.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;---
+title: Scene Hierachy
+---
+classDiagram
+direction LR
+
+class world
+class scene {
+    Flags
+    Gravity
+    ...
+}
+class actor {
+    ActorFlags
+    Name
+    GlobalPose
+    ...
+}
+class shape {
+    Flags
+    GeometryType
+    LocalPose
+    QueryFilterData
+    SimulationFilterData
+    ...
+}
+class geometry {
+    ...
+}
+class material {
+    friction
+    restitution
+    damping
+}
+
+world &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;scene
+scene &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;actor
+actor &amp;#34;1&amp;#34;*.. &amp;#34;N&amp;#34;shape
+shape o--geometry
+shape o--material
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There are only position and rotation in &lt;code&gt;GlobalPose&lt;/code&gt; and &lt;code&gt;LocalPose&lt;/code&gt;, no &amp;ldquo;scale&amp;rdquo;. Scale only reflects on geometry&amp;rsquo;s actual size.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
