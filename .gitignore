@@ -1,6 +1,7 @@
 .hugo_build.lock
 
 /public/
+/resources/
 .DS_Store
 pps43.github.io.code-workspace
 

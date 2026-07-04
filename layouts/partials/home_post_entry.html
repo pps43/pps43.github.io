@@ -40,7 +40,12 @@
   {{- with $page.Params.cover.image }}
   {{- if not $isHidden }}
   <figure class="entry-cover entry-cover-thumbnail" aria-hidden="true">
+    {{- $img := $page.Resources.GetMatch . }}
+    {{- if $img }}
+    <img loading="lazy" src="{{ $img.RelPermalink }}" alt="">
+    {{- else }}
     <img loading="lazy" src="{{ . | relURL }}" alt="">
+    {{- end }}
   </figure>
   {{- end }}
   {{- end }}

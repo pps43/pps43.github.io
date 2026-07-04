@@ -1,11 +1,11 @@
 
 # About new post
-- use `hugo new posts/{title}.md` to create a new post, `{title}.md` should be under path: `content/posts`
+- every post is a page bundle: `content/posts/{title}/index.md`, with images (if any) alongside it.
 - preferred title: notes_on_xxx (for reading books), thinking_of_xxx (for topic discussion), using_xxx (for tech notes or manual)
 - prefer starting with a very brief intro about why write this post
 - prefer reuseing existing tags
 - use `[link to another post]({{< ref "posts/post_name.md>}})` to link to related posts, or `[tag link]({{< tagref "tag_name"}})` for tags.
-- use `![caption](/{post_name}/{image_name})` to reference images, image file should be under path: `static/{post_name}`. 
+- use `![caption](image_name)` to reference images; image files live alongside `index.md` in `content/posts/{post_name}/`.
 - use MathJax grammar for math formular, `$...$` for inline, `$$` for multiline
 
 # About theme customization
