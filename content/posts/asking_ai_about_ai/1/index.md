@@ -17,10 +17,10 @@ hideSummary: false
 
 ---
 系列文章
-1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
-2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
-3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
-4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai_4.md">}})
+1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai/1">}})
+2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai/2">}})
+3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai/3">}})
+4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai/4">}})
 
 ---
 

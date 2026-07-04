@@ -57,7 +57,7 @@ Up direction can be arbitrary, defined by `PxController::setUpDirection()`.
 
 ## Example
 
-Below is the creation process of a CCT, using the layer defined in ["PhysX物理引擎（2）Collision"]({{< ref "/posts/using_physx_collision.md">}}).
+Below is the creation process of a CCT, using the layer defined in ["PhysX物理引擎（2）Collision"]({{< ref "/posts/using_physx/collision">}}).
 
 ```cpp
 bool PhysXManager::AddCCT(ActorWrapper &actor, float radius, float height, float skinWidth, float stepOffset, float slopeLimit, int layer, int layerAgainst)

@@ -10,7 +10,7 @@ tags: ["游戏开发", "PhysX", "Unity"]
 > 本文也是[PhysX物理引擎系列]({{< tagref "PhysX" >}})的番外篇。介绍了笔者基于CharacterController(CCT)设计的一个新的角色控制器，在修补Unity/PhysX的CCT的缺陷外，还增添了若干和物理交互相关的有趣特性。代码已经过实际项目验证，这里仅保留和具体业务无关的部分。
 
 # 背景和需求
-[前文]({{< ref "/posts/using_physx_cct.md">}})结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出`CharacterController`组件）在实际游戏开发中的缺点，这里再次总结：
+[前文]({{< ref "/posts/using_physx/cct">}})结尾处提到一些PhysX自带的CCT（Unity也是基于此二次封装出`CharacterController`组件）在实际游戏开发中的缺点，这里再次总结：
 - **CCT不参与碰撞系统的检测**。仅当CCT自身移动时会判断是否被其他刚体或CCT阻挡。这就造成一个BUG：CCT自身静止时，其他运动物体会穿过CCT且没有事件触发。[官方论坛上有苦主](https://discussions.unity.com/t/proper-collision-detection-with-charactercontroller/564371)持续8年向Unity反馈这个问题但无法解决，目前已知的唯一绕过方式是每帧给CCT附加一个微小的位移（下文中的`SlightMove`）。
 - **Unity提供的接口`CharacterController.isGrounded`效果很不稳定**。其内部只是判断CCT上次运动后底部是否触碰物体。即`collisionFlags & eCOLLISION_DOWN::eCOLLISION_DOWN`。但在上下坡或崎岖地形时，很容易出现侧面触碰或短暂浮空。如果用该接口驱动动画表现甚至跑跳逻辑，效果很差。需要自行基于SceneQuery封装出更加稳定的判定着地的函数。
 - **Unity没有暴露`CCT.upVector`，角色总是竖直向上的**。要实现反重力鞋在任意斜面上行走或像`马里奥银河`那样在曲面上跑跳穿梭，只能放弃使用CCT但也放弃了其在操作手感上的改善。其实拿到Unity的源码后，只用了十分钟将底层字段暴露到C#层就解决了该问题。

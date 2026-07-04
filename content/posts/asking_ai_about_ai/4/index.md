@@ -6,16 +6,16 @@ tags: ["AI"]
 hideSummary: false
 ---
 
-[上一篇]({{< ref "/posts/asking_ai_about_ai_3.md">}})我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。
+[上一篇]({{< ref "/posts/asking_ai_about_ai/3">}})我们了解了多模态模型，它们能够处理文本、图像、音频等多种信息。但无论是处理单一模态还是多模态，现代AI模型的核心驱动力之一，就是“注意力机制”（Attention Mechanism）。本篇我们就来深入探讨这个让模型“抓住重点”的关键技术。
 
 本篇由AI起稿，人工精修。
 
 ---
 系列文章
-1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
-2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
-3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
-4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai_4.md">}})
+1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai/1">}})
+2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai/2">}})
+3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai/3">}})
+4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai/4">}})
 
 ---
 

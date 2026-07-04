@@ -2,6 +2,7 @@
 
 /public/
 /resources/
+.obsidian/
 .DS_Store
 pps43.github.io.code-workspace
 

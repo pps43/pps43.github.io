@@ -6,7 +6,7 @@ tags: ["AI"]
 hideSummary: false
 ---
 
-[上一篇]({{< ref "/posts/asking_ai_about_ai_2.md">}})发布已过去一年半，这段时间生成式AI进化肉眼可见：
+[上一篇]({{< ref "/posts/asking_ai_about_ai/2">}})发布已过去一年半，这段时间生成式AI进化肉眼可见：
 - 上下文长度从万级到百万级；
 - 多模态模型（文本、图像、音频、视频）；
 - 数学与编程能力大幅提升；
@@ -28,10 +28,10 @@ hideSummary: false
 
 ---
 系列文章
-1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai.md">}})
-2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai_2.md">}})
-3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai_3.md">}})
-4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai_4.md">}})
+1. [用AI学AI.1]({{< ref "/posts/asking_ai_about_ai/1">}})
+2. [用AI学AI.2]({{< ref "/posts/asking_ai_about_ai/2">}})
+3. [用AI学AI.3]({{< ref "/posts/asking_ai_about_ai/3">}})
+4. [用AI学AI.4]({{< ref "/posts/asking_ai_about_ai/4">}})
 
 ---
 
