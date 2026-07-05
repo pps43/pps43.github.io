@@ -10,12 +10,12 @@
     <lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Local AI</title>
+      <title>搭建本地AI</title>
       <link>https://pps43.github.io/posts/ai_local_setup/</link>
       <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/ai_local_setup/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。&lt;/p&gt;</description>
+&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。看到&lt;a href=&#34;https://www.youtube.com/watch?v=pr9fsrK8nmQ&#34;&gt;The Ultimate Local AI Tier List For 2026&lt;/a&gt; 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering (2)</title>
