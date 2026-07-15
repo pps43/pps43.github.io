@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -38,12 +38,20 @@
       <description>&lt;p&gt;这本书带给我的，除了诸多耳熟能详的作品背后的逸闻趣事、诸位大师的才华风貌，还有不少对创作思路、团队协作、宣传发行的启发，相信能常看常新。同时这本书里记录的东西，让人有一种难以名状的触动。一定要形容的话，可以说&lt;strong&gt;是一种谁也抑制不了的、忍不住要生长的气魄&lt;/strong&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>搭建本地AI</title>
-      <link>https://pps43.github.io/posts/ai_local_setup/</link>
+      <title>关于AI产品和个人能力的小思考</title>
+      <link>https://pps43.github.io/posts/thinking_of_ai/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
+      <description>&lt;p&gt;2025.8&lt;/p&gt;
+&lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而快。我意识到：&lt;strong&gt;我需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>运行本地AI工具</title>
+      <link>https://pps43.github.io/posts/ai_local_use/</link>
       <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/ai_local_setup/</guid>
+      <guid>https://pps43.github.io/posts/ai_local_use/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。看到&lt;a href=&#34;https://www.youtube.com/watch?v=pr9fsrK8nmQ&#34;&gt;The Ultimate Local AI Tier List For 2026&lt;/a&gt; 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。&lt;/p&gt;</description>
+&lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的，有了运行本地AI的条件。看到&lt;a href=&#34;https://www.youtube.com/watch?v=pr9fsrK8nmQ&#34;&gt;The Ultimate Local AI Tier List For 2026&lt;/a&gt; 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。&lt;/p&gt;</description>
     </item>
     <item>
       <title>鸡与蛋的问题</title>
@@ -101,13 +109,6 @@
       <guid>https://pps43.github.io/posts/using_pairing_functions/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;在实际项目里，我们经常需要把二维坐标 &lt;code&gt;(x, y)&lt;/code&gt;、或两个整型键合成一个“唯一”的整型键，方便做哈希表/数组索引；又希望能在需要时还原回原来的两个键。这样一个反直觉的需求真的有解决方案吗？“配对函数”（Pairing Function）隆重登场。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>关于AI产品和个人能力的小思考</title>
-      <link>https://pps43.github.io/posts/thinking_of_ai/</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
-      <description>&lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而稳、而且更快。这件小事让我意识到：&lt;strong&gt;我们真正迫切需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
       <title>软件的未来</title>
