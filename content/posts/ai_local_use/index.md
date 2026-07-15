@@ -1,12 +1,12 @@
 ---
-title: 搭建本地AI
+title: 运行本地AI工具
 date: 2026-07-04
 tags:
   - AI
 hideSummary: false
 ---
 
-> 最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的。我终于有了搭建本地AI的条件。看到[The Ultimate Local AI Tier List For 2026](https://www.youtube.com/watch?v=pr9fsrK8nmQ) 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。
+> 最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的，有了运行本地AI的条件。看到[The Ultimate Local AI Tier List For 2026](https://www.youtube.com/watch?v=pr9fsrK8nmQ) 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。
 
 ## 本地AI适合做什么
 
@@ -24,12 +24,17 @@ hideSummary: false
 
 ## 选择模型和工具
 
-主力LLM
-- qwen3-VL-8B (Q4_K_M量化，比FP8更省)。擅长图片/视频理解。
+大模型推理和服务端框架
+- ollama。速度快，配置简单跨平台。
+- [rapid-mlx](https://github.com/raullenchai/Rapid-MLX)。在M系列芯片上运行速度比ollama更快。
 
-尝鲜LLM
+> 问：推理框架和服务端框架有什么用处？可以自己写吗？
+> 答：模型只是一堆数字。为了从输入得到输出，需要做大量的矩阵运算，并且尽一切办法利用硬件带宽和高速缓存，这是推理框架的职责。为了服务多用户以及和其他服务安全、高效对接，这是服务端框架的职责。另外，部署在不同的硬件平台、不同的任务复杂性，适合的框架也不同。常见框架，复杂的如`vLLM`, `SGLang`，简单的如`Ollama`。
+
+多模态输入模型
+- qwen3-VL-8B (Q4_K_M量化，比FP8更省)。擅长图片/视频理解。
+- gemma4 12B (Q4量化)。原生支持音频输入，TTFT延迟很低。
 - qwen3.6-35B-A3B (Q4_K_M量化)。MOE稀疏模型只激活3B，因此输出速度快。擅长推理。但注意虽然只激活3B，但整体模型都要加载进内存（占用约20GB）。
-- gemma4 12B (Q8量化)。比qwen3.6-35B-A3B多了对音频的原生多模态支持。
 
 语音转文字
 - faster-whisper-large-v3-turbo。快。不过需要编写程序支持实时流式。
@@ -65,8 +70,8 @@ hideSummary: false
 
 - 安装qwen3-VL (ollama)
 	- `ollama run qwen3-vl` 
-	- 上述命令会自动下载8B-instruct版并开启一个会话。
-		![](./ollama-install-qwen-vl.png)
+	- 上述命令会自动下载8B-instruct-4bit量化版并开启一个会话。
+		![](ollama-install-qwen-vl.png)
 	- 在会话中拖入某张图片让其描述来验证。输入 `/bye` 退出5分钟后，内存会自动释放。
 
 - 安装OpenWebUI (docker)
