@@ -7,8 +7,16 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 24 May 2026 16:27:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>分析 Go 垃圾回收机制在游戏服务器中的真实影响</title>
+      <link>https://pps43.github.io/posts/notes_on_golang/</link>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_golang/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文源自实际项目实践。服务端基于 Go 1.21、监控基于 Prometheus &lt;code&gt;client_golang v1.9.0&lt;/code&gt;，讨论重负载游戏服务器的 GC 停顿、Mark Assist、监控口径与优化，并与 .NET 10 做横向比较。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>任天堂哲学</title>
       <link>https://pps43.github.io/posts/notes_on_nintendo_philosophy/</link>
