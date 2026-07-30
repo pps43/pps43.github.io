@@ -7,19 +7,27 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sat, 23 May 2026 18:18:13 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Agentic Engineering (2)</title>
+      <title>Agentic Engineering III</title>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/3/</link>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/3/</guid>
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/&#34;&gt;Agentic Engineering II&lt;/a&gt; 记录了一些启发性的用法。本篇来谈点严肃的话题，是关于agent的记忆、安全的一些最新研究。&lt;/p&gt;
+&lt;p&gt;当 Agent 越来越强大时（能跨会话工作、调用工具、协同分工并持续修改环境）时，记忆开始承担类似&lt;strong&gt;认知系统&lt;/strong&gt;的角色，例如保存目标与约束、维护对世界的判断、为行动提供理由……包括超出人类预期的行动。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic Engineering II</title>
       <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</link>
       <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</guid>
-      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering I&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
 &lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
 &lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Agentic Engineering (1)</title>
+      <title>Agentic Engineering I</title>
       <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</link>
       <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</guid>

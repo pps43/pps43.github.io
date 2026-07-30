@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于AI产品和个人能力的小思考</title>
@@ -18,6 +18,14 @@
 &lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而快。我意识到：&lt;strong&gt;我需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Agentic Engineering III</title>
+      <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/3/</link>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/3/</guid>
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/&#34;&gt;Agentic Engineering II&lt;/a&gt; 记录了一些启发性的用法。本篇来谈点严肃的话题，是关于agent的记忆、安全的一些最新研究。&lt;/p&gt;
+&lt;p&gt;当 Agent 越来越强大时（能跨会话工作、调用工具、协同分工并持续修改环境）时，记忆开始承担类似&lt;strong&gt;认知系统&lt;/strong&gt;的角色，例如保存目标与约束、维护对世界的判断、为行动提供理由……包括超出人类预期的行动。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>运行本地AI工具</title>
       <link>https://pps43.github.io/posts/ai_local_use/</link>
       <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
@@ -26,16 +34,16 @@
 &lt;p&gt;最近花了1万块购置了一台95新的 Macbook Pro M2 Max 32G/1TB (2023)，看中的是32G的统一内存和400GB/s的内存带宽。在当前AI引发存储全面涨价的今天，这样的配置无疑是性价比极高的，有了运行本地AI的条件。看到&lt;a href=&#34;https://www.youtube.com/watch?v=pr9fsrK8nmQ&#34;&gt;The Ultimate Local AI Tier List For 2026&lt;/a&gt; 中以RTX5090为例测试了本地AI有能力涵盖的日常任务，结合了我自身的需求，做了初步尝试。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Agentic Engineering (2)</title>
+      <title>Agentic Engineering II</title>
       <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</link>
       <pubDate>Sat, 23 May 2026 18:18:13 +0800</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/2/</guid>
-      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering (1)&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
+      <description>&lt;p&gt;上一篇 &lt;a href=&#34;https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/&#34;&gt;Agentic Engineering I&lt;/a&gt; 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。&lt;/p&gt;
 &lt;h1 id=&#34;让-agent-把原生工具编译到-wasm&#34;&gt;让 agent 把原生工具编译到 WASM&lt;/h1&gt;
 &lt;p&gt;还有一个很 inspiring 的用法：让 agent 帮你把 native tools 编译到 WebAssembly，然后做成网页工具。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Agentic Engineering (1)</title>
+      <title>Agentic Engineering I</title>
       <link>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</link>
       <pubDate>Mon, 18 May 2026 22:26:33 +0800</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_agentic_engineering_patterns/1/</guid>
