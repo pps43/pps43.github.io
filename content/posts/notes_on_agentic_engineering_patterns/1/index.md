@@ -1,5 +1,5 @@
 ---
-title: "Agentic Engineering (1)"
+title: "Agentic Engineering I"
 date: 2026-05-18T22:26:33+08:00
 update:
 hideSummary: false

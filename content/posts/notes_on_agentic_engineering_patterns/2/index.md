@@ -1,12 +1,12 @@
 ---
-title: "Agentic Engineering (2)"
+title: "Agentic Engineering II"
 date: 2026-05-23T18:18:13+08:00
 update:
 hideSummary: false
 tags: ["AI", "软件"]
 ---
 
-上一篇 [Agentic Engineering (1)]({{< ref "/posts/notes_on_agentic_engineering_patterns/1" >}}) 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。
+上一篇 [Agentic Engineering I]({{< ref "/posts/notes_on_agentic_engineering_patterns/1" >}}) 主要写了一些原则性的理解，这篇继续记录Simon Willison一些启发性的实践和用法。个人最感兴趣的放在最前。
 
 # 让 agent 把原生工具编译到 WASM
 
