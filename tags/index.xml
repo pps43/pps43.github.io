@@ -7,8 +7,43 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PhysX</title>
+      <link>https://pps43.github.io/tags/physx/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/physx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unity</title>
+      <link>https://pps43.github.io/tags/unity/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/unity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>游戏开发</title>
+      <link>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>物理引擎</title>
+      <link>https://pps43.github.io/tags/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E7%89%A9%E7%90%86%E5%BC%95%E6%93%8E/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>确定性</title>
+      <link>https://pps43.github.io/tags/%E7%A1%AE%E5%AE%9A%E6%80%A7/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E7%A1%AE%E5%AE%9A%E6%80%A7/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://pps43.github.io/tags/ai/</link>
@@ -28,13 +63,6 @@
       <link>https://pps43.github.io/tags/go/</link>
       <pubDate>Thu, 23 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/go/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>游戏开发</title>
-      <link>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Thu, 23 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     <item>
@@ -80,24 +108,10 @@
       <description></description>
     </item>
     <item>
-      <title>Unity</title>
-      <link>https://pps43.github.io/tags/unity/</link>
-      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/unity/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>WebGL</title>
       <link>https://pps43.github.io/tags/webgl/</link>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/tags/webgl/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PhysX</title>
-      <link>https://pps43.github.io/tags/physx/</link>
-      <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/physx/</guid>
       <description></description>
     </item>
     <item>

@@ -7,8 +7,29 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/unity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>游戏物理引擎比较：架构、特性、性能、集成</title>
+      <link>https://pps43.github.io/posts/notes_on_physics_engine/</link>
+      <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_physics_engine/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;This tech note is for game engine programmers and technical directors evaluating real-time/networked game physics.
+I use GPT-5.6 sol-xhigh to assist in the writing of this note.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;To be specific, this note compares eight 3D-capable physics systems:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Jolt Physics&lt;/li&gt;
+&lt;li&gt;Box3D&lt;/li&gt;
+&lt;li&gt;NVIDIA PhysX 4.1&lt;/li&gt;
+&lt;li&gt;Havok Physics&lt;/li&gt;
+&lt;li&gt;Chaos Physics in Unreal Engine&lt;/li&gt;
+&lt;li&gt;Bullet 3 / the Bullet Physics SDK&lt;/li&gt;
+&lt;li&gt;Valve’s Ragnarok / Rubikon lineage&lt;/li&gt;
+&lt;li&gt;Rapier as the additional modern comparison&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The focus is real-time game development: rigid-body dynamics, collision queries, characters, vehicles, ragdolls, destruction/deformables, large worlds, networking, authoring/debugging, deployment, and predictable frame cost. Robotics-only accuracy, differentiability, offline finite-element analysis, and film-only solvers are outside scope except where an engine deliberately spans those uses.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>WebGL平台的性能限制和解决方案（以微信小游戏为例）</title>
       <link>https://pps43.github.io/posts/unite2024_wechatminigame/</link>
