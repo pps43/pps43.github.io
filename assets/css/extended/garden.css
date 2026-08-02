@@ -32,7 +32,7 @@
     --quote-text: var(--gray-700);
     --surface-muted: var(--gray-100);
     --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
-    --font-reading: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+    --font-reading: "Iowan Old Style", "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
     --font-code: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
@@ -88,8 +88,9 @@ pre {
 .post-content {
     color: var(--content);
     font-family: var(--font-reading);
-    font-size: 16.5px;
-    line-height: 1.78;
+    font-size: 18.5px;
+    line-height: 1.8;
+    font-kerning: normal;
     text-rendering: optimizeLegibility;
 }
 
@@ -98,6 +99,10 @@ pre {
 .post-content pre,
 .post-content samp {
     font-family: var(--font-code);
+}
+
+.post-content code {
+    font-size: 0.84em;
 }
 
 .post-title {
@@ -126,7 +131,7 @@ pre {
 }
 
 .post-content h3 {
-    font-size: 21px;
+    font-size: 22px;
     line-height: 1.4;
 }
 
@@ -191,6 +196,38 @@ pre {
 
 .toc a:hover {
     color: var(--clay);
+}
+
+.toc .inner {
+    max-height: 58vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.toc.toc-compact .toc-deep {
+    display: none;
+}
+
+.toc-depth-toggle {
+    display: block;
+    margin: 6px 0 2px 30px;
+    padding: 0;
+    color: var(--secondary);
+    background: none;
+    border: 0;
+    font-size: 12.5px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.toc-depth-toggle:hover {
+    color: var(--clay);
+}
+
+@media (min-width: 1200px) {
+    .toc .inner {
+        max-height: calc(100vh - 120px);
+    }
 }
 
 .post-tags a,
@@ -610,12 +647,12 @@ pre {
     }
 
     .post-content h3 {
-        font-size: 19px;
+        font-size: 20px;
     }
 
     .post-content {
-        font-size: 16px;
-        line-height: 1.75;
+        font-size: 17.5px;
+        line-height: 1.76;
     }
 
     .home-info .entry-header h1 {

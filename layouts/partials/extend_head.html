@@ -1,22 +1,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" integrity="sha512-0aPQyyeZrWj9sCA46UlmWgKOP0mUipLQ6OZXu8l4IcAmD2u31EPEy9VcIMvl7SoAaKe8bLXZhYoMaE/in+gcgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-// mermaid config
-const config = {
-    startOnLoad:true,
+// Diagrams are scaled to the container width so the whole graph is always visible;
+// mermaid_viewer.html renders them and adds the enlarge button.
+mermaid.initialize({
+    startOnLoad: false,
     theme: 'neutral',
     themeVariables: {
         lineColor: "#aaaaaa"
     },
-    flowchart: {
-        useMaxWidth:false,
-        htmlLabels:true
-        }
-};
-mermaid.initialize(config);
-window.onload = () => {
-    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-}
+    flowchart: { useMaxWidth: true, htmlLabels: true },
+    sequence: { useMaxWidth: true },
+    class: { useMaxWidth: true },
+    state: { useMaxWidth: true },
+    er: { useMaxWidth: true },
+    gantt: { useMaxWidth: true },
+    journey: { useMaxWidth: true },
+    pie: { useMaxWidth: true }
+});
 </script>
 <script>
 window.MathJax = {

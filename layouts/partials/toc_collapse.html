@@ -1,0 +1,52 @@
+{{- /* Long tables of contents are folded down to their top-level headings, with an opt-in toggle. */ -}}
+<script>
+(function () {
+    var MAX_ROWS = 20;
+
+    var toc = document.querySelector('.toc');
+    if (!toc) return;
+    var inner = toc.querySelector('.inner');
+    if (!inner) return;
+
+    var items = inner.querySelectorAll('li');
+    if (items.length <= MAX_ROWS) return;
+
+    function depth(el) {
+        var d = 0;
+        var node = el.parentNode;
+        while (node && node !== inner) {
+            if (node.tagName === 'UL') d++;
+            node = node.parentNode;
+        }
+        return d;
+    }
+
+    var topLevel = Infinity;
+    items.forEach(function (li) { topLevel = Math.min(topLevel, depth(li)); });
+    items.forEach(function (li) {
+        if (depth(li) > topLevel) li.classList.add('toc-deep');
+    });
+    inner.querySelectorAll('ul').forEach(function (ul) {
+        if (depth(ul) + 1 > topLevel) ul.classList.add('toc-deep');
+    });
+    toc.classList.add('toc-compact');
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'toc-depth-toggle';
+
+    function sync() {
+        var compact = toc.classList.contains('toc-compact');
+        toggle.textContent = compact ? 'Show all headings' : 'Show top-level only';
+        toggle.setAttribute('aria-expanded', compact ? 'false' : 'true');
+    }
+
+    toggle.addEventListener('click', function () {
+        toc.classList.toggle('toc-compact');
+        sync();
+    });
+
+    sync();
+    inner.parentNode.appendChild(toggle);
+})();
+</script>

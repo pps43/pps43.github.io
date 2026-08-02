@@ -1,0 +1,115 @@
+.mermaid-figure {
+    position: relative;
+    margin: 24px 0;
+    padding: 14px 14px 10px;
+    background: var(--code-block-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.mermaid-figure .mermaid {
+    display: flex;
+    justify-content: center;
+    min-height: 1em;
+}
+
+.mermaid-figure .mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.mermaid-zoom {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    padding: 3px 9px;
+    color: var(--secondary);
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    line-height: 1.5;
+    cursor: zoom-in;
+    opacity: 0.55;
+    transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.mermaid-figure:hover .mermaid-zoom,
+.mermaid-zoom:focus-visible {
+    opacity: 1;
+}
+
+.mermaid-zoom:hover {
+    color: var(--garden-accent);
+    border-color: var(--garden-accent);
+    opacity: 1;
+}
+
+.mermaid-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    background: color-mix(in srgb, var(--theme), transparent 6%);
+}
+
+.mermaid-modal[hidden] {
+    display: none;
+}
+
+.mermaid-modal-toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mermaid-modal-toolbar button {
+    min-width: 34px;
+    height: 30px;
+    padding: 0 10px;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mermaid-modal-toolbar button:hover {
+    color: var(--garden-accent);
+    border-color: var(--garden-accent);
+}
+
+.mermaid-modal-scale {
+    min-width: 48px;
+    color: var(--secondary);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    text-align: center;
+}
+
+.mermaid-modal-canvas {
+    flex: 1 1 auto;
+    padding: 18px;
+    overflow: auto;
+    cursor: grab;
+}
+
+.mermaid-modal-canvas.is-panning {
+    cursor: grabbing;
+}
+
+.mermaid-modal-canvas svg {
+    display: block;
+    margin: 0 auto;
+}

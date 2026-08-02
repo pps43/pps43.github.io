@@ -1,0 +1,4 @@
+{{- if (and (eq .Kind "page") (ne .Layout "search")) }}
+{{- partial "toc_collapse.html" . }}
+{{- partial "mermaid_viewer.html" . }}
+{{- end }}
