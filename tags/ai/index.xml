@@ -66,6 +66,14 @@
 &lt;p&gt;&lt;a href=&#34;https://simonwillison.net/&#34;&gt;Simon Willison&lt;/a&gt; 最近转发并评论了 Thariq Shihipar 的一篇文章：&lt;a href=&#34;https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/&#34;&gt;Using Claude Code: The Unreasonable Effectiveness of HTML&lt;/a&gt;。Thariq 的核心判断可以概括成几句话：HTML 的信息密度更高，可读性更好，还能把文档变成交互界面，并且支持多媒体数据嵌入到一个文件中，因此更容易用一个链接分享。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>GDC2026见闻与思考：AI、破坏、以及展台上的人</title>
+      <link>https://pps43.github.io/posts/thinking_of_gdc2026/</link>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_gdc2026/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;三月出差去了在旧金山一年一度的 GDC2026，感触很大。成千上万的来自全世界的游戏开发者聚集在这里，仿佛形成了一个巨大的游戏场，给每一个游戏开发者能量。另外旧金山也是一座美丽的城市，依山傍海。这里的人们大多友好而自信，希望以后还有机会去。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>强化学习可能还不是AI的未来</title>
       <link>https://pps43.github.io/posts/notes_on_why_rl_is_not_the_ultimate_ai/</link>
       <pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate>

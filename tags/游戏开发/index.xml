@@ -49,6 +49,14 @@ I use GPT-5.6 sol-xhigh to assist in the writing of this note.&lt;/p&gt;&lt;/blo
 &lt;p&gt;N64的处理能力是PS的4倍以上。面对这种全新的硬件，以往的游戏软件开发方法完全不适用了，&lt;strong&gt;致使游戏软件开发的作业量、周期、投资和风险都成倍增长&lt;/strong&gt;。……这款优秀的游戏机硬件为众多游戏软件开发上设了一个很高的门槛，甚至可以说是壁垒。……就连任天堂自己的开发人员也无法承受。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>GDC2026见闻与思考：AI、破坏、以及展台上的人</title>
+      <link>https://pps43.github.io/posts/thinking_of_gdc2026/</link>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_gdc2026/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;三月出差去了在旧金山一年一度的 GDC2026，感触很大。成千上万的来自全世界的游戏开发者聚集在这里，仿佛形成了一个巨大的游戏场，给每一个游戏开发者能量。另外旧金山也是一座美丽的城市，依山傍海。这里的人们大多友好而自信，希望以后还有机会去。&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Quaternion.FromToRotation的细节</title>
       <link>https://pps43.github.io/posts/using_quaternion_fromtorotation/</link>
       <pubDate>Tue, 26 Aug 2025 00:00:00 +0000</pubDate>
