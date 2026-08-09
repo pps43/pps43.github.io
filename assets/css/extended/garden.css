@@ -28,6 +28,10 @@
     --garden-accent: var(--clay);
     --garden-accent-soft: #f4dfd4;
     --garden-ink: var(--slate);
+    --strong-marker: #efcbbb;
+    --inline-code-bg: #e8e0d2;
+    --inline-code-border: #d5c7b3;
+    --inline-code-text: #29251f;
     --quote-bg: #fff6ef;
     --quote-text: var(--gray-700);
     --surface-muted: var(--gray-100);
@@ -49,6 +53,10 @@
     --garden-accent: #d97757;
     --garden-accent-soft: #3a2d26;
     --garden-ink: #faf9f5;
+    --strong-marker: #633e30;
+    --inline-code-bg: #40372d;
+    --inline-code-border: #5b4c3e;
+    --inline-code-text: #faf9f5;
     --quote-bg: #30251f;
     --quote-text: #d1cfc5;
     --surface-muted: #28251f;
@@ -103,6 +111,30 @@ pre {
 
 .post-content code {
     font-size: 0.84em;
+}
+
+.post-content strong {
+    color: var(--garden-ink);
+    font-weight: 650;
+    background: linear-gradient(
+        to top,
+        var(--strong-marker) 0.32em,
+        transparent 0.32em
+    );
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.post-content code:not(pre code) {
+    color: var(--inline-code-text);
+    background: var(--inline-code-bg);
+    border: 1px solid var(--inline-code-border);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 32%) inset;
+    border-radius: 4px;
+}
+
+.dark .post-content code:not(pre code) {
+    box-shadow: 0 1px 0 rgb(255 255 255 / 6%) inset;
 }
 
 .post-title {
