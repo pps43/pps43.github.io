@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -16,6 +16,14 @@
       <guid>https://pps43.github.io/posts/thinking_of_software_engineering/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>如何 Debug 团队问题</title>
+      <link>https://pps43.github.io/posts/notes_on_how_to_debug_a_team/</link>
+      <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_how_to_debug_a_team/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;当一个团队出现问题，人的本能反应是认为某些人表现不好。推荐阅读 &lt;a href=&#34;https://www.lennysnewsletter.com/p/how-to-debug-a-team-that-isnt-working&#34;&gt;How to debug a team that isn’t working&lt;/a&gt;，里面提出的 Waterline Model 是一个很好的思考框架：&lt;strong&gt;先检查塑造所有人行为的系统，再判断某个人是否真的失败了&lt;/strong&gt;。记录下来，常看常新。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering III</title>

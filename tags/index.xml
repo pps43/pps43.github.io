@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 02 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>杂谈</title>
+      <link>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</link>
+      <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>软件</title>
+      <link>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
     <item>
       <title>PhysX</title>
       <link>https://pps43.github.io/tags/physx/</link>
@@ -52,13 +66,6 @@
       <description></description>
     </item>
     <item>
-      <title>软件</title>
-      <link>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Go</title>
       <link>https://pps43.github.io/tags/go/</link>
       <pubDate>Thu, 23 Jul 2026 00:00:00 +0000</pubDate>
@@ -77,13 +84,6 @@
       <link>https://pps43.github.io/tags/%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 17 May 2026 21:43:35 +0800</pubDate>
       <guid>https://pps43.github.io/tags/%E8%AE%BE%E8%AE%A1/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>杂谈</title>
-      <link>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</link>
-      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/</guid>
       <description></description>
     </item>
     <item>
