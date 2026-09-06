@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 02 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ECS 架构精髓</title>
+      <link>https://pps43.github.io/posts/notes_on_ecs/</link>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_ecs/</guid>
+      <description>&lt;p&gt;经过业界这些年的实践，ECS 虽然因为种种原因没能成为主流，但还是在部份场景发挥了应有的价值。并且其设计思想依然值得借鉴。今天得空翻到一个 ECS 的 C# 实现 &lt;a href=&#34;https://github.com/friflo/Friflo.Engine.ECS&#34;&gt;Friflo.Engine.ECS&lt;/a&gt;，借此机会把 ECS 中的精髓提炼一下，温故知新。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>游戏物理引擎比较：架构、特性、性能、集成</title>
       <link>https://pps43.github.io/posts/notes_on_physics_engine/</link>

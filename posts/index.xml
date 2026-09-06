@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -44,6 +44,13 @@
       <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
       <description>&lt;p&gt;2025.8&lt;/p&gt;
 &lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而快。我意识到：&lt;strong&gt;我需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ECS 架构精髓</title>
+      <link>https://pps43.github.io/posts/notes_on_ecs/</link>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/notes_on_ecs/</guid>
+      <description>&lt;p&gt;经过业界这些年的实践，ECS 虽然因为种种原因没能成为主流，但还是在部份场景发挥了应有的价值。并且其设计思想依然值得借鉴。今天得空翻到一个 ECS 的 C# 实现 &lt;a href=&#34;https://github.com/friflo/Friflo.Engine.ECS&#34;&gt;Friflo.Engine.ECS&lt;/a&gt;，借此机会把 ECS 中的精髓提炼一下，温故知新。&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何 Debug 团队问题</title>
