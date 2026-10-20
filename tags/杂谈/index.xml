@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E6%9D%82%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决复杂问题的三个方法</title>
+      <link>https://pps43.github.io/posts/thinking_of_complex_problems/</link>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_complex_problems/</guid>
+      <description>&lt;p&gt;前几天对自身在软件开发10年来的经验进行了一些思维和方法论上的思考，亦可用于日常问题的分析，巧的是最近在读的 [[Thinking in Systems - eBook]] 提供了更多理论支撑和案例迁移，让我挺开心的。因此记录一下。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>如何 Debug 团队问题</title>
       <link>https://pps43.github.io/posts/notes_on_how_to_debug_a_team/</link>
