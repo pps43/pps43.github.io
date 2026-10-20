@@ -1,6 +1,7 @@
 ---
 title: "解决复杂问题的三个方法"
 date: 2026-10-18
+weight: 5
 draft: false
 tags: ["软件", "杂谈"]
 ---
