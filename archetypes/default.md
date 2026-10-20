@@ -3,6 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 update:
 hideSummary: false
+# weight: 1 # pinned as first post
 draft: true
 #tags: ["a","b"]
 # cover:
