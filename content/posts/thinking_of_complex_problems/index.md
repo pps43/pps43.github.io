@@ -1,5 +1,5 @@
 ---
-title: "解决复杂问题的三个方法"
+title: "解决复杂问题的三个思路"
 date: 2026-10-18
 weight: 5
 hideSummary: false

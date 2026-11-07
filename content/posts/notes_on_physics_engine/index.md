@@ -1,5 +1,5 @@
 ---
-title: "游戏物理引擎比较：架构、特性、性能、集成"
+title: "游戏物理引擎比较"
 date: 2026-08-02
 update:
 hideSummary: false
@@ -7,132 +7,114 @@ draft: false
 tags: ["游戏开发", "物理引擎", "确定性", "PhysX", "Unity"]
 ---
 
+> 本文面向正在评估实时/联网游戏物理方案的游戏引擎程序员和技术总监。
+> 由 GPT-5.6 sol-xhigh 撰写，经人工审阅。
 
-> This tech note is for game engine programmers and technical directors evaluating real-time/networked game physics.
-> I use GPT-5.6 sol-xhigh to assist in the writing of this note.
-
-To be specific, this note compares eight 3D-capable physics systems:
+具体来说，本文比较以下七个支持 3D 的物理系统：
 
 1. Jolt Physics
 2. Box3D
 3. NVIDIA PhysX 4.1
 4. Havok Physics
-5. Chaos Physics in Unreal Engine
-6. Bullet 3 / the Bullet Physics SDK
-7. Valve’s Ragnarok / Rubikon lineage
-8. Rapier as the additional modern comparison
+5. Unreal Engine 中的 Chaos Physics
+6. Bullet 3 / Bullet Physics SDK
+7. Valve 的 Ragnarok / Rubikon 系列
 
-The focus is real-time game development: rigid-body dynamics, collision queries, characters, vehicles, ragdolls, destruction/deformables, large worlds, networking, authoring/debugging, deployment, and predictable frame cost. Robotics-only accuracy, differentiability, offline finite-element analysis, and film-only solvers are outside scope except where an engine deliberately spans those uses.
+关注点是实时游戏开发：除了基本的刚体动力学、碰撞查询、角色、载具、布娃娃（ragdoll），还关注在物理破坏、大世界支持、确定性仿真这样的高级特性。
 
-“Deterministic” is split into three levels:
+“确定性”（deterministic）分为三个层级：
 
-- **Repeatable on one executable/machine:** identical inputs give the same output when order and floating-point state are controlled.
-- **Cross-build or cross-platform deterministic:** different compilers, operating systems, or CPU architectures give bit-identical or contractually identical results under documented constraints.
-- **Network-ready:** the full application also has deterministic input ordering, allocation/ID behavior, callbacks, gameplay math, serialization, time stepping, and rollback/state history. A deterministic physics library alone does not guarantee this.
+- **单个可执行文件/单机可重复：** 在控制好执行顺序和浮点状态的前提下，相同输入得到相同输出。
+- **跨构建或跨平台确定性：** 在文档规定的约束下，不同编译器、操作系统或 CPU 架构得到逐位一致（bit-identical）或按约定一致的结果。
+- **可用于联网：** 整个应用还需要具备确定性的输入顺序、分配/ID 行为、回调、玩法数学、序列化、时间步进以及 rollback/状态历史。仅有一个确定性的物理库并不能保证这一点。
 
-## Executive summary
+## 结论摘要
 
-There is no universal “fastest physics engine.” The practical winner depends on the scene topology, solver quality target, CCD policy, number and size of simulation islands, query load, streaming pattern, thread budget, target hardware, and how much editor/network/tooling work the game engine already supplies. A benchmark that equalizes only body count is usually misleading.
+不存在通用的“最快物理引擎”。实际的赢家取决于场景拓扑、求解器质量目标、CCD 策略、simulation island 的数量和大小、查询负载、流式加载模式、线程预算、目标硬件，以及游戏引擎本身已经提供了多少编辑器/网络/工具方面的工作。
 
-The strongest short conclusions are:
+简短结论如下：
 
-- **Jolt Physics** is the best default candidate here for a new, source-available, CPU-driven 3D game engine that values multicore scaling, concurrent world access, large worlds, deterministic replay, and a broad production-oriented feature set. It has strong production evidence through *Horizon Forbidden West* and *Death Stranding 2*, and it is now the default 3D backend for new projects in Godot 4.6. Its main cost is that a custom engine still has to build the authoring, profiling, asset-cooking, and engine-facing abstraction around it.
-- **Box3D** is unusually interesting for a C-first, data-oriented engine, authoritative server simulation, voxel/streamed worlds, and teams that like Box2D’s API and solver philosophy. It offers cross-platform determinism, recording/replay, graph-colored wide-SIMD solving, CCD, double-precision positions, and baked compound collision. It is also only version 0.1 and its own manual says it is still maturing, so adoption in a shipping project should be gated by a project-specific soak test.
-- **PhysX 4.1** remains the relevant implementation reference for Unity 2022 LTS built-in 3D physics. It is mature, feature-rich, permissively licensed on public platforms, and has both CPU and optional CUDA rigid-body paths. It is now a legacy branch; new standalone projects should evaluate PhysX 5 rather than start from 4.1 unless compatibility with Unity-era behavior or an existing 4.x integration is the requirement.
-- **Havok Physics** is the commercial, supported, high-maturity option. Its differentiators are production support, broad platform coverage, robust edge-case behavior, cross-platform determinism, mature debugging, and maintained Unreal integration. Public architectural detail and reproducible benchmarks are limited compared with open-source engines, and licensing/evaluation is a material procurement decision.
-- **Chaos Physics** is best understood as Unreal Engine’s physics ecosystem, not merely a drop-in rigid-body library. Its advantage is deep integration with Geometry Collections, destruction authoring, Dataflow, Niagara, networking/resimulation, cloth, flesh, hair, vehicles, and Unreal’s editor. Outside Unreal, it is not a sensible standalone middleware choice.
-- **Bullet 3** remains a flexible, permissively licensed, portable toolbox spanning games, VFX, robotics, and machine learning. Its modular collision/dynamics design and PyBullet ecosystem are major strengths. The production C++ path is still largely the Bullet 2-style CPU stack; the repository’s OpenCL “Bullet 3” path is explicitly experimental. For a new high-object-count game runtime, benchmark it carefully against Jolt, Box3D, and Rapier rather than assuming its historical ubiquity implies the best current CPU scaling.
-- **Ragnarok** is a Valve-internal successor/evolution of Rubikon disclosed publicly by Erin Catto in June 2026. It is relevant to physics-engine history and future Valve technology, but there is no public SDK, source, platform matrix, feature specification, or benchmark. It is not an external adoption candidate.
-- **Rapier** is the most relevant additional comparison: a modern Rust-native 2D/3D engine with official Rust and WebAssembly/JavaScript paths, Bevy integration, optional SIMD/parallelism, `f32`/`f64` variants, and optional bit-level cross-platform determinism. It is attractive for Rust and web stacks; its determinism mode currently trades away SIMD and parallelism, and its GPU solver is still a future direction rather than a shipping core feature.
-
-**Recommended first shortlist by project type:**
-
-| Project need | First candidate | Also evaluate | Why |
-|---|---|---|---|
-| New custom C++ game engine | Jolt | PhysX 5, Havok | Best balance of open source, production evidence, features, concurrent access, and multicore design |
-| C ABI, compact source, server-authoritative world | Box3D | Jolt through a C wrapper, Rapier C/FFI | Box3D is C17, handle-based, deterministic, replayable, and built around data-oriented parallel solving |
-| Existing Unity 2022 LTS game | Unity’s built-in PhysX integration | Havok Physics for Unity for DOTS workloads | Unity already supplies the component/editor/serialization layer; replacing the backend is a different project from using the public PhysX SDK |
-| Unreal Engine game with destruction-heavy authoring | Chaos | Havok Physics for Unreal | Chaos owns the native workflow; Havok offers a supported replacement at Unreal’s physics API level |
-| Deterministic lockstep across heterogeneous machines | Havok or Jolt deterministic build | Box3D, Rapier deterministic build | Validate the entire game stack; physics determinism alone is insufficient |
-| Rust or browser/WebAssembly game | Rapier | Jolt.js, Box3D/Emscripten | Rapier has first-party Rust and JavaScript/Wasm distribution and a natural Rust API |
-| Robotics / reinforcement learning plus game-like simulation | Bullet/PyBullet or Rapier | PhysX 5 | PyBullet’s ecosystem is unusually broad; Rapier supplies Rust, multibodies, URDF/MJCF work, and deterministic options |
+- **Jolt Physics** 生产级。适合重视多核扩展、大世界、确定性模拟的项目。它有《Horizon Forbidden West》和《Death Stranding 2》的有力生产验证，并且已成为 Godot 4.6 新项目的默认 3D 后端。
+- **Box3D** 仅供学习。适合以 C 为主、data-oriented 的引擎，权威服务器模拟，体素/流式世界为特点的实验项目。它提供很多现代功能，但它目前仅为 0.1 版本。
+- **PhysX 4.1** 生产级。它成熟、功能丰富，性能优秀，在公开平台上采用宽松许可，并同时具备 CPU 和可选的 CUDA 刚体路径。不过新的独立项目应评估 PhysX 5，而不是从 4.1 起步，除非需求就是兼容 Unity 时代的行为或已有的 4.x 集成。
+- **Havok Physics** 生产级。它的差异化在于生产支持、广泛的平台覆盖、稳健的边界情况处理、跨平台确定性、成熟的调试工具，以及持续维护的 Unreal 集成。与开源引擎相比，公开的架构细节和可复现的 benchmark 有限，许可/评估本身就是一项重要的采购决策。
+- **Chaos Physics** 生产级。它的优势在于与 Geometry Collection、破坏编辑、Dataflow、Niagara、联网/重模拟、布料、肌肉（flesh）、毛发、载具以及 Unreal 编辑器的深度集成。
+- **Bullet 3** 试验级。仍是一个灵活、宽松许可、可移植的工具箱，覆盖游戏、VFX、机器人和机器学习。它模块化的碰撞/动力学设计和 PyBullet 生态是主要优势。生产用的 C++ 路径基本仍是 Bullet 2 风格的 CPU 栈；仓库中的 OpenCL “Bullet 3” 路径明确标注为实验性。对于新的高物体数量游戏运行时，应仔细与 Jolt 和 Box3D 做 benchmark，而不是因为它历史上的普及度就认为它具有当前最好的 CPU 扩展性。
+- **Ragnarok** 仅供了解。是 Erin Catto 在 2026 年 6 月公开披露的 Valve 内部 Rubikon 后继/演进版本。它与物理引擎的历史和 Valve 未来的技术相关，但没有公开。它不是外部可采用的候选。
 
 
-## History and family tree
+## 历史与谱系
 
-### Timeline
+### 时间线
 ```mermaid
 timeline
-    title Selected real-time game physics lineage
-    1998 : Havok founded from Trinity College Dublin research
-    2001 : NovodeX created
-    2003 : Bullet begins at Sony Computer Entertainment US R&D
-    2004 : AGEIA acquires NovodeX, which becomes the PhysX software base
-    2007 : Intel acquires Havok
-    2008 : NVIDIA acquires AGEIA and develops PhysX across CPU and CUDA
-    2015 : Microsoft acquires Havok from Intel
-    2018 : PhysX 4 opens its CPU source under BSD-3-Clause
-    2019 : Epic unveils Chaos at GDC for Unreal Engine 4.23
-    2020 : Rapier is released as the performance-focused successor to nphysics
-         : Unity 2019.3 upgrades its built-in 3D backend to PhysX 4.1
-    2021 : Jolt becomes publicly available as an MIT-licensed project
-    2022 : Horizon Forbidden West ships on Jolt
-         : Havok Physics for Unity becomes production supported
-    2025 : Godot integrates Jolt as a built-in 3D backend
-    2026 : Box3D 0.1 is announced
-         : Ragnarok is publicly described as Valve's evolving Rubikon successor
+    title 部分实时游戏物理引擎谱系
+    1998 : Havok 基于 Trinity College Dublin 的研究成立
+    2001 : NovodeX 诞生
+    2003 : Bullet 在 Sony Computer Entertainment US R&D 起步
+    2004 : AGEIA 收购 NovodeX，后者成为 PhysX 的软件基础
+    2007 : Intel 收购 Havok
+    2008 : NVIDIA 收购 AGEIA，并在 CPU 和 CUDA 上发展 PhysX
+    2015 : Microsoft 从 Intel 手中收购 Havok
+    2018 : PhysX 4 以 BSD-3-Clause 开放 CPU 源码
+    2019 : Epic 在 GDC 上为 Unreal Engine 4.23 发布 Chaos
+    2020 : Unity 2019.3 将内置 3D 后端升级到 PhysX 4.1
+    2021 : Jolt 以 MIT 许可公开发布
+    2022 : Horizon Forbidden West 基于 Jolt 上线
+         : Havok Physics for Unity 进入生产支持
+    2025 : Godot 将 Jolt 集成为内置 3D 后端
+    2026 : Box3D 0.1 发布
+         : Ragnarok 被公开描述为 Valve 不断演进的 Rubikon 后继者
 ```
 
-The key ownership and origin sources are NVIDIA’s account of [NovodeX beginning in 2001 and becoming PhysX after two acquisitions](https://developer.nvidia.com/blog/open-source-simulation-expands-with-nvidia-physx-5-release/), Intel’s [2007 Havok acquisition announcement](https://www.intel.com/pressroom/archive/releases/2007/20070914corp.htm), Microsoft’s [2015 Havok acquisition announcement](https://blogs.microsoft.com/blog/2015/10/02/havok-to-join-microsoft/), Epic/Intel’s [GDC 2019 Chaos account](https://www.intel.com/content/dam/develop/external/us/en/documents/unreal-engines-new-chaos-physics-system-screams-with-in-depth-intel-cpu-optimizations.pdf), Dimforge’s [2020 Rapier announcement](https://dimforge.com/blog/2020/08/25/announcing-the-rapier-physics-engine/), Guerrilla’s [Jolt production talk](https://www.guerrilla-games.com/read/architecting-jolt-physics-for-horizon-forbidden-west), and Erin Catto’s [2026 Box3D/Rubikon/Ragnarok history](https://box2d.org/posts/2026/06/announcing-box3d/).
+关于归属和起源的关键来源包括：NVIDIA 关于 [NovodeX 始于 2001 年并经两次收购成为 PhysX](https://developer.nvidia.com/blog/open-source-simulation-expands-with-nvidia-physx-5-release/) 的说明、Intel 的 [2007 年 Havok 收购公告](https://www.intel.com/pressroom/archive/releases/2007/20070914corp.htm)、Microsoft 的 [2015 年 Havok 收购公告](https://blogs.microsoft.com/blog/2015/10/02/havok-to-join-microsoft/)、Epic/Intel 的 [GDC 2019 Chaos 介绍](https://www.intel.com/content/dam/develop/external/us/en/documents/unreal-engines-new-chaos-physics-system-screams-with-in-depth-intel-cpu-optimizations.pdf)、Guerrilla 的 [Jolt 生产实践演讲](https://www.guerrilla-games.com/read/architecting-jolt-physics-for-horizon-forbidden-west)，以及 Erin Catto 的 [2026 年 Box3D/Rubikon/Ragnarok 历史](https://box2d.org/posts/2026/06/announcing-box3d/)。
 
-### Family tree
+### 谱系图
 
 ```mermaid
 flowchart LR
-    B2["Box2D algorithms and v3 data-oriented architecture"] --> B3["Box3D"]
-    RL["Rubikon-Lite"] -->|"hull generation and some collision code"| B3
+    B2["Box2D 算法与 v3 data-oriented 架构"] --> B3["Box3D"]
+    RL["Rubikon-Lite"] -->|"凸包生成与部分碰撞代码"| B3
     R["Valve Rubikon"] --> RG["Valve Ragnarok"]
 
     N["NovodeX"] --> A["AGEIA PhysX"] --> PX["NVIDIA PhysX"]
-    PX --> U["Unity built-in 3D physics"]
-    PX --> UE34["Unreal Engine 3/4 historical backend"]
+    PX --> U["Unity 内置 3D 物理"]
+    PX --> UE34["Unreal Engine 3/4 历史后端"]
 
-    C["Chaos"] --> UE5["Unreal Engine 5 physics ecosystem"]
+    C["Chaos"] --> UE5["Unreal Engine 5 物理生态"]
     H["Havok Physics"] --> HUE["Havok Physics for Unreal"]
     H --> HUD["Havok Physics for Unity DOTS"]
 
     J["Jolt"] --> D["Decima / Horizon"]
-    J --> G["Godot built-in 3D backend"]
+    J --> G["Godot 内置 3D 后端"]
 
     BT["Bullet C++ SDK"] --> PB["PyBullet"]
-    RP["Rapier"] --> BV["Bevy plugins"]
-    RP --> JS["JavaScript / WebAssembly packages"]
 ```
 
-## Common architecture model
+## 通用架构模型
 
-Most real-time rigid-body engines implement variations of the same pipeline. Their real differences lie in data ownership, concurrency, algorithms, solver policy, cache design, and how tightly the pipeline is coupled to a game engine.
+大多数实时刚体引擎实现的都是同一条管线的变体。它们真正的差异在于数据归属、并发、算法、求解策略、缓存设计，以及管线与游戏引擎耦合的紧密程度。
 
 ```mermaid
 flowchart TD
-subgraph "Simulation pipeline"
-    A["Game commands<br/>create, destroy, forces, kinematic targets"] --> B["Apply queued mutations<br/>and integrate velocities"]
-    B --> C["Broad phase<br/>AABB tree, sweep-and-prune, MBP, GPU grid/BVH"]
-    C --> D["Candidate overlapping pairs"]
-    D --> E["Narrow phase<br/>SAT, GJK/EPA, specialized primitive and mesh tests"]
-    E --> F["Persistent contact manifolds<br/>material and filtering callbacks"]
-    F --> G["Island / constraint graph construction"]
-    G --> H["Constraint solve<br/>contacts, friction, joints, motors"]
-    H --> I["Integrate poses, CCD/TOI correction,<br/>sleep and activation"]
-    I --> J["Events, active transforms,<br/>snapshots and debug telemetry"]
+subgraph "模拟管线"
+    A["游戏指令<br/>创建、销毁、施力、kinematic 目标"] --> B["应用排队的修改<br/>并积分速度"]
+    B --> C["Broad phase<br/>AABB tree、sweep-and-prune、MBP、GPU grid/BVH"]
+    C --> D["候选重叠对"]
+    D --> E["Narrow phase<br/>SAT、GJK/EPA、专用图元与网格测试"]
+    E --> F["持久化 contact manifold<br/>材质与过滤回调"]
+    F --> G["Island / 约束图构建"]
+    G --> H["约束求解<br/>接触、摩擦、关节、马达"]
+    H --> I["积分位姿、CCD/TOI 修正、<br/>休眠与激活"]
+    I --> J["事件、活跃变换、<br/>快照与调试遥测"]
     J ==> A
 end
-subgraph "Other"
-    C -.-> Q["Scene queries<br/>ray, overlap, sweep, shape cast"]
+subgraph "其他"
+    C -.-> Q["场景查询<br/>ray、overlap、sweep、shape cast"]
     E -.-> Q
-    K["Cooked assets<br/>mesh BVHs, hulls, compounds"] --> C
+    K["Cooked 资源<br/>网格 BVH、凸包、复合体"] --> C
     K --> E
-    L["Job system / task graph / GPU dispatcher"] -.-> B
+    L["Job 系统 / task graph / GPU 调度器"] -.-> B
     L -.-> C
     L -.-> E
     L -.-> G
@@ -140,144 +122,118 @@ subgraph "Other"
 end
 ```
 
-Important evaluation implications:
+对评估的重要启示：
 
-- A broad phase can dominate a streaming/open-world game even when few bodies are actually colliding.
-- Narrow-phase choice matters when the content contains complex convex hulls, triangle meshes, height fields, or high-speed thin features.
-- Solver iteration counts are not interchangeable between engines. “Four iterations” can represent different work and different quality.
-- Parallel performance depends on available independent work. Thousands of isolated bodies and many small islands parallelize differently from one giant ragdoll/constraint island.
-- CCD is not one feature switch: speculative contacts, sphere-swept approximations, full-shape linear casts, and multi-pass time-of-impact solvers have different cost and failure modes.
-- Scene queries often serve gameplay, AI, cameras, audio, and navigation; their cost and concurrency model can matter more than rigid-body solve time.
-- Integration cost is architectural. A fast SDK can still lose if every frame copies bodies through an abstraction, serializes callbacks on the main thread, or rebuilds cooked data unnecessarily.
+- 在流式加载/开放世界游戏中，即使实际碰撞的物体很少，broad phase 也可能成为主要开销。
+- 当内容包含复杂凸包、三角网格、高度场或高速薄结构时，narrow phase 的选择很重要。
+- 不同引擎之间的求解器迭代次数不可互换。“四次迭代”可能代表不同的工作量和不同的质量。
+- 并行性能取决于可用的独立工作量。成千上万的孤立物体和大量小 island 的并行方式，与一个巨大的布娃娃/约束 island 截然不同。
+- CCD 不是一个单一开关：speculative contact、扫掠球近似、全形状 linear cast 以及多遍 time-of-impact 求解器，各自有不同的开销和失效模式。
+- 场景查询通常服务于玩法、AI、相机、音频和导航；它们的开销和并发模型可能比刚体求解时间更重要。
+- 集成开销是架构层面的。如果每帧都通过抽象层拷贝刚体、在主线程上串行化回调，或者不必要地重建 cooked 数据，那么再快的 SDK 也可能输掉。
 
-## At-a-glance comparison
+## 一览对比
 
-| Engine | Availability / license | Primary design center | Core runtime style | Parallel / acceleration strategy | Determinism contract | Current adoption posture |
+| 引擎 | 可得性 / 许可 | 主要设计重心 | 核心运行时风格 | 并行 / 加速策略 | 确定性承诺 | 当前采用态势 |
 |---|---|---|---|---|---|---|
-| Jolt 5.6.x source snapshot | MIT, open source | CPU multicore games and VR; concurrent engine access | C++17 retained world, handles/IDs, explicit job and temp allocators | Lock-conscious/lock-free structures, jobs, SIMD; CPU rigid bodies; separate GPU hair feature | Same-run deterministic by design; optional cross-platform build with documented caveats and ~8% cited cost | Strong default for custom engines; production proven |
-| Box3D 0.1 | MIT, open source | C-first 3D sibling of Box2D; large piles, server worlds, replay | Portable C17, opaque generational IDs, data-oriented arrays | Graph coloring, wide-SIMD contact blocks, multithreading hooks or internal scheduler; SSE2/NEON/Wasm SIMD | Cross-platform deterministic; FMA contraction disabled; recording/replay | Technically promising, but early and still maturing |
-| PhysX 4.1.2 | BSD-3-Clause public source; console code under separate terms/NDA | Scalable middleware from mobile CPU to multicore CPU/CUDA GPU | C++ scene/actor/shape retained API, cooking, extensions | Task dispatcher, SIMD, ABP/SAP/MBP/GPU broad phase, optional CUDA rigid pipeline | Enhanced local determinism mode; no general cross-platform bitwise guarantee | Mature legacy; relevant to Unity 2022 and existing 4.x integrations |
-| Havok Physics 2025.x | Commercial proprietary SDK | Supported, robust, cross-platform AAA middleware | C++ SDK plus tools and engine integrations | Proprietary multicore optimizations; detailed internals/benchmarks mostly customer-only | Vendor-guaranteed cross-platform deterministic SDK, conditional on deterministic integration | Best when support, platform certification, and robustness justify cost |
-| Chaos in UE 5.x | Unreal Engine source under Unreal license | Deep Unreal-native simulation and content workflow | UE modules, game/physics thread proxies, Task Graph, editor assets | Task Graph, async/dedicated physics thread, ISPC/SIMD CPU kernels; feature-specific GPU paths | Networking uses replication, prediction, and resimulation; do not assume cross-platform lockstep | Natural choice inside Unreal, especially destruction and authoring |
-| Bullet 3.27 source snapshot | zlib, open source | Broad reusable collision/multiphysics toolbox | Modular C++ collision world and dynamics world; optional components | CPU SIMD and optional multithreaded dispatch/solvers; experimental OpenCL pipeline | Generally repeatable only under controlled configuration; no broad cross-platform guarantee | Mature and flexible; strongest ecosystem outside pure game runtime |
-| Ragnarok | Closed, Valve-internal | Future Valve/Source physics, evolving Rubikon | Undisclosed | Publicly described only as having optimizations similar to Box3D | Undisclosed | Watch item, not adoptable middleware |
-| Rapier 0.34 source snapshot | Apache-2.0, open source | Rust-native 2D/3D games, animation, robotics, web | Rust sets/handles and explicit pipeline components | Optional Rayon parallelism and explicit SIMD; cross-platform GPU work is research/future work | Local deterministic by default; enhanced cross-platform mode disables parallel/SIMD | Strong for Rust, Bevy, web, and mixed game/robotics workloads |
-
+| Jolt 5.6.x 源码快照 | MIT，开源 | CPU 多核游戏和 VR；并发引擎访问 | C++17 retained world，handle/ID，显式 job 和临时分配器 | 注重锁的/lock-free 结构、job、SIMD；CPU 刚体；独立的 GPU 毛发功能 | 设计上同次运行确定性；可选跨平台构建，有文档说明的注意事项，引用开销约 8% | 自研引擎的强力默认选项；经过生产验证 |
+| Box3D 0.1 | MIT，开源 | 以 C 为主的 Box2D 3D 姊妹版；大规模堆叠、服务器世界、回放 | 可移植 C17，不透明的分代 ID，data-oriented 数组 | Graph coloring、wide-SIMD 接触块、多线程钩子或内置调度器；SSE2/NEON/Wasm SIMD | 跨平台确定性；禁用 FMA contraction；录制/回放 | 技术上很有前景，但尚早期且仍在完善 |
+| PhysX 4.1.2 | 公开源码 BSD-3-Clause；主机代码另有条款/NDA | 从移动 CPU 到多核 CPU/CUDA GPU 的可扩展中间件 | C++ scene/actor/shape retained API、cooking、扩展库 | Task dispatcher、SIMD、ABP/SAP/MBP/GPU broad phase、可选 CUDA 刚体管线 | 增强的本地确定性模式；无通用的跨平台逐位保证 | 成熟的遗留版本；与 Unity 2022 及已有 4.x 集成相关 |
+| Havok Physics 2025.x | 商业专有 SDK | 有支持、稳健、跨平台的 AAA 中间件 | C++ SDK 加工具和引擎集成 | 专有多核优化；详细内部实现/benchmark 大多仅对客户开放 | 厂商保证的跨平台确定性 SDK，前提是集成本身也是确定性的 | 当支持、平台认证和稳健性值得这笔费用时最佳 |
+| UE 5.x 中的 Chaos | Unreal license 下的 Unreal Engine 源码 | 深度 Unreal 原生的模拟与内容工作流 | UE 模块、game/physics 线程 proxy、Task Graph、编辑器资源 | Task Graph、异步/专用物理线程、ISPC/SIMD CPU 内核；特定功能的 GPU 路径 | 联网使用复制、预测和重模拟；不要假设跨平台 lockstep | Unreal 内的自然选择，尤其是破坏和编辑 |
+| Bullet 3.27 源码快照 | zlib，开源 | 广泛可复用的碰撞/多物理工具箱 | 模块化的 C++ collision world 和 dynamics world；可选组件 | CPU SIMD 和可选的多线程分发/求解器；实验性 OpenCL 管线 | 通常仅在受控配置下可重复；无广泛的跨平台保证 | 成熟灵活；在纯游戏运行时之外生态最强 |
+| Ragnarok | 闭源，Valve 内部 | 未来的 Valve/Source 物理，Rubikon 的演进 | 未公开 | 公开描述仅为具有与 Box3D 类似的优化 | 未公开 | 观察项，不是可采用的中间件 |
 
 ## 1. Jolt Physics
 
-### Origin and philosophy
+### 起源与理念
 
-Jolt began as Jorrit Rouwé’s personal learning project and was shaped by production problems at Guerrilla. The key concern was not merely making `PhysicsSystem::Update` fast; it was allowing a multithreaded game engine to query, stream, add, and remove physics data without turning the physics world into a global synchronization bottleneck.
+Jolt 最初是 Jorrit Rouwé 的个人学习项目，后来在 Guerrilla 的生产问题中成型。关键关注点不仅是让 `PhysicsSystem::Update` 跑得快，而是允许多线程游戏引擎在查询、流式加载、添加和移除物理数据时，不把物理世界变成一个全局同步瓶颈。
 
-Guerrilla reports that switching from a commercial engine to Jolt for *Horizon Forbidden West* reduced memory and executable size and allowed the simulation frequency to double while using less CPU time. The associated architecture work emphasizes a lock-free broad phase and lock-free simulation-island building. See [Guerrilla’s GDC 2022 summary](https://www.guerrilla-games.com/read/architecting-jolt-physics-for-horizon-forbidden-west) and the [slides with speaker notes](https://jrouwe.nl/architectingjolt/ArchitectingJoltPhysics_Rouwe_Jorrit_Notes.pdf).
+Guerrilla 报告称，《Horizon Forbidden West》从一个商业引擎切换到 Jolt 后，内存和可执行文件体积都减小了，同时模拟频率翻倍且 CPU 时间更少。相关的架构工作强调 lock-free 的 broad phase 和 lock-free 的 simulation island 构建。参见 [Guerrilla 的 GDC 2022 总结](https://www.guerrilla-games.com/read/architecting-jolt-physics-for-horizon-forbidden-west) 和 [带演讲者备注的幻灯片](https://jrouwe.nl/architectingjolt/ArchitectingJoltPhysics_Rouwe_Jorrit_Notes.pdf)。
 
-The upstream [README](https://github.com/jrouwe/JoltPhysics) states four design priorities particularly relevant to games:
+上游 [README](https://github.com/jrouwe/JoltPhysics) 列出了四个与游戏尤其相关的设计优先级：
 
-- Concurrent collision queries and world mutation with defined before/after visibility.
-- Background batch construction and low-impact insertion for streaming.
-- Explicit activation behavior so content changes do not accidentally wake large neighborhoods.
-- Deterministic simulation, including an optional cross-platform deterministic build.
+- 并发的碰撞查询和世界修改，并具有明确定义的前后可见性。
+- 后台批量构建和低影响插入，以支持流式加载。
+- 显式的激活行为，使内容变化不会意外唤醒大片邻近区域。
+- 确定性模拟，包括可选的跨平台确定性构建。
 
-### Architecture
+### 架构
 
-Jolt uses a conventional `world/body/shape/constraint` model but makes ownership and concurrency explicit:
+Jolt 使用常规的 `world/body/shape/constraint` 模型，但把归属和并发显式化：
 
-- `PhysicsSystem` owns bodies, constraints, broad phase, contact management, islands, and the step pipeline.
-- Bodies are accessed through `BodyInterface`; IDs separate public lifetime references from internal storage and locking.
-- Shapes are immutable and reference counted, encouraging sharing and safe concurrent use. Static, compound, mesh, and height-field shapes can be cooked before insertion.
-- Object layers and broad-phase layers let the integration encode coarse collision policy before narrow-phase work.
-- The application supplies a `JobSystem` and temporary allocator to `PhysicsSystem::Update`, allowing physics tasks to participate in the engine’s scheduler instead of owning an opaque thread pool.
-- The broad phase supports concurrent queries and updates. Narrow-phase collectors make allocation and early-out policy explicit.
-- Active bodies form simulation islands. Large islands can be split into parallel batches; contact caching avoids repeating narrow-phase work when relative transforms have not materially changed.
-- The default solver is an iterative impulse/constraint solver with separate velocity and position iteration controls. Constraint priority can bias influential constraints such as joints nearer a ragdoll root.
+- `PhysicsSystem` 拥有刚体、约束、broad phase、接触管理、island 和步进管线。
+- 刚体通过 `BodyInterface` 访问；ID 将公开的生命周期引用与内部存储和加锁分离开。
+- Shape 是不可变且引用计数的，便于共享和安全的并发使用。静态、复合、网格和高度场 shape 可以在插入前预先 cook。
+- Object layer 和 broad-phase layer 让集成层在 narrow phase 工作之前编码粗粒度的碰撞策略。
+- 应用程序向 `PhysicsSystem::Update` 提供 `JobSystem` 和临时分配器，让物理任务参与引擎自己的调度器，而不是拥有一个不透明的线程池。
+- Broad phase 支持并发查询和更新。Narrow phase 的 collector 让分配和提前退出策略显式化。
+- 活跃刚体构成 simulation island。大型 island 可以拆分成并行批次；当相对变换没有实质变化时，接触缓存可避免重复 narrow phase 工作。
+- 默认求解器是迭代式冲量/约束求解器，分别控制速度和位置迭代次数。约束优先级可以偏向更有影响力的约束，比如靠近布娃娃根节点的关节。
 
-The complete upstream reference is [Architecture of Jolt Physics](https://jrouwe.github.io/JoltPhysics/).
+完整的上游参考资料是 [Architecture of Jolt Physics](https://jrouwe.github.io/JoltPhysics/)。
 
-### Game-facing features
 
-Current source includes:
+### 性能
 
-- Rigid bodies with sphere, box, capsule, tapered capsule/cylinder, cylinder, convex hull, plane, compound, triangle mesh, and height field shapes.
-- Discrete and continuous motion quality, ray casts, overlap tests, broad-phase tests, and shape casts.
-- Fixed, point, distance/spring, hinge, slider, cone, rack-and-pinion, gear, pulley, path, swing-twist, and 6-DOF constraints plus motors.
-- Sensors, contact/activation listeners, animated ragdolls, and state save/restore.
-- Rigid and “virtual” character controllers with different interaction/control tradeoffs.
-- Wheeled, tracked, and motorcycle vehicle support.
-- Soft bodies with edge, bend, rod, volume, tether, skinning-range, pressure, and rigid-body collision constraints.
-- Buoyancy, optional double-precision world positions, serialization/recording, JoltViewer, samples, unit tests, and performance tests.
-- A newer strand-based GPU hair system; this should not be confused with GPU acceleration of the core rigid-body pipeline.
+官方的 [Jolt 多核研究](https://jrouwe.nl/jolt/JoltPhysicsMulticoreScaling.pdf) 特别有价值，因为它移植的凸体对网格场景包含了 Jolt 1.1、PhysX 4.1 和 Bullet 3.21，并公开了求解器和 CCD 设置。
 
-### Performance evidence
+- 在 3,680 个刚体的布娃娃场景中，在所引用的 Intel EC2 机器上，Jolt 在 8 线程时达到单线程速率的 **4.9×**，16 线程时达到 **5.7×**。
+- 超过约 16 核后，由于内存带宽和接触缓存原子操作成为瓶颈，扩展趋于平缓。
+- 在移植的凸体对网格场景中，PhysX 在测试笔记本上有更好的单线程性能，而 Jolt 扩展得更好；论文结论是对于这个简单场景，Jolt 达到了相近的整体性能。
+- 作者明确警告，PhysX 会根据场景规模限制线程数，并且每个引擎都必须在目标场景上做性能分析。
 
-The official [Jolt multicore study](https://jrouwe.nl/jolt/JoltPhysicsMulticoreScaling.pdf) is unusually useful because its ported convex-vs-mesh scene includes Jolt 1.1, PhysX 4.1, and Bullet 3.21 with disclosed solver and CCD settings.
+这项研究是架构扩展性的证据，而不是一张永恒的排行榜：版本已经很旧，负载是合成的，而且当前的 Jolt 已有大幅演进。
 
-- In its 3,680-body ragdoll scene, Jolt reached **4.9×** the one-thread rate at 8 threads and **5.7×** at 16 threads on the cited Intel EC2 machine.
-- Scaling flattened after roughly 16 cores as memory bandwidth and contact-cache atomics became limiting.
-- On the ported convex-vs-mesh scene, PhysX had better single-thread performance on the tested laptop, while Jolt scaled better; the paper’s conclusion is that Jolt achieved similar overall performance for that simple scene.
-- The author explicitly warns that PhysX uses scene-size-dependent thread limits and that every engine must be profiled on the target scene.
+### 确定性、平台与集成
 
-This study is evidence for architectural scaling, not a timeless league table: the versions are old, the workload is synthetic, and current Jolt has evolved substantially.
+可选的 `CROSS_PLATFORM_DETERMINISTIC` 构建在文档中约 **慢 8%**，并在 MSVC/Clang/GCC/Emscripten、Windows/macOS/Linux、32/64 位、x86、ARM、RISC-V、PowerPC、LoongArch 和 Wasm 上测试过。**这一保证有边界**：在多线程下，broad-phase 查询顺序、监听器回调顺序和活跃刚体顺序可能变化，必须由应用程序排序或过滤。权威的注意事项见 [Jolt 的确定性模拟文档](https://jrouwe.github.io/JoltPhysics/#deterministic-simulation)。
 
-### Determinism, platforms, and integrations
+官方列出的目标平台包括 Windows x86/x64/ARM64；x86、ARM、RISC-V、LoongArch 和 PowerPC 上的 Linux；FreeBSD；Android；macOS；iOS；MinGW；通过 JoltPhysics.js 的 WebAssembly；以及一个受 NDA 约束的主机平台。x86 最低要求 SSE2，可选 SSE4/AVX/AVX2/AVX-512；ARM64 使用 NEON。参见 [上游平台矩阵](https://github.com/jrouwe/JoltPhysics#supported-platforms)。
 
-The optional `CROSS_PLATFORM_DETERMINISTIC` build is documented as about **8% slower** and tested across MSVC/Clang/GCC/Emscripten, Windows/macOS/Linux, 32/64-bit, x86, ARM, RISC-V, PowerPC, LoongArch, and Wasm. **The guarantee has boundaries**: broad-phase query ordering, listener callback ordering, and active-body ordering can vary under multithreading and must be sorted or filtered by the application. The definitive caveats are in [Jolt’s deterministic simulation documentation](https://jrouwe.github.io/JoltPhysics/#deterministic-simulation).
+值得注意的集成包括 Decima/Guerrilla、Godot、社区的 Source 引擎替换工作以及 Unreal 插件。Godot 在 4.4 中将 Jolt 加入为可选的内置后端；到 [Godot 4.6 文档](https://docs.godotengine.org/en/4.6/tutorials/physics/using_jolt_physics.html) 时，新项目默认使用它。
 
-Officially listed targets include Windows x86/x64/ARM64; Linux across x86, ARM, RISC-V, LoongArch, and PowerPC; FreeBSD; Android; macOS; iOS; MinGW; WebAssembly through JoltPhysics.js; and an NDA-covered console target. Minimum x86 is SSE2, with optional SSE4/AVX/AVX2/AVX-512; ARM64 uses NEON. See the [upstream platform matrix](https://github.com/jrouwe/JoltPhysics#supported-platforms).
+### 最佳适用场景与注意事项
 
-Notable integrations are Decima/Guerrilla, Godot, community Source-engine replacement work, and Unreal plugins. Godot added Jolt as an alternative built-in backend in 4.4; by the [Godot 4.6 documentation](https://docs.godotengine.org/en/4.6/tutorials/physics/using_jolt_physics.html), new projects use it by default.
+最佳适用：有显著的流式加载、查询并发、大世界、高刚体数量或确定性回放需求的自研 CPU 导向 3D 引擎。
 
-### Best fit and cautions
-
-Best fit: a custom CPU-oriented 3D engine with meaningful streaming, query concurrency, large-world, high-body-count, or deterministic replay requirements.
-
-Cautions: production integration still needs asset cooking/versioning, editor representation, profiling UI, gameplay-safe event ordering, rollback policy, and platform certification. Jolt’s broad feature list does not automatically reproduce the semantics of Unity, Unreal, or a legacy engine abstraction.
+注意事项：生产集成仍需要资源 cooking/版本管理、编辑器表示、性能分析 UI、对玩法安全的事件顺序、rollback 策略和平台认证。Jolt 丰富的特性列表并不会自动复刻 Unity、Unreal 或遗留引擎抽象层的语义。
 
 ## 2. Box3D
 
-### Origin and philosophy
+### 起源与理念
 
-Box3D was announced by Erin Catto on 2026-06-30 as a 3D physics engine for games. It grew from a practical game problem rather than an abstract port of Box2D:
+Box3D 由 Erin Catto 于 2026-06-30 作为面向游戏的 3D 物理引擎发布。它源自一个实际的游戏问题，而不是对 Box2D 的抽象移植：
 
-1. Catto’s *The Legend of California* needed reliable fast-falling trees, server-side simulation, a broad phase for hundreds of thousands of entities, runtime voxel collision construction, and efficient streaming of strongholds containing tens of thousands of collision meshes.
-2. Dirk Gregorius supplied “Rubikon-Lite,” a home version of Valve’s Rubikon engine. Catto integrated it into Unreal, then progressively replaced most APIs, data structures, and algorithms with Box2D v3-derived designs to keep his 2D and 3D work aligned.
-3. Current Box3D retains some Rubikon-Lite convex-hull generation and collision code; the rest is Box2D-derived or new Box3D work.
+1. Catto 的《The Legend of California》需要可靠的快速倒下的树木、服务器端模拟、能处理数十万实体的 broad phase、运行时体素碰撞构建，以及对包含数万个碰撞网格的据点进行高效流式加载。
+2. Dirk Gregorius 提供了“Rubikon-Lite”，即 Valve Rubikon 引擎的一个个人版本。Catto 将其集成进 Unreal，随后逐步用源自 Box2D v3 的设计替换了大部分 API、数据结构和算法，以让他的 2D 和 3D 工作保持一致。
+3. 当前的 Box3D 保留了部分 Rubikon-Lite 的凸包生成和碰撞代码；其余部分源自 Box2D 或是 Box3D 的新工作。
 
-This history and the first public Ragnarok description are in [Announcing Box3D](https://box2d.org/posts/2026/06/announcing-box3d/).
+这段历史以及对 Ragnarok 的首次公开描述见 [Announcing Box3D](https://box2d.org/posts/2026/06/announcing-box3d/)。
 
-The philosophy is recognizably Box2D v3: portable C, opaque generational IDs rather than exposed pointers, compact data-oriented storage, a sub-stepped “Soft Step” solver, graph coloring, wide SIMD, explicit events, determinism, and a small embeddable core.
+其理念明显是 Box2D v3 式的：可移植的 C、不透明的分代 ID 而非暴露指针、紧凑的 data-oriented 存储、子步进的“Soft Step”求解器、graph coloring、wide SIMD、显式事件、确定性，以及一个小巧可嵌入的核心。
 
-### Architecture
+### 架构
 
-The [Box3D 0.1 manual](https://box2d.org/documentation3d/) describes a world of bodies, attached shapes, generated contacts, and user-created joints. Internally:
+[Box3D 0.1 手册](https://box2d.org/documentation3d/) 描述了一个由刚体、附着的 shape、生成的接触和用户创建的关节组成的世界。在内部：
 
-- Public C17 APIs return opaque IDs with generation checks. Definitions are copied into internal structures, which keeps the API stable and lets the engine organize storage independently.
-- The broad phase uses dynamic bounding-volume trees. The public dynamic-tree API can also serve game-specific spatial indexing.
-- Convex collision primarily uses the Separating Axis Test (SAT) rather than relying exclusively on GJK/EPA. Catto argues that SAT produces useful separating features without requiring a collision margin and recently added SIMD work for complex hull edge tests; see [SIMD for Collision](https://box2d.org/posts/2026/07/simd-for-collision/).
-- Continuous collision combines speculative contacts with time-of-impact processing, covering fast translation and rotation.
-- The Soft Step solver divides a game step into substeps. The manual recommends 60 Hz with four substeps as a starting point, giving constraints four opportunities per frame to react without necessarily executing an entire game loop at 240 Hz.
-- A constraint graph is colored so non-conflicting contacts and joints can be processed in parallel. “Wide SIMD” solves multiple independent contact points together; worker scheduling can be supplied by the host or handled by an optional internal scheduler.
-- Sleeping bodies are organized into solver sets/islands. Baked compounds collapse large static collections into a compact single shape, addressing streaming and per-object overhead.
-- Positions can use double precision while much of the local math remains float-oriented. The current CMake option is `BOX3D_DOUBLE_PRECISION`.
-- Recording, replay, world snapshots, event streams, and deterministic math are first-class rather than afterthoughts.
+- 公开的 C17 API 返回带分代检查的不透明 ID。定义（definition）被拷贝进内部结构，这使 API 保持稳定，并让引擎可以独立组织存储。
+- Broad phase 使用动态包围体树（dynamic bounding-volume tree）。公开的 dynamic-tree API 也可用于游戏专用的空间索引。
+- 凸体碰撞主要使用分离轴测试（Separating Axis Test，SAT），而非仅依赖 GJK/EPA。Catto 认为 SAT 无需碰撞边距（collision margin）就能产生有用的分离特征，并且最近为复杂凸包的边测试加入了 SIMD 优化；参见 [SIMD for Collision](https://box2d.org/posts/2026/07/simd-for-collision/)。
+- 连续碰撞结合了 speculative contact 与 time-of-impact 处理，覆盖快速平移和旋转。
+- Soft Step 求解器将一个游戏步拆分为多个子步。手册推荐以 60 Hz 加四个子步作为起点，让约束每帧有四次响应机会，而不必让整个游戏循环跑在 240 Hz。
+- 约束图被着色（graph coloring），使互不冲突的接触和关节可以并行处理。“Wide SIMD”同时求解多个独立的接触点；worker 调度可以由宿主提供，也可以由可选的内置调度器处理。
+- 休眠刚体被组织成 solver set/island。Baked compound 将大量静态集合合并为一个紧凑的单一 shape，解决流式加载和每物体开销问题。
+- 位置可以使用双精度，而大部分局部数学仍以 float 为主。当前的 CMake 选项是 `BOX3D_DOUBLE_PRECISION`。
+- 录制、回放、世界快照、事件流和确定性数学是一等公民，而不是事后补充。
 
-### Game-facing features
 
-Current 0.1 source provides:
+### 性能
 
-- Convex hull, capsule, sphere, triangle mesh, height-field, and compound collision.
-- Continuous collision, filtering, sensors, contact events, ray casts, shape casts, overlap queries, and a character mover.
-- Revolute, prismatic, distance, spherical, motor, weld, wheel, parallel, and filter joints in the current manual/source, with limits, motors, springs, friction, break thresholds, and force reporting.
-- Island sleeping, body movement events, deterministic snapshots, replay, large-world position mode, and runtime mesh/hull construction.
-- A dependency-light core: only the C runtime and `libm` on Unix.
+Box3D 包含 benchmark 源码和 CSV 结果，并发布了 [Box3D benchmark 仪表盘](https://box2d.org/files/benchmarks_3d.html)。仓库中签入的 AMD Ryzen 9 7950X SSE2 结果在一个 CCD 上使用 1 到 8 个线程。对于高度并行的负载，当前 CSV 显示：
 
-It does **not** currently present the breadth of Jolt, Havok, PhysX, Chaos, or Bullet in soft bodies, cloth, fluids, mature vehicle frameworks, or decades of compatibility tooling. Destruction is an integration/content system to build around rigid bodies and cooked fragments, not a turnkey Box3D module.
-
-### Performance evidence
-
-Box3D includes benchmark source and CSV results and publishes a [Box3D benchmark dashboard](https://box2d.org/files/benchmarks_3d.html). The checked-in AMD Ryzen 9 7950X SSE2 results use one through eight threads on one CCD. For the heavily parallel workloads, current CSVs show:
-
-| Bundled workload | 1-thread total | 8-thread total | Observed speedup |
+| 内置负载 | 单线程总耗时 | 8 线程总耗时 | 实测加速比 |
 |---|---:|---:|---:|
 | Convex pile | 17,336.6 ms | 2,410.11 ms | 7.19× |
 | Joint grid | 1,586.48 ms | 214.504 ms | 7.40× |
@@ -286,583 +242,475 @@ Box3D includes benchmark source and CSV results and publishes a [Box3D benchmark
 | Many pyramids | 2,331.14 ms | 316.039 ms | 7.38× |
 | Rain | 2,434.57 ms | 444.147 ms | 5.48× |
 
-The `large_world` micro-workload becomes slower with more workers (10.938 ms at one thread versus 14.7126 ms at eight), a useful reminder that scheduling overhead beats parallelism when work is too small or poorly partitioned. These numbers show scaling inside Box3D; they do not compare simulation quality or speed against another engine.
+`large_world` 这个微型负载在 worker 增多时反而变慢（单线程 10.938 ms，八线程 14.7126 ms），这提醒我们：当工作量太小或划分不佳时，调度开销会压过并行收益。这些数字展示的是 Box3D 内部的扩展性；并没有在模拟质量或速度上与其他引擎比较。
 
-### Determinism, platforms, and integrations
+### 确定性、平台与集成
 
-Box3D advertises cross-platform determinism and disables floating-point contraction/FMA in supported compiler paths so scalar/SIMD targets do not silently diverge. Recording and replay make determinism testable. The integration must still maintain stable command and event order.
+Box3D 宣称跨平台确定性，并在支持的编译器路径中禁用浮点 contraction/FMA，以免标量/SIMD 目标悄然产生分歧。录制和回放使确定性变得可测试。集成层仍需维持稳定的指令和事件顺序。
 
-The library and samples are documented on Windows, Linux, and macOS. The core builds through Emscripten for web. SIMD paths cover SSE2 and NEON, with Wasm SIMD mapping through Emscripten; SIMD can be disabled. A C17 compiler is required for the library and C++20 for samples. No GPU runtime is required or used by the core solver.
+库和示例在 Windows、Linux 和 macOS 上有文档说明。核心可通过 Emscripten 构建到 Web。SIMD 路径覆盖 SSE2 和 NEON，Wasm SIMD 经由 Emscripten 映射；SIMD 可以禁用。库需要 C17 编译器，示例需要 C++20。核心求解器不需要也不使用 GPU 运行时。
 
-The announcement lists *The Legend of California*, Facepunch’s s&box, Esoterica, and Glenn Fiedler’s 1,000-player space-game project as early users. The first project integrates Box3D into Unreal through a custom ECS/scripting/animation stack, which is strong evidence that replacement is possible but also evidence that it is substantial engine work.
+发布公告列出的早期用户有《The Legend of California》、Facepunch 的 s&box、Esoterica，以及 Glenn Fiedler 的千人太空游戏项目。第一个项目通过自定义的 ECS/脚本/动画栈将 Box3D 集成进 Unreal，这有力证明了替换是可行的，但同时也说明这是一项可观的引擎工作。
 
-### Best fit and cautions
-
-Best fit: teams comfortable owning physics integration, especially C/C++ engine teams building authoritative servers, voxel worlds, high-entity-count broad-phase systems, or projects that value deterministic replay and Box2D-like design.
-
-Cautions: the [manual explicitly says](https://box2d.org/documentation3d/) its written portion is a work in progress, and the repository calls out v0.1 maturity. Require crash/NaN fuzzing, long-duration replay tests, representative character and vehicle tests, mesh/CCD torture scenes, serialization compatibility policy, and console/mobile validation before committing a production schedule.
 
 ## 3. NVIDIA PhysX 4.1
 
-### Origin and philosophy
+### 起源与理念
 
-PhysX descends from Adam Moravanszky’s NovodeX engine, started in 2001, acquired by AGEIA, and then acquired with AGEIA by NVIDIA in 2008. It evolved from dedicated physics-hardware ambitions into a portable CPU SDK plus optional CUDA acceleration. NVIDIA made PhysX 4 CPU source available under BSD-3-Clause in 2018. See [NVIDIA’s lineage summary](https://developer.nvidia.com/blog/open-source-simulation-expands-with-nvidia-physx-5-release/) and [PhysX 4 open-source announcement](https://developer.nvidia.com/blog/announcing-physx-sdk-4-0-an-open-source-physics-engine/).
+PhysX 源自 Adam Moravanszky 于 2001 年开始的 NovodeX 引擎，先被 AGEIA 收购，随后在 2008 年随 AGEIA 一起被 NVIDIA 收购。它从专用物理硬件的愿景演变为一个可移植的 CPU SDK 加可选的 CUDA 加速。NVIDIA 在 2018 年以 BSD-3-Clause 开放了 PhysX 4 的 CPU 源码。参见 [NVIDIA 的谱系概述](https://developer.nvidia.com/blog/open-source-simulation-expands-with-nvidia-physx-5-release/) 和 [PhysX 4 开源公告](https://developer.nvidia.com/blog/announcing-physx-sdk-4-0-an-open-source-physics-engine/)。
 
-The design target is broad middleware scalability: the same high-level scene/actor/shape API can serve mobile CPUs, multicore desktop/console CPUs, and CUDA-capable GPUs, with specialized extensions for characters, vehicles, cooking, serialization, and visual debugging.
+它的设计目标是广泛的中间件可扩展性：同一套高层 scene/actor/shape API 可以服务移动 CPU、多核桌面/主机 CPU 以及支持 CUDA 的 GPU，并为角色、载具、cooking、序列化和可视化调试提供专门的扩展。
 
-### Architecture
+### 架构
 
-PhysX uses a retained-mode object hierarchy:
+PhysX 使用 retained-mode 的对象层级：
 
-- `PxFoundation` owns allocation/error services; `PxPhysics` creates materials, shapes, actors, meshes, and scenes.
-- A `PxScene` is an independent simulation world. Static and dynamic actors own or share `PxShape` objects; actors in different scenes do not interact.
-- Cooking turns triangle meshes, convex meshes, and height fields into runtime formats. Keeping cooking explicit supports offline pipelines and platform-specific compatibility decisions.
-- Broad-phase choices include sweep-and-prune (SAP), multi-box pruning (MBP), automatic box pruning (ABP, new/default in 4.x), and a GPU broad phase when CUDA dynamics is enabled.
-- Narrow phase uses specialized primitive/convex/mesh algorithms and persistent contact manifolds. Filtering can reject pairs or request contacts, triggers, CCD, and callbacks.
-- The scene constructs islands and partitions work through a CPU dispatcher/task graph. `simulate()` starts work and `fetchResults()` synchronizes and exposes the completed state. Applications can split collision and solve phases more explicitly with advanced APIs.
-- The traditional projected Gauss-Seidel (PGS) solver remains available. PhysX 4 adds Temporal Gauss-Seidel (TGS), which recomputes constraints using updated relative motion during iterations and improves joint/articulation convergence.
-- Reduced-coordinate articulations model link trees with low drift and realistic actuation/inverse dynamics, particularly useful for machinery and robotics.
-- “Immediate mode” exposes lower-level contact/constraint building and solving for applications that need a different ownership model than `PxScene`.
-- GPU rigid bodies can move broad phase, contact generation, shape/body management, and constraint solving to CUDA. Unsupported geometry/contact cases can fall back, but the GPU solver still processes response pairs and requires preallocated buffers.
+- `PxFoundation` 负责分配/错误服务；`PxPhysics` 创建材质、shape、actor、网格和场景。
+- 一个 `PxScene` 是一个独立的模拟世界。静态和动态 actor 拥有或共享 `PxShape` 对象；不同场景中的 actor 不会交互。
+- Cooking 将三角网格、凸网格和高度场转换为运行时格式。保持 cooking 显式化，有利于离线管线和平台相关的兼容性决策。
+- Broad phase 可选 sweep-and-prune（SAP）、multi-box pruning（MBP）、automatic box pruning（ABP，4.x 中新增且为默认），以及启用 CUDA 动力学时的 GPU broad phase。
+- Narrow phase 使用专门的图元/凸体/网格算法和持久化 contact manifold。过滤可以拒绝碰撞对，或请求接触、trigger、CCD 和回调。
+- 场景构建 island，并通过 CPU dispatcher/task graph 划分工作。`simulate()` 启动工作，`fetchResults()` 进行同步并暴露完成后的状态。应用可以通过高级 API 更显式地拆分碰撞和求解阶段。
+- 传统的 projected Gauss-Seidel（PGS）求解器仍然可用。PhysX 4 新增了 Temporal Gauss-Seidel（TGS），它在迭代过程中使用更新后的相对运动重新计算约束，改善了关节/articulation 的收敛性。
+- Reduced-coordinate articulation 以低漂移和真实的驱动/逆动力学来建模连杆树，对机械和机器人尤其有用。
+- “Immediate mode” 暴露了更底层的接触/约束构建与求解，供需要不同于 `PxScene` 归属模型的应用使用。
+- GPU 刚体可以把 broad phase、接触生成、shape/刚体管理和约束求解移到 CUDA 上。不支持的几何/接触情况可以回退，但 GPU 求解器仍会处理响应对，并且需要预分配缓冲区。
 
-The checked-out tree contains the complete [PhysX 4.1 simulation guide](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/Simulation.html), [threading guide](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/Threading.html), [GPU rigid-body guide](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/GPURigidBodies.html), and [best-practices guide](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/BestPractices.html).
+签出的源码树中包含完整的 [PhysX 4.1 模拟指南](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/Simulation.html)、[线程指南](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/Threading.html)、[GPU 刚体指南](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/GPURigidBodies.html) 和 [最佳实践指南](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/documentation/PhysXGuide/Manual/BestPractices.html)。
 
-### Significant 4.1 features
+### 4.1 的重要特性
 
-The [4.1 release notes](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html) highlight:
+[4.1 发布说明](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html) 重点列出了：
 
-- TGS solver and reduced-coordinate articulations.
-- ABP broad phase and a BVH structure optimized for actors containing many shapes.
-- CPU and GPU rigid bodies, GPU broad phase, GPU articulation acceleration, PCM contacts, CCD, scene queries, aggregates, joints, origin shifting, serialization, PVD, and profiling.
-- Character-controller and vehicle SDK extensions.
-- Optional torsional friction and improved actor-centric queries/cooking.
+- TGS 求解器和 reduced-coordinate articulation。
+- ABP broad phase，以及针对包含大量 shape 的 actor 优化的 BVH 结构。
+- CPU 和 GPU 刚体、GPU broad phase、GPU articulation 加速、PCM 接触、CCD、场景查询、aggregate、关节、原点平移（origin shifting）、序列化、PVD 和性能分析。
+- 角色控制器和载具 SDK 扩展。
+- 可选的扭转摩擦，以及改进的以 actor 为中心的查询/cooking。
 
-PhysX 4 removed the older core particle and cloth features. NVIDIA’s Blast, NvCloth/APEX-era systems, FleX, and later PhysX 5 deformable/particle features are separate products or generations; do not attribute the full PhysX 5 feature set to 4.1.
+PhysX 4 移除了旧的核心粒子和布料功能。NVIDIA 的 Blast、NvCloth/APEX 时代的系统、FleX，以及后来 PhysX 5 的可变形体/粒子功能，属于独立的产品或不同代际；不要把 PhysX 5 的完整特性集归到 4.1 名下。
 
-### Unity 2022 LTS relationship
+### 与 Unity 2022 LTS 的关系
 
-Unity’s [2022.3 manual](https://docs.unity3d.com/cn/2022.3/Manual/PhysicsOverview.html) states that built-in 3D physics is an integration of NVIDIA PhysX. Unity upgraded that integration to PhysX 4.1 in 2019.3, exposing the fast midphase, automatic box pruning, TGS selection, and mesh baking; see the [Unity 2019.3 release notes](https://unity.com/releases/editor/whats-new/2019.3.0).
+Unity 的 [2022.3 手册](https://docs.unity3d.com/cn/2022.3/Manual/PhysicsOverview.html) 指出内置 3D 物理是对 NVIDIA PhysX 的集成。Unity 在 2019.3 将该集成升级到 PhysX 4.1，开放了快速 midphase、automatic box pruning、TGS 选择和网格烘焙；参见 [Unity 2019.3 发布说明](https://unity.com/releases/editor/whats-new/2019.3.0)。
 
-For Unity 2022 LTS, this means:
+对于 Unity 2022 LTS，这意味着：
 
-- `Rigidbody`, `Collider`, `Joint`, `ArticulationBody`, `PhysicsScene`, queries, and the Physics Profiler are Unity-facing wrappers and workflows around PhysX behavior.
-- The public NVIDIA 4.1.2 tree is valuable for architecture study, bug investigation, and compatible native tooling, but it is not a drop-in replacement for Unity’s private integration layer or a guarantee of identical build flags/patches.
-- Unity’s built-in PhysX path is distinct from Unity Physics and Havok Physics for Unity, which are DOTS/ECS packages.
-- Replacing Unity’s backend with Jolt/Box3D/Bullet would require a native plugin plus transform synchronization, cooking/import, collision layers, callbacks, character/joint parity, serialization/editor tooling, platform binaries, and likely gameplay behavior retuning.
+- `Rigidbody`、`Collider`、`Joint`、`ArticulationBody`、`PhysicsScene`、查询和 Physics Profiler 是围绕 PhysX 行为的 Unity 侧封装和工作流。
+- 公开的 NVIDIA 4.1.2 源码树对于架构学习、bug 排查和兼容的原生工具很有价值，但它不能直接替换 Unity 私有的集成层，也不能保证构建参数/补丁完全一致。
+- Unity 内置的 PhysX 路径不同于 Unity Physics 和 Havok Physics for Unity，后两者是 DOTS/ECS 包。
+- 用 Jolt/Box3D/Bullet 替换 Unity 的后端，需要一个原生插件，外加变换同步、cooking/导入、碰撞层、回调、角色/关节对等、序列化/编辑器工具、各平台二进制文件，并且很可能需要重新调校玩法行为。
 
-### Performance and hardware
+### 性能与硬件
 
-PhysX is SIMD-accelerated and multithreaded on CPU. The Jolt comparison found stronger PhysX single-thread speed in its simple convex-vs-mesh test but weaker scaling for that test; it also notes PhysX schedules threads according to scene size, so a larger scene may scale beyond the shown result.
+PhysX 在 CPU 上有 SIMD 加速和多线程。Jolt 的对比发现，在其简单的凸体对网格测试中 PhysX 单线程速度更强，但该测试中扩展性较弱；它也指出 PhysX 会根据场景规模调度线程，因此更大的场景可能扩展得超过所示结果。
 
-The 4.1 release notes list Windows, Linux, macOS, iOS, and Android public targets. Console code is omitted from GitHub and subject to platform NDA/terms. CUDA rigid bodies are supported on Windows and Linux with a compatible NVIDIA GPU/driver; the 4.1 matrix cites CUDA 10 and compute architecture 3.0-era requirements. CPU PhysX remains cross-vendor and is the normal portability baseline.
+4.1 发布说明列出的公开目标平台为 Windows、Linux、macOS、iOS 和 Android。主机代码不在 GitHub 中，受平台 NDA/条款约束。CUDA 刚体在 Windows 和 Linux 上搭配兼容的 NVIDIA GPU/驱动可用；4.1 的矩阵引用的是 CUDA 10 和 compute architecture 3.0 时代的要求。CPU 版 PhysX 仍然跨厂商，是常规的可移植性基线。
 
-### Determinism, lifecycle, and best fit
+### 确定性、生命周期与最佳适用场景
 
-`PxSceneFlag::eENABLE_ENHANCED_DETERMINISM` reduces changes caused by unrelated island insertion/removal, at a performance cost. This is not a broad promise of bitwise equivalence across OS, compiler, CPU, and GPU. GPU execution adds further ordering and hardware concerns. Network rollback should treat PhysX 4 state capture/resimulation as an application responsibility.
+`PxSceneFlag::eENABLE_ENHANCED_DETERMINISM` 会以性能为代价，减少无关 island 插入/移除带来的变化。这并不是跨操作系统、编译器、CPU 和 GPU 逐位等价的广泛承诺。GPU 执行还会带来额外的顺序和硬件问题。网络 rollback 应把 PhysX 4 的状态捕获/重模拟视为应用自身的责任。
 
-Best fit: maintenance and understanding of Unity 2022/older custom-engine integrations, mature C++ middleware needs that require 4.x compatibility, or CPU/CUDA simulations where the legacy branch’s capabilities and API are already embedded.
+最佳适用：维护和理解 Unity 2022/较老的自研引擎集成、需要 4.x 兼容性的成熟 C++ 中间件需求，或者遗留分支的能力和 API 已经深度嵌入的 CPU/CUDA 模拟。
 
-Caution: the repository README identifies 4.1 as legacy and directs new projects to PhysX 5. Starting a greenfield engine on 4.1 creates avoidable migration debt.
+注意：仓库 README 将 4.1 标为遗留版本，并引导新项目使用 PhysX 5。在 4.1 上开始一个全新引擎，会产生本可避免的迁移债务。
 
 ## 4. Havok Physics
 
-### Origin and philosophy
+### 起源与理念
 
-Havok was founded in Dublin in 1998 from Trinity College computer-graphics research. Intel acquired it in 2007; Microsoft acquired it from Intel in 2015 and continues to license it broadly. Microsoft’s acquisition announcement already cited more than 600 games across partners including Activision, EA, Ubisoft, Nintendo, Sony, and Microsoft.
+Havok 于 1998 年基于 Trinity College 的计算机图形学研究在都柏林成立。Intel 在 2007 年收购了它；Microsoft 在 2015 年从 Intel 手中收购它，并继续广泛授权。Microsoft 的收购公告当时已提到，在包括 Activision、EA、Ubisoft、Nintendo、Sony 和 Microsoft 在内的合作方中有超过 600 款游戏使用它。
 
-Havok’s core philosophy is production predictability: robust behavior across unusual content, stable frame costs, cross-platform deterministic output, deep platform optimization, mature visual debugging, and direct engineering support. It is a commercial SDK rather than a transparent research/code reference.
+Havok 的核心理念是生产上的可预测性：在异常内容下行为稳健、帧开销稳定、跨平台确定性输出、深度的平台优化、成熟的可视化调试，以及直接的工程支持。它是一个商业 SDK，而不是一个透明的研究/代码参考。
 
-### Architecture and features
+### 架构与特性
 
-Public product material describes a C++ SDK built for proprietary engine integration, with:
+公开的产品资料描述了一个为专有引擎集成而构建的 C++ SDK，具备：
 
-- Dynamic rigid bodies, continuous collision, extensive shapes, constraints, ragdolls, character controllers, high-performance queries, large-world support, runtime shape changes, and geometry processing.
-- A robust iterative constraint solver plus a direct solver for difficult joint systems.
-- LOD collision shapes and tools intended to keep cost predictable across object and landscape scale.
-- Physics Particles: lower-cost solid-object simulation for large effect populations, with controlled quality tradeoffs.
-- Visual Debugger capture/viewers and heat maps for expensive objects.
-- Modifiers and callbacks for custom contact behavior and recovery from invalid states.
+- 动态刚体、连续碰撞、丰富的 shape、约束、布娃娃、角色控制器、高性能查询、大世界支持、运行时 shape 变更和几何处理。
+- 稳健的迭代约束求解器，外加针对困难关节系统的直接求解器（direct solver）。
+- LOD 碰撞 shape 和工具，旨在让开销在物体和地形规模变化时保持可预测。
+- Physics Particles：面向大量特效物体的低开销固体模拟，质量取舍可控。
+- Visual Debugger 的捕获/查看器，以及高开销物体的热力图。
+- 用于自定义接触行为和从无效状态恢复的 modifier 和回调。
 
-Havok Cloth and Havok Navigation are separate products. The product boundary matters when comparing the broad “Havok suite” against a single open-source rigid-body library.
+Havok Cloth 和 Havok Navigation 是独立产品。在把广义的“Havok 套件”和单个开源刚体库对比时，产品边界很重要。
 
-The best public summaries are the [Havok Physics product page](https://www.havok.com/havok-physics/), [2025 product sheet](https://www.havok.com/wp-content/uploads/2025/03/havokphysics-productsheet.pdf), and [2025.2 release highlights](https://www.havok.com/blog/havok-sdk-2025-2-release-highlights/). Detailed broad-phase, contact-generation, memory-layout, and solver implementation documentation is normally customer material; any architectural comparison beyond the public contract should be labeled inference.
+最好的公开概述是 [Havok Physics 产品页](https://www.havok.com/havok-physics/)、[2025 产品说明书](https://www.havok.com/wp-content/uploads/2025/03/havokphysics-productsheet.pdf) 和 [2025.2 发布亮点](https://www.havok.com/blog/havok-sdk-2025-2-release-highlights/)。关于 broad phase、接触生成、内存布局和求解器实现的详细文档通常是客户资料；任何超出公开承诺范围的架构比较都应标注为推断。
 
-### Performance and determinism
+### 性能与确定性
 
-Havok markets itself as the fastest and most robust engine for games, but public vendor statements are not a reproducible cross-engine benchmark. Its more defensible differentiator is the combination of long production history, support, tools, and a contractual product focus on predictable performance.
+Havok 宣传自己是最快、最稳健的游戏引擎，但厂商的公开声明并不是可复现的跨引擎 benchmark。它更站得住脚的差异化在于：长期的生产历史、支持、工具，以及以可预测性能为合同化产品重点的组合。
 
-Havok states that the SDK is cross-platform deterministic by default and guarantees identical output across supported targets, provided the surrounding engine integration is deterministic. This is the strongest public determinism claim in this group, but a proof-of-concept should still hash states across every compiler, platform, job configuration, and content-cooking path used by the project.
+Havok 声称 SDK 默认跨平台确定性，并保证在所支持的目标上输出一致，前提是外围的引擎集成本身是确定性的。这是本组中最强的公开确定性声明，但概念验证时仍应在项目所用的每种编译器、平台、job 配置和内容 cooking 路径上对状态做哈希比对。
 
-### Platforms and integrations
+### 平台与集成
 
-Havok describes support for all major game platforms and maintains teams in Europe, North America, and Japan. Exact console/platform/version matrices are part of the commercial relationship.
+Havok 称支持所有主流游戏平台，并在欧洲、北美和日本设有团队。确切的主机/平台/版本矩阵属于商业合作的一部分。
 
-Current integration paths include:
+当前的集成路径包括：
 
-- Proprietary/custom game engines through the C++ SDK.
-- [Havok Physics for Unreal](https://www.havok.com/havok-physics/), a maintained replacement at Unreal’s physics API level with Blueprint, Niagara, Geometry Collection/destruction, field, and engine workflow integration.
-- Havok Physics for Unity’s DOTS path, declared production-supported in [December 2022](https://unity.com/blog/engine-platform/havok-physics-now-supported-for-production). Unity has since announced that first-party entitlement/support changes at Unity 6.3 LTS; the Microsoft Havok team may continue it as a third-party extension. Older Unity 2022 LTS support follows its existing entitlement period; see [Unity’s pricing/product update](https://unity.com/products/pricing-updates).
+- 通过 C++ SDK 集成到专有/自研游戏引擎。
+- [Havok Physics for Unreal](https://www.havok.com/havok-physics/)，一个在 Unreal 物理 API 层面持续维护的替代方案，集成了 Blueprint、Niagara、Geometry Collection/破坏、field 和引擎工作流。
+- Havok Physics for Unity 的 DOTS 路径，于 [2022 年 12 月](https://unity.com/blog/engine-platform/havok-physics-now-supported-for-production) 宣布进入生产支持。Unity 此后宣布在 Unity 6.3 LTS 时第一方授权/支持将发生变化；Microsoft Havok 团队可能会以第三方扩展的形式继续提供。较早的 Unity 2022 LTS 支持遵循其现有的授权期；参见 [Unity 的定价/产品更新](https://unity.com/products/pricing-updates)。
 
-### Best fit and cautions
+### 最佳适用场景与注意事项
 
-Best fit: AAA/cross-platform teams for whom vendor support, certification, production edge cases, deterministic networking, and established content/debugging tools are worth more than zero license cost.
+最佳适用：对 AAA/跨平台团队来说，厂商支持、认证、生产中的边界情况、确定性联网以及成熟的内容/调试工具，比零许可费用更有价值。
 
-Cautions: evaluation requires commercial contact/NDA, procurement, platform scope, and a support/upgrade plan. Public evidence is insufficient for algorithm-level due diligence; benchmark the evaluation SDK in the real engine.
+注意事项：评估需要商务接触/NDA、采购流程、平台范围以及支持/升级计划。公开证据不足以进行算法层面的尽职调查；请在真实引擎中对评估版 SDK 做 benchmark。
 
-## 5. Chaos Physics in Unreal Engine
+## 5. Unreal Engine 中的 Chaos Physics
 
-### Origin and philosophy
+### 起源与理念
 
-Epic unveiled Chaos at GDC 2019 as a “Hollywood quality” physics and destruction system planned for Unreal Engine 4.23. Intel engineers worked with Epic on low-level solvers, data structures, threading, and ISPC vectorization. Early UE4 documentation described it as Fortnite’s lightweight solver and the future PhysX replacement. In UE5, Chaos is the native physics family.
+Epic 在 GDC 2019 上发布了 Chaos，称其为“好莱坞级别”的物理与破坏系统，计划用于 Unreal Engine 4.23。Intel 工程师与 Epic 合作开发了底层求解器、数据结构、线程以及 ISPC 向量化。早期的 UE4 文档将其描述为 Fortnite 的轻量级求解器和未来的 PhysX 替代品。在 UE5 中，Chaos 是原生的物理家族。
 
-Its philosophy is vertically integrated simulation: the solver, editor, asset types, rendering/VFX hooks, animation, networking, caching, and authoring workflows should evolve together. This is a different product shape from Jolt or Box3D.
+**它的理念是垂直整合的模拟：求解器、编辑器、资源类型、渲染/VFX 钩子、动画、联网、缓存和编辑工作流应该一同演进。**这与 Jolt 或 Box3D 是不同的产品形态。
 
-### Architecture
+### 架构
 
-Public APIs and documentation show:
+公开的 API 和文档显示：
 
-- A particle/body-oriented core and acceleration structures behind Unreal-facing body instances and components.
-- Proxies and transient particle data that communicate state between the game thread and physics thread.
-- Task Graph, single-thread, and dedicated/async-thread modes, with fixed or variable/capped stepping and buffering policies.
-- Broad-phase acceleration, narrow-phase collision constraints, persistent manifolds, island/constraint solving, and asynchronous scene queries within Unreal’s runtime modules.
-- ISPC kernels that express multiple collision/intersection operations as SIMD work and compile for SSE4/AVX/AVX2 targets, described in Intel’s [Chaos optimization paper](https://www.intel.com/content/dam/develop/external/us/en/documents/unreal-engines-new-chaos-physics-system-screams-with-in-depth-intel-cpu-optimizations.pdf).
-- Geometry Collections with clustered fracture hierarchies, connection graphs, strain/damage evaluation, caches, and live/cached hybrid playback.
-- Physics Fields that affect rigid bodies and destruction and can be sampled by Niagara/material systems.
-- Dataflow as a procedural graph for authoring fracture, cloth, flesh, and related physics assets.
+- 位于 Unreal 侧 body instance 和组件背后的、以粒子/刚体为导向的核心和加速结构。
+- 在 game 线程和 physics 线程之间传递状态的 proxy 和瞬时粒子数据。
+- Task Graph、单线程和专用/异步线程模式，支持固定或可变/封顶步长以及缓冲策略。
+- 在 Unreal 运行时模块内的 broad-phase 加速、narrow-phase 碰撞约束、持久化 manifold、island/约束求解和异步场景查询。
+- 把多个碰撞/相交运算表达为 SIMD 工作、并为 SSE4/AVX/AVX2 目标编译的 ISPC 内核，见 Intel 的 [Chaos 优化论文](https://www.intel.com/content/dam/develop/external/us/en/documents/unreal-engines-new-chaos-physics-system-screams-with-in-depth-intel-cpu-optimizations.pdf)。
+- Geometry Collection，具有聚簇的断裂层级、连接图、应变/损伤评估、缓存，以及实时/缓存混合回放。
+- Physics Field，可影响刚体和破坏，并可被 Niagara/材质系统采样。
+- Dataflow，作为编辑断裂、布料、肌肉及相关物理资源的程序化图。
 
-The low-level [Chaos API index](https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Chaos) is useful for source navigation, while [Physics in Unreal Engine](https://dev.epicgames.com/documentation/unreal-engine/physics-in-unreal-engine) describes the product-level feature family.
+底层的 [Chaos API 索引](https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Chaos) 便于源码导航，而 [Physics in Unreal Engine](https://dev.epicgames.com/documentation/unreal-engine/physics-in-unreal-engine) 描述了产品层面的特性家族。
 
-### Game-facing features
+### 面向游戏的特性
 
-Chaos covers rigid bodies, constraints, ragdolls/physical animation, async physics, destruction, cloth and ML cloth, vehicles, fields, fluids, hair, flesh/soft tissues, visual debugging, and networked physics. Some of these are separate plugins/modules with different maturity and platform/performance profiles; “Chaos supports X” does not mean a single solver or execution path implements every feature.
+Chaos 覆盖刚体、约束、布娃娃/物理动画、异步物理、破坏、布料与 ML 布料、载具、field、流体、毛发、肌肉/软组织、可视化调试和联网物理。其中一些是独立的插件/模块，成熟度和平台/性能表现各不相同；“Chaos 支持 X”并不意味着由同一个求解器或执行路径实现所有特性。
 
-Networking is a first-class UE workflow:
+联网是 UE 的一等工作流：
 
-- Default legacy replication corrects client state toward the server.
-- Predictive interpolation improves local interaction for server-authoritative actors.
-- Resimulation keeps physics history, compares authoritative state at a matching physics frame, and re-simulates on divergence.
+- 默认的传统复制会把客户端状态朝服务器校正。
+- 预测插值（predictive interpolation）改善了服务器权威 actor 的本地交互体验。
+- 重模拟（resimulation）保留物理历史，在匹配的物理帧上比对权威状态，并在出现分歧时重新模拟。
 
-These systems mitigate nondeterminism over a network; they are not proof that Chaos produces bit-identical results on heterogeneous clients.
+这些系统是在网络上缓解非确定性，并不能证明 Chaos 在异构客户端上产生逐位一致的结果。
 
-### Performance, platforms, and fit
+### 性能、平台与适用性
 
-Chaos’s strongest performance story is end-to-end: author high-density destruction, cache or reduce it, use clustering and sleeping/disable fields, vectorize collision work, and feed events directly into Niagara. The exact rigid-body performance relative to Jolt/Havok/PhysX remains scene- and UE-version-dependent. Erin Catto’s Box3D announcement records specific bad experiences with early Chaos tree/CCD behavior and missing gyroscopic torque, while also noting Epic added gyroscopic support in late 2024; that is a useful project history, not a general current benchmark.
+Chaos 最强的性能故事是端到端的：编辑高密度的破坏，将其缓存或精简，利用聚簇以及休眠/禁用 field，向量化碰撞工作，并把事件直接送入 Niagara。其刚体性能相对于 Jolt/Havok/PhysX 的确切表现仍取决于场景和 UE 版本。Erin Catto 的 Box3D 公告记录了早期 Chaos 在树木/CCD 行为上的不佳体验以及缺失陀螺力矩（gyroscopic torque）的问题，同时也提到 Epic 在 2024 年底加入了陀螺力矩支持；这是一段有用的项目历史，而不是一个通用的当前 benchmark。
 
-Chaos deploys wherever the corresponding Unreal features are supported; desktop, mobile, and console details follow Unreal’s versioned platform matrix and individual module limitations. Core rigid-body work is CPU-oriented and multicore/SIMD optimized. Do not assume CUDA-style GPU rigid-body acceleration merely because some Chaos cloth, flesh, ML, or rendering-adjacent systems have GPU paths.
+Chaos 可部署在相应 Unreal 特性支持的所有平台上；桌面、移动和主机的细节遵循 Unreal 分版本的平台矩阵以及各模块的限制。核心刚体工作以 CPU 为主，并做了多核/SIMD 优化。不要因为 Chaos 的某些布料、肌肉、ML 或与渲染相关的系统有 GPU 路径，就假设它具有 CUDA 式的 GPU 刚体加速。
 
-Best fit: Unreal projects, particularly those whose value comes from destruction, artist iteration, Niagara, animation, networked-physics workflows, and staying close to Epic’s supported path.
+最佳适用：Unreal 项目，尤其是价值来自破坏、美术迭代、Niagara、动画、联网物理工作流，以及希望紧跟 Epic 官方支持路径的项目。
 
-Caution: replacing Chaos can give a specialist runtime better behavior/performance, but the replacement must either emulate Unreal’s physics abstraction and tools or deliberately give up parts of the native ecosystem.
+注意：替换 Chaos 可以让一个专门的运行时带来更好的行为/性能，但替换方案要么模拟 Unreal 的物理抽象和工具，要么有意放弃部分原生生态。
 
 ## 6. Bullet Physics SDK / Bullet 3
 
-### Origin and philosophy
+### 起源与理念
 
-Erwin Coumans started Bullet while working at Sony Computer Entertainment US R&D. The project grew through contributions from game, VFX, and research engineers and deliberately exposed modular collision and dynamics components under the permissive zlib license. Its scope later expanded through PyBullet into robotics, reinforcement learning, and VR.
+Erwin Coumans 在 Sony Computer Entertainment US R&D 工作期间创建了 Bullet。项目在游戏、VFX 和研究工程师的贡献下成长，并刻意以宽松的 zlib 许可开放模块化的碰撞和动力学组件。之后通过 PyBullet，它的范围扩展到了机器人、强化学习和 VR。
 
-The name “Bullet 3” needs care:
+“Bullet 3”这个名字需要谨慎对待：
 
-- The mainstream C++ SDK still contains the mature Bullet 2-style CPU libraries (`LinearMath`, `BulletCollision`, `BulletDynamics`, `BulletSoftBody`, and related modules).
-- The repository also contains Bullet 3 data-oriented/OpenCL work intended to execute broad phase, narrow phase, and rigid-body dynamics on a GPU.
-- The upstream README calls OpenCL support experimental and warns about driver/kernel coverage. Do not assume all normal Bullet applications use the GPU pipeline.
+- 主流的 C++ SDK 仍然包含成熟的 Bullet 2 风格 CPU 库（`LinearMath`、`BulletCollision`、`BulletDynamics`、`BulletSoftBody` 及相关模块）。
+- 仓库中还包含 Bullet 3 的 data-oriented/OpenCL 工作，旨在把 broad phase、narrow phase 和刚体动力学放到 GPU 上执行。
+- 上游 README 称 OpenCL 支持为实验性的，并就驱动/内核覆盖问题给出警告。不要假设所有普通的 Bullet 应用都使用 GPU 管线。
 
-The current repository `VERSION` file reports 3.27; the most recently highlighted GitHub release may lag that source snapshot. The [official repository README](https://github.com/bulletphysics/bullet3) is the authoritative scope/platform/license source.
+当前仓库的 `VERSION` 文件显示为 3.27；GitHub 上最新标注的 release 可能落后于这个源码快照。[官方仓库 README](https://github.com/bulletphysics/bullet3) 是范围/平台/许可的权威来源。
 
-### Architecture
+### 架构
 
-A typical CPU Bullet world is deliberately assembled from replaceable components:
+一个典型的 CPU Bullet 世界是刻意由可替换组件组装而成的：
 
 ```mermaid
 flowchart LR
-    BP["btBroadphaseInterface<br/>DBVT or axis sweep"] --> PC["Overlapping pair cache"]
-    PC --> D["btCollisionDispatcher<br/>shape-pair algorithm selection"]
-    D --> M["Contact manifolds"]
+    BP["btBroadphaseInterface<br/>DBVT 或 axis sweep"] --> PC["Overlapping pair cache"]
+    PC --> D["btCollisionDispatcher<br/>按 shape 对选择算法"]
+    D --> M["Contact manifold"]
     M --> W["btDiscreteDynamicsWorld"]
-    S["btConstraintSolver<br/>sequential impulse or alternatives"] --> W
-    I["Simulation islands"] --> S
-    W --> O["Motion states, callbacks,<br/>activation and transforms"]
+    S["btConstraintSolver<br/>sequential impulse 或其他替代"] --> W
+    I["Simulation island"] --> S
+    W --> O["Motion state、回调、<br/>激活与变换"]
 ```
 
-- `btCollisionWorld` supports collision detection and queries without dynamics.
-- `btDiscreteDynamicsWorld` adds integration, island management, contact/joint solving, CCD, activation, and synchronization to motion states.
-- Broad phases include dynamic AABB-tree and sweep-and-prune variants; the overlapping pair cache feeds the dispatcher.
-- The dispatcher chooses specialized algorithms by shape pair. GJK, EPA, SAT/clipping, BVH mesh collision, GImpact, and compound algorithms appear across the modular narrow phase.
-- Persistent manifolds retain a small set of contact points across frames.
-- The default sequential impulse solver handles contacts, friction, and constraints. Alternate and multithreaded solver/dispatcher paths exist, but integration and result ordering require care.
-- `btSoftRigidDynamicsWorld` adds soft bodies; `btMultiBodyDynamicsWorld` and Featherstone-based multibodies address articulated chains.
+### 性能、平台、使用场景
 
-The older but still useful [Bullet 2.80 manual](https://www.cs.kent.edu/~ruttan/GameEngines/lectures/Bullet_User_Manual) explains component assembly and credits; current generated [API documentation](https://pybullet.org/Bullet/BulletFull/) should be used for exact classes.
+Bullet 默认的 CPU 设计很成熟，对中等规模或特定场景可以非常有效。但并没有承诺确定性。
 
-### Features
+C++ 库在 Windows、Linux、macOS、iOS 和 Android 上经过测试，应可移植到任何有合适 C++ 编译器的平台。可选的示例需要 OpenGL。实验性 OpenCL 需要有能力的 GPU/驱动，不等同于通用的 CPU 可移植性。
 
-Bullet includes rigid bodies, compound/convex/mesh shapes, CCD, ray/sweep/overlap queries, constraints, ragdolls, a kinematic character controller, raycast vehicles, soft bodies/cloth/rope, multibodies, serialization, debug drawing, and many import/demo utilities. PyBullet adds shared-memory/TCP/UDP client-server modes, Python bindings, URDF/SDF/MJCF import, inverse kinematics/dynamics, sensors, logging, and ML/robotics examples.
+Bullet 曾出现在 Blender 的刚体工作流、Godot 3 的历史 3D 后端、Panda3D 以及许多自研引擎/绑定中；PyBullet 是重要的机器人/ML 集成。Godot 团队那篇历史性的 [切换到 Bullet 3 的文章](https://godotengine.org/article/godot-30-switches-bullet-3-physics/) 也是一个值得警惕的集成案例：要匹配引擎的 area、kinematic body、raycast 和玩法语义，需要大量适配工作，而 Godot 后来回到了自研后端，之后才采用 Jolt。
 
-This breadth is a strength and an integration risk: game projects should decide which subset is production runtime, which is tooling, and which experimental paths are excluded.
+最佳适用：需要宽松许可源码、模块化碰撞/动力学、软体或 multibody/机器人交叉需求、PyBullet 工具，或需要兼容已有 Bullet 集成的团队。
 
-### Performance, determinism, and platforms
 
-Bullet’s default CPU design is mature and can be very effective for modest or specialized scenes. In Jolt’s old convex-vs-mesh test, Bullet 3.21 scaled less than Jolt and plateaued around six or seven cores for that scene; its CCD used a simplified sphere sweep in that comparison, so visual/robustness equivalence is not guaranteed. Treat the result as one workload, not a verdict.
+## 7. Valve Rubikon 与 Ragnarok
 
-Bullet does not make a broad current promise of bit-identical cross-platform lockstep. Stable insertion order, single-threaded execution where necessary, fixed step, identical compiler/FP behavior, disabled solver randomization, and sorted callback/query results are typical prerequisites. Rollback projects should validate hashes rather than rely on reputation.
+### 已公开的信息
 
-The C++ library is tested on Windows, Linux, macOS, iOS, and Android and should port to platforms with a suitable C++ compiler. Optional demos add OpenGL requirements. Experimental OpenCL requires a capable GPU/driver and is not equivalent to generic CPU portability.
+找到的唯一有力的公开技术来源是 Erin Catto 的第一手资料 [Box3D 发布公告](https://box2d.org/posts/2026/06/announcing-box3d/)：
 
-### Integrations and best fit
+- Dirk Gregorius 在《Half-Life: Alyx》中交付了 Valve 自研的 Rubikon 物理引擎。
+- Gregorius 维护了一个业余/个人的“Rubikon-Lite”版本，它成为 Box3D 最初的基础，之后大部分被替换为源自 Box2D 的架构。
+- Valve 侧的 Rubikon 持续演进。
+- Gregorius 在一个名为 **Ragnarok** 的新引擎中开发了与 Box3D 类似的优化，计划用于 Valve 未来的游戏。
 
-Bullet has appeared in Blender rigid-body workflows, Godot 3’s historical 3D backend, Panda3D and many custom engines/bindings; PyBullet is a major robotics/ML integration. The Godot team’s historical [Bullet 3 switch article](https://godotengine.org/article/godot-30-switches-bullet-3-physics/) is also a cautionary integration case: matching an engine’s area, kinematic-body, raycast, and gameplay semantics requires substantial adapter work, and Godot later returned to its in-house backend before adopting Jolt.
+### 未公开的信息
 
-Best fit: teams needing permissive source, modular collision/dynamics, soft bodies or multibody/robotics crossover, PyBullet tooling, or compatibility with an existing Bullet integration.
+截至调研日期，没有找到任何公开的 Ragnarok SDK、仓库、论文、API、许可、求解器描述、benchmark、硬件要求、支持平台列表、确定性承诺或已发售作品。社交媒体和论坛上的转述都可追溯到 Catto 的文章，不应视为额外的佐证。
 
-Caution: choose and freeze a supported subset, validate current maintenance of the exact modules used, and do not conflate experimental OpenCL code with the production CPU runtime.
 
-## 7. Valve Rubikon and Ragnarok
+## 架构对比
 
-### What is publicly known
+### API 与数据归属
 
-The only strong public technical source located is Erin Catto’s first-hand [Box3D announcement](https://box2d.org/posts/2026/06/announcing-box3d/):
-
-- Dirk Gregorius shipped Valve’s custom Rubikon physics engine in *Half-Life: Alyx*.
-- Gregorius maintained a hobby/home “Rubikon-Lite” version, which became Box3D’s initial base before most of it was replaced with Box2D-derived architecture.
-- Valve-side Rubikon continued to evolve.
-- Gregorius developed optimizations similar to Box3D in a new engine called **Ragnarok**, intended for future Valve games.
-
-### What is not publicly known
-
-No public SDK, repository, paper, API, license, solver description, benchmark, hardware requirement, supported-platform list, deterministic contract, or named shipped Ragnarok title was found as of the research date. Social-media and forum repetition traces back to Catto’s post and should not be treated as additional confirmation.
-
-### Architectural inference, clearly labeled
-
-It is reasonable to infer a focus on data-oriented CPU performance, large-world/gameplay interaction, and ideas related to the Box2D v3/Box3D optimization family because Catto explicitly says the optimizations are similar. It is **not** reasonable to infer that Ragnarok shares Box3D’s C API, Soft Step solver, exact graph coloring, determinism, or license.
-
-### Evaluation posture
-
-Ragnarok belongs in the history/competitive-watch section of a technology strategy, not an engine selection matrix. External teams cannot acquire, integrate, benchmark, or support it. Valve/Source projects should follow Valve’s own future tooling and documentation when it appears.
-
-## 8. Rapier
-
-### Origin and philosophy
-
-Dimforge released Rapier in August 2020 after about five months of development as the performance-focused successor to the Rust `nphysics` engine. It deliberately provides separate 2D/3D and `f32`/`f64` crates while sharing implementation, and targets games, animation, and robotics. Performance, portability, Rust-native safety, WebAssembly, and optional determinism were goals from the beginning. See [the original announcement](https://dimforge.com/blog/2020/08/25/announcing-the-rapier-physics-engine/) and [current repository](https://github.com/dimforge/rapier).
-
-Current `master` metadata reports version 0.34.0, Rust 1.86, edition 2024, and Apache-2.0 licensing.
-
-### Architecture
-
-Rapier exposes the pipeline as explicit Rust-owned sets and managers:
-
-- `RigidBodySet` and `ColliderSet` store bodies/colliders behind generational handles.
-- `IslandManager`, broad phase, `NarrowPhase`, impulse-joint and multibody-joint sets, and `CCDSolver` are visible pipeline components.
-- `PhysicsPipeline::step` orchestrates integration, collision detection, island management, solving, CCD, hooks, and events.
-- Parry provides geometric queries/collision detection. The newer dynamic BVH is used for broad phase and scene queries, with automatic rebalancing and SIMD traversal.
-- Impulse joints serve general constrained bodies; reduced-coordinate multibody joints target articulated trees.
-- Cargo features opt into Rayon parallelism, explicit SIMD, serialization, WebAssembly, and enhanced determinism.
-
-The explicit [basic simulation example](https://rapier.rs/docs/user_guides/rust/getting_started/) makes ownership clear and can be easier to adapt to an ECS than a hidden singleton world.
-
-### Features and ecosystem
-
-Rapier offers rigid bodies, common primitives and triangle/height-field/compound geometry, collision groups/hooks/events, joints/motors/limits, CCD, ray/shape/point queries, character and vehicle controllers, multibodies, serialization, snapshots, debug rendering, 2D/3D and float/double variants, and newer sparse-voxel colliders. Dimforge’s [2025 review](https://dimforge.com/blog/2026/01/09/the-year-2025-in-dimforge/) describes the new BVH, explicit voxel support, math migration, and cross-platform GPU research.
-
-Official JavaScript/TypeScript bindings distribute WebAssembly packages through NPM. Official Bevy plugins connect Rapier to a Rust ECS/game engine. Community integrations exist for Godot and other engines.
-
-### Performance and determinism
-
-The 2020 announcement benchmarked then-new Rapier against PhysX 4 PGS and Box2D on disclosed scenes and showed promising single-thread results. Those numbers are too old to rank current Rapier 0.34, current Jolt/Box3D, or current PhysX. Their enduring value is methodological: same scene initialization, fixed step, disclosed solver iteration counts, single-thread target, and separate CPU machines.
-
-Rapier is locally deterministic by default under identical initial state, insertion order, library/compiler, and machine. The `enhanced-determinism` feature targets IEEE-754-compliant CPUs and Wasm across platforms. Current documentation states that enhanced determinism cannot be enabled with SIMD or parallel features. This is a direct throughput-versus-lockstep tradeoff that should be budgeted explicitly; see [Rapier determinism](https://rapier.rs/docs/user_guides/rust/determinism/).
-
-### Hardware, fit, and cautions
-
-Rapier’s Rust crates can target desktop/mobile platforms supported by the Rust toolchain and have a first-party WebAssembly route. SIMD and parallel features are optional. The 2026 GPU work is exploratory and future-facing; current engine selection should assume CPU execution.
-
-Best fit: Rust/Bevy engines, browser games, applications sharing simulation with robotics tooling, teams that value memory safety and Cargo integration, and projects that can choose explicitly between parallel/SIMD throughput and enhanced cross-platform determinism.
-
-Cautions: pre-1.0 releases may make breaking changes; assess character/vehicle/editor integration maturity relative to the project, and benchmark current crates rather than the 2020 announcement.
-
-## Architecture comparison
-
-### API and data ownership
-
-| Engine | Public ownership model | Integration consequence |
+| 引擎 | 公开的归属模型 | 对集成的影响 |
 |---|---|---|
-| Jolt | C++ objects plus body IDs/interfaces; immutable shared shapes; host-supplied allocators/jobs | Good control over memory and scheduling; wrapper work for non-C++ languages |
-| Box3D | Flat C17 API with opaque generational IDs and copied definitions | FFI-friendly, internal data can remain compact; early API may still evolve |
-| PhysX 4.1 | C++ retained scene/actor/shape objects with reference counting and callbacks | Mature and expressive; integration must obey scene read/write and simulate/fetch phases |
-| Havok | Proprietary C++ SDK and tools | Supported integration but public implementation detail is limited |
-| Chaos | Unreal objects/components/proxies backed by UE runtime modules | Minimal impedance inside UE; extremely high coupling outside it |
-| Bullet | Application assembles broad phase, dispatcher, solver, world, and optional systems | Highly replaceable/modular; more configuration surface and legacy API exposure |
-| Ragnarok | Undisclosed | Not integrable |
-| Rapier | Rust-owned sets/managers and handles, explicit pipeline step | Natural ECS/Rust composition; FFI layers need stable ABI ownership rules |
+| Jolt | C++ 对象加 body ID/接口；不可变的共享 shape；宿主提供分配器/job | 对内存和调度控制良好；非 C++ 语言需要做 wrapper |
+| Box3D | 扁平的 C17 API，使用不透明分代 ID 和拷贝的 definition | 对 FFI 友好，内部数据可保持紧凑；早期 API 可能仍会演进 |
+| PhysX 4.1 | C++ retained 的 scene/actor/shape 对象，带引用计数和回调 | 成熟且表达力强；集成必须遵守场景读写以及 simulate/fetch 阶段 |
+| Havok | 专有 C++ SDK 和工具 | 有支持的集成，但公开的实现细节有限 |
+| Chaos | 由 UE 运行时模块支撑的 Unreal 对象/组件/proxy | 在 UE 内阻抗极小；在 UE 外耦合极高 |
+| Bullet | 由应用组装 broad phase、dispatcher、求解器、world 和可选系统 | 高度可替换/模块化；配置面更大，暴露的遗留 API 更多 |
+| Ragnarok | 未公开 | 无法集成 |
 
-### Broad phase and world streaming
+### Broad phase 与世界流式加载
 
-- **Jolt:** concurrency and streaming were first-order architecture drivers. It supports background body preparation, batch insertion, and queries concurrent with mutation/update. Best candidate to test when the game has many readers and streamed cells.
-- **Box3D:** dynamic trees and baked compounds directly address large entity sets, voxel terrain, and loading tens of thousands of collision pieces as one optimized shape. Its broad-phase data structures are also public for game-specific queries.
-- **PhysX 4.1:** ABP provides a strong default, SAP is useful for coherent worlds, MBP allows regions, GPU broad phase serves CUDA scenes, and actor-centric BVHs help actors with many shapes. Origin shifting is supplied for large worlds.
-- **Havok:** advertises large-world support, LOD shapes, high-performance queries, and geometry processing; exact structures are commercial documentation.
-- **Chaos:** aligns acceleration structures with UE world/asset representations and destruction clusters. Streaming cost is inseparable from Unreal component/proxy lifecycle.
-- **Bullet:** DBVT is flexible for dynamic worlds and sweep-and-prune can be excellent with bounded coherent scenes. The integration chooses and tunes the broad phase.
-- **Rapier:** a rebalancing dynamic BVH now serves both broad phase and scene queries, reducing duplicate acceleration structures. Sparse voxel collision is relevant to block worlds.
+- **Jolt：** 并发和流式加载是首要的架构驱动因素。它支持后台准备刚体、批量插入，以及与修改/更新并发的查询。当游戏有很多读取方和流式加载的单元格时，它是最佳测试候选。
+- **Box3D：** 动态树和 baked compound 直接应对大规模实体集合、体素地形，以及将数万个碰撞部件作为一个优化后的 shape 加载。它的 broad-phase 数据结构也对外公开，可用于游戏专用的查询。
+- **PhysX 4.1：** ABP 提供了强有力的默认选项，SAP 适用于连贯的世界，MBP 支持分区，GPU broad phase 服务于 CUDA 场景，以 actor 为中心的 BVH 有助于包含大量 shape 的 actor。并提供了原点平移以支持大世界。
+- **Havok：** 宣传大世界支持、LOD shape、高性能查询和几何处理；具体结构属于商业文档。
+- **Chaos：** 让加速结构与 UE 的世界/资源表示以及破坏簇对齐。流式加载开销与 Unreal 组件/proxy 的生命周期密不可分。
+- **Bullet：** DBVT 对动态世界很灵活，而 sweep-and-prune 在有界且连贯的场景中可以表现出色。由集成层选择和调校 broad phase。
 
-### Narrow phase, contact quality, and CCD
+### Narrow phase、接触质量与 CCD
 
-- **Box3D** most clearly commits to SAT for convex hulls and combines speculative contacts with time of impact. This avoids a required hull margin but puts more work into feature/edge testing for complex hulls.
-- **Jolt** uses many specialized shape-pair algorithms, GJK-style convex queries where appropriate, persistent caches, active-edge/internal-edge mitigation, and full-shape linear-cast CCD.
-- **PhysX** combines specialized contact generation, PCM, GJK/EPA/SAT-family algorithms, mesh midphases, and configurable multi-pass CCD/speculative CCD.
-- **Havok** advertises CCD by default and a mature customizable collision pipeline; detailed algorithms are not public in current product material.
-- **Chaos** has evolved substantially since its UE4 beta. Evaluate the exact UE branch with the project’s skeletal meshes, Geometry Collections, landscapes, and fast bodies.
-- **Bullet** has a rich set of specialized and generic algorithms; its common CCD path and thresholds need shape-specific validation. The Jolt comparison’s sphere approximation is a quality/performance difference, not just an optimization detail.
-- **Rapier** exposes CCD and Parry-based queries; validate complex-mesh edge behavior and character sweeps in current versions.
+- **Box3D** 最明确地对凸包采用 SAT，并将 speculative contact 与 time of impact 结合。这避免了必需的凸包边距，但对复杂凸包需要在特征/边测试上投入更多工作。
+- **Jolt** 使用许多专门的 shape 对算法，在合适时使用 GJK 类的凸体查询，以及持久化缓存、active-edge/内部边缓解，和全形状 linear-cast CCD。
+- **PhysX** 结合了专门的接触生成、PCM、GJK/EPA/SAT 家族算法、网格 midphase，以及可配置的多遍 CCD/speculative CCD。
+- **Havok** 宣传默认开启 CCD 以及成熟可定制的碰撞管线；当前的产品资料中没有公开详细算法。
+- **Chaos** 自 UE4 beta 以来已大幅演进。请用项目的骨骼网格、Geometry Collection、地形和高速物体，在确切的 UE 分支上进行评估。
+- **Bullet** 拥有丰富的专用和通用算法；其常用的 CCD 路径和阈值需要针对具体 shape 验证。Jolt 对比中的扫掠球近似是质量/性能上的差异，而不仅仅是一个优化细节。
 
-### Constraint solver philosophy
+### 约束求解器理念
 
-| Engine | Solver emphasis | Practical effect |
+| 引擎 | 求解器侧重 | 实际效果 |
 |---|---|---|
-| Jolt | Iterative velocity/position solving, island parallelism, constraint priority | Good general game balance; tune position work carefully because its cost differs from velocity iterations |
-| Box3D | Soft Step substepping with sequential constraints, graph coloring and wide SIMD | Robust stacks/joints at a fixed game tick; cost is controlled through substeps and parallel batches |
-| PhysX 4.1 | PGS plus TGS; reduced-coordinate articulations | PGS for legacy/performance behavior, TGS for better joint/articulation convergence |
-| Havok | Robust iterative solver plus direct solver | Direct solve is valuable for difficult chains/ragdolls but may cost more; exact policy is SDK-specific |
-| Chaos | UE-evolving iterative/position-based solvers across rigid, cloth, flesh, and destruction systems | Deep feature integration; tuning/version behavior follows UE |
-| Bullet | Sequential impulse default, alternate MLCP/multithread paths, Featherstone multibodies | Flexible and well understood; component choice changes performance and behavior |
-| Rapier | Impulse constraints plus reduced-coordinate multibodies; current/future Soft-TGS work | General games plus articulated systems; robotics accuracy is an active development focus |
+| Jolt | 迭代式速度/位置求解、island 并行、约束优先级 | 对一般游戏平衡良好；需谨慎调校位置迭代，因为其开销与速度迭代不同 |
+| Box3D | Soft Step 子步进配合顺序约束、graph coloring 和 wide SIMD | 在固定游戏 tick 下堆叠/关节稳健；开销由子步数和并行批次控制 |
+| PhysX 4.1 | PGS 加 TGS；reduced-coordinate articulation | PGS 用于遗留/性能行为，TGS 用于更好的关节/articulation 收敛 |
+| Havok | 稳健的迭代求解器加直接求解器 | 直接求解对困难的链条/布娃娃很有价值，但开销可能更大；确切策略取决于 SDK |
+| Chaos | 跨刚体、布料、肌肉和破坏系统、随 UE 演进的迭代/基于位置的求解器 | 深度的特性集成；调校和版本行为跟随 UE |
+| Bullet | 默认 sequential impulse，替代的 MLCP/多线程路径，Featherstone multibody | 灵活且广为人知；组件选择会改变性能和行为 |
 
-### Multithreading and SIMD
+### 多线程与 SIMD
 
 ```mermaid
 quadrantChart
-    title Publicly visible integration control versus parallel design emphasis
-    x-axis Opaque / engine-owned scheduling --> Host-visible scheduling
-    y-axis Primarily serial or optional paths --> Parallelism is a core design goal
-    quadrant-1 Host-controlled and parallel-first
-    quadrant-2 Integrated parallel runtime
-    quadrant-3 Opaque or limited public evidence
-    quadrant-4 Host-controlled, parallelism depends on configuration
+    title 公开可见的集成控制力 vs 并行设计侧重
+    x-axis 不透明 / 引擎自管调度 --> 宿主可见调度
+    y-axis 以串行为主或可选路径 --> 并行是核心设计目标
+    quadrant-1 宿主可控且并行优先
+    quadrant-2 集成式并行运行时
+    quadrant-3 不透明或公开证据有限
+    quadrant-4 宿主可控，并行取决于配置
     Jolt: [0.86, 0.88]
     Box3D: [0.88, 0.91]
     PhysX: [0.67, 0.73]
     Havok: [0.36, 0.76]
     Chaos: [0.22, 0.82]
-    Bullet: [0.76, 0.46]
-    Rapier: [0.82, 0.68]
-    Ragnarok: [0.10, 0.18]
+    Bullet: [0.76, 0.46]    Ragnarok: [0.10, 0.18]
 ```
 
-This diagram is a qualitative architecture map, not a benchmark. “Host-visible” means the application can see or supply pipeline components/jobs, not that integration is automatically easy.
+这张图是定性的架构示意，而不是 benchmark。“宿主可见”指应用可以看到或提供管线组件/job，并不代表集成就一定容易。
 
-### Determinism comparison
+### 确定性对比
 
-| Engine | Same-machine repeatability | Cross-platform claim | Key caveat |
+| 引擎 | 同机可重复性 | 跨平台声明 | 关键注意事项 |
 |---|---|---|---|
-| Jolt | Yes under stable command order | Optional documented build | Multithreaded query/callback/result order must be normalized; cited ~8% cost |
-| Box3D | Yes, plus record/replay | Advertised by default | Application event/command order and compiler coverage still need validation |
-| PhysX 4.1 | Enhanced mode improves locality/repeatability | No general guarantee | Compiler/CPU/GPU, insertion, and task ordering can diverge |
-| Havok | Yes | Vendor-guaranteed SDK output | Surrounding engine must also be deterministic; verify purchased target matrix |
-| Chaos | UE supplies state history/resimulation | No general lockstep promise | Networking correction/resimulation is not the same as bit-identical simulation |
-| Bullet | Possible under strict configuration | No general guarantee | Solver/task order and floating-point environment require control |
-| Ragnarok | Unknown | Unknown | No public information |
-| Rapier | Local deterministic by default | Optional enhanced feature | Enhanced mode currently excludes SIMD and parallelism |
+| Jolt | 指令顺序稳定时是 | 可选的、有文档说明的构建 | 多线程下的查询/回调/结果顺序必须规范化；引用开销约 8% |
+| Box3D | 是，并支持录制/回放 | 默认宣称 | 应用的事件/指令顺序和编译器覆盖仍需验证 |
+| PhysX 4.1 | 增强模式改善局部性/可重复性 | 无通用保证 | 编译器/CPU/GPU、插入顺序和任务顺序都可能导致分歧 |
+| Havok | 是 | 厂商保证 SDK 输出 | 外围引擎也必须是确定性的；需核实所购买的目标矩阵 |
+| Chaos | UE 提供状态历史/重模拟 | 无通用 lockstep 承诺 | 联网校正/重模拟不等于逐位一致的模拟 |
+| Bullet | 严格配置下可能 | 无通用保证 | 求解器/任务顺序和浮点环境需要加以控制 |
+| Ragnarok | 未知 | 未知 | 无公开信息 |
+## 特性矩阵
 
-## Feature matrix
+图例：**Yes** = 有文档说明的当前核心或第一方特性；**Partial** = 有限、独立模块、社区集成，或需要大量自定义工作；**No** = 未声明的特性；**Unknown** = 未公开。
 
-Legend: **Yes** = a documented current core or first-party feature; **Partial** = limited, separate module, community integration, or substantial custom work; **No** = not a stated feature; **Unknown** = not public.
+| 特性 | Jolt | Box3D | PhysX 4.1 | Havok | Chaos | Bullet | Ragnarok |
+|---|---|---|---|---|---|---|---|
+| 3D 刚体 | Yes | Yes | Yes | Yes | Yes | Yes | Unknown |
+| 原生 2D 变体 | Partial，通过 DOF 限制 | No；请用 Box2D | No | 无公开的 2D 产品 | UE 有独立的 2D 路径 | Partial / 2D shape | Unknown |
+| 凸体、复合体、网格、高度场 | Yes | Yes | Yes | Yes | Yes | Yes | Unknown |
+| 连续碰撞 | Yes | Yes | Yes | Yes/宣称默认开启 | Yes | Yes | Unknown |
+| 场景查询 | Yes | Yes | Yes | Yes | Yes | Yes | Unknown |
+| 角色控制器 | 刚体式 + 虚拟 | Character mover | CCT 扩展 | Yes | UE Character/物理工作流 | Kinematic 控制器 | Unknown |
+| 载具框架 | 轮式/履带/摩托车 | Wheel 关节；无可比的完整框架 | Vehicle SDK | 产品特性/集成 | Chaos Vehicles | Raycast 载具 | Unknown |
+| 布娃娃/物理动画 | Yes | 用关节自行搭建 | Yes | Yes | 深度 UE 集成 | Yes | Unknown |
+| Reduced-coordinate articulation/multibody | 无等价的完整机器人 API | No | Yes | 公开特性集侧重游戏约束 | 视具体特性而定 | Featherstone multibody | Unknown |
+| 软体 / 布料 | Yes | No | 已从 4.x 核心移除；属于独立技术 | 布料为独立产品 | Yes，深度套件 | Yes | Unknown |
+| 破坏编辑/运行时 | 自定义集成 | 自定义集成 | Blast/APEX 独立 | Unreal 集成支持 UE 破坏工作流 | Yes，Geometry Collection | 自定义/示例工具 | Unknown |
+| GPU 刚体管线 | No | No | Yes，CUDA | 无公开的等价声明 | 核心刚体求解器以 CPU 为主 | 实验性 OpenCL | Unknown |
+| 大世界支持 | 双精度 | 双精度位置 + 复合体 | 原点平移 | Yes | UE Large World 工作流 | 双精度构建 / 自定义原点策略 | Unknown |
+| 快照 / 回放 | Yes | Yes，一等的录制功能 | 序列化/PVD；玩法 rollback 需自行实现 | 可视化调试和确定性回放工作流 | Chaos Visual Debugger/缓存/历史 | 序列化/日志 | Unknown |
+| 跨平台确定性选项 | Yes | Yes | 无通用保证 | Yes，厂商声明 | 无通用保证 | 无通用保证 | Unknown |
+| 第一方可视化调试器 | JoltViewer | 示例/回放工具 | PVD | Havok Visual Debugger | Chaos Visual Debugger | 调试绘制/示例浏览器 | Unknown |
 
-| Feature | Jolt | Box3D | PhysX 4.1 | Havok | Chaos | Bullet | Ragnarok | Rapier |
-|---|---|---|---|---|---|---|---|---|
-| 3D rigid bodies | Yes | Yes | Yes | Yes | Yes | Yes | Unknown | Yes |
-| 2D-native variant | Partial via DOF limits | No; use Box2D | No | No public 2D product | UE has separate 2D paths | Partial / 2D shapes | Unknown | Yes, first-party crate |
-| Convex, compound, mesh, height field | Yes | Yes | Yes | Yes | Yes | Yes | Unknown | Yes |
-| Continuous collision | Yes | Yes | Yes | Yes/default claim | Yes | Yes | Unknown | Yes |
-| Scene queries | Yes | Yes | Yes | Yes | Yes | Yes | Unknown | Yes |
-| Character controller | Rigid + virtual | Character mover | CCT extension | Yes | UE Character/physics workflows | Kinematic controller | Unknown | Kinematic controller |
-| Vehicle framework | Wheeled/tracked/motorcycle | Wheel joints; no comparable full framework | Vehicle SDK | Product features/integration | Chaos Vehicles | Raycast vehicle | Unknown | Dynamic vehicle controller |
-| Ragdoll/physical animation | Yes | Build from joints | Yes | Yes | Deep UE integration | Yes | Unknown | Build from joints/integration |
-| Reduced-coordinate articulation/multibody | No equivalent full robotics API | No | Yes | Public feature set focuses game constraints | Feature-specific | Featherstone multibody | Unknown | Yes |
-| Soft body / cloth | Yes | No | Removed from 4.x core; separate tech | Cloth is separate product | Yes, deep suite | Yes | Unknown | No mature core soft body |
-| Destruction authoring/runtime | Custom integration | Custom integration | Blast/APEX separate | Unreal integration supports UE destruction workflows | Yes, Geometry Collections | Custom/demo tooling | Unknown | Custom integration |
-| GPU rigid-body pipeline | No | No | Yes, CUDA | No public equivalent claim | Core rigid solver is CPU-oriented | Experimental OpenCL | Unknown | Research/future work |
-| Large-world support | Double precision | Double positions + compounds | Origin shifting | Yes | UE Large World workflows | Double build / custom origin policy | Unknown | `f64` crates |
-| Snapshot / replay | Yes | Yes, first-class recording | Serialization/PVD; gameplay rollback is custom | Visual debugging and deterministic replay workflows | Chaos Visual Debugger/caches/history | Serialization/logging | Unknown | Serialization/snapshots |
-| Cross-platform deterministic option | Yes | Yes | No general guarantee | Yes, vendor claim | No general guarantee | No general guarantee | Unknown | Yes, without parallel/SIMD |
-| First-party visual debugger | JoltViewer | Samples/replay tooling | PVD | Havok Visual Debugger | Chaos Visual Debugger | Debug draw/example browser | Unknown | Testbed/debug rendering |
+## 性能讨论
 
-## Performance discussion
+### 可以使用的证据
 
-### Evidence that can be used
+1. **Jolt/PhysX/Bullet 共同场景：** Jolt 多核论文移植了一个凸体对网格场景，并公开了版本、求解器次数、CCD 策略、编译器、机器和线程数。它支持以下结论：在该场景上 Jolt 1.1 扩展更好，PhysX 4.1 在测试笔记本上单线程性能更好，并且三者都需要针对具体场景做性能分析。
+2. **Box3D 内部扩展性：** 仓库包含 AMD SSE2、AMD 标量和 Apple M2 NEON 的代码和原始 CSV。它支持关于 Box3D 内部 worker 扩展性和 SIMD 实验的结论，而不是跨引擎的优越性。
+3. **生产结果：** Guerrilla 关于 Jolt 的内存/CPU/频率结果很有价值，因为它包含了集成成本和真实内容。Havok 数百款已上线作品确立了其成熟度，而不是数值上的速度排名。Chaos 已上线的 UE/Fortnite 生态确立了其可扩展性/工具集成，而不是独立求解器的优越性。
 
-1. **Jolt/PhysX/Bullet common scene:** The Jolt multicore paper ports one convex-vs-mesh scene and discloses versions, solver counts, CCD policy, compiler, machines, and thread counts. It supports the conclusion that Jolt 1.1 scaled better on that scene, PhysX 4.1 had better one-thread performance on the tested laptop, and all three require scenario-specific profiling.
-2. **Box3D internal scaling:** The repository includes code and raw CSVs for AMD SSE2, AMD scalar, and Apple M2 NEON. It supports claims about Box3D’s internal worker scaling and SIMD experiments, not cross-engine superiority.
-3. **Rapier 2020 launch benchmark:** It is transparent enough to understand, but too old to rank present engines. It establishes that Rapier was designed for performance and reached competitive early results.
-4. **Production outcomes:** Guerrilla’s memory/CPU/frequency outcome for Jolt is valuable because it includes integration cost and real content. Havok’s hundreds of shipped titles establish maturity, not a numeric speed rank. Chaos’s shipped UE/Fortnite ecosystem establishes scalability/tool integration, not standalone solver superiority.
+### 不应混合使用的声明
 
-### Claims that should not be combined
+- 在不同场景上测得的厂商“最快”声明。
+- 刚体形状、休眠、接触数量和求解质量不同时的每秒刚体数。
+- 不含传输/同步开销的 GPU 与 CPU 结果。
+- 一个引擎使用全形状 CCD、另一个使用扫掠球近似时的固定步长吞吐量。
+- 不测量约束误差、穿透、能量漂移和关节分离的求解器迭代次数。
+- 编辑器 FPS、运行时服务器步进时间和离线模拟吞吐量。
 
-- Vendor “fastest” claims measured on different scenes.
-- Bodies per second when body shapes, sleep, contact counts, and solver quality differ.
-- GPU and CPU results without transfer/synchronization cost.
-- Fixed-step throughput when one engine uses full-shape CCD and another uses a sphere approximation.
-- Solver iteration counts without measuring constraint error, penetration, energy drift, and joint separation.
-- Editor FPS, runtime server step time, and offline simulation throughput.
+### 推荐的项目 benchmark 套件
 
-### Recommended project benchmark suite
+在最小的通用测试 API 之后为每个引擎构建一个适配器，并为高级特性保留引擎原生路径。记录步进时间的中位数、p95、p99 和最大值，而不仅仅是平均吞吐量。
 
-Build one adapter per engine behind the smallest common test API and preserve engine-native paths for advanced features. Record median, p95, p99, and maximum step time rather than only mean throughput.
-
-| Test | Content | Measures |
+| 测试 | 内容 | 衡量指标 |
 |---|---|---|
-| Static streamed world | Add/remove cells containing mesh/compound collision while queries run | Cooking, insertion spikes, broad-phase updates, lock contention, memory |
-| Dynamic pile | 1k, 5k, 20k mixed convex bodies with sleep on/off | Broad/narrow phase, contact cache, solver, sleeping, worker scaling |
-| One giant island | Joint grid or ragdoll pile | Graph/island construction and ability to parallelize dependent work |
-| Many small islands | Independent mechanisms/ragdolls | Job overhead and island-level scaling |
-| Fast trees/projectiles | Long capsules/hulls hitting smooth and faceted mesh | CCD correctness, tunneling, contact stability, peak cost |
-| Character course | Stairs, slopes, moving platforms, seams, dynamic pushes | Gameplay quality, ghost edges, query volume, integration semantics |
-| Vehicles | Multiple cars/tracks at target speed and tick rate | Suspension/contact model, determinism, solver stability |
-| Query storm | Rays, sweeps, overlaps from AI/camera/audio/navigation jobs | Query throughput, concurrency, ordering, allocation behavior |
-| Large coordinates | Origin shifts or double-precision positions across world bounds | Jitter, contacts, query error, serialization size |
-| Rollback | Save N frames, restore, reapply inputs on every target | State size, restore time, hash equality, callback/event repeatability |
-| Pathological content | Degenerate hulls, bad mesh winding, initial overlap, NaN injection | Validation, graceful recovery, debugging quality |
+| 静态流式世界 | 在查询运行的同时添加/移除包含网格/复合碰撞的单元格 | Cooking、插入尖峰、broad-phase 更新、锁竞争、内存 |
+| 动态堆叠 | 1k、5k、20k 混合凸体，休眠开/关 | Broad/narrow phase、接触缓存、求解器、休眠、worker 扩展 |
+| 单个巨型 island | 关节网格或布娃娃堆 | 图/island 构建，以及并行化相互依赖工作的能力 |
+| 大量小 island | 独立的机械装置/布娃娃 | Job 开销和 island 级别的扩展 |
+| 高速树木/投射物 | 长胶囊体/凸包撞击平滑和多面网格 | CCD 正确性、穿透（tunneling）、接触稳定性、峰值开销 |
+| 角色路线 | 楼梯、斜坡、移动平台、接缝、动态推挤 | 玩法质量、ghost edge、查询量、集成语义 |
+| 载具 | 多辆车/履带在目标速度和 tick 率下运行 | 悬挂/接触模型、确定性、求解器稳定性 |
+| 查询风暴 | 来自 AI/相机/音频/导航 job 的 ray、sweep、overlap | 查询吞吐、并发、顺序、分配行为 |
+| 大坐标 | 跨世界边界的原点平移或双精度位置 | 抖动、接触、查询误差、序列化大小 |
+| Rollback | 保存 N 帧、恢复、在每个目标上重新应用输入 | 状态大小、恢复时间、哈希一致性、回调/事件可重复性 |
+| 病态内容 | 退化凸包、错误的网格绕序、初始重叠、NaN 注入 | 校验、优雅恢复、调试质量 |
 
-Controls for every test:
+每项测试的控制条件：
 
-- Same fixed time step and catch-up policy.
-- Matched materials, mass/inertia, sleep thresholds, collision filters, and initial transforms.
-- Solver settings tuned to comparable error, not comparable integer counts.
-- CCD modes documented per body/shape and correctness scored alongside time.
-- Rendering disabled; asset cooking measured separately from steady-state runtime.
-- Release/LTO/SIMD flags recorded; CPU frequency, core affinity, SMT, NUMA/CCX, and worker counts fixed.
-- Warm-up and multiple randomized-but-replayable seeds.
-- Memory high-water mark, allocations, active/contact counts, and debug checks recorded.
-- Videos and state hashes stored so a faster but visibly wrong run cannot win.
+- 相同的固定时间步长和追帧策略。
+- 匹配的材质、质量/惯量、休眠阈值、碰撞过滤和初始变换。
+- 将求解器设置调到可比较的误差，而不是可比较的整数次数。
+- 记录每个刚体/shape 的 CCD 模式，并将正确性与耗时一起评分。
+- 禁用渲染；资源 cooking 与稳态运行时分开测量。
+- 记录 Release/LTO/SIMD 参数；固定 CPU 频率、核心亲和性、SMT、NUMA/CCX 和 worker 数量。
+- 预热，并使用多个随机但可回放的种子。
+- 记录内存峰值、分配次数、活跃/接触数量和调试检查。
+- 保存视频和状态哈希，避免更快但明显错误的运行胜出。
 
-## Platform, hardware, language, and integration
+## 平台、硬件、语言与集成
 
-| Engine | Language/API | Publicly documented CPU/OS targets | GPU relationship | Notable engine integrations |
+| 引擎 | 语言/API | 公开文档中的 CPU/OS 目标 | 与 GPU 的关系 | 值得注意的引擎集成 |
 |---|---|---|---|---|
-| Jolt | C++17; community C/C#/Rust/Java/JS/Python/Zig bindings | Windows, Linux, BSD, Android, macOS, iOS, MinGW, Wasm; x86/ARM plus several server architectures | Core rigid CPU; newer separate GPU hair | Decima, Godot, Source community replacement, Unreal plugins |
-| Box3D | C17 core; C++20 samples | Windows, Linux, macOS, Emscripten web; SSE2/NEON/scalar | None required | Custom Unreal integration, s&box, Esoterica, early server projects |
-| PhysX 4.1 | C++ API | Windows, Linux, macOS, iOS, Android; console code separately licensed/NDA | Optional CUDA rigid bodies and broad phase on Windows/Linux NVIDIA GPUs | Unity built-in 3D, historical UE3/UE4, many proprietary engines |
-| Havok | Commercial C++ SDK | Vendor states all major game platforms; exact matrix by agreement | Public product focus is cross-platform CPU/game hardware | Proprietary engines, maintained Unreal plugin, Unity DOTS package history |
-| Chaos | Unreal C++/Blueprint-facing modules | Follows Unreal version and feature platform support | CPU multicore/ISPC core; selected feature-specific GPU paths | Unreal Engine native |
-| Bullet | C++ with C/Python and many community bindings | Windows, Linux, macOS, iOS, Android; generally portable C++ | Experimental OpenCL full pipeline; CPU is normal production path | PyBullet, Blender, historical Godot 3, Panda3D/custom engines |
-| Ragnarok | Undisclosed | Undisclosed | Undisclosed | Valve/Source future games only |
-| Rapier | Rust; first-party JS/Wasm; community FFI | Rust-supported native targets and Wasm; `f32`/`f64` | CPU today; cross-platform GPU work planned | Bevy, web/Three.js/Pixi/PlayCanvas examples, community Godot integrations |
+| Jolt | C++17；社区的 C/C#/Rust/Java/JS/Python/Zig 绑定 | Windows、Linux、BSD、Android、macOS、iOS、MinGW、Wasm；x86/ARM 以及若干服务器架构 | 核心刚体在 CPU；较新的独立 GPU 毛发 | Decima、Godot、Source 社区替换、Unreal 插件 |
+| Box3D | C17 核心；C++20 示例 | Windows、Linux、macOS、Emscripten Web；SSE2/NEON/标量 | 不需要 | 自定义 Unreal 集成、s&box、Esoterica、早期服务器项目 |
+| PhysX 4.1 | C++ API | Windows、Linux、macOS、iOS、Android；主机代码单独授权/NDA | Windows/Linux NVIDIA GPU 上可选的 CUDA 刚体和 broad phase | Unity 内置 3D、历史上的 UE3/UE4、许多专有引擎 |
+| Havok | 商业 C++ SDK | 厂商称支持所有主流游戏平台；具体矩阵按协议 | 公开的产品重点是跨平台的 CPU/游戏硬件 | 专有引擎、持续维护的 Unreal 插件、Unity DOTS 包的历史 |
+| Chaos | 面向 Unreal C++/Blueprint 的模块 | 跟随 Unreal 版本和特性的平台支持 | 核心为 CPU 多核/ISPC；部分特性有专门的 GPU 路径 | Unreal Engine 原生 |
+| Bullet | C++，带 C/Python 及许多社区绑定 | Windows、Linux、macOS、iOS、Android；通用可移植 C++ | 实验性的 OpenCL 完整管线；CPU 是常规生产路径 | PyBullet、Blender、历史上的 Godot 3、Panda3D/自研引擎 |
+| Ragnarok | 未公开 | 未公开 | 未公开 | 仅限 Valve/Source 未来游戏 |
+
+## 该选哪个引擎？
+
+### 全新的自研引擎
+
+以 **Jolt** 作为对照实现起步。如果 C ABI、权威回放、体素/复合体流式加载或 Box2D 风格的 data orientation 具有战略意义，加入 **Box3D**。如果预算允许评估且主机/厂商支持很重要，加入 **Havok**。评估当前的 **PhysX 5** 而不是 4.1，除非重点就是遗留兼容性。
+
+### Unity 2022 LTS 生产项目
+
+除非有实测到的阻碍，否则继续使用 Unity 的 PhysX 集成。可以用签出的 PhysX 4.1.2 源码来理解概念和复现孤立问题，但首先应通过 Unity 的 Physics Profiler、项目设置、碰撞矩阵、cooking 选项、求解器类型和固定步长行为来诊断。对于 DOTS，应将 Unity Physics 与已授权的 Havok 包进行比较，而不是假设内置 `Rigidbody` 的行为可以直接迁移。
+
+### Unreal 项目
+
+当原生编辑、破坏、联网物理、动画、Niagara 和升级兼容性占主导时，使用 **Chaos**。当一个有支持的直接替代方案有望带来更好的项目特定性能/稳定性时，评估 **Havok Physics for Unreal**。只有当项目已经愿意自己维护一个自定义物理抽象层，并放弃或重建原生工作流时，替换为 Jolt 或 Box3D 才是合理的。
+
+### 确定性多人或 rollback
+
+用真实的目标平台组合对 **Havok**、**Jolt 确定性构建** 和 **Box3D** 做原型。包括状态快照大小/恢复时间以及回调顺序。对于 Jolt，按文档对多线程回调/查询命中进行排序。对每个引擎来说，确定性的玩法数学和指令顺序都是测试的一部分。
+
+### 大型开放世界或体素世界
+
+优先考虑 **Jolt** 和 **Box3D**。测试后台 cooking/插入、并发场景查询、原点/双精度策略，以及静态复合体的内存。对于已有的集成，PhysX 的原点平移和多种 broad-phase 变体仍是成熟的选项。
+
+### 浏览器
+
+Jolt.js 和 Box3D/Emscripten 是可信的选择。需测量 Wasm SIMD、worker 可用性、快照传输以及 JavaScript 边界开销。
+
+### 机器人/游戏交叉
+
+生态方面优先考虑 **Bullet/PyBullet**。GPU 规模/Omniverse/USD 工作流可考虑 PhysX 5。Jolt 和 Box3D 刻意针对游戏近似而非机器人精度进行优化。
 
 
-## Which engine to choose?
+## 风险与最终检查清单
 
-### Greenfield custom engine
+在最终选型之前，要求对以下所有问题给出答案：
 
-Start with **Jolt** as the control implementation. Add **Box3D** if C ABI, authoritative replay, voxel/compound streaming, or Box2D-style data orientation are strategic. Add **Havok** if the budget supports evaluation and console/vendor support is important. Evaluate current **PhysX 5**, not 4.1, unless legacy compatibility is the point.
+### 正确性与游戏手感
 
-### Unity 2022 LTS production
+- 角色在穿越网格接缝、楼梯、斜坡、移动平台和旋转参考系时，是否没有抖动或卡住？
+- 在项目的固定 tick 下，细长的高速物体能否可靠地撞上三角形地形？
+- 摩擦、恢复系数、质量比、陀螺力矩和休眠行为是否适合游戏，而不仅仅是在物理上说得通？
+- 设计师能否通过易懂的参数得到稳定的布娃娃/载具？
 
-Stay with Unity’s PhysX integration unless there is a measured blocker. Use the checked-out PhysX 4.1.2 source to understand concepts and reproduce isolated issues, but diagnose through Unity’s Physics Profiler, project settings, collision matrix, cooking options, solver type, and fixed-step behavior first. For DOTS, compare Unity Physics with the entitled Havok package rather than assuming built-in `Rigidbody` behavior transfers directly.
+### 性能
 
-### Unreal project
+- 在最低配置 CPU、服务器 CPU 和每种主机架构上，p95/p99/最大步进时间是多少？
+- 引擎是能在单个大型 island 内部扩展，还是只能跨 island 扩展，或主要在碰撞阶段扩展？
+- 何时 worker 开销会让单线程路径反而更快？
+- 在模拟或流式加载期间，从游戏 job 发起的场景查询是否安全高效？
+- Cooking、插入、破坏和唤醒的尖峰是多少——而不仅仅是稳态的求解时间？
 
-Use **Chaos** when native authoring, destruction, networked physics, animation, Niagara, and upgrade compatibility dominate. Evaluate **Havok Physics for Unreal** when a supported drop-in replacement promises better project-specific performance/stability. A Jolt or Box3D replacement is justified only when the project is already willing to own a custom physics abstraction and give up or rebuild native workflows.
+### 内存与流式加载
 
-### Deterministic multiplayer or rollback
+- 每个刚体、每个 shape、每个接触和每个关节的内存开销是多少？
+- 不可变/cooked 的 shape 能否共享并进行版本管理？
+- 单元格能否在其他线程构建并批量插入？
+- 什么会使 broad-phase 和接触缓存失效？
+- 静态套件能否合并为一个复合体，而不丢失材质/查询元数据？
 
-Prototype **Havok**, **Jolt deterministic**, **Box3D**, and **Rapier enhanced-determinism** with the real target mix. Include state snapshot size/restore time and callback order. Rapier’s no-SIMD/no-parallel constraint may change the result. For Jolt, sort multithreaded callbacks/query hits as documented. For every engine, deterministic gameplay math and command ordering are part of the test.
+### 确定性与联网
 
-### Large open or voxel world
+- 确切的保证是什么：本地、跨构建、跨平台，还是合同约定？
+- SIMD、FMA、多线程、GPU 或 fast-math 与之是否兼容？
+- 查询命中、激活事件和接触回调是否有序？
+- 快照序列化是否稳定、紧凑且足够快，能满足 rollback？
+- 权威校正能否在重新应用输入时不重复触发效果？
 
-Prioritize **Jolt** and **Box3D**. Test background cooking/insertion, concurrent scene queries, origin/double-precision policy, and static compound memory. Rapier’s sparse voxel collider is a relevant third candidate. PhysX origin shifting and broad-phase variants remain mature options for an existing integration.
+### 工具与支持
 
-### Browser and Rust
+- 能否在设备上捕获有问题的帧，并在开发机上回放？
+- 接触、broad-phase 包围盒、island、休眠、约束和耗时是否可视化？
+- 是否有资源校验器和确定性的 cooking 管线？
+- Bug 修复、ABI、文件格式和长期分支的策略是什么？
+- 谁负责主机认证问题和紧急的生产修复？
 
-Prioritize **Rapier** because Rust, Wasm, JS/TS packages, and Bevy support are first party. Jolt.js and Box3D/Emscripten are credible alternatives when their solver/feature behavior is a better match. Measure Wasm SIMD, worker availability, snapshot transfer, and JavaScript boundary cost.
+### 法律与生命周期
 
-### Robotics/game crossover
+- 许可是否覆盖所有目标平台？
+- GPU 二进制/源码和主机源码是否适用不同条款？
+- 声明、署名、静态/动态链接和再分发是否已处理？
+- 所选版本是当前版、遗留版、1.0 之前，还是与某个引擎订阅绑定？
+- 如果维护者或引擎所有权发生变化，迁移路径是什么？
 
-Prioritize **Bullet/PyBullet** for ecosystem and **Rapier** for a Rust-native stack. Consider PhysX 5 for GPU-scale/Omniverse/USD workflows. Jolt and Box3D intentionally optimize game approximations rather than robotics fidelity.
+## 结论
 
-### Selection flow
+对于新的通用自研游戏引擎，**Jolt 是最站得住脚的起点**。它结合了生产验证、宽松许可的源码、广泛的特性、现代的多核架构、并发引擎访问、确定性选项以及强大的平台覆盖。
 
-```mermaid
-flowchart TD
-    A{"Already committed to a major engine?"}
-    A -->|"Unreal"| B{"Need supported alternative to Chaos?"}
-    B -->|"No"| C["Use Chaos and its native workflow"]
-    B -->|"Yes"| D["Evaluate Havok Physics for Unreal"]
-    A -->|"Unity 2022 object-oriented"| E["Use Unity's PhysX integration"]
-    A -->|"No / custom engine"| F{"Primary language/platform?"}
-    F -->|"Rust or browser"| G["Start with Rapier"]
-    F -->|"C17 / authoritative server"| H["Prototype Box3D"]
-    F -->|"C++ / broad production feature set"| I["Start with Jolt"]
-    I --> J{"Commercial support and guaranteed target coverage critical?"}
-    H --> J
-    G --> J
-    J -->|"Yes"| K["Add Havok evaluation"]
-    J -->|"No"| L["Run project benchmark and QA corpus"]
-    K --> L
-    L --> M{"Robotics/ML ecosystem required?"}
-    M -->|"Yes"| N["Also test Bullet/PyBullet or current PhysX"]
-    M -->|"No"| O["Choose by measured correctness, tail latency, memory, and integration cost"]
-```
+**Box3D 是最具战略意义的新来者**：它的 C17/data-oriented 设计、求解器图、回放、确定性、大世界位置模式、复合体，以及源自服务器/体素场景的出身，使它值得立即做原型。但其 v0.1 的成熟度使它无法获得无条件的生产推荐。
 
-## Risks and final checklist
+**PhysX 4.1 是 Unity 2022 LTS 合适的历史与实现参考**，但它是遗留基线，而非全新项目的选择。**Havok** 是当稳健性和跨平台保证具有预算价值时应纳入的、有支持的商业基准。**Chaos** 的胜出在于 Unreal 集成，而非独立的可移植性。**Bullet** 的胜出在于开放性、模块化以及机器人/VFX 方面的广度，但需要针对当前游戏做性能评估。**Ragnarok** 是重要的 Valve 未来技术，但目前尚无法从外部评估。
 
-Before final selection, require answers to all of the following:
+最终决策应由项目的 benchmark 套件来做出，而不是靠特性数量或厂商的平均吞吐量图表。要为正确的游戏行为、p99 帧时间、内存、编辑/调试、网络恢复以及整个集成的工程成本做优化。
 
-### Correctness and game feel
-
-- Do characters cross mesh seams, stairs, slopes, moving platforms, and rotating frames without jitter or snagging?
-- Do long thin fast bodies hit triangle terrain reliably at the project’s fixed tick?
-- Are friction, restitution, mass ratios, gyroscopic torque, and sleeping behavior appropriate for the game rather than merely physically plausible?
-- Can designers get stable ragdolls/vehicles with understandable parameters?
-
-### Performance
-
-- What are p95/p99/max step time on minimum-spec CPU, server CPU, and every console architecture?
-- Does the engine scale inside one large island, only across islands, or mostly in collision stages?
-- When does worker overhead make the single-thread path faster?
-- Are scene queries safe and efficient from game jobs during simulation or streaming?
-- What are cooking, insertion, destruction, and wake-up spikes—not just steady-state solve time?
-
-### Memory and streaming
-
-- Per-body, per-shape, per-contact, and per-joint memory?
-- Can immutable/cooked shapes be shared and versioned?
-- Can cells be built off-thread and inserted in batches?
-- What invalidates broad-phase and contact caches?
-- Can static kits become one compound without losing material/query metadata?
-
-### Determinism and networking
-
-- Exact guarantee: local, cross-build, cross-platform, or contractual?
-- Are SIMD, FMA, multithreading, GPU, or fast-math compatible with it?
-- Are query hits, activation events, and contact callbacks ordered?
-- Is snapshot serialization stable, compact, and fast enough for rollback?
-- Can authoritative correction reapply inputs without double-firing effects?
-
-### Tooling and support
-
-- Can a problematic frame be captured on device and replayed on a developer machine?
-- Are contacts, broad-phase bounds, islands, sleeping, constraints, and timings visible?
-- Is there an asset validator and deterministic cooking pipeline?
-- What is the bug-fix, ABI, file-format, and long-term branch policy?
-- Who owns console certification issues and urgent production fixes?
-
-### Legal and lifecycle
-
-- Are all target platforms covered by the license?
-- Are GPU binaries/source and console source under different terms?
-- Are notices, attribution, static/dynamic linking, and redistribution handled?
-- Is the chosen version current, legacy, pre-1.0, or tied to an engine subscription?
-- What is the migration path if maintainership or engine ownership changes?
-
-## Bottom line
-
-For a new general-purpose custom game engine, **Jolt is the most defensible starting point**. It combines production evidence, permissive source, broad features, modern multicore architecture, concurrent engine access, deterministic options, and strong platform reach.
-
-**Box3D is the most strategically interesting newcomer**: its C17/data-oriented design, solver graph, replay, determinism, large-world position mode, compounds, and server/voxel origin make it worth an immediate prototype. Its v0.1 maturity prevents an unconditional production recommendation.
-
-**PhysX 4.1 is the right historical and implementation reference for Unity 2022 LTS**, but it is a legacy baseline rather than the greenfield choice. **Havok** is the supported commercial benchmark to include when robustness and cross-platform guarantees have budget value. **Chaos** wins through Unreal integration rather than standalone portability. **Bullet** wins through openness, modularity, and robotics/VFX breadth, but needs a current game-specific performance evaluation. **Rapier** wins the Rust/web shortlist. **Ragnarok** is important future Valve technology but cannot yet be evaluated externally.
-
-The final decision should be made by the project benchmark suite, not by feature count or a vendor’s average-throughput graph. Optimize for correct game behavior, p99 frame time, memory, authoring/debugging, network recovery, and the engineering cost of the whole integration.
-
-## Primary sources and further technical reading
+## 主要来源与延伸技术阅读
 
 Jolt
 
@@ -874,7 +722,7 @@ Jolt
 - [Jolt performance-test documentation](https://jrouwe.github.io/JoltPhysics/md__docs_2_performance_test.html)
 - [Godot 4.6: Using Jolt Physics](https://docs.godotengine.org/en/4.6/tutorials/physics/using_jolt_physics.html)
 
-Box3D, Rubikon, and Ragnarok
+Box3D、Rubikon 与 Ragnarok
 
 - [Erin Catto: Announcing Box3D](https://box2d.org/posts/2026/06/announcing-box3d/)
 - [Box3D repository](https://github.com/erincatto/box3d)
@@ -883,7 +731,7 @@ Box3D, Rubikon, and Ragnarok
 - [Erin Catto: SIMD for Collision](https://box2d.org/posts/2026/07/simd-for-collision/)
 - [Erin Catto’s physics publications](https://box2d.org/publications/)
 
-PhysX and Unity
+PhysX 与 Unity
 
 - [NVIDIA GameWorks PhysX 4.1 repository](https://github.com/NVIDIAGameWorks/PhysX/tree/4.1)
 - [PhysX 4.1 release notes](https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html)
@@ -919,11 +767,3 @@ Bullet
 - [Bullet 2.80 Physics SDK manual](https://www.cs.kent.edu/~ruttan/GameEngines/lectures/Bullet_User_Manual)
 - [Godot 3.0’s historical Bullet integration](https://godotengine.org/article/godot-30-switches-bullet-3-physics/)
 - [GDC 2013: GPU Rigid Body Simulation / Bullet 3](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bullet/GDC2013_ErwinCoumans_GPU_rigid_body_simulation.pdf)
-
-Rapier
-
-- [Rapier repository](https://github.com/dimforge/rapier)
-- [Dimforge: Announcing Rapier](https://dimforge.com/blog/2020/08/25/announcing-the-rapier-physics-engine/)
-- [Rapier getting started and pipeline components](https://rapier.rs/docs/user_guides/rust/getting_started/)
-- [Rapier determinism](https://rapier.rs/docs/user_guides/rust/determinism/)
-- [Dimforge 2025 review and 2026 goals](https://dimforge.com/blog/2026/01/09/the-year-2025-in-dimforge/)
