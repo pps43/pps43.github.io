@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -46,12 +46,20 @@
 &lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而快。我意识到：&lt;strong&gt;我需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>解决复杂问题的三个方法</title>
+      <title>解决复杂问题的三个思路</title>
       <link>https://pps43.github.io/posts/thinking_of_complex_problems/</link>
       <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_complex_problems/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;前几天对自身在软件开发10年来的经验进行了一些思维和方法论上的思考，亦可用于日常问题的分析，巧的是最近在读的 &lt;code&gt;Thinking in Systems&lt;/code&gt; 提供了更多理论支撑和案例迁移，让我挺开心的。因此记录一下。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>如何评估和迭代Skill</title>
+      <link>https://pps43.github.io/posts/thinking_of_skill_optimization/</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_skill_optimization/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近工作上需要创建一个比较复杂的skill，对一个自定义语言编写的游戏工程进行全面的静态分析，指出问题、给出建议和优先级，帮助开发者按照最佳实践优化本地项目。记录一下过程中的思考。&lt;/p&gt;</description>
     </item>
     <item>
       <title>ECS 架构精髓</title>
@@ -69,25 +77,24 @@
 &lt;p&gt;当一个团队出现问题，人的本能反应是认为某些人表现不好。推荐阅读 &lt;a href=&#34;https://www.lennysnewsletter.com/p/how-to-debug-a-team-that-isnt-working&#34;&gt;How to debug a team that isn’t working&lt;/a&gt;，里面提出的 Waterline Model 是一个很好的思考框架：&lt;strong&gt;先检查塑造所有人行为的系统，再判断某个人是否真的失败了&lt;/strong&gt;。记录下来，常看常新。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>游戏物理引擎比较：架构、特性、性能、集成</title>
+      <title>游戏物理引擎比较</title>
       <link>https://pps43.github.io/posts/notes_on_physics_engine/</link>
       <pubDate>Sun, 02 Aug 2026 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/notes_on_physics_engine/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;This tech note is for game engine programmers and technical directors evaluating real-time/networked game physics.
-I use GPT-5.6 sol-xhigh to assist in the writing of this note.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;To be specific, this note compares eight 3D-capable physics systems:&lt;/p&gt;
+&lt;p&gt;本文面向正在评估实时/联网游戏物理方案的游戏引擎程序员和技术总监。
+由 GPT-5.6 sol-xhigh 撰写，经人工审阅。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;具体来说，本文比较以下七个支持 3D 的物理系统：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Jolt Physics&lt;/li&gt;
 &lt;li&gt;Box3D&lt;/li&gt;
 &lt;li&gt;NVIDIA PhysX 4.1&lt;/li&gt;
 &lt;li&gt;Havok Physics&lt;/li&gt;
-&lt;li&gt;Chaos Physics in Unreal Engine&lt;/li&gt;
-&lt;li&gt;Bullet 3 / the Bullet Physics SDK&lt;/li&gt;
-&lt;li&gt;Valve’s Ragnarok / Rubikon lineage&lt;/li&gt;
-&lt;li&gt;Rapier as the additional modern comparison&lt;/li&gt;
+&lt;li&gt;Unreal Engine 中的 Chaos Physics&lt;/li&gt;
+&lt;li&gt;Bullet 3 / Bullet Physics SDK&lt;/li&gt;
+&lt;li&gt;Valve 的 Ragnarok / Rubikon 系列&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The focus is real-time game development: rigid-body dynamics, collision queries, characters, vehicles, ragdolls, destruction/deformables, large worlds, networking, authoring/debugging, deployment, and predictable frame cost. Robotics-only accuracy, differentiability, offline finite-element analysis, and film-only solvers are outside scope except where an engine deliberately spans those uses.&lt;/p&gt;</description>
+&lt;p&gt;关注点是实时游戏开发：除了基本的刚体动力学、碰撞查询、角色、载具、布娃娃（ragdoll），还关注在物理破坏、大世界支持、确定性仿真这样的高级特性。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering III</title>

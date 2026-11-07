@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Sun, 18 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wisdom of Software Engineering</title>
@@ -18,12 +18,20 @@
 &lt;p&gt;本篇着重于收集编程和软件工程中的洞察和智慧，大部分来自业内顶尖的前辈，例如&lt;code&gt;Joel Spolsky&lt;/code&gt;, &lt;code&gt;John Carmack&lt;/code&gt;等等，也有个人的思考。当我这些年经历过不同行业、国内外不同公司、不同技术栈后，在真正认同这些观点对于产能带来多大提升的同时，也发现它们是多么容易被忽略。总结在这里，常看常新。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>解决复杂问题的三个方法</title>
+      <title>解决复杂问题的三个思路</title>
       <link>https://pps43.github.io/posts/thinking_of_complex_problems/</link>
       <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
       <guid>https://pps43.github.io/posts/thinking_of_complex_problems/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;前几天对自身在软件开发10年来的经验进行了一些思维和方法论上的思考，亦可用于日常问题的分析，巧的是最近在读的 &lt;code&gt;Thinking in Systems&lt;/code&gt; 提供了更多理论支撑和案例迁移，让我挺开心的。因此记录一下。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>如何评估和迭代Skill</title>
+      <link>https://pps43.github.io/posts/thinking_of_skill_optimization/</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_skill_optimization/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近工作上需要创建一个比较复杂的skill，对一个自定义语言编写的游戏工程进行全面的静态分析，指出问题、给出建议和优先级，帮助开发者按照最佳实践优化本地项目。记录一下过程中的思考。&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何 Debug 团队问题</title>

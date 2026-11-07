@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.146.5</generator>
     <language>en</language>
     <copyright>2016-2023 By 波波沙.</copyright>
-    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://pps43.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于AI产品和个人能力的小思考</title>
@@ -16,6 +16,14 @@
       <guid>https://pps43.github.io/posts/thinking_of_ai/</guid>
       <description>&lt;p&gt;2025.8&lt;/p&gt;
 &lt;p&gt;最近一两年，用AI的方式变化得太快了。每当我指望它“一次给出完美答案”，十有八九会失望；可当我把任务拆成几步，允许它犯错、允许我随时插话校准，结果反而快。我意识到：&lt;strong&gt;我需要的，或许不只是“更强的模型”，而是“更好的协作方式”&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>如何评估和迭代Skill</title>
+      <link>https://pps43.github.io/posts/thinking_of_skill_optimization/</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://pps43.github.io/posts/thinking_of_skill_optimization/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;最近工作上需要创建一个比较复杂的skill，对一个自定义语言编写的游戏工程进行全面的静态分析，指出问题、给出建议和优先级，帮助开发者按照最佳实践优化本地项目。记录一下过程中的思考。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agentic Engineering III</title>
